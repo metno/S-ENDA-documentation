@@ -7,14 +7,21 @@ Use Case Goal
    the sequence of actions and the outcome of executing the Use Case.
 
 Datasets produced from a new NWP model are freely available for 
+
 * File download as NetCDF
+
 * Streaming via OPeNDAP
+
 * Visualisation via WMS
+
 * Visualisation in Diana(?)
 
 The datasets are discoverable via
+
 * MET Norway catalogue web search interface
+
 * Google?
+
 * Machine-machine search interface
 
 
@@ -29,8 +36,11 @@ Actors
    classes, or roles, identified from the customer community that will use the product.
 
 * Data Provider (DP) 
+
 * Data Owner (Director SUV)
+
 * A random user with technical expertise (Python and Jupyter)
+
 * A random user with limited expertise who is just browsing the web
 
 Trigger
@@ -51,7 +61,9 @@ Pre-conditions
    started.
 
 * Model output is gridded data that are stored on a server at MET Norway
+
 * NWP model data are well-known
+
 * There is a high degree of standardisation
 
 
@@ -63,7 +75,9 @@ Post-conditions
    The state of the system at the conclusion of the Use Case execution.
 
 A user is able to visualise the wind speed and direction in
+
 * WMS in a web browser
+
 * Jupyter Notebook
 
 
@@ -77,14 +91,23 @@ Normal Flow
    lead to accomplishing the goal stated in the Use Case name and description.
 
 * define dataset(s) (including cf-variable); 
+
 * Update Data Management Plan for NWP; 
+
 * (Director DP informs)
+
 * (inform DM/SM); 
+
 * build CF and ACDD compliant NetCDF files for the dataset(s) from the native files; 
+
 * configure dataset(s) in TDS; 
+
 * create MMD metadata 
+
 * ingest in metadata catalog (e.g., SolR); 
+
 * make searchable in, e.g., opensearch (like, e.g., https://colhub.copernicus.eu/userguide/ODataAPI?TWIKISID=b7b00ae74a4fc691a138709825f16fa3)
+
 * add to existing portals (or check that it is made automatically available)
 
 
