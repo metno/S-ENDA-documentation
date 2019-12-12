@@ -16,6 +16,4 @@ Use case descriptions for the S-ENDA project
 The master branch will be linked from readthedocs (and/or similar), and shall be complete, nice and
 understandable - i.e., so it does not give the impression that it is half-done work...
 
-!!! warning
-
     Please use English language for the use case descriptions
