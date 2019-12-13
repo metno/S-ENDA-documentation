@@ -10,7 +10,7 @@ We adopt the following system for branching and merging:
   * only for complete use case descriptions (corrections/changes are handled in hotfix branches)
   * numbered releases of the code
   * Never edited
-  * Merged from issue and hotfix branches (see notes on workflow below)
+  * Merged from issue and hotfix branches
   * Long living
 * `issue<NNN>_<short-heading>`
   * ideas for new use cases should be described in regular issues (at
