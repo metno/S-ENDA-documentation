@@ -1,0 +1,23 @@
+@startuml
+
+skinparam monochrome true
+left to right direction
+
+:Service Overview: as SO << Application >> 
+Researcher << Human >>
+:Data provider: as DP << Human >>
+:Data provider: as DPApp << Application >>
+
+rectangle Metadatacatalogue {
+
+(Fetch metadata via API)
+(Insert metadata via API) 
+(Insert metadata via GUI)
+
+(Fetch metadata via API) <-- SO 
+(Fetch metadata via API) <-- Researcher
+DPApp --> (Insert metadata via API)
+DP --> (Insert metadata via GUI)
+}
+
+@enduml
