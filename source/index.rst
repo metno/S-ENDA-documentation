@@ -10,6 +10,7 @@ Welcome to S-ENDA use cases's documentation!
    :maxdepth: 1
    :caption: Contents:
 
+   conventions
    use_case_template
    new_nwp_model
 
