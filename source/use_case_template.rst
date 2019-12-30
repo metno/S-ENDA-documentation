@@ -1,3 +1,11 @@
+Use case template
+"""""""""""""""""
+
+..
+
+   Insert the title of the use case template in the above heading. No other text should go under
+   this heading.
+
 Use Case Goal
 =============
 
@@ -80,4 +88,22 @@ Notes and Issues
    Additional comments about this Use Case and any remaining open issues that must be resolved. (It
    is useful to Identify who will resolve each such issue and by what date.)
 
+Relevant software
+=================
 
+Relevant datasets
+=================
+
+UML diagram
+===========
+
+..
+
+   UML diagram, example;
+
+   .. uml::
+
+      @startuml
+      Alice -> Bob: Hi!
+      Alice <- Bob: How are you?
+      @enduml
