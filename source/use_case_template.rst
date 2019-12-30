@@ -1,3 +1,11 @@
+Use case template
+"""""""""""""""""
+
+..
+
+   Insert the title of the use case template in the above heading. No other text should go under
+   this heading.
+
 Use Case Goal
 =============
 

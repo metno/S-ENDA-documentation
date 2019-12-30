@@ -7,9 +7,11 @@ Welcome to S-ENDA use cases's documentation!
 ============================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Contents:
 
+   use_case_template
+   new_nwp_model
 
 
 Indices and tables
