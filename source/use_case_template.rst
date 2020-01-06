@@ -11,6 +11,8 @@ Use Case Goal
 
 .. 
 
+   Required
+
    Brief description of the reason for and outcome of this Use Case, or a high-level description of
    the sequence of actions and the outcome of executing the Use Case.
 
@@ -18,6 +20,8 @@ Actors
 ======
 
 .. 
+
+   Required
 
    An actor is a person or other entity, external to the system being specified, who interacts with
    the system (includes the actor that will be initiating this Use Case and any other actors who
