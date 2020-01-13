@@ -1,7 +1,17 @@
+Use case template
+"""""""""""""""""
+
+..
+
+   Insert the title of the use case template in the above heading. No other text should go under
+   this heading.
+
 Use Case Goal
 =============
 
 .. 
+
+   Required
 
    Brief description of the reason for and outcome of this Use Case, or a high-level description of
    the sequence of actions and the outcome of executing the Use Case.
@@ -10,6 +20,8 @@ Actors
 ======
 
 .. 
+
+   Required
 
    An actor is a person or other entity, external to the system being specified, who interacts with
    the system (includes the actor that will be initiating this Use Case and any other actors who
@@ -80,4 +92,22 @@ Notes and Issues
    Additional comments about this Use Case and any remaining open issues that must be resolved. (It
    is useful to Identify who will resolve each such issue and by what date.)
 
+Relevant software
+=================
 
+Relevant datasets
+=================
+
+UML diagram
+===========
+
+..
+
+   UML diagram, example;
+
+   .. uml::
+
+      @startuml
+      Alice -> Bob: Hi!
+      Alice <- Bob: How are you?
+      @enduml
