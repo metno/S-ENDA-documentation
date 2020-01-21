@@ -11,6 +11,7 @@ Welcome to S-ENDA use cases's documentation!
    :caption: Contents:
 
    conventions
+   architecture
    use_case_template
    new_nwp_model
 
