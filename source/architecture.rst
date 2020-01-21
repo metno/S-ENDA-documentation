@@ -8,7 +8,4 @@ Architecture of S-ENDA
 Context diagram
 =============
 
-..
-
-   .. uml::
-   .. include:: context.puml
+   .. uml:: context.puml
