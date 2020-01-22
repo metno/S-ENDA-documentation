@@ -2,6 +2,10 @@
 Use Case Descriptions
 =====================
 
-.. include:: use_case_template
-.. include:: new_nwp_model
-.. include:: use_case_northern_light
+.. toctree::
+   :maxdepth: 1
+
+   use_case_template.rst
+   new_nwp_model.rst
+   use_case_swimming_comp.rst
+   use_case_northern_light.rst

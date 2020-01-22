@@ -1,13 +1,13 @@
-.. S-ENDA use cases documentation master file, created by
+.. S-ENDA documentation master file, created by
    sphinx-quickstart on Mon Dec 30 12:08:54 2019.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to S-ENDA use cases's documentation!
+Welcome to S-ENDA's documentation!
 ============================================
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: Contents:
 
    conventions
