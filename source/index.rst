@@ -8,7 +8,7 @@ Welcome to S-ENDA's documentation!
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Contents
 
    architecture
    use_cases
