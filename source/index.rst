@@ -14,7 +14,7 @@ Welcome to S-ENDA use cases's documentation!
    architecture
    use_case_template
    new_nwp_model
-
+   use_case_northern_light
 
 Indices and tables
 ==================
