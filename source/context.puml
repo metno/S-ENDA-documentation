@@ -2,34 +2,51 @@
 !includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Container.puml
 
 LAYOUT_LEFT_RIGHT
+' should be without parentheses, but can't until https://github.com/RicardoNiepel/C4-PlantUML/issues/36 is fixed
+'LAYOUT_WITH_LEGEND()
+'LAYOUT_AS_SKETCH()
 
-Person(researcher, "Researcher")
-Person(developer, "Developer")
-Person(scientistproducer, "Scientist data producer")
+Boundary(producers, "Producers") {
+    Person(developer, "Developer (service producer)")
+    Person(dataprovider, "Data Provider")
+}
+
+Boundary(users, "Users") {
+    Person(professional, "Professional user")
+    Person(user, "General public user")
+}
 
 System(senda, "S-ENDA")
 
 SystemDb_Ext(externaldata, "External data sources")
 
 System_Boundary(portals, "Portals") {
-    System_Ext(searchengine, "Search Engine")
     System_Ext(geonorge, "GeoNorge")
+    System_Ext(searchengine, "Web Search Engines")
     System_Ext(datacite, "DataCite")
+    System_Ext(adc, "ADC")
+    System_Ext(europeandataportal, "European Data Portal")
 }
 
 
-Rel(researcher, portals, "Searches", "Web UI")
-Rel(researcher, portals, "Searches", "Terminal")
+
+Rel(professional, portals, "Searches", "Terminal")
+Rel(users, portals, "Searches", "Web UI")
 
 Rel(developer, senda, "Registeres service", "API/Web UI")
-Rel(senda, portals, "Pushes metadata", "API")
-Rel(senda, geonorge, "Pushes metadata", "manually")
+Rel(geonorge, senda, "Harvests metadata", "CSW")
+Rel(adc, senda, "Harvests metadata", "CSW")
 
-Rel(scientistproducer, senda, "Registeres dataset", "API/Web UI")
+Rel(dataprovider, senda, "Registeres dataset", "API/Web UI")
 
-Rel(senda, scientistproducer, "Gets feedback", "?")
+Rel(senda, dataprovider, "Gets feedback", "?")
 Rel(senda, developer, "Gets feedback", "?")
 
+Rel(senda, datacite, "Registeres DOI", "API")
+
 Rel(senda, externaldata, "Indexes external data", "OAI-PMH")
+
+Rel(searchengine, geonorge, "Harvests metadata", "DCAT")
+Rel(europeandataportal, geonorge, "Harvests metadata", "DCAT")
 
 @enduml
