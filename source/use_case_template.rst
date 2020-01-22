@@ -122,9 +122,9 @@ UML diagram
 
 UML diagram, example;
 
-   .. uml::
+.. uml::
 
-      @startuml
-      Alice -> Bob: Hi!
-      Alice <- Bob: How are you?
-      @enduml
+   @startuml
+   Alice -> Bob: Hi!
+   Alice <- Bob: How are you?
+   @enduml

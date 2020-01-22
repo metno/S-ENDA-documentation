@@ -13,6 +13,7 @@ Welcome to S-ENDA's documentation!
    conventions
    architecture
    use_cases
+   write_docs
 
 Indices and tables
 ==================
