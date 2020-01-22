@@ -1,5 +1,5 @@
-Conventions
-"""""""""""
+GIT Conventions
+""""""""""""""""
 
 
 We adopt the following system for branching and merging:
