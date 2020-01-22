@@ -13,14 +13,14 @@ Use Case Goal
 
    Required
 
-   An outdoor swimming competition organizer wants to know sea surface temperature at the event location.
+An outdoor swimming competition organizer wants to know sea surface temperature at the event location.
 
-   The organizer is interested in the sea surface temperature at the event location. As there is very few locations where sea-water temperature is measured, the result to the user should show both closest available in-situ measurement (which probably will be some distance away from the actual event location), the sea temperature from model, and derived from satellite measurements.
+The organizer is interested in the sea surface temperature at the event location. As there is very few locations where sea-water temperature is measured, the result to the user should show both closest available in-situ measurement (which probably will be some distance away from the actual event location), the sea temperature from model, and derived from satellite measurements.
 
 
-   How to find the right dataset(s) and service?
-   How to find the correct variable
-   Is there uptime guarantee for the service in case a system will be built on top of it that needs to  be available for future events?
+- How to find the right dataset(s) and service?
+- How to find the correct variable
+- Is there uptime guarantee for the service in case a system will be built on top of it that needs to  be available for future events?
 
 For this use case the parameter sea surface temperature should be exchangable with any other parameter.
 
@@ -37,13 +37,13 @@ Actors
    will participate in completing the Use Case). Different actors often correspond to different user
    classes, or roles, identified from the customer community that will use the product.
 
-   - Random user with limited experience
-   - Data owner (observations)(Obsklim on behalf of different owners)
-   - Data owner (model)(Director SUV, maybe on behalf of others)
-   - Data owner (satellite)(Obsklim, FOU-FD, maybe others)
-   - Data provider (observations)(Obsklim)
-   - Data provider (model)(SUV)
-   - Data provider (satellite)(Obsklim)
+- Random user with limited experience
+- Data owner (observations)(Obsklim on behalf of different owners)
+- Data owner (model)(Director SUV, maybe on behalf of others)
+- Data owner (satellite)(Obsklim, FOU-FD, maybe others)
+- Data provider (observations)(Obsklim)
+- Data provider (model)(SUV)
+- Data provider (satellite)(Obsklim)
 
 Trigger
 =======
@@ -53,7 +53,7 @@ Trigger
    Event that initiates the Use Case (an external business event, a system event, or the first step
    in the normal flow.
 
-   External privately organized sports event: needs information about sea surface temperature conditions for the competitors. (General information and safety considerations)
+External privately organized sports event: needs information about sea surface temperature conditions for the competitors. (General information and safety considerations)
 
 
 Pre-conditions
@@ -64,11 +64,11 @@ Pre-conditions
    Activities that must take place, or any conditions that must be true, before the Use Case can be
    started.
 
-   Model output is gridded data that are stored on a server at MET Norway
-   Observations are stored on a server at MET Norway
-   Observations must be made available and be well defined(with metadata)
-   Satellite data is gridded data that are stored on a server at MET Norway
-   There is a high degree of standardisation for all types of data
+Model output is gridded data that are stored on a server at MET Norway
+Observations are stored on a server at MET Norway
+Observations must be made available and be well defined(with metadata)
+Satellite data is gridded data that are stored on a server at MET Norway
+There is a high degree of standardisation for all types of data
 
 Post-conditions
 ===============
@@ -125,6 +125,7 @@ Parameter searched for is not found (typing error...)
 - Useable error message, with suggestions to correct. (Did you mean...)
 
 Location does not have data, the search is for an area outside our datasets:
+
 - Useable error message: "Observations not available for this point, closest point with observations is...)
 
 Point in time/space not available in satellite data because of clouds(SST not possible to calculate from data)
