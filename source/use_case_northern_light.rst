@@ -79,13 +79,22 @@ Normal Flow
    execution of the Use Case under normal, expected conditions. This dialog sequence will ultimately
    lead to accomplishing the goal stated in the Use Case name and description.
 
-- 
+- User search for cloud cover Northern Norway (skydekke Nord-Norge)
+- Return possible sources of cloud cover data.
+  - cloud data from the model
+  - satellite product visualize the cloud coverage
+- The description must explain the strength of each product makeing the user able to choose the right product for his/her use.
+- when selecting the satellite image this should be display in a wms display( on top of a map) makeing the user able to pan and zoom. Possible also switch between different times.
+
+
 Alternative Flows
 =================
 
 .. 
 
    Other, legitimate usage scenarios that can take place within this Use Case.
+
+- If a more experieced guide is using this, then then normal flow will be different as this user know what to search for. This user will go directly to the source and download the latest data. Then display this in his/her favorite display tool.
 
 Exceptions
 ==========
@@ -94,6 +103,10 @@ Exceptions
 
    Anticipated error conditions that could occur during execution of the Use Case, and how the
    system is to respond to those conditions, or the Use Case execution fails for some reason.
+
+- Satellite data is too old, ie. to relevasnt for the user
+- wms display systems is not working
+- thredds is not working
 
 Includes
 ========
@@ -117,6 +130,10 @@ Relevant software
 
 Relevant datasets
 =================
+
+- MEPS model data
+- gridded satellite cloud product for WMS
+- gridded satellite cloud product for thredds
 
 UML diagram
 ===========
