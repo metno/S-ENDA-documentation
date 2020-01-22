@@ -17,6 +17,7 @@ Welcome to S-ENDA's documentation!
    :maxdepth: 2
    :caption: Developer documentation
 
+   general_conventions
    git_conventions
    write_docs
 
