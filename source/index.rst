@@ -12,9 +12,7 @@ Welcome to S-ENDA use cases's documentation!
 
    conventions
    architecture
-   use_case_template
-   new_nwp_model
-   use_case_northern_light
+   use_cases
 
 Indices and tables
 ==================
