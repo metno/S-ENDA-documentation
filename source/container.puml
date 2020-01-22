@@ -1,0 +1,26 @@
+@startuml S-ENDA context diagram
+!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Container.puml
+
+LAYOUT_LEFT_RIGHT
+
+Person(dataprovider, "Data Provider")
+'Person(user, "User")
+Container(mmdstore, "MMD store", "Database")
+Container(webdataregistrationui, "Web data registration UI", "React App")
+Container(webdataregistrationapi, "Web data registration API", "custom written API")
+'Container(webserviceregistrationui, "Web service registration UI")
+'Container(webserviceregistrationapi, "Web service registration API")
+'Container(cataloguewebservice, "Catalogue web service")
+Container(pycswapi, "pyCSW API", "uwsgi")
+Container(cmdregtool, "Command line registration tool", "application")
+
+Rel(cmdregtool, webdataregistrationapi, "REST")
+Rel(webdataregistrationui, webdataregistrationapi, "REST")
+
+Rel(dataprovider, cmdregtool, "REST")
+Rel(dataprovider, webdataregistrationui, "")
+Rel(webdataregistrationapi, pycswapi, "REST")
+
+Rel(pycswapi, mmdstore, "pen and paper")
+
+@enduml

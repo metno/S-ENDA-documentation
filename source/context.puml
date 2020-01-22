@@ -16,9 +16,9 @@ Boundary(users, "Users") {
     Person(user, "General public user")
 }
 
-System(senda, "S-ENDA")
+System(senda, "S-ENDA Search")
 
-SystemDb_Ext(externaldata, "External data sources")
+'SystemDb_Ext(externaldata, "External data sources")
 
 System_Boundary(portals, "Portals") {
     System_Ext(geonorge, "GeoNorge")
@@ -44,7 +44,7 @@ Rel(senda, developer, "Gets feedback", "?")
 
 Rel(senda, datacite, "Registeres DOI", "API")
 
-Rel(senda, externaldata, "Indexes external data", "OAI-PMH")
+'Rel(senda, externaldata, "Indexes external data", "OAI-PMH")
 
 Rel(searchengine, geonorge, "Harvests metadata", "DCAT")
 Rel(europeandataportal, geonorge, "Harvests metadata", "DCAT")
