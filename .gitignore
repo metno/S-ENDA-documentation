@@ -1,1 +1,3 @@
-build/
+**/build/
+**/_build/
+**/.vscode/
