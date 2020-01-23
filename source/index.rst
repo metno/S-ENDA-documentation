@@ -19,6 +19,7 @@ Welcome to S-ENDA's documentation!
 
    general_conventions
    git_conventions
+   definition_of_done
    write_docs
    debating
 
