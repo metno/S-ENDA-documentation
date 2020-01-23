@@ -15,8 +15,15 @@ We draft the initial version of the architecture with emphasis on the goal and u
 Context diagram
 =============
 
+The figure below illustrates the architecture. 
+
    .. uml:: context.puml
+
+Developer...
+Data provider...
    
+Professional user ... General public user - who are those? Two extrems on a scale of users.
+
 Container diagram
 =============
 

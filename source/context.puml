@@ -9,13 +9,11 @@ Boundary(producers, "Producers") {
 }
 
 Boundary(users, "Users") {
-    Person(professional, "Professional user")
-    Person(user, "General public user")
+    Person(professional, "Advanced user")
+    Person(user, "General user")
 }
 
-System(senda, "S-ENDA Search")
-
-'SystemDb_Ext(externaldata, "External data sources")
+System(senda, "S-ENDA Find")
 
 System_Boundary(portals, "Portals") {
     System_Ext(geonorge, "GeoNorge")
@@ -25,9 +23,7 @@ System_Boundary(portals, "Portals") {
     System_Ext(europeandataportal, "European Data Portal")
 }
 
-
-
-Rel(professional, portals, "Searches", "Terminal")
+Rel(professional, portals, "Searches", "API")
 Rel(users, portals, "Searches", "Web UI")
 
 Rel(developer, senda, "Registeres service", "API/Web UI")
@@ -36,12 +32,10 @@ Rel(adc, senda, "Harvests metadata", "CSW")
 
 Rel(dataprovider, senda, "Registeres dataset", "API/Web UI")
 
-Rel(senda, dataprovider, "Gets feedback", "?")
-Rel(senda, developer, "Gets feedback", "?")
+Rel(senda, dataprovider, "Gets feedback", "Validation/Monitoring/user questions")
+Rel(senda, developer, "Gets feedback", "Validation/Monitoring/user questions")
 
 Rel(senda, datacite, "Registeres DOI", "API")
-
-'Rel(senda, externaldata, "Indexes external data", "OAI-PMH")
 
 Rel(searchengine, geonorge, "Harvests metadata", "DCAT")
 Rel(europeandataportal, geonorge, "Harvests metadata", "DCAT")
