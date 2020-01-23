@@ -20,6 +20,7 @@ Welcome to S-ENDA's documentation!
    general_conventions
    git_conventions
    write_docs
+   debating
 
 Indices and tables
 ==================

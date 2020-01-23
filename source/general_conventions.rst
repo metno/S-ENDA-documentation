@@ -14,4 +14,7 @@ All repositories should establish some general guidelines/conventions, e.g.,
   * If a function has optional arguments, separate tests for all options should be created
   * Examples should be supported by doctests
 
+* Discussions regarding the S-ENDA framework are kept in the issue-trackers of relevant git
+  repositories at github or in public gitter chats linked from the respective README files
+
 There is plenty of more online guides - see, e.g., `<https://opensource.guide/>`_.
