@@ -1,5 +1,5 @@
-Architecture for Sprint 1
-""""""""""""""""""""""""""
+Architecture of S-ENDA Find
+"""""""""""""""""""""""""""
 
 S-ENDA architecture is described using the C4 model (https://c4model.com/)
 C4 does not define any properties based on the directionality
@@ -7,8 +7,17 @@ of the used arrows so each arrow should have a textual
 description to avoid disambiguity.
 
 We draft the initial version of the architecture with emphasis
-on the goal and use cases of Sprint 1:
+on the goal and use cases of the first sprint of the project.
 
+The goal
+========
+To draft the architecture for S-ENDA find and access,
+and establish metadata handling to lift the user experience
+in finding dynamic geodata to a new level
+
+
+The use cases
+=============
 - An outdoor swimming competition organizer
   wants to know sea-water temperature at the event location #37
 - A user shall extract observed and forecasted temperature
@@ -71,3 +80,6 @@ Container diagram
 =================
 
   .. uml:: container.puml
+
+Data and service providers interact with WebUI or console applications that via an API communicate with the Metadata store.
+The contents of the metadatastore are served as CSW using pyCSW API.
