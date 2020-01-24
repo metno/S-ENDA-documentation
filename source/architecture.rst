@@ -50,7 +50,7 @@ Users
 The goal of the project is to make sure that all kinds of potential users
 of dynamical geodata will be able to find and use the data. There is a broad
 spectrum of users with varying expertise in data handling and domain knowledge
-when it comes to dynamical geodata. 
+when it comes to dynamical geodata.
 
 General user
 ############
@@ -60,7 +60,7 @@ Advanced user
 #############
 An experienced user who knows how to access and process data in their tool
 of choice. Besides the WebUI portals they need a machine-to-machine interface,
-so that they can integrate this with their code or command line tools.
+so that they can integrate with their code or command line tools.
 
 Providers
 ---------
@@ -70,7 +70,7 @@ Data provider
 Produces data with respective metadata and wants to make them discoverable
 available to the users.
 
-Developer
+Service Provider
 #########
 Creates services that serve data and wants to make them discoverable and
 available to the users.
@@ -81,5 +81,9 @@ Container diagram
 
   .. uml:: container.puml
 
-Data and service providers interact with WebUI or console applications that via an API communicate with the Metadata store.
-The contents of the metadatastore are served as CSW using pyCSW API.
+Data and service providers interact with WebUI or console applications that
+via an API communicate with the Metadata store. The contents of
+the metadatastore are served as CSW using pyCSW API.
+
+New datasets and services can be added or modified in the Metadata store via
+an API or using WebUI or command lines tools that interact with the API.

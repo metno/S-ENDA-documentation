@@ -23,7 +23,7 @@ Container(cmdregtool, "Command line registration tool", "application")
 Rel(cmdregtool, webdataregistrationapi, "Register dataset", "REST")
 Rel(webdataregistrationui, webdataregistrationapi, "Register dataset",  "REST")
 
-Rel(serviceprovider, webdataregistrationapi, "Register service", "REST)
+Rel(serviceprovider, webdataregistrationapi, "Register service", "REST")
 Rel(serviceprovider, cmdregtool, "Register service", "Running a terminal command")
 
 Rel(dataprovider, cmdregtool, "Register dataset", "Running a terminal command")
