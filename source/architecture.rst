@@ -38,9 +38,10 @@ Context diagram
 ===============
 
 The figure below illustrates the top level view of the architecture.
-A mock of "S-ENDA Find" is the product of Sprint 1. The system interfaces
-with data and service providers via a Web UI and a console app. The
-"S-ENDA Find" system exposes a CSW interface for external portals, so that
+A mock of "S-ENDA Find" is the product of Sprint 1. 
+Data and service providers register their datasets or services via a WebUI,
+console app or directly via requests against the web registration API.
+The "S-ENDA Find" system exposes a CSW [#]_ interface for external portals, so that
 they can harvest metadata information about datasets previously registered
 with "S-ENDA Find". "S-ENDA Find" also interacts with the DataCite API when
 a DOI needs to be created or updated.
@@ -75,3 +76,5 @@ Data and service providers interact with a Web data/service registration User In
 command line (console) registration tool to register their data/service. These tools communicate
 with the Metadata store via a web data/service registration API. The contents of the
 metadata store are served as CSW using pyCSW API.
+
+  .. [#] https://en.wikipedia.org/wiki/Catalogue_Service_for_the_Web
