@@ -1,5 +1,5 @@
 Find latest satellite image describing cloud cover for visibility of Northern Light
-"""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 ..
 
@@ -116,5 +116,9 @@ UML diagram
 
 LAYOUT_LEFT_RIGHT
 
-Person(researcher, "Researcher")
+Person(user, "Tourist guide")
+System(senda, "S-ENDA")
+
+Rel(user, senda, "Searches for information about clouds.", "Web UI")
+
 @enduml
