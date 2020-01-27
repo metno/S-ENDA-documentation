@@ -18,10 +18,15 @@
 
 
 # -- Project information -----------------------------------------------------
+import datetime
 
 project = u'S-ENDA documentation'
-copyright = u'2019, Morten W. Hansen et al.'
-author = u'Morten W. Hansen, Trygve Aspenes, Nico Budewitz, Nina Elisabeth Larsgård, Martin G. Pejcoch, Håvard A. Futsæter, Massimo Di Stefano, Arnulf Heimsbakk, Geir Aalberg'
+copyright = u'%s, Morten W. Hansen, Trygve Aspenes, Nico Budewitz, Nina Elisabeth Larsgård, ' \
+        'Martin G. Pejcoch, Håvard A. Futsæter, Massimo Di Stefano, Arnulf Heimsbakk, ' \
+        'Geir Aalberg' %datetime.datetime.now().year
+author = u'Morten W. Hansen, Trygve Aspenes, Nico Budewitz, Nina Elisabeth Larsgård, ' \
+        'Martin G. Pejcoch, Håvard A. Futsæter, Massimo Di Stefano, Arnulf Heimsbakk, ' \
+        'Geir Aalberg'
 
 # The short X.Y version
 version = u''
