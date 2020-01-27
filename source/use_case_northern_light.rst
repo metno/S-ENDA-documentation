@@ -111,7 +111,10 @@ UML diagram
 
    .. uml::
 
-      @startuml
-      Alice -> Bob: Hi!
-      Alice <- Bob: How are you?
-      @enduml
+@startuml Use case #38
+!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Container.puml
+
+LAYOUT_LEFT_RIGHT
+
+Person(researcher, "Researcher")
+@enduml
