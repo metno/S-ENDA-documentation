@@ -19,7 +19,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = u'S-ENDA use cases'
+project = u'S-ENDA documentation'
 copyright = u'2019, Morten W. Hansen et al.'
 author = u'Morten W. Hansen et al.'
 
