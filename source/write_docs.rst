@@ -1,7 +1,7 @@
 Writing documentation
 """""""""""""""""""""
 
-All code should be documented. Integration with readthedocs is an easy an effective way
+All code should be documented. Integration with readthedocs is an easy and effective way
 of publishing the documentation. This can be integrated with GitHub in order to stay up-to-date.
 
 In the following, we summarise the requirements for both software and service documentation.
