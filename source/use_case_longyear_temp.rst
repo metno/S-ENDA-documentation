@@ -58,12 +58,6 @@ Pre-conditions
 
 Datasets (Observations and forecast data) are findable and accessible
 
-From DMH:
-- Data basis: 
-
-  - Model and observed datasets are structured and published according to ADC data management model; 
-  - Findable in NorDataNet catalog.
-
 
 Post-conditions
 ===============
@@ -76,16 +70,7 @@ Post-conditions
 - Relevant metadata  for use and reference found
 - The User understands what types of datasets are available for their request. (Difference between observations, satellite data and model/forecast data)
 - Datasets downloaded
-- Enough information (datasets + metadata) has been received to produce the wanted
-
-From DMH: 
-- Desired result:
-  
-  - found available time series of air temperature for specified periods e.g. last 7 days and next 2 days. 
-  - plots of time series 
-  - download of data files 
-  - time-aggregated download by OPeNDAP for use in client software (matlab)
-  - found sufficient documentation to reference the data.
+- Enough information (datasets + metadata) has been received to produce the results needed, and to reference the data.
 
 
 Normal Flow
@@ -105,15 +90,6 @@ Normal Flow
   - The user to produce the products they need
   - The user to reference the data properly 
 
-From DMH:
-- Workflow elements:
-
-  - find suitable datasets;
-  - download data files;
-  - access OPeNDAP data stream; 
-  - plot time series of air temperature from both data sets;
-  - find reference information in metadata.
-
 
 Alternative Flows
 =================
@@ -121,6 +97,9 @@ Alternative Flows
 .. 
 
    Other, legitimate usage scenarios that can take place within this Use Case.
+
+- User searches in generic search engine for datasets
+- User searches for relevant sources for the types of datasets the user needs.
 
 Exceptions
 ==========
@@ -166,9 +145,4 @@ UML diagram
 
    UML diagram, example;
 
-   .. uml::
-
-      @startuml
-      Alice -> Bob: Hi!
-      Alice <- Bob: How are you?
-      @enduml
+   .. uml:: use_case_longyear_temp.puml
