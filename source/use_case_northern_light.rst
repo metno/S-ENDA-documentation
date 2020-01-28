@@ -111,14 +111,15 @@ UML diagram
 
    .. uml::
 
-@startuml Use case #38
-!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Container.puml
+      @startuml Use case #38
+      !includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Container.puml
 
-LAYOUT_LEFT_RIGHT
+      LAYOUT_LEFT_RIGHT
 
-Person(user, "Tourist guide")
-System(senda, "S-ENDA")
+      Person(tourist_guide, "Tourist guide")
+      System_Ext(search_interface, "Search Engine", "Google or met interface")
 
-Rel(user, senda, "Searches for information about clouds.", "Web UI")
+      Rel(tourist_guide, search_interface, "Searches for information about clouds.", "Web UI")
+      Rel(search_interface, tourist_guide, "Web interface returns links to nwp clouds, satellite products describing clouds(WMS) or cloud observations.", "Web UI")
 
-@enduml
+      @enduml
