@@ -54,17 +54,17 @@ Users
 
 The goal of the project is to make sure that all kinds of potential users of dynamical geodata will
 be able to find and use the data. There is a broad spectrum of users with varying expertise in data
-handling and domain knowledge when it comes to dynamical geodata. In the context diagram, we focus
+management and domain knowledge when it comes to dynamical geodata. In the context diagram, we focus
 on *general* and *advanced users*. They are defined as follows:
 
-* **General user:** Any user interested in dynamical geodata.
-* **Advanced user:** An experienced user who knows how to access and process data in their tool of choice. Besides the WebUI portals they need a machine-to-machine interface, so that they can integrate with their code or command line tools.
+* **General User:** Any user interested in dynamical geodata
+* **Advanced User:** An experienced user who knows how to access and process data in their tool of choice (in addition to the WebUI portals they need a machine-to-machine interface, which they can integrate in their software or command line tools)
 
 Providers
 ---------
 
-* **Data provider:** Produces data with respective metadata and wants to make them discoverable and available to the users
-* **Service Provider:** Creates services that serve data and wants to make them discoverable and available to the users
+* **Data Provider:** Produces (meta)data and wants to make the (meta)data discoverable and available to users
+* **Service Provider:** Creates data services, and wants to make the data services discoverable and available to users
 
 
 Container diagram
