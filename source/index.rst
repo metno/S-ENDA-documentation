@@ -14,6 +14,7 @@ Welcome to S-ENDA use cases's documentation!
    architecture
    use_case_template
    new_nwp_model
+   use_case_swimming_comp
 
 
 Indices and tables
