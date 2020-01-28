@@ -15,6 +15,7 @@ Welcome to S-ENDA use cases's documentation!
    use_case_template
    new_nwp_model
    use_case_northern_light
+   use_case_farmer_in_malawi
 
 Indices and tables
 ==================
