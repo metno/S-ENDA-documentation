@@ -3,9 +3,6 @@
 
 LAYOUT_LEFT_RIGHT
 
-Person(dataprovider, "Data Provider")
-Person(serviceprovider, "Service Provider")
-
 System_Boundary(senda, "S-ENDA Find") {
 
 Container(eventengine, "Event Engine", "")
@@ -15,23 +12,12 @@ System_Boundary(metadatastore, "Metadata store") {
     Container(adapter, "ISO19115 convertor", "app")
 }
 
-Container(webdataregistrationui, "Web data/service registration UI", "React App")
-Container(webdataregistrationapi, "Web data/service registration API", "custom written API")
+Container(geoasset_registration_api, "Dynamic Geo-Assets registration API", "custom written API")
 Container(pycswapi, "pyCSW API", "uwsgi")
-Container(cmdregtool, "Command line registration tool", "application")
-
-Rel(cmdregtool, webdataregistrationapi, "Register dataset", "REST")
-Rel(webdataregistrationui, webdataregistrationapi, "Register dataset",  "REST")
-
-Rel(serviceprovider, webdataregistrationapi, "Register service", "REST")
-Rel(serviceprovider, cmdregtool, "Register service", "Running a terminal command")
-
-Rel(dataprovider, cmdregtool, "Register dataset", "Running a terminal command")
-Rel(dataprovider, webdataregistrationui, "Register dataset", "Web UI")
 
 Rel(pycswapi, metadatastore, "Reads all catalogue entries", "REST (ISO19115)")
-Rel(webdataregistrationapi, metadatastore, "REST")
-Rel(webdataregistrationapi, eventengine, "Listens in order to provide last updated info", "CloudEvents")
+Rel(geoasset_registration_api, metadatastore, "REST")
+Rel(geoasset_registration_api, eventengine, "Listens in order to provide last updated info", "CloudEvents")
 }
 
 @enduml
