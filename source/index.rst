@@ -15,6 +15,7 @@ Welcome to S-ENDA use cases's documentation!
    use_case_template
    new_nwp_model
    use_case_swimming_comp
+   use_case_longyear_temp
 
 
 Indices and tables
