@@ -5,7 +5,7 @@ LAYOUT_LEFT_RIGHT
 
 Person(researcher, "Researcher")
 
-System_Ext(searchengine, "Search Engine", "Google")
+System_Ext(searchengine, "Web Search Engine", "")
 
 Rel(researcher, searchengine, "Searches for: observed and forecasted temperature Longyearbyen")
 Rel(searchengine, researcher, "Returns result with link to dataset description and download link")
