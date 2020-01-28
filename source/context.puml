@@ -26,16 +26,16 @@ System_Boundary(portals, "Portals") {
 Rel(professional, portals, "Searches", "API")
 Rel(users, portals, "Searches", "Web UI")
 
-Rel(developer, senda, "Registeres service", "API/Web UI")
+Rel(developer, senda, "Registers service", "API/Web UI")
 Rel(geonorge, senda, "Harvests metadata", "CSW")
 Rel(adc, senda, "Harvests metadata", "CSW")
 
-Rel(dataprovider, senda, "Registeres dataset", "API/Web UI")
+Rel(dataprovider, senda, "Registers dataset", "API/Web UI")
 
 Rel(senda, dataprovider, "Gets feedback", "Validation/Monitoring/user questions")
 Rel(senda, developer, "Gets feedback", "Validation/Monitoring/user questions")
 
-Rel(senda, datacite, "Registeres DOI", "API")
+Rel(senda, datacite, "Registers DOI", "API")
 
 Rel(searchengine, geonorge, "Harvests metadata", "DCAT")
 Rel(europeandataportal, geonorge, "Harvests metadata", "DCAT")
