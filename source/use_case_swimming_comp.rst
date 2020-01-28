@@ -168,9 +168,4 @@ UML diagram
 
    UML diagram, example;
 
-   .. uml::
-
-      @startuml
-      Alice -> Bob: Hi!
-      Alice <- Bob: How are you?
-      @enduml
+   .. uml:: use_case_swimming_comp.puml
