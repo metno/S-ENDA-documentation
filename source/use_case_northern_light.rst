@@ -1,5 +1,5 @@
-Find latest satellite image describing cloud cover for visibility of Northern Light
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Find latest satellite image describing cloud cover for visibility of Northern Lights
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 ..
 
