@@ -8,12 +8,20 @@ Welcome to S-ENDA's documentation!
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Contents
 
-   conventions
    architecture
    use_cases
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Developer documentation
+
+   general_conventions
+   git_conventions
+   definition_of_done
    write_docs
+   debating
 
 Indices and tables
 ==================

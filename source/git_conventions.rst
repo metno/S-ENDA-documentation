@@ -1,5 +1,5 @@
-Conventions
-"""""""""""
+GIT Conventions
+""""""""""""""""
 
 
 We adopt the following system for branching and merging:
@@ -37,7 +37,3 @@ We adopt the following system for branching and merging:
 
 
 The master branch is linked from readthedocs, and shall be complete, nice and understandable.
-
-.. note::
-
-    Please use English language for the use case descriptions
