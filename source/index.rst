@@ -11,7 +11,7 @@ Welcome to S-ENDA's documentation!
    :caption: Contents
 
    architecture
-   metadata_management
+   metadata_management_heritage
    use_cases
 
 .. toctree::
