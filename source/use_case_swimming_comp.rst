@@ -1,17 +1,13 @@
 Use case Outdoor swimming competition
 """""""""""""""""
 
-..
-
-   Insert the title of the use case template in the above heading. No other text should go under
+.. Insert the title of the use case template in the above heading. No other text should go under
    this heading.
 
 Use Case Goal
 =============
 
-.. 
-
-   Required
+.. Required
 
 An outdoor swimming competition organizer wants to know sea surface temperature at the event location.
 
@@ -28,9 +24,7 @@ For this use case the parameter sea surface temperature should be exchangable wi
 Actors
 ======
 
-.. 
-
-   Required
+.. Required
 
    An actor is a person or other entity, external to the system being specified, who interacts with
    the system (includes the actor that will be initiating this Use Case and any other actors who
@@ -48,9 +42,7 @@ Actors
 Trigger
 =======
 
-.. 
-
-   Event that initiates the Use Case (an external business event, a system event, or the first step
+.. Event that initiates the Use Case (an external business event, a system event, or the first step
    in the normal flow.
 
 External privately organized sports event: needs information about sea surface temperature conditions for the competitors. (General information and safety considerations)
@@ -59,9 +51,7 @@ External privately organized sports event: needs information about sea surface t
 Pre-conditions
 ==============
 
-.. 
-
-   Activities that must take place, or any conditions that must be true, before the Use Case can be
+.. Activities that must take place, or any conditions that must be true, before the Use Case can be
    started.
 
 Model output is gridded data that are stored on a server at MET Norway
@@ -73,9 +63,8 @@ There is a high degree of standardisation for all types of data
 Post-conditions
 ===============
 
-.. 
+.. The state of the system at the conclusion of the Use Case execution.
 
-   The state of the system at the conclusion of the Use Case execution.
 A user is able to find all available sea temperature data.
 A user is able to choose/access the data he/she is interrested in.
 A user is able to visualize the data(or a compilation of data) for the competitors via WCS
@@ -84,9 +73,7 @@ A user is able to discern which data is available for the area the user is inter
 Normal Flow
 ===========
 
-.. 
-
-   Detailed description of the user actions and system responses that will take place during
+.. Detailed description of the user actions and system responses that will take place during
    execution of the Use Case under normal, expected conditions. This dialog sequence will ultimately
    lead to accomplishing the goal stated in the Use Case name and description.
 
@@ -102,9 +89,7 @@ System respones:
 Alternative Flows
 =================
 
-.. 
-
-   Other, legitimate usage scenarios that can take place within this Use Case.
+.. Other, legitimate usage scenarios that can take place within this Use Case.
 
 - User searches in a known MET based search environment
 - User uses Norwegian search frases (sjøtemperatur)
@@ -115,9 +100,7 @@ System responses should be the same.
 Exceptions
 ==========
 
-.. 
-
-   Anticipated error conditions that could occur during execution of the Use Case, and how the
+.. Anticipated error conditions that could occur during execution of the Use Case, and how the
    system is to respond to those conditions, or the Use Case execution fails for some reason.
 
 Parameter searched for is not found (typing error...) 
@@ -136,18 +119,14 @@ Point in time/space not available in satellite data because of clouds(SST not po
 Includes
 ========
 
-.. 
-
-   Other Use Cases that are included (“called”) by this Use Case (common functionality appearing in
+.. Other Use Cases that are included (“called”) by this Use Case (common functionality appearing in
    multiple Use Cases can be described in a separate Use Case included by the ones that need that
    common functionality).
 
 Notes and Issues
 ================
 
-.. 
-
-   Additional comments about this Use Case and any remaining open issues that must be resolved. (It
+.. Additional comments about this Use Case and any remaining open issues that must be resolved. (It
    is useful to Identify who will resolve each such issue and by what date.)
 
 Relevant software
