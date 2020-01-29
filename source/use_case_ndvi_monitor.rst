@@ -161,7 +161,7 @@ UML diagram from provider perspective:
    Rel(senda_find, providers, "Sends usage statistics to provider", "Rest")
    Rel(senda_find, providers, "Sends (meta)data validation and search statistics to provider", "Rest")
    Rel(senda_find, providers, "Sends user feedback to provider", "Rest")
-   Rel(ndvi_tool, senda_find, "Registers NDVI dataset", "API")
+   Rel(providers, senda_find, "Registers NDVI dataset", "API")
 
    @enduml
 
