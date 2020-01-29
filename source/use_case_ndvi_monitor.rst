@@ -125,7 +125,7 @@ UML diagram, example;
 
    LAYOUT_LEFT_RIGHT
 
-   Boundary(producers, "Producers") {
+   Boundary(providers, "Providers") {
       System_Ext(ndvi_tool, "NDVI Tool")
    }
 
@@ -144,6 +144,10 @@ UML diagram, example;
    Rel(general_user, portals, "Zooms into region of interest", "Web UI / Mobile app")
    Rel(ndvi_tool, senda_find, "Registers NDVI dataset", "API")
    Rel(senda_find, senda_access, "Makes data accessible", "API")
+   Rel(senda_access, providers, "Sends usage statistics to provider", "Rest")
+   Rel(senda_find, providers, "Sends (meta)data validation and search statistics to provider", "Rest")
+   Rel(portals, senda_find, "Sends user feedback to provider", "Rest")
+   Rel(senda_find, providers, "Sends user feedback to provider", "Rest")
    Rel(portals, senda_find, "Portals listen for new NDVI datasets", "CloudEvents")
    Rel(portals, senda_access, "Portals access NDVI data", "WMS")
 
