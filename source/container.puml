@@ -1,0 +1,23 @@
+@startuml S-ENDA context diagram
+!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Container.puml
+
+LAYOUT_LEFT_RIGHT
+
+System_Boundary(senda, "S-ENDA Find") {
+
+Container(eventengine, "Event Engine", "")
+
+System_Boundary(metadatastore, "Metadata store") {
+    Container(database, "database", "Database")
+    Container(adapter, "ISO19115 convertor", "app")
+}
+
+Container(geoasset_registration_api, "Dynamic Geo-Assets registration API", "custom written API")
+Container(pycswapi, "pyCSW API", "uwsgi")
+
+Rel(pycswapi, metadatastore, "Reads all catalogue entries", "REST (ISO19115)")
+Rel(geoasset_registration_api, metadatastore, "REST")
+Rel(geoasset_registration_api, eventengine, "Listens in order to provide last updated info", "CloudEvents")
+}
+
+@enduml
