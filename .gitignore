@@ -1,2 +1,4 @@
 make.bat
-build/
+**/build/
+**/_build/
+**/.vscode/
