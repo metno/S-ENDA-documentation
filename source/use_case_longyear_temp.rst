@@ -9,10 +9,12 @@ Use Case Goal
 
 .. Required
 
-A user shall extract observed and forecasted temperature time series data values over Longyearbyen
+A user shall extract observed and forecasted temperature time series data values over Longyearbyen. 
 Data consumer perspective; tests the compliance of the data management model with the FAIR principles
 
 (This use case is already described in DMH: UC4)
+
+The user needs both observed and forecasted for the same time period and same location (longyearbyen area). 
 
 
 Actors
@@ -30,6 +32,7 @@ Actors
 - Data owner (model)(Director SUV, maybe on behalf of others)
 - Data provider (observations)(Obsklim)
 - Data provider (model)(SUV)
+- Service provider (external dataservice)?
 
 Trigger
 =======
@@ -37,8 +40,9 @@ Trigger
 .. Event that initiates the Use Case (an external business event, a system event, or the first step
    in the normal flow.
 
-The DC/user needs data for a project, searches for available data via some sort of web searh engine.
+The DC/user needs data for a project, searches for available data via some sort of web search engine. 
 
+The user might search in a general web search engine, or he/she might use a data portal/service known to them. (geonorge, services from MET etc.)
 
 Pre-conditions
 ==============
@@ -46,7 +50,11 @@ Pre-conditions
 .. Activities that must take place, or any conditions that must be true, before the Use Case can be
    started.
 
-Datasets (Observations and forecast data) are findable and accessible
+Model output is gridded data that are stored on a server at MET Norway
+Observations are stored on a server at MET Norway
+Observations must be made available and be well defined(with metadata)
+There is a high degree of standardisation for all types of data
+Datasets (Observations and forecast data) are findable and accessible for general web search engines, and to more specialized portals. 
 
 
 Post-conditions
