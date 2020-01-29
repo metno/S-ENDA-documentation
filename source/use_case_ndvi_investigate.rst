@@ -136,11 +136,10 @@ UML diagram
       System_Ext(ndvi_tool, "NDVI Tool")
    }
 
-   System(senda_find, "S-ENDA Find")
-   System(senda_access, "S-ENDA Access")
+   System(senda, "S-ENDA central")
 
    Rel(professional, ndvi_tool, "Defines time and region of interest", "GUI / text based UI")
-   Rel(ndvi_tool, senda_find, "Searches Sentinel-2 data covering region of interest", "API")
-   Rel(ndvi_tool, senda_access, "Reads spatial subset of Sentinel-2 data", "OPeNDAP")
+   Rel(ndvi_tool, senda, "Searches Sentinel-2 data covering region of interest", "API")
+   Rel(ndvi_tool, senda, "Reads spatial subset of Sentinel-2 data", "OPeNDAP")
 
    @enduml
