@@ -8,7 +8,10 @@ Use Case Goal
 
 .. 
 
-A user(tourist guide) want to see Northern light, but the current location is cloudy. Find information about cloud cover in the nearby areas to find places with less clouds. This can be done with infrared satellite imagerey and or analysed cloud products.
+A user (tourist guide) wants to see Northern lights, but the current location is
+cloudy. Find information about cloud cover in the nearby areas to find places
+with less clouds. This can be done with infrared satellite imagerey and or
+analysed cloud products.
 
 Actors
 ======
@@ -27,7 +30,7 @@ Trigger
 .. 
 
 - User experience cloudy conditions and wants to find nearby areas with less clouds.
-- Use planning an excursion want to check the resent cloud cover information to plan the excursion.
+- User planning an excursion want to check the recent cloud cover information to plan the excursion.
 
 
 Pre-conditions
@@ -44,8 +47,8 @@ Post-conditions
 
 .. 
 
-- User be able to zoom and pan in a WMS with the product overlayed some map to easy relate the data to a location.
-- User be able to load the downloaded data into the desired visualisation tool
+- User is able to zoom and pan in a WMS with the product overlayed some map to easy relate the data to a location.
+- User is able to load the downloaded data into the desired visualisation tool
 
 Normal Flow
 ===========
@@ -72,8 +75,8 @@ Exceptions
 
 .. 
 
-- Satellite data is too old, ie. to relevasnt for the user
-- wms display systems is not working
+- Satellite data is too old, ie. to relevant for the user
+- wms display system is not working
 - thredds is not working
 
 Includes
