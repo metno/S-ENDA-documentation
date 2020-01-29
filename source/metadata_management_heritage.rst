@@ -8,7 +8,7 @@ MET Norway
    :maxdepth: 2
    :caption: Documentation template
 
-   metadata_heritage_template
+   meta_heritage_template
 
 Service catalog
 ^^^^^^^^^^^^^^^
@@ -22,7 +22,7 @@ Stinfosys
    :maxdepth: 2
    :caption: Documentation
 
-   metadata_heritage_stinfosys
+   meta_heritage_stinfosys
 
 api.met.no
 ^^^^^^^^^^^
