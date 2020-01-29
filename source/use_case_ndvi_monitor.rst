@@ -125,17 +125,27 @@ UML diagram, example;
 
    LAYOUT_LEFT_RIGHT
 
-   Boundary(users, "Users") {
-      Person(professional, "Advanced user")
+   Boundary(producers, "Producers") {
       System_Ext(ndvi_tool, "NDVI Tool")
+   }
+
+   Boundary(users, "Users") {
+      Person(general_user, "General user")
+   }
+
+   System_Boundary(portals, "Portals") {
+      System_Ext(ndvi_web_app, "NDVI web app")
+      System_Ext(ndvi_mobile_app, "NDVI mobile app")
    }
 
    System(senda_find, "S-ENDA Find")
    System(senda_access, "S-ENDA Access")
 
-   Rel(professional, ndvi_tool, "Defines time and region of interest", "GUI / text based UI")
-   Rel(ndvi_tool, senda_find, "Searches Sentinel-2 data covering region of interest", "API")
-   Rel(ndvi_tool, senda_access, "Reads spatial subset of Sentinel-2 data", "OPeNDAP")
+   Rel(general_user, portals, "Zooms into region of interest", "Web UI / Mobile app")
+   Rel(ndvi_tool, senda_find, "Registers NDVI dataset", "API")
+   Rel(senda_find, senda_access, "Makes data accessible", "API")
+   Rel(portals, senda_find, "Portals listen for new NDVI datasets", "CloudEvents")
+   Rel(portals, senda_access, "Portals access NDVI data", "WMS")
 
    @enduml
 
