@@ -3,7 +3,7 @@
 
 LAYOUT_LEFT_RIGHT
 
-Boundary(producers, "Producers") {
+Boundary(providers, "Providers") {
     Person(developer, "Service Provider")
     Person(dataprovider, "Data Provider")
 }

@@ -8,6 +8,14 @@ description to avoid disambiguity.
 
 We draft the initial version of the architecture with emphasis
 on the goal and use cases of the first sprint of the project.
+Some parts of the design are not complete, notably we will need to choose
+the implementation of the metadata store. Amongst viable possibilities is
+one of the document-oriented databases
+(https://en.wikipedia.org/wiki/Document-oriented_database)
+
+We need to clarify which protocol GeoNorge would prefer to use to harvest
+metadata from us. Our preference is CSW. Also how does GeoNorge provide data
+further to search engines and international portals.
 
 Goal and use cases of S-ENDA sprint no. 1
 ==========================================
@@ -23,22 +31,24 @@ in finding dynamic geodata to a new level
 Use cases
 ---------------
 - An outdoor swimming competition organizer
-  wants to know sea-water temperature at the event location `#37 <https://github.com/metno/S-ENDA-documentation/issues/37>`_
+  wants to know sea-water temperature at the event location `#37 <https://github.com/metno/S-ENDA-documentation/issues/37>`_ or
+  `Outdoor swimming competition in readthedocs <https://s-enda-documentation.readthedocs.io/en/latest/use_case_swimming_comp.html>`_
 - A user shall extract observed and forecasted temperature
   time series data values over Longyearbyen `#35 <https://github.com/metno/S-ENDA-documentation/issues/35>`_
 - Farmer in Malawi use case `#2 <https://github.com/metno/S-ENDA-documentation/issues/2>`_
 - A user at the Environment Directorate wants to investigate the vegetation state in a given area
-  based on measurements from Sentinel-2 and use the results in their decision making system 
+  based on measurements from Sentinel-2 and use the results in their decision making system
   `#31 <https://github.com/metno/S-ENDA-documentation/issues/31>`_
 - A tourist guide wants to look at the cloud for a specific
   region at night for the visibility of Northern lights `#38
-  <https://github.com/metno/S-ENDA-documentation/issues/38>`_
+  <https://github.com/metno/S-ENDA-documentation/issues/38>`_ or
+  `Find latest satellite image describing cloud cover for visibility of Northern Lights in readthedocs <https://s-enda-documentation.readthedocs.io/en/latest/use_case_northern_light.html>`_
 
 Context diagram
 ===============
 
 The figure below illustrates the top level view of the architecture.
-A mock of "S-ENDA Find" is the product of Sprint 1. 
+A mock of "S-ENDA Find" is the product of Sprint 1.
 Data and service providers register their datasets or services via a WebUI,
 console app or directly via requests against the web registration API.
 The "S-ENDA Find" system exposes a CSW [#]_ interface for external portals, so that
@@ -76,5 +86,14 @@ Data and service providers interact with a Web data/service registration User In
 command line (console) registration tool to register their data/service. These tools communicate
 with the Metadata store via a web data/service registration API. The contents of the
 metadata store are served as CSW using pyCSW API.
+
+**Dynamic Geo-Assets API**
+
+An application that mocks a metadata store and an API that exposes metadata in
+MMD. The application provides functionality for registering new datasets and
+data services, updating existing datasets and services. The application
+validates the metadata and provides detailed user feedback before storing the
+metadata.
+
 
   .. [#] https://en.wikipedia.org/wiki/Catalogue_Service_for_the_Web
