@@ -4,6 +4,12 @@ Heritage of metadata management
 MET Norway
 ==========
 
+.. toctree::
+   :maxdepth: 2
+   :caption: Documentation template
+
+   metadata_heritage_template
+
 Service catalog
 ^^^^^^^^^^^^^^^
 
@@ -12,7 +18,11 @@ TODO: write or link to documentation about the service catalog.
 Stinfosys
 ^^^^^^^^^^^^^^^
 
-TODO: write or link to documentation about ST-INFOSYS.
+.. toctree::
+   :maxdepth: 2
+   :caption: Documentation
+
+   metadata_heritage_stinfosys
 
 api.met.no
 ^^^^^^^^^^^
