@@ -15,13 +15,6 @@ Actors
 
 .. 
 
-   Required
-
-   An actor is a person or other entity, external to the system being specified, who interacts with
-   the system (includes the actor that will be initiating this Use Case and any other actors who
-   will participate in completing the Use Case). Different actors often correspond to different user
-   classes, or roles, identified from the customer community that will use the product.
-
 - Random user with limited experience (farmer in Malawi)
 - Data owner nwps (FOU-FD)
 
@@ -38,73 +31,88 @@ Pre-conditions
 
 .. 
 
-   Activities that must take place, or any conditions that must be true, before the Use Case can be
-   started.
+- Point data for forecast must be available for the actual point, ie the whole world
+- Observation data could be available.
+- Forcast fields for the actual place must be available, ie the whole world. This must be available to be view like a wms layer and/or available for download
+- The wms view must be enhanced for farming purposes, ie relevant paramters for farmin
+- Meta data must be registered for the products for the user to be able to find it.
 
 Post-conditions
 ===============
 
 .. 
 
-   The state of the system at the conclusion of the Use Case execution.
+- User be able to zoom and pan in a WMS with the products overlayd some map to easy relate the data to a location.
+- User be able to make his decision from the data available
+- User be able to download the data and visualize this in his desired tool
 
 Normal Flow
 ===========
 
 .. 
 
-   Detailed description of the user actions and system responses that will take place during
-   execution of the Use Case under normal, expected conditions. This dialog sequence will ultimately
-   lead to accomplishing the goal stated in the Use Case name and description.
+- User search for parameters/fields relevant for farming(temperature, precipitioan, evaporation, dew, wind, humidity and possible also other) in Malawi for today
+- Return possible source of these data with the newest data available first
+  - these parameters as one link to WMS with each paramteres as different layers.
+  - these parameters with one link each to downloadable dataset
+  - in the WMS view cycle over the available timesteps for each parameter
 
 Alternative Flows
 =================
 
 .. 
 
-   Other, legitimate usage scenarios that can take place within this Use Case.
+N/A
 
 Exceptions
 ==========
 
 .. 
 
-   Anticipated error conditions that could occur during execution of the Use Case, and how the
-   system is to respond to those conditions, or the Use Case execution fails for some reason.
-
+- Newest expected model results are delayed or for some other reason is missing. This can couse the user to get old results when he expects new as he check this every day.
+  
 Includes
 ========
 
 .. 
 
-   Other Use Cases that are included (“called”) by this Use Case (common functionality appearing in
-   multiple Use Cases can be described in a separate Use Case included by the ones that need that
-   common functionality).
+N/A
 
 Notes and Issues
 ================
 
 .. 
 
-   Additional comments about this Use Case and any remaining open issues that must be resolved. (It
-   is useful to Identify who will resolve each such issue and by what date.)
+N/A
 
 Relevant software
 =================
 
+N/A
+
 Relevant datasets
 =================
+
+- ECMWF model datasets, one dataset for each paramter for each timestep(?) available on for display WMS
+- The same data available for download(thredds, opendap)
+- Observations
 
 UML diagram
 ===========
 
 ..
 
-   UML diagram, example;
-
    .. uml::
 
-      @startuml
-      Alice -> Bob: Hi!
-      Alice <- Bob: How are you?
+      @startuml Use case #2
+      !includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Container.puml
+
+      LAYOUT_LEFT_RIGHT
+
+      Person(malawi_farmer, "Farmer in Malawi")
+      System_Ext(search_interface, "Search Engine", "Google or met interface")
+
+      Rel(malawi_farmer, search_interface, "Searches for information relevant for farming.", "Web UI")
+      Rel(search_interface, malawi_farmer, "Web interface returns links to nwp paramters to WMS and links to relevant parameters for download.", "Web UI")
+
       @enduml
