@@ -111,7 +111,7 @@ UML diagram
       Person(tourist_guide, "Tourist guide")
       System_Ext(search_interface, "Search Engine", "Web and/or mobile app")
 
-      System_Ext(senda_search_interface, "S-ENDA FIND/Central", "(Google/GeoNorge/other)")
+      System(senda_search_interface, "S-ENDA Find/Central")
 
       Rel(tourist_guide, search_interface, "Searches for information about clouds.", "Web UI")
       Rel(search_interface, tourist_guide, "Web interface returns links to nwp clouds, satellite products describing clouds(WMS) or cloud observations.", "Web UI")
