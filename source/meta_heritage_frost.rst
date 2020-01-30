@@ -1,5 +1,5 @@
-Heritage system: Template
-""""""""""""""""""""""""""
+Heritage system: Frost
+""""""""""""""""""""""
 
 .. Insert the name of the heritage metadata system in the above heading. No   
    other text should go under
@@ -13,6 +13,7 @@ Responsible(Who?)
    group, a role or an administrative unit. Try to avoid linking to specific  
    persons.
 
+Department of Observation and Climate. Division for Observation quality and data processing.
 
 Description(What?)
 ==================
@@ -22,6 +23,7 @@ Description(What?)
    - how is the metadata stored
    - formats/language
 
+Frost is a RESTful API that provides access to MET Norway's archive of historical weather and climate data.
 
 Documentation(Where/how?)
 =========================
@@ -29,6 +31,7 @@ Documentation(Where/how?)
 .. Required. Links to system dokumentation as comments, mark links that are 
    only available for internal users
 
+Frost is documented with swagger. See https://frost.met.no/api.html for more information.
 
 Conditions and dependencies(why?)
 =================================
@@ -40,3 +43,4 @@ Conditions and dependencies(why?)
    Current dependencies: list of other systems (internal/external) currently connected to this system
 
 
+- Frost is an interface to various observations. Now queries is handled and data is fetched from kvalobs. In the future frost will fetch data from ODA

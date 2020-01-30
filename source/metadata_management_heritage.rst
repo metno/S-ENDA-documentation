@@ -22,8 +22,7 @@ TODO: write or link to documentation about api.met.no.
 Frost
 ^^^^^
 
-Frost is documented with swagger. https://frost.met.no/api.html
-For futher info contact Louise Oram in Obs.Div
+TODO: write or link to documentation about frost.
 
 MET Norway discovery and configuration metadata standard (MMD)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
