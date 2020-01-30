@@ -1,0 +1,22 @@
+@startuml S-ENDA context diagram
+!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Context.puml
+
+LAYOUT_LEFT_RIGHT
+
+Person(researcher, "Researcher/Advanced user")
+
+System_Ext(machine2machine, "M2M API")
+System_Ext(searchengine, "Web Search Engines")
+
+System(senda, "S-ENDA Find/Central")
+
+Rel(researcher, searchengine, "Searches", "Web UI")
+Rel(researcher, machine2machine, "Searches", "API")
+
+Rel(searchengine, senda, "Harvest results and links")
+Rel(machine2machine, senda, "Harvest results and links")
+
+Rel(searchengine, researcher, "Returns result with link to dataset description and download link")
+Rel(machine2machine, researcher, "Returns result with link to dataset description and download link")
+
+@enduml
