@@ -96,7 +96,7 @@ Relevant datasets
 =================
 
 - MEPS model data
-- Gridded satellite cloud product from ... (available in WMS and OPeNDAP)
+- Gridded satellite cloud product from optical and/or infrared sensors available in WMS, downloadable and/or streamable
 
 UML diagram
 ===========
@@ -109,7 +109,7 @@ UML diagram
       LAYOUT_LEFT_RIGHT
 
       Person(tourist_guide, "Tourist guide")
-      System_Ext(search_interface, "Search Engine", "Google or met interface")
+      System_Ext(search_interface, "Search Engine", "Web and/or mobile app")
 
       Rel(tourist_guide, search_interface, "Searches for information about clouds.", "Web UI")
       Rel(search_interface, tourist_guide, "Web interface returns links to nwp clouds, satellite products describing clouds(WMS) or cloud observations.", "Web UI")
