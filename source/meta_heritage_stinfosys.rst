@@ -13,8 +13,7 @@ Responsible(Who?)
    persons.
 
 * System owner: Leader, divisjon for observation quality and data processing
-* Maintenance group:
-
+* Maintenance group
  * Technical management: IT-Geo-Drift, OKD
  * Content management: OKD
 
@@ -28,7 +27,7 @@ Description(What?)
 
 Postgres database with site metadata for weather stations. Near complete information for METNorway owned stations, a good amount of information for Norwegian weather stations with other owners, a small amount of information for some stations outside the border of Norway.
 
-Main information groups:
+**Main information groups:**
 
 * Stations: a collection of measurements (on a given location)
 * People: Someone who has a role in connection with a station or stinfosys in general
@@ -45,7 +44,7 @@ Documentation(Where/how?)
 
 The system documentation for stinfosys is only available for internal (MET) users and is (mainly) written in Norwegian.
 
-.. GUI for stinfosys:
+.. GUI for stinfosys
    - link to https://stinfosys.met.no/
 
    Operational documentation
@@ -54,6 +53,7 @@ The system documentation for stinfosys is only available for internal (MET) user
    Full system documentation at gitlab
    - link to https://gitlab.met.no/obs/stinfosys
    for the database model, go to the database folder in the gitlab    repository and find the stinfosys.dia file
+
 
 Conditions and dependencies(why?)
 =================================
@@ -64,13 +64,13 @@ Conditions and dependencies(why?)
    Are there specific choices that has been made which sets important limitations to the system? 
 
 
-Stinfosys is build to adress the needs of:
+**Stinfosys is build to adress the needs of:**
 
 * Forecasters: Co-location of observations, visualization and quality management for stations.
 * Climate statistics: Management of long (high quality) time series.
 * Maintenance management: logistic needs
 
-Data from stinfosys is currently used in:
+**Data from stinfosys is currently used in:**
 
 * KRO: logistic management system for weather stations at MET
 * Kvalobs: Quality control system for observations at MET
@@ -79,7 +79,7 @@ Data from stinfosys is currently used in:
 * Frost.met.no: API for observations, externally available
 * Seklima.met.no: GUI for observations, externally available
 
-External connections to stinfosys:
+**External connections to stinfosys:**
   
 None is currently(Jan 2020) operationalized, but there is work being done on these fronts:
 
