@@ -14,6 +14,7 @@ Welcome to S-ENDA's documentation!
    metadata_management_heritage
    use_cases
 
+
 .. toctree::
    :maxdepth: 2
    :caption: Developer documentation
