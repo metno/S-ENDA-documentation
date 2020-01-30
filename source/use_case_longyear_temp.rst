@@ -1,5 +1,5 @@
 Use case Temperature from Longyearbyen
-"""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""
 
 ..
 
