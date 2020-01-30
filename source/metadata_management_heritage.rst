@@ -5,8 +5,7 @@ MET Norway
 ==========
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Documentation template
+   :maxdepth: 1
 
    meta_heritage_template
 
@@ -19,8 +18,7 @@ Stinfosys
 ^^^^^^^^^^^^^^^
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Documentation
+   :maxdepth: 1
 
    meta_heritage_stinfosys
 
