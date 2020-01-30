@@ -3,83 +3,54 @@
 
 LAYOUT_LEFT_RIGHT
 
+Boundary(providers, "Providers") {
+    Person(developer, "Service Provider")
+    Person(dataprovider, "Data Provider")
+}
+
 Boundary(users, "Users") {
     Person(professional, "Advanced user")
     Person(user, "General user")
 }
 
-Boundary(providers_1, "Providers (1)") {
-    Person(developer_1, "Service Provider (1)")
-    Person(dataprovider_1, "Data Provider (1)")
-}
-Boundary(providers_2, "Providers (2)") {
-    Person(developer_2, "Service Provider (2)")
-    Person(dataprovider_2, "Data Provider (2)")
-}
-Boundary(providers_dotdot, "Providers (...)") {
-    Person(developer_dotdot, "Service Provider (...)")
-    Person(dataprovider_dotdot, "Data Provider (...)")
-}
-Boundary(providers_n, "Providers (n)") {
-    Person(developer_n, "Service Provider (n)")
-    Person(dataprovider_n, "Data Provider (n)")
-}
 
-System(senda_central, "S-ENDA Central (could be GeoNorge or ADC)")
-System(senda_1, "S-ENDA Find (1)")
-System(senda_2, "S-ENDA Find (2)")
-System(senda_dotdot, "S-ENDA Find (...)")
-System(senda_n, "S-ENDA Find (n)")
+
+System_Boundary(senda, "S-ENDA Find") {
+    System(sendafind1, "S-ENDA Find 1")
+    System(sendafind2, "S-ENDA Find 2")
+    System(sendafindn, "S-ENDA Find n")
+    System(senda_central, "S-ENDA Central catalogue")
+}
 
 System_Boundary(portals, "Portals") {
     System_Ext(geonorge, "GeoNorge")
     System_Ext(searchengine, "Web Search Engines")
+    System_Ext(doiregistrar, "DOI Registrar")
     System_Ext(adc, "ADC")
     System_Ext(europeandataportal, "European Data Portal")
 }
 
-System_Boundary(portals_other, "Other Portals") {
-    System_Ext(datacite, "DataCite")
-}
+Rel(users, portals, "Searches", "Web-UI/API")
 
-Rel(professional, senda_central, "Searches", "API")
-Rel(users, portals, "Searches", "Web UI")
-
+Rel(developer, sendafind1, "Registers service", "API/Web UI")
 Rel(geonorge, senda_central, "Harvests metadata", "CSW")
-Rel(adc, senda_central, "Harvests metadata", "CSW")
+Rel(adc, senda, "Harvests metadata", "CSW")
 
-Rel(senda_central, senda_1, "Harvests metadata", "CSW")
-Rel(senda_central, senda_2, "Harvests metadata", "CSW")
-Rel(senda_central, senda_dotdot, "Harvests metadata", "CSW")
-Rel(senda_central, senda_n, "Harvests metadata", "CSW")
+Rel(dataprovider, doiregistrar, "Registers DOI")
 
-Rel(developer_1, senda_1, "Registers service", "API/Web UI")
-Rel(dataprovider_1, senda_1, "Registers dataset", "API/Web UI")
-Rel(senda_1, dataprovider_1, "Gets feedback", "Validation/Monitoring/user questions")
-Rel(senda_1, developer_1, "Gets feedback", "Validation/Monitoring/user questions")
-' Note: S-ENDA find should not worry about DOI registration.
-' This should probably be handled by the individual data centres.
-Rel(providers_1, datacite, "Registers DOI", "API")
+Rel(dataprovider, sendafind1, "Registers dataset", "API/Web UI")
 
-Rel(developer_2, senda_2, "Registers service", "API/Web UI")
-Rel(dataprovider_2, senda_2, "Registers dataset", "API/Web UI")
-Rel(senda_2, dataprovider_2, "Gets feedback", "Validation/Monitoring/user questions")
-Rel(senda_2, developer_2, "Gets feedback", "Validation/Monitoring/user questions")
-Rel(providers_2, datacite, "Registers DOI", "API")
-
-Rel(developer_dotdot, senda_dotdot, "Registers service", "API/Web UI")
-Rel(dataprovider_dotdot, senda_dotdot, "Registers dataset", "API/Web UI")
-Rel(senda_dotdot, dataprovider_dotdot, "Gets feedback", "Validation/Monitoring/user questions")
-Rel(senda_dotdot, developer_dotdot, "Gets feedback", "Validation/Monitoring/user questions")
-Rel(providers_dotdot, datacite, "Registers DOI", "API")
-
-Rel(developer_n, senda_n, "Registers service", "API/Web UI")
-Rel(dataprovider_n, senda_n, "Registers dataset", "API/Web UI")
-Rel(senda_n, dataprovider_n, "Gets feedback", "Validation/Monitoring/user questions")
-Rel(senda_n, developer_n, "Gets feedback", "Validation/Monitoring/user questions")
-Rel(providers_n, datacite, "Registers DOI", "API")
+Rel(sendafind1, dataprovider, "Gets feedback", "Validation/Monitoring/user questions")
+Rel(sendafind1, developer, "Gets feedback", "Validation/Monitoring/user questions")
 
 Rel(searchengine, geonorge, "Harvests metadata", "DCAT")
 Rel(europeandataportal, geonorge, "Harvests metadata", "DCAT")
+
+Rel(professional, senda_central, "Searches", "OpenSearch")
+
+Rel(senda_central, sendafind1, "Harvests metadata", "CSW")
+Rel(senda_central, sendafind2, "Harvests metadata", "CSW")
+Rel(senda_central, sendafindn, "Harvests metadata", "CSW")
+
 
 @enduml
