@@ -27,7 +27,7 @@ Actors
    will participate in completing the Use Case). Different actors often correspond to different user
    classes, or roles, identified from the customer community that will use the product.
 
-- Data Consumer/User (DC)
+- Data Consumer/Advanced User/Researcher (DC)
 - Data owner (observations)(Obsklim on behalf of different owners)
 - Data owner (model)(Director SUV, maybe on behalf of others)
 - Data provider (observations)(Obsklim)
@@ -91,6 +91,7 @@ Alternative Flows
 .. Other, legitimate usage scenarios that can take place within this Use Case.
 
 - User searches in generic search engine for datasets
+- User searches with machine-to-machine API
 - User searches for relevant sources for the types of datasets the user needs.
 
 Exceptions
@@ -121,7 +122,8 @@ Relevant software
 Relevant datasets
 =================
 
-- Observations: temperature data from datastorage at MET 
+- InSitu Observations: temperature data from datastorage at MET
+- Satellite observations 
 - Model data: temperature forcast data from ECMWF/EMEPS/MEPS
 
 UML diagram
