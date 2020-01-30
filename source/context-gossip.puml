@@ -1,0 +1,56 @@
+@startuml S-ENDA context diagram
+!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Context.puml
+
+LAYOUT_LEFT_RIGHT
+
+Boundary(providers, "Providers") {
+    Person(developer, "Service Provider")
+    Person(dataprovider, "Data Provider")
+}
+
+Boundary(users, "Users") {
+    Person(professional, "Advanced user")
+    Person(user, "General user")
+}
+
+System_Boundary(senda, "S-ENDA aggregated (gossip coordinated)") {
+    System(sendafind1, "S-ENDA Find 1")
+    System(sendafind2, "S-ENDA Find 2")
+    System(sendafindn, "S-ENDA Find n")
+}
+
+Rel(sendafind1, sendafind2, "gossip")
+Rel(sendafind1, sendafindn, "gossip")
+Rel(sendafind2, sendafind1, "gossip")
+Rel(sendafind2, sendafindn, "gossip")
+Rel(sendafindn, sendafind1, "gossip")
+Rel(sendafindn, sendafind2, "gossip")
+
+
+System_Boundary(portals, "Portals") {
+    System_Ext(geonorge, "GeoNorge")
+    System_Ext(searchengine, "Web Search Engines")
+    System_Ext(doiregistrar, "DOI Registrar")
+    System_Ext(adc, "ADC")
+    System_Ext(europeandataportal, "European Data Portal")
+}
+
+Rel(users, portals, "Searches", "Web-UI/API")
+
+Rel(developer, sendafind1, "Registers service", "API/Web UI")
+Rel(geonorge, senda, "Harvests metadata", "CSW")
+Rel(adc, senda, "Harvests metadata", "CSW")
+
+Rel(dataprovider, doiregistrar, "Registers DOI")
+
+Rel(dataprovider, sendafind1, "Registers dataset", "API/Web UI")
+
+Rel(sendafind1, dataprovider, "Gets feedback", "Validation/Monitoring/user questions")
+Rel(sendafind1, developer, "Gets feedback", "Validation/Monitoring/user questions")
+
+Rel(searchengine, geonorge, "Harvests metadata", "DCAT")
+Rel(europeandataportal, geonorge, "Harvests metadata", "DCAT")
+
+Rel(professional, senda, "Searches", "OpenSearch")
+
+@enduml
