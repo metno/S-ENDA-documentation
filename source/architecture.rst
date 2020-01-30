@@ -44,8 +44,43 @@ Use cases
   <https://github.com/metno/S-ENDA-documentation/issues/38>`_ or
   `Find latest satellite image describing cloud cover for visibility of Northern Lights in readthedocs <https://s-enda-documentation.readthedocs.io/en/latest/use_case_northern_light.html>`_
 
-Context diagram
-===============
+Context 
+==========
+
+.. note:: This is a draft under development. We highly appreciate input and help in correcting any mistakes.
+
+S-ENDA is part of a larger effort within the national geodata strategy (*"Alt skjer et sted"*), and
+relates to this strategy through Geonorge, which is developed and operated by the Norwegian Mapping
+Authority (*"Kartverket"*). GeoNorge, in turn, relates to the European Inspire Geoportal through the
+Inspire directive. In particular, S-ENDA is responsible for *Action 20* of the Norwegian geodata
+strategy.  The goal of action 20 is to *establish a distributed, virtual data center for use and
+management of dynamic geodata*. S-ENDA's vision is that *everyone, from professional users to the
+general public, should have easy, secure and stable access to dynamic geodata*. The below figure
+illustrates S-ENDA's and Geonorge's position in the national and international context.
+
+.. uml:: 
+
+   @startuml S-ENDA context diagram
+   !includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Context.puml
+
+   LAYOUT_LEFT_RIGHT
+
+   System_Ext(edp, "European Data Portal")
+   System_Ext(searchengine, "Web Search Engines")
+   System_Ext(inspire, "Inspire Geoportal")
+   System_Ext(datanorge, "Data Norge")
+   System_Boundary(geonorge, "GeoNorge"){
+      System_Ext(static_maps, "Static maps")
+   }
+   System(senda, "S-ENDA dynamical geodata")
+
+   Rel(geonorge, senda, "Harvests metadata", "CSW")
+   Rel(searchengine, geonorge, "Harvests metadata", "DCAT")
+   Rel(inspire, geonorge, "Harvests metadata", "?")
+   Rel(datanorge, geonorge, "Harvests metadata", "?")
+   Rel(edp, datanorge, "Harvests metadata", "?")
+
+   @enduml
 
 The figure below illustrates the top level view of the architecture.
 A mock of "S-ENDA Find" is the product of Sprint 1.
