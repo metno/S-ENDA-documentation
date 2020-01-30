@@ -44,7 +44,7 @@ Post-conditions
 ===============
 
 - User is able to zoom and pan in a WMS with the product overlayed some map to easily relate the data to a location
-- User is able to load the downloaded data into a desired visualisation tool
+- User is able to load the downloaded or streamed data into a desired visualisation tool.
 
 Normal Flow
 ===========
