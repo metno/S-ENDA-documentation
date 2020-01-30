@@ -70,13 +70,14 @@ A user is able to choose/access the data he/she is interrested in.
 A user is able to visualize the data(or a compilation of data) for the competitors via WCS
 A user is able to discern which data is available for the area the user is interrested in (and perhaps also information about what is not available. example: No sea surface temperature observations available for inner Oslo fjord. but closest is...)
 
+
 Normal Flow
 ===========
 
 .. Detailed description of the user actions and system responses that will take place during
    execution of the Use Case under normal, expected conditions. This dialog sequence will ultimately
    lead to accomplishing the goal stated in the Use Case name and description.
-r
+
 User actions:
 - User searches for "sea surface temperature oslofjord" in some generic search environment (google)
 
