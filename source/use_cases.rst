@@ -15,5 +15,4 @@ new use case, or to modify an existing one.
    use_case_northern_lights.rst
    use_case_ndvi_investigate.rst
    use_case_ndvi_monitor.rst
-   use_case_northern_light.rst
    use_case_swimming_comp.rst
