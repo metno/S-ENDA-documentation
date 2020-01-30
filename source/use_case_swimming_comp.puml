@@ -1,0 +1,14 @@
+@startuml S-ENDA context diagram
+!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Context.puml
+
+LAYOUT_LEFT_RIGHT
+
+Person(swimming_competition_organizer, "Swimming competition organizer")
+
+System_Ext(searchengine, "Search Engine", "Web search engine")
+
+Rel(swimming_competition_organizer, searchengine, "Searches for: sea temperature")
+Rel(searchengine, swimming_competition_organizer, "Returns result with link to dataset description and download link")
+
+
+@enduml

@@ -3,21 +3,25 @@
 
 LAYOUT_LEFT_RIGHT
 
+System_Ext(geonorge, "GeoNorge", "description")
+
+
 System_Boundary(senda, "S-ENDA Find") {
 
 Container(eventengine, "Event Engine", "")
 
-System_Boundary(metadatastore, "Metadata store") {
-    Container(database, "database", "Database")
-    Container(adapter, "ISO19115 convertor", "app")
+Container(data_store, "Metadata Store", "mocked as in-memory structure in Dynamic Geo-Assets container")
+Container(geoasset_api, "Dynamic Geo-Assets API", "custom written API for Metadata store")
+
+
+Container(pycswapi, "CSW API", "pyCSW + custom adapter for MMD")
+
+Rel(pycswapi, geoasset_api, "Reads metadata updates", "REST (MMD)")
+Rel(geoasset_api, data_store, "Create/Read/Update/Delete metadata in the metadata store")
+Rel(geoasset_api, eventengine, "Listens in order to get last updated info", "CloudEvents")
 }
 
-Container(geoasset_registration_api, "Dynamic Geo-Assets registration API", "custom written API")
-Container(pycswapi, "pyCSW API", "uwsgi")
+Rel(geonorge, pycswapi, "Harvests metadata", "CSW")
 
-Rel(pycswapi, metadatastore, "Reads all catalogue entries", "REST (ISO19115)")
-Rel(geoasset_registration_api, metadatastore, "REST")
-Rel(geoasset_registration_api, eventengine, "Listens in order to provide last updated info", "CloudEvents")
-}
 
 @enduml

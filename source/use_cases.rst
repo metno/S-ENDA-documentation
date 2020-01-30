@@ -10,6 +10,7 @@ new use case, or to modify an existing one.
    :maxdepth: 1
 
    use_case_template.rst
+   use_case_longyear_temp.rst
    new_nwp_model.rst
    use_case_ndvi_investigate.rst
    use_case_ndvi_monitor.rst
