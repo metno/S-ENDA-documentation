@@ -10,7 +10,7 @@ Use Case Goal
 
 A user (tourist guide) wants to see Northern lights, but the current location is
 cloudy. Find information about cloud cover in the nearby areas to find places
-with less clouds. This can be done with infrared satellite imagerey and or
+with less clouds. This can be done with infrared satellite imagery and or
 analysed cloud products.
 
 Actors
@@ -29,38 +29,36 @@ Trigger
 
 .. 
 
-- User experience cloudy conditions and wants to find nearby areas with less clouds.
-- User planning an excursion want to check the recent cloud cover information to plan the excursion.
+- User experiences cloudy conditions and wants to find nearby areas with less clouds.
+- User planning an excursion wants to check the recent cloud cover information to plan the excursion.
 
 
 Pre-conditions
 ==============
 
-.. 
-
-- Satellite product for visualisation clouds (gridded) at night must be available for WMS
-- Satellite product for download in like netcdf(gridded) for a more experienced user to visualize in their prefered tool
-- Meta data must be registered for the product for the user to be able to find it.
+- Satellite product for visualising clouds (gridded) at night must be available as WMS
+- Satellite data (gridded) must be accessible for an experienced user to visualize in their preferred tool
+- Metadata must be registered for the user to be able to find the dataset
 
 Post-conditions
 ===============
 
-.. 
-
-- User is able to zoom and pan in a WMS with the product overlayed some map to easy relate the data to a location.
-- User is able to load the downloaded data into the desired visualisation tool
+- User is able to zoom and pan in a WMS with the product overlayed some map to easily relate the data to a location
+- User is able to load the downloaded data into a desired visualisation tool
 
 Normal Flow
 ===========
 
 .. 
 
-- User search for cloud cover Northern Norway (skydekke Nord-Norge)
-- Return possible sources of cloud cover data.
-  - cloud data from the model
-  - satellite product visualize the cloud coverage
-- The description must explain the strength of each product makeing the user able to choose the right product for his/her use.
-- when selecting the satellite image this should be display in a wms display( on top of a map) makeing the user able to pan and zoom. Possible also switch between different times.
+- User search for cloud cover over Northern Norway (skydekke Nord-Norge)
+- Return possible sources of cloud cover data
+
+  - cloud data from a model
+  - satellite product showing the current cloud coverage
+
+- The data description must explain the strength of each product to enable the user to choose the right product for his/her needs
+- When selecting the satellite image this should be display in a wms display (on top of a map) enabling the user to pan and zoom, and possibly also to switch between different times.
 
 
 Alternative Flows
@@ -68,28 +66,24 @@ Alternative Flows
 
 .. 
 
-- If a more experieced guide is using this, then then normal flow will be different as this user know what to search for. This user will go directly to the source and download the latest data. Then display this in his/her favorite display tool.
+- If a more experienced guide is using this, then the normal flow will be different as this user know what to search for. This user will go directly to the source and download the latest data. Then display this in his/her favorite display tool.
 
 Exceptions
 ==========
 
 .. 
 
-- Satellite data is too old, ie. to relevant for the user
-- wms display system is not working
-- thredds is not working
+- Satellite data is too old to be relevant for the user
+- WMS display system is not working
+- Thredds server is failing
 
 Includes
 ========
-
-.. 
 
 N/A
 
 Notes and Issues
 ================
-
-.. 
 
 N/A
 
@@ -102,15 +96,10 @@ Relevant datasets
 =================
 
 - MEPS model data
-- gridded satellite cloud product for WMS
-- gridded satellite cloud product for thredds
+- Gridded satellite cloud product from ... (available in WMS and OPeNDAP)
 
 UML diagram
 ===========
-
-..
-
-   UML diagram, example;
 
    .. uml::
 
