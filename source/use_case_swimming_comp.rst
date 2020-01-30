@@ -1,8 +1,9 @@
-Use case Outdoor swimming competition
-"""""""""""""""""
+Outdoor swimming competition
+""""""""""""""""""""""""""""
 
 .. Insert the title of the use case template in the above heading. No other text should go under
    this heading.
+
 
 Use Case Goal
 =============
@@ -47,7 +48,6 @@ Trigger
 
 External privately organized sports event: needs information about sea surface temperature conditions for the competitors. (General information and safety considerations)
 
-
 Pre-conditions
 ==============
 
@@ -76,7 +76,7 @@ Normal Flow
 .. Detailed description of the user actions and system responses that will take place during
    execution of the Use Case under normal, expected conditions. This dialog sequence will ultimately
    lead to accomplishing the goal stated in the Use Case name and description.
-
+r
 User actions:
 - User searches for "sea surface temperature oslofjord" in some generic search environment (google)
 
@@ -114,8 +114,6 @@ Location does not have data, the search is for an area outside our datasets:
 Point in time/space not available in satellite data because of clouds(SST not possible to calculate from data)
 
 
-
-
 Includes
 ========
 
@@ -135,9 +133,9 @@ Relevant software
 Relevant datasets
 =================
 
-   Observations: sea surface temperature from data storage at MET (Maritime data)
-   Satellite: Calculated SST from satellite data.
-   Model data: MEPS/ECMWF sea surface temperature    
+* Observations: sea surface temperature from data storage at MET (Maritime data)
+* Satellite: Calculated SST from satellite data.
+* Model data: MEPS/ECMWF sea surface temperature    
 
 
 UML diagram
