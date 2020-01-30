@@ -1,3 +1,4 @@
+*.log
 make.bat
 **/build/
 **/_build/
