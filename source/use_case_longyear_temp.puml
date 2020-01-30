@@ -5,12 +5,12 @@ LAYOUT_LEFT_RIGHT
 
 Person(researcher, "Researcher/Advanced user")
 
-System_ext(machine2machine, "M2M API")
-System_ext(searchengine, "Web Search Engines")
+System_Ext(machine2machine, "M2M API")
+System_Ext(searchengine, "Web Search Engines")
 
 System(senda, "S-ENDA Find/Central")
 
-Rel(researcher, searchengine, "Searches for: observed and forecasted temperature Longyearbyen", "Web UI")
+Rel(researcher, searchengine, "Searches", "Web UI")
 Rel(researcher, machine2machine, "Searches", "API")
 
 Rel(searchengine, senda, "Harvest results and links")
