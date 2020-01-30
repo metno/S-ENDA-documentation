@@ -23,6 +23,7 @@ Welcome to S-ENDA's documentation!
    definition_of_done
    write_docs
    debating
+   devel_environ
 
 Indices and tables
 ==================
