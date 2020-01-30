@@ -12,7 +12,7 @@ Responsible(Who?)
    group, a role or an administrative unit. Try to avoid linking to specific  
    persons.
 
-  System owner: Leader, divisjon for observation quality and data processing
+System owner: Leader, divisjon for observation quality and data processing
   Maintenance grouph
   - Technical management: IT-Geo-Drift, OKD
   - Content management: OKD
