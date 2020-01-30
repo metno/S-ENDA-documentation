@@ -13,6 +13,7 @@ new use case, or to modify an existing one.
    new_nwp_model.rst
    use_case_swimming_comp.rst
    use_case_northern_light.rst
+   use_case_longyear_temp.rst
 
 .. note::
 
