@@ -13,9 +13,10 @@ the implementation of the metadata store. Amongst viable possibilities is
 one of the document-oriented databases
 (https://en.wikipedia.org/wiki/Document-oriented_database)
 
-We need to clarify which protocol GeoNorge would prefer to use to harvest
-metadata from us. Our preference is CSW. Also how does GeoNorge provide data
-further to search engines and international portals.
+We need to clarify which protocol GeoNorge would prefer to use to harvest metadata from us. Our
+preference is the `Open Geospatial Consortium (OGC) <https://www.opengeospatial.org/>`_ `Catalogue
+Service for the Web (CSW) <https://www.opengeospatial.org/standards/cat>`_. Also how does GeoNorge
+provide data further to search engines and international portals.
 
 Goal and use cases of S-ENDA sprint no. 1
 ==========================================
@@ -82,20 +83,34 @@ illustrates S-ENDA's and Geonorge's position in the national and international c
 
    @enduml
 
-The figure below illustrates the top level view of the architecture.
-A mock of "S-ENDA Find" is the product of Sprint 1.
-Data and service providers register their datasets or services via a WebUI,
-console app or directly via requests against the web registration API.
-The "S-ENDA Find" system exposes a CSW [#]_ interface for external portals, so that
-they can harvest metadata information about datasets previously registered
-with "S-ENDA Find". "S-ENDA Find" also interacts with the DataCite API when
-a DOI needs to be created or updated.
+S-ENDA context with a central catalogue
+----------------------------------------
+
+The figure below illustrates the top level view of the architecture. At present, there is no way for
+any system to know the other systems apriori. Each system must be informed about the existence of
+other systems. In the context of a central S-ENDA catalogue, external systems such as Geonorge and
+ADC harvest metadata from the central S-ENDA catalogue. This system then knows about the internal
+data centres in S-ENDA (serving dynamical geodata), and performs metadata harvesting from these.
+
+A mock of *S-ENDA Find* is the product of Sprint 1.  Data and service providers register their
+datasets or services via a WebUI, console app or directly via requests against a web registration
+API in their of S-ENDA system nodes. These nodes exposes a CSW [1]_ interface for the *S-ENDA
+central catalogue*, which keeps a full overview of the system.  
+
+The *S-ENDA Find* system exposes a CSW [1]_ interface for external portals through the *S-ENDA
+central catalogue* in order to let them harvest metadata information about datasets 
+in *S-ENDA Find*. 
+
+If a data provider wishes to assign a DOI to their dataset, there are two alternatives: (1) They
+register a DOI following established procedures in their own organisation, or (2) the S-ENDA Find
+system handles DOI registration (and update) through the DataCite API. If they do not wish to have a
+DOI assigned to their dataset, this is also possible.
 
    .. uml:: context.puml
 
 
 Users
------
+++++++
 
 The goal of the project is to make sure that all kinds of potential users of dynamical geodata will
 be able to find and use the data. There is a broad spectrum of users with varying expertise in data
@@ -106,11 +121,22 @@ on *general* and *advanced users*. They are defined as follows:
 * **Advanced User:** An experienced user who knows how to access and process data in their tool of choice (in addition to the WebUI portals they need a machine-to-machine interface, which they can integrate in their software or command line tools)
 
 Providers
----------
++++++++++++
 
 * **Data Provider:** Produces (meta)data and wants to make the (meta)data discoverable and available to users
 * **Service Provider:** Creates data services, and wants to make the data services discoverable and available to users
 
+Context for a distributed S-ENDA find solution
+-----------------------------------------------
+
+An alternative solution to the central catalogue system, is a system based on a gossip protocol
+[2]_. In this system, the distributed data centres use peer-to-peer *gossip* to ensure that metadata
+is disseminated to all members of the *S-ENDA Find* system. In this setting, there is no dependence
+on a central catalog, and the external systems can connect to any internal node in order to discover
+all of them. This would be a more truly *distributed system*. The context diagram for such a
+solution is shown below.
+
+.. uml:: context-gossip.puml
 
 Container diagram
 =================
@@ -131,4 +157,6 @@ validates the metadata and provides detailed user feedback before storing the
 metadata.
 
 
-  .. [#] https://en.wikipedia.org/wiki/Catalogue_Service_for_the_Web
+  .. [1] https://en.wikipedia.org/wiki/Catalogue_Service_for_the_Web
+
+  .. [2] https://en.wikipedia.org/wiki/Gossip_protocol
