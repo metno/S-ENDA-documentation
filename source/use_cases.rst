@@ -10,7 +10,7 @@ new use case, or to modify an existing one.
    :maxdepth: 1
 
    use_case_template.rst
-   use_case_farmer_in_malawi
+   use_case_farmer_in_malawi.rst
    use_case_longyear_temp.rst
    new_nwp_model.rst
    use_case_northern_lights.rst
