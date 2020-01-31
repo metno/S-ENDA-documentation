@@ -4,37 +4,22 @@ Heritage of metadata management
 MET Norway
 ==========
 
-Service catalog
-^^^^^^^^^^^^^^^
 
-TODO: write or link to documentation about the service catalog.
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents
 
-Stinfosys
-^^^^^^^^^^^^^^^
-
-TODO: write or link to documentation about ST-INFOSYS.
-
-api.met.no
-^^^^^^^^^^^
-
-TODO: write or link to documentation about api.met.no.
+   service_catalog
+   stinfosys
+   api.met.no
+   frost
+   mmd
+   productstatus
 
 Frost
 ^^^^^
 
-TODO: write or link to documentation about frost.
-
-MET Norway discovery and configuration metadata standard (MMD)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The MMD standard is defined here: https://github.com/steingod/mmd/
-
-TODO: write or link to documentation about MMD.
-
-Productstatus
-^^^^^^^^^^^^^^
-
-TODO: write or link to documentation about product status.
+.. include:: metadata_heritage_frost.rst
 
 Project partner x
 ==================
