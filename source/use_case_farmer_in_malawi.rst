@@ -16,7 +16,7 @@ Actors
 .. 
 
 - Random user with limited experience (farmer in Malawi)
-- Data owner nwps (FOU-FD)
+- Data owner nwps (SUV)
 
 Trigger
 =======
@@ -114,5 +114,8 @@ UML diagram
 
       Rel(malawi_farmer, search_interface, "Searches for information relevant for farming.", "Web UI")
       Rel(search_interface, malawi_farmer, "Web interface returns links to nwp paramters to WMS and links to relevant parameters for download.", "Web UI")
+
+      System(senda, "S-ENDA Find+Access/Central")
+      Rel(search_interface, senda, "Find and access weather prediction", "CSW and WMS")
 
       @enduml
