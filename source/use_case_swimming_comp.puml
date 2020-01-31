@@ -5,7 +5,7 @@ LAYOUT_LEFT_RIGHT
 
 Person(swimming_competition_organizer, "Swimming competition organizer")
 
-System_Ext(searchengine, "Search Engine", "Google")
+System_Ext(searchengine, "Search Engine", "Web search engine")
 
 Rel(swimming_competition_organizer, searchengine, "Searches for: sea temperature")
 Rel(searchengine, swimming_competition_organizer, "Returns result with link to dataset description and download link")
