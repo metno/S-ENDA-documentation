@@ -6,7 +6,7 @@ Heritage system: Frost
    this heading.
 
 
-Responsible(Who?)
+Responsible (Who?)
 ==================
 
 .. Required. Who is responsible for this heritage system. This can be a 
@@ -15,8 +15,8 @@ Responsible(Who?)
 
 Department of Observation and Climate. Division for Observation quality and data processing.
 
-Description(What?)
-==================
+Description (What?)
+===================
 
 .. Required. Short description of the system: 
    - what types of metadata is stored in this system.
@@ -42,5 +42,5 @@ Conditions and dependencies(why?)
    Are there specific choices that has been made which sets important limitations to the system? 
    Current dependencies: list of other systems (internal/external) currently connected to this system
 
-
-- Frost is an interface to various observations. Now queries is handled and data is fetched from kvalobs. In the future frost will fetch data from ODA
+* Data and queries are currently managed through the kvalobs system
+* In the future frost will fetch data from ODA
