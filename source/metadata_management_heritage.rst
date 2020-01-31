@@ -19,7 +19,10 @@ MET Norway
 Frost
 ^^^^^
 
-.. include:: metadata_heritage_frost.rst
+.. toctree::
+   :maxdepth: 1
+
+   frost
 
 Project partner x
 ==================
