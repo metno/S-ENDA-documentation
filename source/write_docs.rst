@@ -65,3 +65,13 @@ a virtual environment with sphinx and plantuml installed. With
    make html
 
 Then, open `build/html/index.html` in a web browser.
+
+Alternatively, you can use the Vagrantfile provided in the root folder of the `S-ENDA documentation
+<https://github.com/metno/S-ENDA-documentation>`_. Vagrant is explained in the section `Development
+environment <devel_environ.html>`__. Local compilation can then be performed in a guest Virtual
+Machine (VM) as follows:
+
+.. code-block:: bash
+
+   vagrant up
+   ...
