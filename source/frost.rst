@@ -24,7 +24,7 @@ Description (What?)
    - formats/language
 
 Frost is a RESTful API that provides access to MET Norway's archive of historical weather and climate data.
-This data includes quality controlled daily, monthly, and yearly measurements of temperature, precipitation, and wind data. Other information, like metadata about weather stations, is also available through the API.
+Frost don't actually contains any metadata itself, but through various interfaces expose metdata about stations from ST-INFOSYS. And element metadata and the data istelf from KDVH.
 
 Documentation(Where/how?)
 =========================
@@ -43,8 +43,5 @@ Conditions and dependencies(why?)
    Are there specific choices that has been made which sets important limitations to the system? 
    Current dependencies: list of other systems (internal/external) currently connected to this system
 
-* Data and queries are currently managed through the kvalobs system
-* In the future frost will fetch data from ODA
-
 * The Frost API is primarily for developers who need to develop scripts or applications that access MET Norway's archive of historical weather and climate data.
-* Dependecy ST-INFOSYS, ODA
+* Dependecies: ST-INFOSYS and KDVH. In the future frost will replace KDVH with ODA.
