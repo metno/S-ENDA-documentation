@@ -13,7 +13,7 @@ Responsible (Who?)
    group, a role or an administrative unit. Try to avoid linking to specific  
    persons.
 
-Department of Observation and Climate. Division for Observation quality and data processing.
+MET Norway. Department of Observation and Climate. Division for Observation quality and data processing.
 
 Description (What?)
 ===================
@@ -24,6 +24,7 @@ Description (What?)
    - formats/language
 
 Frost is a RESTful API that provides access to MET Norway's archive of historical weather and climate data.
+This data includes quality controlled daily, monthly, and yearly measurements of temperature, precipitation, and wind data. Other information, like metadata about weather stations, is also available through the API.
 
 Documentation(Where/how?)
 =========================
@@ -44,3 +45,6 @@ Conditions and dependencies(why?)
 
 * Data and queries are currently managed through the kvalobs system
 * In the future frost will fetch data from ODA
+
+* The Frost API is primarily for developers who need to develop scripts or applications that access MET Norway's archive of historical weather and climate data.
+* Dependecy ST-INFOSYS, ODA
