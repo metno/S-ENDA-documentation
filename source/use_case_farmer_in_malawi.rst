@@ -53,6 +53,7 @@ Normal Flow
 
 - User search for parameters/fields relevant for farming(temperature, precipitioan, evaporation, dew, wind, humidity and possible also other) in Malawi for today
 - Return possible source of these data with the newest data available first
+
   - these parameters as one link to WMS with each paramteres as different layers.
   - these parameters with one link each to downloadable dataset
   - in the WMS view cycle over the available timesteps for each parameter
@@ -69,7 +70,7 @@ Exceptions
 
 .. 
 
-- Newest expected model results are delayed or for some other reason is missing. This can couse the user to get old results when he expects new as he check this every day.
+- Newest expected model results are delayed or for some other reason is missing. This can cause the user to get old results when he expects new as he check this every day.
   
 Includes
 ========
@@ -93,8 +94,8 @@ N/A
 Relevant datasets
 =================
 
-- ECMWF model datasets, one dataset for each paramter for each timestep(?) available on for display WMS
-- The same data available for download(thredds, opendap)
+- ECMWF model datasets, one dataset for each paramater for each timestep(?) available for WMS display 
+- The same data available for download or streaming
 - Observations
 
 UML diagram
