@@ -14,14 +14,14 @@ Container(data_store, "Metadata Store", "mocked as in-memory structure in Dynami
 Container(geoasset_api, "Dynamic Geo-Assets API", "custom written API for Metadata store")
 
 
-Container(pycswapi, "CSW API", "pyCSW + custom adapter for MMD")
+Container(csapi, "Catalog Service API", "pyCSW + custom adapter for MMD")
 
-Rel(pycswapi, geoasset_api, "Reads metadata updates", "REST (MMD)")
+Rel(csapi, geoasset_api, "Reads metadata updates", "REST (MMD)")
 Rel(geoasset_api, data_store, "Create/Read/Update/Delete metadata in the metadata store")
 Rel(geoasset_api, eventengine, "Listens in order to get last updated info", "CloudEvents")
 }
 
-Rel(geonorge, pycswapi, "Harvests metadata", "CSW")
+Rel(geonorge, csapi, "Harvests metadata", "CSW")
 
 
 @enduml
