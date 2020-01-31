@@ -4,6 +4,11 @@ Heritage of metadata management
 MET Norway
 ==========
 
+Service catalog
+^^^^^^^^^^^^^^^
+
+TODO: write or link to documentation about the service catalog.
+
 Stinfosys
 ^^^^^^^^^^^^^^^
 
