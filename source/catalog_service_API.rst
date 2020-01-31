@@ -1,46 +1,46 @@
 Catalog Service API
 """"""""""""""""""""
 
-The software library used to implement a Service Catalogue is based on the PyCSW python library.
-pycsw enables users to publish a catalogue of dataset descriptions (metadata) to the web, using
-standards based interfaces and formats, such that it can be queried and updated by catalogue
-clients. pycsw is simple to setup within an Apache web server (or any WSGI server) and can access
+The software library used to implement the Catalogue Service API is based on the PyCSW python
+library.  PyCSW enables users to publish a catalogue of dataset descriptions (metadata) to the web,
+using standard based interfaces and formats, such that it can be queried and updated by catalogue
+clients. PyCSW is simple to install within an Apache web server (or any WSGI server) and can access
 metadata records stored as XML files within a database.
 
 Metadata is 'data about data', storing such things as creation-date, author, title,
-area-of-interest, etc, and is usually encoded as XML files, following international standards such
+area-of-interest, etc., and is usually encoded as XML files, following international standards such
 as ISO 19115, ISO 19139 and FGDC CSDGM.  PyCSW is the software library used to provide a catalogue
 service. PyCSW implements the  `OGC Catalogue Services for the Web (CSW) standard
-<https://www.opengeospatial.org/standards/cat>`__. The project is certified `OGC Compliant`_, and is
+<https://www.opengeospatial.org/standards/cat>`_. The project is certified `OGC Compliant`_, and is
 an OGC Reference Implementation. The CSW standard defines common interfaces to discover, browse and
 query metadata about spatial data, web services and related resources.
 
 Core Features
 ===============
 
-* certified OGC Compliant and OGC Reference Implementation for OGC CSW 2.0.2 and CSW 3.0.0
-* harvesting support for WMS, WFS, WCS, WPS, WAF, CSW, SOS
-* implements INSPIRE Discovery Services 3.0
-* implements ISO Metadata Application Profile 1.0.0
-* implements FGDC CSDGM Application Profile for CSW 2.0
-* implements the Search/Retrieval via URL (SRU) search protocol
-* implements Full Text Search capabilities
-* implements OGC OpenSearch Geo/Time extensions
-* implements Open Archives Initiative Protocol for Metadata Harvesting
-* supports ISO, Dublin Core, DIF, FGDC, Atom and GM03 metadata models
+* Certified OGC Compliant and OGC Reference Implementation for OGC CSW 2.0.2 and CSW 3.0.0
+* Harvesting support for WMS, WFS, WCS, WPS, WAF, CSW, SOS
+* Implements the INSPIRE Discovery Services 3.0
+* Implements the ISO Metadata Application Profile 1.0.0
+* Implements the FGDC CSDGM Application Profile for CSW 2.0
+* Implements Search/Retrieval via URL (SRU) search protocol
+* Implements Full Text Search capabilities
+* Implements the OGC OpenSearch Geo/Time extensions
+* Implements the Open Archives Initiative Protocol for Metadata Harvesting
+* Supports ISO, Dublin Core, DIF, FGDC, Atom and GM03 metadata models
 * CGI or WSGI deployment
 * Python 2 and 3 compatible
-* simple configuration
-* transactional capabilities (CSW-T)
-* flexible repository configuration
+* Simple configuration
+* Transactional capabilities (CSW-T)
+* Flexible repository configuration
 * GeoNode connectivity
 * HHypermap connectivity
 * Open Data Catalog connectivity
 * CKAN connectivity
-* federated catalogue distributed searching
-* realtime XML Schema validation
-* extensible profile plugin architecture
-* very lightweight (Python + CGI)
+* Federated catalogue distributed searching
+* Realtime XML Schema validation
+* Extensible profile plugin architecture
+* Very lightweight (Python + CGI)
 
 
 Implemented Standards
@@ -93,7 +93,7 @@ Notes for S-ENDA development
     - `ISO reader <https://github.com/geopython/pycsw/blob/master/pycsw/plugins/profiles/apiso/apiso.py>`__
 * **Example Output**
     - `DIF Output Schema <https://github.com/geopython/pycsw/blob/master/pycsw/plugins/outputschemas/dif.py>`__
-       can be used as guidlenise to create a DCAT (or GeoDCAT) output from pycsw’s core model
+       can be used as guideline to create a DCAT (or GeoDCAT) output from pycsw's core model
 * Open Issue about Geo-DCAT
     - `Support DCAT <https://github.com/geopython/pycsw/issues/257>`__ in pycsw
     - `ISO to GeoDCAT XSLT <https://github.com/SEMICeu/iso-19139-to-dcat-ap>`__
@@ -103,7 +103,5 @@ Notes for S-ENDA development
 .. _`OGC Compliant`: https://www.opengeospatial.org/resource/products/details/?pid=1374
 .. _`OGC Reference Implementation`: http://demo.pycsw.org/
 
-Disclaimer: This PyCSW documentation has been adapted from the `OSGEO-Live Documentation <https://osgeo.github.io/OSGeoLive-doc/en/index.html>`__
-
-
-
+Disclaimer: This PyCSW documentation has been adapted from the `OSGEO-Live Documentation
+<https://osgeo.github.io/OSGeoLive-doc/en/index.html>`__
