@@ -4,25 +4,17 @@ Heritage of metadata management
 MET Norway
 ==========
 
-
 .. toctree::
    :maxdepth: 1
    :caption: Contents
 
+   meta_heritage_template
    service_catalog
    stinfosys
    api.met.no
    frost
    mmd
    productstatus
-
-Frost
-^^^^^
-
-.. toctree::
-   :maxdepth: 1
-
-   frost
 
 Project partner x
 ==================
