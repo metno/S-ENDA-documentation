@@ -13,7 +13,7 @@ Responsible (Who?)
    group, a role or an administrative unit. Try to avoid linking to specific  
    persons.
 
-MET Norway. Department of Observation and Climate. Division for Observation quality and data processing.
+MET Norway, Department of Observation and Climate, Division for Observation quality and data processing.
 
 Description (What?)
 ===================
@@ -23,8 +23,10 @@ Description (What?)
    - how is the metadata stored
    - formats/language
 
-Frost is a RESTful API that provides access to MET Norway's archive of historical weather and climate data.
-Frost don't actually contains any metadata itself, but through various interfaces expose metdata about stations from ST-INFOSYS. And element metadata and the data istelf from KDVH(Klimadatavarehuset).
+Frost is a RESTful API that provides access to MET Norway's archive of historical weather and
+climate data.  Frost does not actually contain any metadata itself. However, frost exposes metadata
+about stations from ST-INFOSYS through various interfaces. And element metadata and the data istelf
+from KDVH (Klimadatavarehuset).
 
 Documentation(Where/how?)
 =========================
@@ -44,5 +46,5 @@ Conditions and dependencies(why?)
    Current dependencies: list of other systems (internal/external) currently connected to this system
 
 * The Frost API is primarily for developers who need to develop scripts or applications that access MET Norway's archive of historical weather and climate data.
-* Dependecies: ST-INFOSYS and KDVH. In the future frost will replace KDVH with ODA(Observation, Data, Access). For more information about ODA see here: https://oda.pages.met.no/page/about/
-* The dependencies does not support FAIR, but FROST provides translations, where possible, of element names following CF.
+* Dependecies: ST-INFOSYS and KDVH. In the future, frost will replace KDVH with ODA (Observation, Data, Access). For more information about ODA, see here: https://oda.pages.met.no/page/about/
+* The dependencies do not support FAIR, but FROST provides translations, where possible, of element names following CF.
