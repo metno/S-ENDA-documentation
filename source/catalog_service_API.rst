@@ -19,14 +19,16 @@ Core Features
 ===============
 
 * Certified OGC Compliant and OGC Reference Implementation for OGC CSW 2.0.2 and CSW 3.0.0
-* Harvesting support for the following Standards:
-    - `Web Mapping Service <https://www.opengeospatial.org/standards/wms>`__ (WMS)
-    - `Web Feature service <https://www.opengeospatial.org/standards/wfs>`__ (WFS)
-    - `Web Coverage Service <https://www.opengeospatial.org/standards/wcs>`__ (WCS)
-    - `Web Processing Service <https://www.opengeospatial.org/standards/wps>`__ (WPS)
-    - `Web Accessible Folders <https://ioos.github.io/catalog/pages/registry/waf_creation/>`__ (WAF)
-    - `Catalogue Services for the Web <https://www.opengeospatial.org/standards/cat>`__ (CSW)
-    - `Sensor Observation Service <https://www.opengeospatial.org/standards/sos>`__ (SOS)
+* Harvesting support for the following standards:
+
+   * `Web Mapping Service <https://www.opengeospatial.org/standards/wms>`__ (WMS)
+   * `Web Feature service <https://www.opengeospatial.org/standards/wfs>`__ (WFS)
+   * `Web Coverage Service <https://www.opengeospatial.org/standards/wcs>`__ (WCS)
+   * `Web Processing Service <https://www.opengeospatial.org/standards/wps>`__ (WPS)
+   * `Web Accessible Folders <https://ioos.github.io/catalog/pages/registry/waf_creation/>`__ (WAF)
+   * `Catalogue Services for the Web <https://www.opengeospatial.org/standards/cat>`__ (CSW)
+   * `Sensor Observation Service <https://www.opengeospatial.org/standards/sos>`__ (SOS)
+
 * Implements the `INSPIRE <https://inspire.ec.europa.eu/>`__ Discovery Services 3.0
 * Implements the ISO Metadata Application Profile 1.0.0
 * Implements the Federal Geographic Data Committee (FGDC) `Content Standard for Digital Geospatial Metadata <https://www.fgdc.gov/metadata/csdgm-standard>`__ (CSDGM) Application Profile for CSW 2.0
