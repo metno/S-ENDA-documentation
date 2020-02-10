@@ -19,7 +19,7 @@ Vagrant is used in S-ENDA for spinning up reproducible development environments.
 Installation
 ------------
 
-S-ENDA has standardized on these versions for the development environment.
+S-ENDA has standardized on these versions for the development environment:
 
 * `Vagrant 2.2.7`_
 * `VirtualBox 6.1.x`_
@@ -30,33 +30,33 @@ Download the software appropriate for your platform and install.
 Generic usage
 -------------
 
-Below is a sample of the most used Vagrant commands. Other options for the configuration file, ``Vagrantfile``, and more advanced usage, read the `Vagrant documentation`_.
+Below is a sample of the most used Vagrant commands. For an overview of other options used in the configuration file, ``Vagrantfile``, and more advanced usage, read the `Vagrant documentation`_.
 
-* Create config file, ``Vagrantfile``, for a Ubuntu Bionic VM.
+* Create config file, ``Vagrantfile``, for an Ubuntu Bionic VM:
 
   .. code-block:: bash
 
     vagrant init ubuntu/bionic64
 
-* Start VM.
+* Start VM:
 
   .. code-block:: bash
 
     vagrant up
 
-* Access VM.
+* Access VM:
 
   .. code-block:: bash
 
     vagrant ssh
 
-* Stop VM.
+* Stop VM:
 
   .. code-block:: bash
 
    vagrant halt
 
-* Rerun provisioning scripts.
+* Rerun provisioning scripts:
 
   .. code-block:: bash
 
@@ -67,7 +67,7 @@ Below is a sample of the most used Vagrant commands. Other options for the confi
 S-ENDA configuration
 --------------------
 
-This section contains template ``Vagrantfile`` used in S-SENDA development. There is a generic part, which will be reused. Then it will contain examples to help developers extend development environment functionality. Specific ``Vagrantfile`` for reproducing the complete development environment for S-ENDA will reside in the main code repositories.
+This section contains a template ``Vagrantfile`` used in S-SENDA development. There is one generic and reusable part. In addition to this, examples to help developers extend development environment functionality will be added. Specific ``Vagrantfile``'s for reproducing the complete development environment for S-ENDA will reside in the main code repositories.
 
 Generic configuration
 =====================
@@ -94,7 +94,7 @@ Generic configuration
 
     begin
       current_dir    = File.dirname(File.expand_path(__FILE__))
-      # config.yml is ignored by git, i.e., .gitignore
+      # config.yml is ignored by git, i.e., it is added to .gitignore
       configs        = YAML.load_file("#{current_dir}/config.yml")
       vagrant_config = configs['configs'][configs['configs']['use']]
     rescue StandardError => msg
@@ -160,7 +160,7 @@ Generic configuration
     vagrant up
 
 Examples extending functionality
-===============================
+================================
 
 This section will be extended as the need for more functionality in the development environment arises.
 

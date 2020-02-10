@@ -78,6 +78,10 @@ Using Vagrant
 
 Alternatively, you can use the provided ``Vagrantfile`` to spin up a VM which compiles the documentation for you. The ``Vagrantfile`` resides in the root folder of `S-ENDA documentation`_. Vagrant is explained in the section `Development environment`_.
 
+.. note::
+
+   Since the operations are performed within an isolated virtual machine environment, this is considered to be safer than the above method using Conda.
+
 To build or rebuild the documentation, run the following command in the root folder of `S-ENDA documentation`_.
 
 .. code-block:: bash
