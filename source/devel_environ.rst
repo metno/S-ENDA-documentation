@@ -94,6 +94,7 @@ Basic setup
 
     begin
       current_dir    = File.dirname(File.expand_path(__FILE__))
+      # config.yml is ignored by git, i.e., .gitignore
       configs        = YAML.load_file("#{current_dir}/config.yml")
       vagrant_config = configs['configs'][configs['configs']['use']]
     rescue StandardError => msg
