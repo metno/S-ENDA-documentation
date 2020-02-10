@@ -3,8 +3,9 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+==================================
 Welcome to S-ENDA's documentation!
-============================================
+==================================
 
 .. toctree::
    :maxdepth: 2
@@ -13,6 +14,7 @@ Welcome to S-ENDA's documentation!
    architecture
    metadata_management_heritage
    use_cases
+   dm_recipes
 
 .. toctree::
    :maxdepth: 2
@@ -24,6 +26,7 @@ Welcome to S-ENDA's documentation!
    write_docs
    debating
 
+==================
 Indices and tables
 ==================
 
