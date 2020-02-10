@@ -72,7 +72,7 @@ This section contains template ``Vagrantfile`` used in S-SENDA development. Ther
 Generic configuration
 =====================
 
-1. Create a folder for the development environment. This is usually your git repository folder.
+1. Create a folder for the development environment. This is usually your git repository folder where your code resides.
 
   .. code-block:: bash
 
@@ -128,6 +128,8 @@ Generic configuration
     end
 
 3. Add configuration file containing external IPs. This is an example. Remember to exclude this file from git in ``.gitignore``.
+
+  Explanation. If you add this file in the same directory as you ``Vagrantfile``, the Vagrant VM will automatically get the hostname and external IP on the interface you've defined as bridge. You can have multiple configurations in same file. Select the configuration you want with the ``use`` variable. In this example file ``use`` is set to ``myip1``. With the ``myip1`` configuration the VM will get the name ``my.host.foo``, IP ``192.168.1.101`` bridged on ``eth0``.
 
   .. code-block:: bash
 
