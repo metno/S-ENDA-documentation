@@ -9,7 +9,7 @@ MET Norway
    :caption: Contents
 
    meta_heritage_template
-<<<<<<< HEAD
+
 
 Service catalog
 ^^^^^^^^^^^^^^^
@@ -47,14 +47,6 @@ Productstatus
 ^^^^^^^^^^^^^^
 
 TODO: write or link to documentation about product status.
-=======
-   service_catalog
-   stinfosys
-   api.met.no
-   frost
-   mmd
-   productstatus
->>>>>>> master
 
 Project partner x
 ==================
