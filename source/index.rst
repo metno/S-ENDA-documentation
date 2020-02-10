@@ -13,6 +13,7 @@ Welcome to S-ENDA's documentation!
    architecture
    metadata_management_heritage
    use_cases
+   doi_registration
 
 .. toctree::
    :maxdepth: 2
