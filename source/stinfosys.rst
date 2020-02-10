@@ -5,44 +5,46 @@ Heritage system: Stinfosys
    other text should go under
    this heading.
  
-Responsible(Who?)
+Responsible (Who?)
 ==================
 
 .. Required. Who is responsible for this heritage system. This can be a 
    group, a role or an administrative unit. Try to avoid linking to specific  
    persons.
 
-* System owner: Leader, divisjon for observation quality and data processing
+* System owner: Leader, department of observation quality and data processing
 * Maintenance group
+
  * Technical management: IT-Geo-Drift, OKD
  * Content management: OKD
 
-Description(What?)
-==================
+Description (What?)
+===================
 
 .. Required. Short description of the system: 
    - what types of metadata is stored in this system.
    - how is the metadata stored
    - formats/language
 
-Postgres database with site metadata for weather stations. Near complete information for METNorway owned stations, a good amount of information for Norwegian weather stations with other owners, a small amount of information for some stations outside the border of Norway.
+Postgres database with site metadata for weather stations. Near complete information about stations
+owned by MET Norway, a good amount of information about Norwegian weather stations owned by others,
+and a small amount of information for some stations outside Norway.
 
 **Main information groups:**
 
 * Stations: a collection of measurements (on a given location)
 * People: Someone who has a role in connection with a station or stinfosys in general
-* Equipment: Something that is/can be set up on a station
-* Message: communication of data from station to MET
+* Equipment: Something that is/can be installed on a station
+* Message: communication of data from the stations to MET
 
-
-
-Documentation(Where/how?)
-=========================
+Documentation (Where/how?)
+==========================
 
 .. Required. Links to system dokumentation as comments, mark links that are 
    only available for internal users
 
-The system documentation for stinfosys is only available for internal (MET) users and is (mainly) written in Norwegian.
+The system documentation for stinfosys is only available for internal (MET) users and is (mainly)
+written in Norwegian.
 
 .. GUI for stinfosys
    - link to https://stinfosys.met.no/
@@ -55,8 +57,8 @@ The system documentation for stinfosys is only available for internal (MET) user
    for the database model, go to the database folder in the gitlab    repository and find the stinfosys.dia file
 
 
-Conditions and dependencies(why?)
-=================================
+Conditions and dependencies (why?)
+==================================
 
 .. Required. Please add a short paragraph explaining in words why the system is as it is
 
@@ -64,7 +66,7 @@ Conditions and dependencies(why?)
    Are there specific choices that has been made which sets important limitations to the system? 
 
 
-**Stinfosys is build to adress the needs of:**
+**Stinfosys is built to adress the needs of:**
 
 * Forecasters: Co-location of observations, visualization and quality management for stations.
 * Climate statistics: Management of long (high quality) time series.
@@ -81,7 +83,7 @@ Conditions and dependencies(why?)
 
 **External connections to stinfosys:**
   
-None is currently(Jan 2020) operationalized, but there is work being done on these fronts:
+None is currently (Jan 2020) operationalized, but there is work being done on these fronts:
 
 * M2M connection to the Public Roads Administration(SVV)'s metadatabase for measurement stations (Målestasjonsregisteret)
 * External metadata registration software/gui for the Norwegian Institute for Bioeconomy Research (NIBIO)
