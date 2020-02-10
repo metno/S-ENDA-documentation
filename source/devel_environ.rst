@@ -67,19 +67,19 @@ Below is a sample of the most used Vagrant commands. Other options for the confi
 S-ENDA configuration
 --------------------
 
-More specific Vagrant configuration for this project. This section will increase with time, with tips and extra configuration needed to run S-ENDA services.
+This section contains template ``Vagrantfile`` used in S-SENDA development. There is a generic part, which will be reused. Then it will contain examples to help developers extend development environment functionality. Specific ``Vagrantfile`` for reproducing the complete development environment for S-ENDA will reside in the main code repositories.
 
-Basic setup
-===========
+Generic configuration
+=====================
 
-1. Create a folder.
+1. Create a folder for the development environment. This is usually your git repository folder.
 
   .. code-block:: bash
 
      mkdir development
      cd development
 
-2. Add default ``Vagrantfile`` used.
+2. Create a new ``Vagrantfile``, and add the generic template we use. Use copy and paste.
 
   .. code-block:: bash
 
@@ -101,26 +101,33 @@ Basic setup
       vagrant_config = {}
     end
 
-    config.vm.provider "virtualbox" do |vb|
-      vb.memory = "4096"
-      vb.cpus = 4
-      vb.default_nic_type = "virtio"
-    end
+    Vagrant.configure("2") do |config|
+      config.vm.box = "ubuntu/bionic64"
+      config.vm.box_check_update = false
 
-    config.vm.define "default" do |config|
-      if vagrant_config != {}
-        config.vm.network "public_network", ip: vagrant_config['ip'], netmask: vagrant_config['netmask'], bridge: vagrant_config['bridge']
-        config.vm.provision "shell", run: "always", inline: "ip route add default via #{ vagrant_config['gateway'] } metric 10 || exit 0"
-        config.vm.hostname = vagrant_config['hostname']
+      config.vm.network "private_network", ip: "10.20.30.10"
+
+      config.vm.provider "virtualbox" do |vb|
+        vb.memory = "4096"
+        vb.cpus = 4
+        vb.default_nic_type = "virtio"
       end
+
+      config.vm.define "default" do |config|
+        if vagrant_config != {}
+          config.vm.network "public_network", ip: vagrant_config['ip'], netmask: vagrant_config['netmask'], bridge: vagrant_config['bridge']
+          config.vm.provision "shell", run: "always", inline: "ip route add default via #{ vagrant_config['gateway'] } metric 10 || exit 0"
+          config.vm.hostname = vagrant_config['hostname']
+        end
+      end
+
+      config.vm.provision "shell", inline: <<-SHELL
+        apt-get update
+        apt-get install -y wget unattended-upgrades
+      SHELL
     end
 
-    config.vm.provision "shell", inline: <<-SHELL
-      apt-get update
-      apt-get install -y wget unattended-upgrades
-    SHELL
-
-3. Add configuration file containing external IPs.
+3. Add configuration file containing external IPs. This is an example. Remember to exclude this file from git in ``.gitignore``.
 
   .. code-block:: bash
 
@@ -149,6 +156,11 @@ Basic setup
   .. code-block:: bash
 
     vagrant up
+
+Examples extending functionality
+===============================
+
+This section will be extended as the need for more functionality in the development environment arises.
 
 ..
   # vim: set spell spelllang=en:
