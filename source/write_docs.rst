@@ -55,8 +55,9 @@ Compiling the documentation locally
 .. _S-ENDA documentation: https://github.com/metno/S-ENDA-documentation
 .. _Development environment: devel_environ.html
 
-We use sphinx to build the S-ENDA documentation. To build the S-ENDA documentation locally, the best is to create a virtual environment with sphinx and plantuml installed. We use Conda_ or Vagrant_ to this. Both methods produce the same result.
+Check out the `S-ENDA documentation`_ repository locally. We use sphinx to build the S-ENDA documentation. To build the S-ENDA documentation locally, the best is to create a virtual environment with sphinx and plantuml installed. We use Conda_ or Vagrant_ to this. Both methods produce the same result.
 
+After building documentation either with Conda_ or Vagrant_, you can view it with a browser by accessing ``build/html/index.html`` in the repository.
 
 Using Conda
 ===========
