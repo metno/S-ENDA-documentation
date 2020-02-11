@@ -17,7 +17,7 @@ Rel(senda_central, sendafind1, "Harvests metadata", "CSW")
 Rel(senda_central, sendafind2, "Harvests metadata", "CSW")
 Rel(senda_central, sendafindn, "Harvests metadata", "CSW")
 
-Rel(users, senda_central, "Searches", "OpenSearch")
+Rel(users, senda_central, "Searches", "OpenSearch, CSW")
 Rel(portals, senda_central, "Harvests", "CSW")
 
 @enduml

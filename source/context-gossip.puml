@@ -19,7 +19,7 @@ Rel(sendafind2, sendafindn, "gossip")
 Rel(sendafindn, sendafind1, "gossip")
 Rel(sendafindn, sendafind2, "gossip")
 
-Rel(users, senda, "Users search any system node", "OpenSearch")
+Rel(users, senda, "Users search any system node", "OpenSearch, CSW")
 Rel(portals, senda, "Portals harvest any system node", "CSW")
 
 @enduml

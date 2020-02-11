@@ -168,7 +168,7 @@ on *general* and *advanced users*. They are defined as follows:
    }
 
    Rel(users, portals, "Users search portals", "Web-UI/API")
-   Rel(advanced, sendafind, "Users search S-ENDA", "OpenSearch")
+   Rel(advanced, sendafind, "Users search S-ENDA", "OpenSearch, CSW")
 
    @enduml
 
