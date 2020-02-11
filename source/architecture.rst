@@ -1,5 +1,6 @@
+===================
 S-ENDA Architecture
-"""""""""""""""""""""""""""
+===================
 
 S-ENDA architecture is described using the C4 model (https://c4model.com/).
 C4 does not define any properties based on the directionality
@@ -18,11 +19,12 @@ preference is the `Open Geospatial Consortium (OGC) <https://www.opengeospatial.
 Service for the Web (CSW) <https://www.opengeospatial.org/standards/cat>`_. Also how does GeoNorge
 provide data further to search engines and international portals.
 
+-----------------------------------------
 Goal and use cases of S-ENDA sprint no. 1
-==========================================
+-----------------------------------------
 
 Goal
-----
+====
 
 To draft the architecture for S-ENDA find and access,
 and establish metadata handling to lift the user experience
@@ -30,7 +32,8 @@ in finding dynamic geodata to a new level
 
 
 Use cases
----------------
+=========
+
 - An outdoor swimming competition organizer
   wants to know sea-water temperature at the event location `#37 <https://github.com/metno/S-ENDA-documentation/issues/37>`_ or
   `Outdoor swimming competition in readthedocs <https://s-enda-documentation.readthedocs.io/en/latest/use_case_swimming_comp.html>`_
@@ -45,19 +48,18 @@ Use cases
   <https://github.com/metno/S-ENDA-documentation/issues/38>`_ or
   `Find latest satellite image describing cloud cover for visibility of Northern Lights in readthedocs <https://s-enda-documentation.readthedocs.io/en/latest/use_case_northern_light.html>`_
 
-Context 
-==========
+--------
+Contexts
+--------
 
 .. note:: This is a draft under development. We highly appreciate input and help in correcting any mistakes.
 
-S-ENDA is part of a larger effort within the national geodata strategy (*"Alt skjer et sted"*), and
-relates to this strategy through Geonorge, which is developed and operated by the Norwegian Mapping
-Authority (*"Kartverket"*). GeoNorge, in turn, relates to the European Inspire Geoportal through the
-Inspire directive. In particular, S-ENDA is responsible for *Action 20* of the Norwegian geodata
-strategy.  The goal of action 20 is to *establish a distributed, virtual data center for use and
-management of dynamic geodata*. S-ENDA's vision is that *everyone, from professional users to the
-general public, should have easy, secure and stable access to dynamic geodata*. The below figure
-illustrates S-ENDA's and Geonorge's position in the national and international context.
+S-ENDA is part of a larger effort within the national geodata strategy (*"Alt skjer et sted"*), and relates to this strategy through Geonorge, which is developed and operated by the Norwegian Mapping Authority (*"Kartverket"*). GeoNorge, in turn, relates to the European Inspire Geoportal through the Inspire directive. In particular, S-ENDA is responsible for *Action 20* of the Norwegian geodata strategy.  The goal of action 20 is to *establish a distributed, virtual data center for use and management of dynamic geodata*. S-ENDA's vision is that *everyone, from professional users to the general public, should have easy, secure and stable access to dynamic geodata*. The below figure illustrates S-ENDA's and Geonorge's position in the national and international context.
+
+As illustrated, GeoNorge CSW harvesting should also make S-ENDA metadata findable by other portals. This does not mean, however, that S-ENDA shall not provide catalog services in, e.g., DCAT or schema.org to provide direct harvesting access from other portals at a later stage.
+
+S-ENDA harvest context
+======================
 
 .. uml:: 
 
@@ -66,15 +68,21 @@ illustrates S-ENDA's and Geonorge's position in the national and international c
 
    LAYOUT_LEFT_RIGHT
 
-   System_Ext(edp, "European Data Portal")
-   System_Ext(searchengine, "Web Search Engines")
-   System_Ext(inspire, "Inspire Geoportal")
-   System_Ext(datanorge, "Data Norge")
-   System_Boundary(geonorge, "GeoNorge"){
-      System_Ext(static_maps, "Static maps")
+   System_Boundary(portals, "Portals"){
+      System_Ext(edp, "European Data Portal")
+      System_Ext(searchengine, "Web Search Engines")
+      System_Ext(inspire, "Inspire Geoportal")
+      System_Ext(datanorge, "Data Norge")
+      System_Ext(geonorge, "GeoNorge")
+      System_Ext(adc, "ADC")
    }
-   System(senda, "S-ENDA dynamical geodata")
 
+   'Not sure about the following...
+   System_Boundary(senda, "S-ENDA Find"){
+      System(sendafind, "S-ENDA Find Nodes")
+   }
+
+   Rel(adc, senda, "Harvests metadata", "CSW")
    Rel(geonorge, senda, "Harvests metadata", "CSW")
    Rel(searchengine, geonorge, "Harvests metadata", "DCAT")
    Rel(inspire, geonorge, "Harvests metadata", "?")
@@ -83,8 +91,78 @@ illustrates S-ENDA's and Geonorge's position in the national and international c
 
    @enduml
 
-S-ENDA context with a central catalogue
-----------------------------------------
+S-ENDA register context
+=======================
+
+* **Data Provider:** Produces (meta)data and wants to make the (meta)data discoverable and available to users
+* **Service Provider:** Creates data services, and wants to make the data services discoverable and available to users
+
+.. uml::
+
+   @startuml S-ENDA register context
+   !includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Context.puml
+
+   LAYOUT_LEFT_RIGHT
+
+   System(sendafind, "S-ENDA Find Node")
+
+   Boundary(providers, "Providers") {
+      Person(developer, "Service Provider (SP)")
+      Person(dataprovider, "Data Provider (DP)")
+   }
+
+   System_Ext(doiregistrar, "DOI Registrar")
+
+   Rel(dataprovider, doiregistrar, "DP registers DOI")
+   Rel(dataprovider, sendafind, "DP registers dataset", "API/Web UI")
+   Rel(sendafind, dataprovider, "S-ENDA find gives feedback", "Validation/Monitoring/user questions")
+
+   Rel(developer, sendafind, "SP registers service", "API/Web UI")
+   Rel(sendafind, developer, "S-ENDA find gives feedback", "Validation/Monitoring/user questions")
+
+   @enduml
+
+S-ENDA search context
+=====================
+
+The goal of the project is to make sure that all kinds of potential users of dynamical geodata will
+be able to find and use the data. There is a broad spectrum of users with varying expertise in data
+management and domain knowledge when it comes to dynamical geodata. In the search context diagram, we focus
+on *general* and *advanced users*. They are defined as follows:
+
+* **General User:** Any user interested in dynamical geodata
+* **Advanced User:** An experienced user who knows how to access and process data in their tool of choice (in addition to the WebUI portals they need a machine-to-machine interface, which they can integrate in their software or command line tools)
+
+.. uml::
+
+   @startuml S-ENDA register context
+   !includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Context.puml
+
+   LAYOUT_LEFT_RIGHT
+
+   Boundary(users, "Users") {
+      Person(advanced, "Advanced user")
+      Person(user, "General user")
+   }
+
+   System_Boundary(portals, "Portals") {
+      System_Ext(geonorge, "GeoNorge")
+      System_Ext(searchengine, "Web Search Engines")
+      System_Ext(adc, "ADC")
+      System_Ext(europeandataportal, "European Data Portal")
+   }
+
+   System_Boundary(sendafind, "S-ENDA Find"){
+      System(sendafind_nodes, "S-ENDA Find Nodes")
+   }
+
+   Rel(users, portals, "Searches", "Web-UI/API")
+   Rel(advanced, sendafind, "Searches", "OpenSearch")
+
+   @enduml
+
+S-ENDA Find Boundary with a central catalogue
+=============================================
 
 The figure below illustrates the top level view of the architecture. At present, there is no way for
 any system to know the other systems apriori. Each system must be informed about the existence of
@@ -109,25 +187,8 @@ DOI assigned to their dataset, this is also possible.
    .. uml:: context.puml
 
 
-Users
-++++++
-
-The goal of the project is to make sure that all kinds of potential users of dynamical geodata will
-be able to find and use the data. There is a broad spectrum of users with varying expertise in data
-management and domain knowledge when it comes to dynamical geodata. In the context diagram, we focus
-on *general* and *advanced users*. They are defined as follows:
-
-* **General User:** Any user interested in dynamical geodata
-* **Advanced User:** An experienced user who knows how to access and process data in their tool of choice (in addition to the WebUI portals they need a machine-to-machine interface, which they can integrate in their software or command line tools)
-
-Providers
-+++++++++++
-
-* **Data Provider:** Produces (meta)data and wants to make the (meta)data discoverable and available to users
-* **Service Provider:** Creates data services, and wants to make the data services discoverable and available to users
-
 Context for a distributed S-ENDA find solution
------------------------------------------------
+==============================================
 
 An alternative solution to the central catalogue system, is a system based on a gossip protocol
 [2]_. In this system, the distributed data centres use peer-to-peer *gossip* to ensure that metadata
@@ -138,8 +199,9 @@ solution is shown below.
 
 .. uml:: context-gossip.puml
 
+-----------------
 Container diagram
-=================
+-----------------
 
   .. uml:: container.puml
 
