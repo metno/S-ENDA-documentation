@@ -1,0 +1,25 @@
+@startuml S-ENDA context diagram
+!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Context.puml
+
+LAYOUT_LEFT_RIGHT
+
+System_Boundary(senda, "S-ENDA aggregated (gossip coordinated)") {
+    System(sendafind1, "S-ENDA Find Node 1")
+    System(sendafind2, "S-ENDA Find Node 2")
+    System(sendafindn, "S-ENDA Find Node n")
+}
+
+Person(users, "Users")
+System_Ext(portals, "Portals")
+
+Rel(sendafind1, sendafind2, "gossip")
+Rel(sendafind1, sendafindn, "gossip")
+Rel(sendafind2, sendafind1, "gossip")
+Rel(sendafind2, sendafindn, "gossip")
+Rel(sendafindn, sendafind1, "gossip")
+Rel(sendafindn, sendafind2, "gossip")
+
+Rel(users, senda, "Users search any system node", "OpenSearch, CSW")
+Rel(portals, senda, "Portals harvest any system node", "CSW")
+
+@enduml

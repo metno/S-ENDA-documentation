@@ -3,41 +3,21 @@
 
 LAYOUT_LEFT_RIGHT
 
-Boundary(providers, "Providers") {
-    Person(developer, "Service Provider")
-    Person(dataprovider, "Data Provider")
+System_Boundary(senda, "S-ENDA Find with Central Catalogue") {
+    System(sendafind1, "S-ENDA Find Node 1")
+    System(sendafind2, "S-ENDA Find Node 2")
+    System(sendafindn, "S-ENDA Find Node n")
+    System(senda_central, "S-ENDA Central Catalogue")
 }
 
-Boundary(users, "Users") {
-    Person(professional, "Advanced user")
-    Person(user, "General user")
-}
+Person(users, "Users")
+System_Ext(portals, "Portals")
 
-System(senda, "S-ENDA Find")
+Rel(senda_central, sendafind1, "Harvests metadata", "CSW")
+Rel(senda_central, sendafind2, "Harvests metadata", "CSW")
+Rel(senda_central, sendafindn, "Harvests metadata", "CSW")
 
-System_Boundary(portals, "Portals") {
-    System_Ext(geonorge, "GeoNorge")
-    System_Ext(searchengine, "Web Search Engines")
-    System_Ext(datacite, "DataCite")
-    System_Ext(adc, "ADC")
-    System_Ext(europeandataportal, "European Data Portal")
-}
-
-Rel(professional, portals, "Searches", "API")
-Rel(users, portals, "Searches", "Web UI")
-
-Rel(developer, senda, "Registers service", "API/Web UI")
-Rel(geonorge, senda, "Harvests metadata", "CSW")
-Rel(adc, senda, "Harvests metadata", "CSW")
-
-Rel(dataprovider, senda, "Registers dataset", "API/Web UI")
-
-Rel(senda, dataprovider, "Gets feedback", "Validation/Monitoring/user questions")
-Rel(senda, developer, "Gets feedback", "Validation/Monitoring/user questions")
-
-Rel(senda, datacite, "Registers DOI", "API")
-
-Rel(searchengine, geonorge, "Harvests metadata", "DCAT")
-Rel(europeandataportal, geonorge, "Harvests metadata", "DCAT")
+Rel(users, senda_central, "Searches", "OpenSearch, CSW")
+Rel(portals, senda_central, "Harvests", "CSW")
 
 @enduml
