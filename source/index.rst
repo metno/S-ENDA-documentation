@@ -21,6 +21,7 @@ Welcome to S-ENDA's documentation!
    general_conventions
    git_conventions
    definition_of_done
+   devel_environ
    write_docs
    debating
 
