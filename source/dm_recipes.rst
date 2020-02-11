@@ -25,8 +25,15 @@ This is done with the s-enda-find Virtual Machine (VM), for which a Vagrant conf
 
 S-ENDA Find gives feedback
 ==========================
+S-ENDA Find has two main types of feedback for the data provider:
 
-**TODO:** describe data dashboard..
+#. Questions/praise/bug reports etc. from users.
+#. Operational metrics about downloads and production runs for each dataset.
+
+Feedback from users would come as either e-mails into a ticketing system, or as messages in a forum.
+
+Operational metrics will be harvested from metrics server (e.g Prometheus),
+giving the data provider information such as number of downloads pr. day for each type of service(WMS, DAP etc.) and delays in producing the datasets.
 
 --------------
 Search context
