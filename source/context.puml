@@ -3,54 +3,21 @@
 
 LAYOUT_LEFT_RIGHT
 
-Boundary(providers, "Providers") {
-    Person(developer, "Service Provider")
-    Person(dataprovider, "Data Provider")
+System_Boundary(senda, "S-ENDA Find with Central Catalogue") {
+    System(sendafind1, "S-ENDA Find Node 1")
+    System(sendafind2, "S-ENDA Find Node 2")
+    System(sendafindn, "S-ENDA Find Node n")
+    System(senda_central, "S-ENDA Central Catalogue")
 }
 
-Boundary(users, "Users") {
-    Person(professional, "Advanced user")
-    Person(user, "General user")
-}
-
-
-
-System_Boundary(senda, "S-ENDA Find") {
-    System(sendafind1, "S-ENDA Find 1")
-    System(sendafind2, "S-ENDA Find 2")
-    System(sendafindn, "S-ENDA Find n")
-    System(senda_central, "S-ENDA Central catalogue")
-}
-
-System_Boundary(portals, "Portals") {
-    System_Ext(geonorge, "GeoNorge")
-    System_Ext(searchengine, "Web Search Engines")
-    System_Ext(doiregistrar, "DOI Registrar")
-    System_Ext(adc, "ADC")
-    System_Ext(europeandataportal, "European Data Portal")
-}
-
-Rel(users, portals, "Searches", "Web-UI/API")
-
-Rel(developer, sendafind1, "Registers service", "API/Web UI")
-Rel(geonorge, senda_central, "Harvests metadata", "CSW")
-Rel(adc, senda, "Harvests metadata", "CSW")
-
-Rel(dataprovider, doiregistrar, "Registers DOI")
-
-Rel(dataprovider, sendafind1, "Registers dataset", "API/Web UI")
-
-Rel(sendafind1, dataprovider, "Gets feedback", "Validation/Monitoring/user questions")
-Rel(sendafind1, developer, "Gets feedback", "Validation/Monitoring/user questions")
-
-Rel(searchengine, geonorge, "Harvests metadata", "DCAT")
-Rel(europeandataportal, geonorge, "Harvests metadata", "DCAT")
-
-Rel(professional, senda_central, "Searches", "OpenSearch")
+Person(users, "Users")
+System_Ext(portals, "Portals")
 
 Rel(senda_central, sendafind1, "Harvests metadata", "CSW")
 Rel(senda_central, sendafind2, "Harvests metadata", "CSW")
 Rel(senda_central, sendafindn, "Harvests metadata", "CSW")
 
+Rel(users, senda_central, "Searches", "OpenSearch")
+Rel(portals, senda_central, "Harvests", "CSW")
 
 @enduml

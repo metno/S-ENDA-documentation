@@ -54,12 +54,17 @@ Contexts
 
 .. note:: This is a draft under development. We highly appreciate input and help in correcting any mistakes.
 
-S-ENDA is part of a larger effort within the national geodata strategy (*"Alt skjer et sted"*), and relates to this strategy through Geonorge, which is developed and operated by the Norwegian Mapping Authority (*"Kartverket"*). GeoNorge, in turn, relates to the European Inspire Geoportal through the Inspire directive. In particular, S-ENDA is responsible for *Action 20* of the Norwegian geodata strategy.  The goal of action 20 is to *establish a distributed, virtual data center for use and management of dynamic geodata*. S-ENDA's vision is that *everyone, from professional users to the general public, should have easy, secure and stable access to dynamic geodata*. The below figure illustrates S-ENDA's and Geonorge's position in the national and international context.
+S-ENDA is part of a larger effort within the national geodata strategy (*"Alt skjer et sted"*), and relates to this strategy through Geonorge, which is developed and operated by the Norwegian Mapping Authority (*"Kartverket"*). GeoNorge, in turn, relates to the European Inspire Geoportal through the Inspire directive. In particular, S-ENDA is responsible for *Action 20* of the Norwegian geodata strategy.  The goal of action 20 is to *establish a distributed, virtual data center for use and management of dynamic geodata*. S-ENDA's vision is that *everyone, from professional users to the general public, should have easy, secure and stable access to dynamic geodata*. 
 
-As illustrated, GeoNorge CSW harvesting should also make S-ENDA metadata findable by other portals. This does not mean, however, that S-ENDA shall not provide catalog services in, e.g., DCAT or schema.org to provide direct harvesting access from other portals at a later stage.
+The vision of S-ENDA and the goal of action 20 are aligned with international guidelines, in particular the `FAIR Guiding Principles for scientific data management and stewardship <https://www.nature.com/articles/sdata201618>`_. To achieve these goals, we focus initially on two main systems: (1) S-ENDA Find, and (2) S-ENDA Access. Provided these two systems are well designed and documented, they should support the I(nteroperable) and R(eusable) of the FAIR principles as well.
+
+A mock of *S-ENDA Find* is the product of Sprint 1.  Data and service providers register (see `S-ENDA register context`_) their datasets or services via a WebUI or a web registration API in their own S-ENDA system nodes (see `S-ENDA Find Boundary`_). These nodes expose CSW [1]_ catalogue services for harvesting, either in `Context with a central catalogue`_, or in `Context with a distributed S-ENDA find solution`_. 
+
 
 S-ENDA harvest context
 ======================
+
+The below figure illustrates S-ENDA's and Geonorge's position in the national and international context. As illustrated, GeoNorge CSW harvesting should also make S-ENDA metadata findable by other portals. This does not mean, however, that S-ENDA shall not provide catalog services in, e.g., DCAT or schema.org to provide direct harvesting access from the other portals at a later stage.
 
 .. uml:: 
 
@@ -97,6 +102,11 @@ S-ENDA register context
 * **Data Provider:** Produces (meta)data and wants to make the (meta)data discoverable and available to users
 * **Service Provider:** Creates data services, and wants to make the data services discoverable and available to users
 
+If a data provider wishes to assign a DOI to their dataset, there are two alternatives: 
+
+#. They register a DOI following established procedures in their own organisation, or 
+#. The S-ENDA Find system handles DOI registration (and update) through the DataCite API. If they do not wish to have a DOI assigned to their dataset, this is also possible.
+
 .. uml::
 
    @startuml S-ENDA register context
@@ -113,7 +123,8 @@ S-ENDA register context
 
    System_Ext(doiregistrar, "DOI Registrar")
 
-   Rel(dataprovider, doiregistrar, "DP registers DOI")
+   Rel(dataprovider, doiregistrar, "Alt. 1: DP registers DOI")
+   Rel(sendafind, doiregistrar, "Alt. 2: S-ENDA Find registers DOI", "DataCite API")
    Rel(dataprovider, sendafind, "DP registers dataset", "API/Web UI")
    Rel(sendafind, dataprovider, "S-ENDA find gives feedback", "Validation/Monitoring/user questions")
 
@@ -156,39 +167,24 @@ on *general* and *advanced users*. They are defined as follows:
       System(sendafind_nodes, "S-ENDA Find Nodes")
    }
 
-   Rel(users, portals, "Searches", "Web-UI/API")
-   Rel(advanced, sendafind, "Searches", "OpenSearch")
+   Rel(users, portals, "Users search portals", "Web-UI/API")
+   Rel(advanced, sendafind, "Users search S-ENDA", "OpenSearch")
 
    @enduml
 
-S-ENDA Find Boundary with a central catalogue
-=============================================
+S-ENDA Find Boundary 
+====================
 
-The figure below illustrates the top level view of the architecture. At present, there is no way for
-any system to know the other systems apriori. Each system must be informed about the existence of
-other systems. In the context of a central S-ENDA catalogue, external systems such as Geonorge and
-ADC harvest metadata from the central S-ENDA catalogue. This system then knows about the internal
-data centres in S-ENDA (serving dynamical geodata), and performs metadata harvesting from these.
+Context with a central catalogue
+--------------------------------
 
-A mock of *S-ENDA Find* is the product of Sprint 1.  Data and service providers register their
-datasets or services via a WebUI, console app or directly via requests against a web registration
-API in their of S-ENDA system nodes. These nodes exposes a CSW [1]_ interface for the *S-ENDA
-central catalogue*, which keeps a full overview of the system.  
-
-The *S-ENDA Find* system exposes a CSW [1]_ interface for external portals through the *S-ENDA
-central catalogue* in order to let them harvest metadata information about datasets 
-in *S-ENDA Find*. 
-
-If a data provider wishes to assign a DOI to their dataset, there are two alternatives: (1) They
-register a DOI following established procedures in their own organisation, or (2) the S-ENDA Find
-system handles DOI registration (and update) through the DataCite API. If they do not wish to have a
-DOI assigned to their dataset, this is also possible.
+At present, there is no way for any system to know the other systems apriori. Each system must be informed about the existence of other systems. In the context of a central S-ENDA catalogue, external systems such as Geonorge and ADC harvest metadata from the central S-ENDA catalogue. This system then knows about the internal data centres in S-ENDA (serving dynamical geodata), and performs metadata harvesting from these. This is illustrated below.
 
    .. uml:: context.puml
 
 
-Context for a distributed S-ENDA find solution
-==============================================
+Context with a distributed S-ENDA find solution
+-----------------------------------------------
 
 An alternative solution to the central catalogue system, is a system based on a gossip protocol
 [2]_. In this system, the distributed data centres use peer-to-peer *gossip* to ensure that metadata
@@ -199,9 +195,9 @@ solution is shown below.
 
 .. uml:: context-gossip.puml
 
------------------
-Container diagram
------------------
+----------------------------------
+S-ENDA Find Node Container Diagram
+----------------------------------
 
   .. uml:: container.puml
 
