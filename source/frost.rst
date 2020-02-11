@@ -26,7 +26,8 @@ Description (What?)
 Frost is a RESTful API that provides access to MET Norway's archive of historical weather and
 climate data.  Frost does not actually contain any metadata itself. However, frost exposes metadata
 about stations from ST-INFOSYS through various interfaces. And element metadata and the data istelf
-from KDVH (Klimadatavarehuset).
+from KDVH (Klimadatavarehuset). An element is for example temperature at 2m or wind speed at 10m at
+a specific location and at a time.
 
 Documentation(Where/how?)
 =========================
@@ -48,3 +49,5 @@ Conditions and dependencies(why?)
 * The Frost API is primarily for developers who need to develop scripts or applications that access MET Norway's archive of historical weather and climate data.
 * Dependecies: ST-INFOSYS and KDVH. In the future, frost will replace KDVH with ODA (Observation, Data, Access). For more information about ODA, see here: https://oda.pages.met.no/page/about/
 * The dependencies do not support FAIR, but FROST provides translations, where possible, of element names following CF.
+* ST-INFOSYS contains metadata of the MET Norway obervations stations. ST-INFOSYS does not support FAIR, becuse data is not Findable. Metadata is not findable for other than special users, the same for Accessable. The metadata do not follow cf standard i.e. not Interoperable. In St-INFOSYS metadata itself are Reusable.
+* KDVH ( klimadatavarehuset) contains the element data. KDVH data is not Interoperable as the elements metadata are not CF compliant.
