@@ -104,7 +104,7 @@ S-ENDA register context
 
 If a data provider wishes to assign a DOI to their dataset, there are three alternatives: 
 
-#. They register a DOI following established procedures in their own organisation
+#. They register a DOI following established procedures in their own organisation (e.g., `DOI registration at MET <dm_recipes.html#doi-registration-at-met>`_)
 #. The S-ENDA Find system handles DOI registration (and update) through the DataCite API
 #. If they do not wish to have a DOI assigned to their dataset, this is also possible.
 
