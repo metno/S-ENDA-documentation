@@ -173,7 +173,7 @@ This section will be extended as the need for more functionality in the developm
 Resize VM disk size in ``Vagrantfile``
 --------------------------------------
 
-To increase the capacity of the VM disk, you need the ``vagrant-disksize`` plugin installed on your system, see Installation_. Accepted sizes is ``KB``, ``MB``, ``GB`` and ``TB``. Change this example size, ``50GB``, to your desired size. Add this example to your ``Vagrantfile``.
+To increase the capacity of the VM disk, you need the ``vagrant-disksize`` plugin installed on your system, see Installation_. Accepted sizes are ``KB``, ``MB``, ``GB`` and ``TB``. Change this example size, ``50GB``, to your desired size. Add this example to your ``Vagrantfile``.
 
 .. code-block:: ruby
 
