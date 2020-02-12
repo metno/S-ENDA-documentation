@@ -16,7 +16,7 @@ In order to make a dataset findable, a dataset must be registered in S-ENDA Find
 #. Index in CSW
 #. Expose ISO19115 metadata via CSW to the internet
 
-This is done with the s-enda-find Virtual Machine (VM), for which a Vagrant configuration is available in https://github.com/metno/S-ENDA-Prototype.
+This is done with the s-enda-find Virtual Machine (VM), for which a Vagrant configuration is available in https://github.com/metno/S-ENDA-Prototype. The VM is also running on the new infrastructure with the following address: http://senda1.lab-a.met.no:8000.
 
 **TODO:** We need to describe how to do this:
 
