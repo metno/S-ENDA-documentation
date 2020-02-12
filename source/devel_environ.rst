@@ -8,6 +8,7 @@ Development environment
 .. _Wikipedia: https://en.wikipedia.org/
 .. _Vagrant 2.2.7: https://releases.hashicorp.com/vagrant/2.2.7/
 .. _VirtualBox 6.1.x: https://www.virtualbox.org/wiki/Downloads
+.. _vagrant-disksize 0.1.3: https://github.com/sprotheroe/vagrant-disksize
 
 In Wikipedia_, HashiCorps_' Vagrant_ is defined as
 
@@ -23,8 +24,13 @@ S-ENDA has standardized on these versions for the development environment:
 
 * `Vagrant 2.2.7`_
 * `VirtualBox 6.1.x`_
+* Vagrant plugin `vagrant-disksize 0.1.3`_
 
-Download the software appropriate for your platform and install.
+Download the Vagrant and VirtualBox  appropriate for your platform and install. Install the plugin as follows.
+
+.. code-block:: bash
+
+   vagrant plugin install --plugin-version 0.1.3 vagrant-disksize
 
 -------------
 Generic usage
@@ -66,8 +72,8 @@ Below is a sample of the most used Vagrant commands. For an overview of other op
 --------------------
 S-ENDA configuration
 --------------------
-
 This section contains a template ``Vagrantfile`` used in S-SENDA development. There is one generic and reusable part. In addition to this, examples to help developers extend development environment functionality will be added. Specific ``Vagrantfile``'s for reproducing the complete development environment for S-ENDA will reside in the main code repositories.
+
 
 Generic configuration
 =====================
@@ -163,6 +169,31 @@ Examples extending functionality
 ================================
 
 This section will be extended as the need for more functionality in the development environment arises.
+
+Resize VM disk size in ``Vagrantfile``
+--------------------------------------
+
+To increase the capacity of the VM disk, you need the ``vagrant-disksize`` plugin installed on your system, see Installation_. Accepted sizes are ``KB``, ``MB``, ``GB`` and ``TB``. Change this example size, ``50GB``, to your desired size. Add this example to your ``Vagrantfile``.
+
+.. code-block:: ruby
+
+  # Add example inside the vagrant configure block
+  # Vagrant.configure("2") do |config|
+
+  if Vagrant.has_plugin?("vagrant-disksize")
+    config.disksize.size = '50GB'
+  else
+    config.vm.post_up_message = <<-MESSAGE
+    WARNING:
+    Can't resize disk. 'vagrant-disksize' plugin is not installed.
+
+    To install plugin run:
+    vagrant plugin install --plugin-version=0.1.3 vagrant-disksize
+    MESSAGE
+  end
+
+  # End of Vagrant configure block
+  # end
 
 ..
   # vim: set spell spelllang=en:
