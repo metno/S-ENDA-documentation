@@ -1,5 +1,6 @@
+===================
 Catalog Service API
-====================
+===================
 
 The software library used to implement the Catalogue Service API is based on the `PyCSW <https://pycsw.org/>`__  python
 library.
@@ -9,7 +10,7 @@ library.
 - A quick-start based on the `OSGeo-Live <https://live.osgeo.org/en/index.html>`__ project is available at https://osgeo.github.io/OSGeoLive-doc/en/quickstart/pycsw_quickstart.html
 
 
-The PyCSW implementation available on the `S-ENDA-Prototype <https://github.com/metno/S-ENDA-Prototype>`__  repository and is composed by two main docker containers orchestrated by docker-compose.
+The PyCSW implementation available on the `S-ENDA-Prototype <https://github.com/metno/S-ENDA-Prototype>`__  repository is composed by two main docker containers orchestrated by docker-compose.
 
 * pycsw container: pycsw service running as a WSGI application under the apache web-server
 * postgresql container:  PostgreSQL with PostGIS extension used by pycsw as backend database
@@ -18,9 +19,9 @@ There is a third, additional, container *hyrax* added for convenience if/when da
 
 * hyrax container: Implementing the OpenDAP service
 
-
+-------
 Testing
-=======
+-------
 
 To **start** the `docker-compose` environment, from inside a cloned repository type:
 
@@ -35,11 +36,11 @@ To **stop** the `docker-compose` environment, from inside a cloned repository ty
 
     docker-compose down
 
-The CSW endpoint will be available on the host machine on port 8000 (E.G.: http://localhost:8000/).
+The CSW endpoint will be available on the host machine on port 8000 (e.g., http://localhost:8000/).
 
-----
-
-**Notes for S-ENDA related development**
+------------------------------------
+Notes for S-ENDA related development
+------------------------------------
 
 
 * **Example PyCSW Driver**
@@ -52,10 +53,9 @@ The CSW endpoint will be available on the host machine on port 8000 (E.G.: http:
     - `ISO to GeoDCAT XSLT <https://github.com/SEMICeu/iso-19139-to-dcat-ap>`__
 
 
-....
-
-**Acronyms and link to resources used in the PyCSW documentation**
-
+--------------------------------------------------------------
+Acronyms and link to resources used in the PyCSW documentation
+--------------------------------------------------------------
 
 - `Web Mapping Service <https://www.opengeospatial.org/standards/wms>`__ (WMS)
 - `Web Feature service <https://www.opengeospatial.org/standards/wfs>`__ (WFS)
