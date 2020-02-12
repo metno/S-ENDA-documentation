@@ -14,6 +14,7 @@ Welcome to S-ENDA's documentation!
    architecture
    metadata_management_heritage
    use_cases
+   catalog_service_API
    dm_recipes
 
 .. toctree::
