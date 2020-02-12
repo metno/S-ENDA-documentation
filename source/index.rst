@@ -3,8 +3,9 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+==================================
 Welcome to S-ENDA's documentation!
-============================================
+==================================
 
 .. toctree::
    :maxdepth: 2
@@ -14,6 +15,7 @@ Welcome to S-ENDA's documentation!
    metadata_management_heritage
    use_cases
    catalog_service_API
+   dm_recipes
 
 .. toctree::
    :maxdepth: 2
@@ -22,9 +24,11 @@ Welcome to S-ENDA's documentation!
    general_conventions
    git_conventions
    definition_of_done
+   devel_environ
    write_docs
    debating
 
+==================
 Indices and tables
 ==================
 
