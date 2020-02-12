@@ -61,3 +61,9 @@ A prototype catalogue service of S-ENDA Find is available at http://senda1.lab-a
 * Type ``http://senda1.lab-a.met.no:8000`` for the URL
 
 Under the ``Search`` tab, you can then add search parameters, click ``Search``, and get a list of available datasets.
+
+-----------------------
+DOI registration at MET
+-----------------------
+
+.. include:: doi_registration.rst
