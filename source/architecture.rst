@@ -102,10 +102,11 @@ S-ENDA register context
 * **Data Provider:** Produces (meta)data and wants to make the (meta)data discoverable and available to users
 * **Service Provider:** Creates data services, and wants to make the data services discoverable and available to users
 
-If a data provider wishes to assign a DOI to their dataset, there are two alternatives: 
+If a data provider wishes to assign a DOI to their dataset, there are three alternatives: 
 
-#. They register a DOI following established procedures in their own organisation, or 
-#. The S-ENDA Find system handles DOI registration (and update) through the DataCite API. If they do not wish to have a DOI assigned to their dataset, this is also possible.
+#. They register a DOI following established procedures in their own organisation
+#. The S-ENDA Find system handles DOI registration (and update) through the DataCite API
+#. If they do not wish to have a DOI assigned to their dataset, this is also possible.
 
 .. uml::
 
