@@ -58,7 +58,7 @@ A prototype catalogue service of S-ENDA Find is available at http://senda1.lab-a
 * Select ``Web > MetaSearch > MetaSearch`` menu item
 * Select ``Services > New``
 * Type, e.g., ``senda1-lab-a`` for the name
-* Type ``http://senda1.lab-a.met.no:8000`` for the URL
+* Type ``http://senda1.lab-a.met.no`` for the URL
 
 Under the ``Search`` tab, you can then add search parameters, click ``Search``, and get a list of available datasets.
 
