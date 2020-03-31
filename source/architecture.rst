@@ -58,7 +58,7 @@ S-ENDA is part of a larger effort within the national geodata strategy (*"Alt sk
 
 The vision of S-ENDA and the goal of action 20 are aligned with international guidelines, in particular the `FAIR Guiding Principles for scientific data management and stewardship <https://www.nature.com/articles/sdata201618>`_. To achieve these goals, we focus initially on two main systems: (1) S-ENDA Find, and (2) S-ENDA Access. Provided these two systems are well designed and documented, they should support the I(nteroperable) and R(eusable) of the FAIR principles as well.
 
-A mock of *S-ENDA Find* is the product of Sprint 1.  Data and service providers register (see `S-ENDA register context`_) their datasets or services via a WebUI or a web registration API in their own S-ENDA system nodes (see `S-ENDA Find Boundary`_). These nodes expose CSW [1]_ catalogue services for harvesting, either in `Context with a central catalogue`_, or in `Context with a distributed S-ENDA find solution`_. 
+A mock-up of *S-ENDA Find* is the product of Sprint 1.  Data and service providers register (see `S-ENDA register context`_) their datasets or services via a WebUI or a web registration API in their own S-ENDA system nodes (see `S-ENDA Find Boundary`_). These nodes expose CSW [1]_ catalogue services for harvesting, either in `Context with a central catalogue`_, or in `Context with a distributed S-ENDA find solution`_. 
 
 
 S-ENDA harvest context
