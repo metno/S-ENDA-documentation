@@ -96,8 +96,8 @@ The below figure illustrates S-ENDA's and Geonorge's position in the national an
 
    @enduml
 
-S-ENDA register context
-=======================
+S-ENDA provider context
+=====================================
 
 * **Data Provider:** Produces (meta)data and wants to make the (meta)data discoverable and available to users
 * **Service Provider:** Creates data services, and wants to make the data services discoverable and available to users
@@ -110,7 +110,7 @@ If a data provider wishes to assign a DOI to their dataset, there are three alte
 
 .. uml::
 
-   @startuml S-ENDA register context
+   @startuml S-ENDA provider context
    !includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Context.puml
 
    LAYOUT_LEFT_RIGHT
@@ -133,6 +133,11 @@ If a data provider wishes to assign a DOI to their dataset, there are three alte
    Rel(dgaAPI, developer, "DGA API gives feedback", "Validation/Monitoring/user questions")
 
    @enduml
+
+S-ENDA ingest context
+=====================
+
+
 
 S-ENDA search context
 =====================
