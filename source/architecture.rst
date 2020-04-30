@@ -187,43 +187,34 @@ At present, there is no way for any system to know the other systems apriori. Ea
 Context with a distributed S-ENDA find solution
 -----------------------------------------------
 
-An alternative solution to the central catalogue system, is a system based on a gossip protocol
-[2]_. In this system, the distributed data centres use peer-to-peer *gossip* to ensure that metadata
-is disseminated to all members of the *S-ENDA Find* system. In this setting, there is no dependence
-on a central catalog, and the external systems can connect to any internal node in order to discover
-all of them. This would be a more truly *distributed system*. The context diagram for such a
-solution is shown below.
+An alternative solution to the central catalogue system, is a system based on a gossip protocol [2]_. In this system, the distributed data centres use peer-to-peer *gossip* to ensure that metadata is disseminated to all members of the *S-ENDA Find* system. In this setting, there is no dependence on a central catalog, and the external systems can connect to any internal node in order to discover all of them. This would be a more truly *distributed system*. The context diagram for such a solution is shown below.
 
 .. uml:: context-gossip.puml
-
-
-------------------------------------
-S-ENDA Ingest Node Container Diagram
-------------------------------------
-
-.. uml:: ingest_container.puml
-
-
 
 ----------------------------------
 S-ENDA Find Node Container Diagram
 ----------------------------------
 
+Data and service providers interact with a Web data/service registration User Interface (UI) or command line (console) registration tool to register their data/service. These tools communicate with the Metadata store via a web data/service registration API. The contents of the metadata store are served as CSW using pyCSW API.
+
+Current solution with xslt and some python code to modify MMD metadata
+=======================================================================
+
   .. uml:: container.puml
 
-Data and service providers interact with a Web data/service registration User Interface (UI) or
-command line (console) registration tool to register their data/service. These tools communicate
-with the Metadata store via a web data/service registration API. The contents of the
-metadata store are served as CSW using pyCSW API.
+An application that mocks a metadata store and an API that exposes metadata in MMD. The application provides functionality for registering new datasets and data services, updating existing datasets and services. The application validates the metadata and provides detailed user feedback before storing the metadata.
 
-**Dynamic Geo-Assets API**
+Dynamic Geo-Assets Component Diagram
+------------------------------------
 
-An application that mocks a metadata store and an API that exposes metadata in
-MMD. The application provides functionality for registering new datasets and
-data services, updating existing datasets and services. The application
-validates the metadata and provides detailed user feedback before storing the
-metadata.
+.. uml:: dgaAPI_component.puml
 
+Future desired solution with an MMD plugin and output schema in pycsw
+=====================================================================
+
+.. uml:: new_container.puml
+
+ooa kja
 
   .. [1] https://en.wikipedia.org/wiki/Catalogue_Service_for_the_Web
 
