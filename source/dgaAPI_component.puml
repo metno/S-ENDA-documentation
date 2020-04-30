@@ -1,0 +1,25 @@
+@startuml S-ENDA dgaAPI component diagram
+!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Component.puml
+
+LAYOUT_LEFT_RIGHT
+
+Container(csapi, "Catalog Service API", "pyCSW")
+Container(data_store, "Metadata Store", "MMD XML")
+Container(event_engine, "Event Engine", "CloudEvents")
+
+Container_Boundary(dgaAPI, "Dynamic Geo-Assets API") {
+
+Component(pscript, "py-adapter", "Translation from ISOxxxxx to ISO19139")
+Component(mmd2iso, "mmd2iso.xslt", "Translation from MMD to ISOxxxxx")
+Component(ingestor, "MMD Ingestor", "Provides functionality to create/update/delete metadata in the metadata store")
+
+Rel(pscript, mmd2iso, "Read output from XSLT", "ISOxxxxx")
+Rel(mmd2iso, data_store, "Read", "MMD")
+
+}
+
+Rel(csapi, pscript, "Reads metadata updates", "REST ISO19139")
+Rel(ingestor, data_store, "Create/Update/Delete metadata in the metadata store", "")
+Rel(ingestor, event_engine, "Listens in order to get last updated info", "CloudEvents")
+
+@enduml
