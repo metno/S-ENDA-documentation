@@ -115,7 +115,7 @@ If a data provider wishes to assign a DOI to their dataset, there are three alte
 
    LAYOUT_LEFT_RIGHT
 
-   System(dgaAPI, "S-ENDA Dynamic Geo-Assets API")
+   System(dgaAPI, "S-ENDA Find Node")
 
    Boundary(providers, "Providers") {
       Person(developer, "Service Provider (SP)")
@@ -197,24 +197,31 @@ S-ENDA Find Node Container Diagram
 
 Data and service providers interact with a Web data/service registration User Interface (UI) or command line (console) registration tool to register their data/service. These tools communicate with the Metadata store via a web data/service registration API. The contents of the metadata store are served as CSW using pyCSW API.
 
-Current solution with xslt and some python code to modify MMD metadata
+First iteration with xslt and some python code to modify MMD metadata
 =======================================================================
 
   .. uml:: container.puml
 
-An application that mocks a metadata store and an API that exposes metadata in MMD. The application provides functionality for registering new datasets and data services, updating existing datasets and services. The application validates the metadata and provides detailed user feedback before storing the metadata.
+A metadata store and an API that exposes metadata in MMD. The application listens to an event engine that provides information from the production system. S-ENDA Find should also provide functionality for registering and updating datasets and data services. The application should validate the metadata and provide detailed user feedback before storing the metadata.
 
 Dynamic Geo-Assets Component Diagram
 ------------------------------------
 
 .. uml:: dgaAPI_component.puml
 
-Future desired solution with an MMD plugin and output schema in pycsw
+Second iteration with more containers and functionality
 =====================================================================
 
-.. uml:: new_container.puml
+.. uml:: new_S_ENDA_Find_container.puml
 
-ooa kja
+The Dynamic Geo-Assets API is split into several containers with different purposes. It is unclear how the Usage Statistics container should be linked to the other containers.
+
+PyCSW component diagram
+-----------------------
+
+.. uml:: pyCSW_component_diagram.puml
+
+We need to write the MMD plugin and output schema. See pyCSW docs at https://docs.pycsw.org/en/2.4.2/introduction.html.
 
   .. [1] https://en.wikipedia.org/wiki/Catalogue_Service_for_the_Web
 

@@ -1,0 +1,23 @@
+@startuml S-ENDA pyCSW component diagram
+!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Component.puml
+
+LAYOUT_LEFT_RIGHT
+
+Container(metadata_store, "Metadata Store", "MMD")
+Container(updater, "MMD Updater", "Provides functionality to compare provided and existing content, delete content, and create and update content in the discovery and configuration metadata store")
+
+Container_Boundary(pyCSW, "Catalog Service API"){
+
+Component(mmd_output, "MMD output schema", "", "Custom pyCSW output schema for MMD")
+Component(pycsw, "pyCSW", "", "pyCSW proper")
+Component(mmd_plugin, "MMD plugin", "", "Custom pyCSW plugin for MMD")
+
+Rel(mmd_plugin, pycsw, "Ingest")
+Rel(mmd_output, pycsw, "Read")
+
+}
+
+Rel(metadata_store, mmd_plugin, "Ingest")
+Rel(updater, mmd_output, "Read", "CSW: MMD")
+
+@enduml
