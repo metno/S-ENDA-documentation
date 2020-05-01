@@ -9,15 +9,15 @@ System_Ext(eventengine, "Event Engine", "")
 
 System_Boundary(dgaAPI, "S-ENDA Find Node") {
 
-Container(mmd_web_registrar, "MMD Web Registrar", "", "Provides functionality to register discovery metadata online.")
-Container(mmd_cli_registrar, "MMD CLI Registrar", "", "Provides functionality to register discovery metadata from a Command Line Interface (CLI).")
+Container(mmd_web_registrar, "MMD Web Registrar", "", "Provides functionality for a user to register discovery metadata online.")
+Container(mmd_cli_registrar, "MMD CLI Registrar", "", "Provides functionality for a user to register discovery metadata from a Command Line Interface (CLI).")
 
 Container(updater, "MMD Updater", "", "Provides functionality to compare provided and existing content, delete content, and create and update content in the discovery and configuration metadata store.")
 Container(csapi, "Catalog Service API", "pyCSW", "Indexes the metadata store to allow fast search.")
 Container(data_store, "Metadata Store", "MMD XML", "Serves as the authoritative source of discovery and configuration metadata.")
 
-Container(usage_stats, "Usage Statistics", "", "Provides functionality to display dataset usage statistics.")
-Container(prod_status, "Production status", "", "Provides functionality to display dataset production status.")
+Container(usage_stats, "Web Page with Usage Statistics", "", "Provides functionality to display dataset usage statistics on a web page.")
+Container(prod_status, "Web Page with Production status", "", "Provides functionality to display dataset production status on a web page.")
 
 
 Rel(updater, eventengine, "Listens in order to get last updated info", "CloudEvents")
