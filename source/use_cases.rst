@@ -1,3 +1,5 @@
+.. _use-cases-section:
+
 =====================
 Use Case Descriptions
 =====================

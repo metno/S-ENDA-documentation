@@ -2,51 +2,12 @@
 S-ENDA Architecture
 ===================
 
-S-ENDA architecture is described using the C4 model (https://c4model.com/).
-C4 does not define any properties based on the directionality
-of the used arrows so each arrow should have a textual
-description to avoid disambiguity.
+About the architecture drafts:
 
-We draft the initial version of the architecture with emphasis
-on the goal and use cases of the first sprint of the project.
-Some parts of the design are not complete, notably we will need to choose
-the implementation of the metadata store. Amongst viable possibilities is
-one of the document-oriented databases
-(https://en.wikipedia.org/wiki/Document-oriented_database)
-
-We need to clarify which protocol GeoNorge would prefer to use to harvest metadata from us. Our
-preference is the `Open Geospatial Consortium (OGC) <https://www.opengeospatial.org/>`_ `Catalogue
-Service for the Web (CSW) <https://www.opengeospatial.org/standards/cat>`_. Also how does GeoNorge
-provide data further to search engines and international portals.
-
------------------------------------------
-Goal and use cases of S-ENDA sprint no. 1
------------------------------------------
-
-Goal
-====
-
-To draft the architecture for S-ENDA find and access,
-and establish metadata handling to lift the user experience
-in finding dynamic geodata to a new level
-
-
-Use cases
-=========
-
-- An outdoor swimming competition organizer
-  wants to know sea-water temperature at the event location `#37 <https://github.com/metno/S-ENDA-documentation/issues/37>`_ or
-  `Outdoor swimming competition in readthedocs <https://s-enda-documentation.readthedocs.io/en/latest/use_case_swimming_comp.html>`_
-- A user shall extract observed and forecasted temperature
-  time series data values over Longyearbyen `#35 <https://github.com/metno/S-ENDA-documentation/issues/35>`_
-- Farmer in Malawi use case `#2 <https://github.com/metno/S-ENDA-documentation/issues/2>`_
-- A user at the Environment Directorate wants to investigate the vegetation state in a given area
-  based on measurements from Sentinel-2 and use the results in their decision making system
-  `#31 <https://github.com/metno/S-ENDA-documentation/issues/31>`_
-- A tourist guide wants to look at the cloud for a specific
-  region at night for the visibility of Northern lights `#38
-  <https://github.com/metno/S-ENDA-documentation/issues/38>`_ or
-  `Find latest satellite image describing cloud cover for visibility of Northern Lights in readthedocs <https://s-enda-documentation.readthedocs.io/en/latest/use_case_northern_light.html>`_
+- They are described using the C4 model (https://c4model.com/). C4 does not define any properties based on the directionality of the used arrows so each arrow should have a textual description to avoid disambiguity
+- They are work in progress, and many updates are expected as we dig into the details
+- The implementation of the metadata store is not yet decided. Amongst viable possibilities is one of the document-oriented databases (https://en.wikipedia.org/wiki/Document-oriented_database)
+- They are to a high degree based on the use cases outlined in :ref:`use-cases-section`
 
 --------
 Contexts
@@ -56,9 +17,11 @@ Contexts
 
 S-ENDA is part of a larger effort within the national geodata strategy (*"Alt skjer et sted"*), and relates to this strategy through Geonorge, which is developed and operated by the Norwegian Mapping Authority (*"Kartverket"*). GeoNorge, in turn, relates to the European Inspire Geoportal through the Inspire directive. In particular, S-ENDA is responsible for *Action 20* of the Norwegian geodata strategy.  The goal of action 20 is to *establish a distributed, virtual data center for use and management of dynamic geodata*. S-ENDA's vision is that *everyone, from professional users to the general public, should have easy, secure and stable access to dynamic geodata*. 
 
-The vision of S-ENDA and the goal of action 20 are aligned with international guidelines, in particular the `FAIR Guiding Principles for scientific data management and stewardship <https://www.nature.com/articles/sdata201618>`_. To achieve these goals, we focus initially on two main systems: (1) S-ENDA Find, and (2) S-ENDA Access. Provided these two systems are well designed and documented, they should support the I(nteroperable) and R(eusable) of the FAIR principles as well.
+The vision of S-ENDA and the goal of action 20 are aligned with international guidelines, in particular the `FAIR Guiding Principles for scientific data management and stewardship <https://www.nature.com/articles/sdata201618>`_. To achieve these goals, we focus initially on two main systems: (1) S-ENDA Metadata Service, and (2) S-ENDA Data Access Service. Provided these two systems are well designed and documented, they should support the I(nteroperable) and R(eusable) of the FAIR principles as well.
 
-A mock-up of *S-ENDA Find* is the product of Sprint 1.  Data and service providers register (see `S-ENDA provider context`_) their datasets or services via a WebUI or a web registration API in their own S-ENDA system nodes (see `S-ENDA Find Boundary`_). These nodes expose CSW [1]_ catalogue services for harvesting, either in `Context with a central catalogue`_, or in `Context with a distributed S-ENDA find solution`_. 
+About the *S-ENDA Metadata Service*: 
+
+- Data and service providers register (see `S-ENDA provider context`_) their datasets or services via a WebUI or a web registration API in their own system nodes (see `S-ENDA Metadata Service Boundary`_). These nodes expose CSW [1]_ catalogue services for harvesting, either in `Context with a central catalogue`_, or in `Context with a distributed S-ENDA Metadata Service solution`_. 
 
 
 S-ENDA harvest context
@@ -83,8 +46,8 @@ The below figure illustrates S-ENDA's and Geonorge's position in the national an
    }
 
    'Not sure about the following...
-   System_Boundary(senda, "S-ENDA Find"){
-      System(sendafind, "S-ENDA Find Nodes")
+   System_Boundary(senda, "S-ENDA Metadata Service"){
+      System(sendafind, "S-ENDA Metadata Service Nodes")
    }
 
    Rel(adc, senda, "Harvests metadata", "CSW")
@@ -115,7 +78,7 @@ If a data provider wishes to assign a DOI to their dataset, there are three alte
 
    LAYOUT_LEFT_RIGHT
 
-   System(dgaAPI, "S-ENDA Find Node")
+   System(dgaAPI, "S-ENDA Metadata Service Node")
 
    Boundary(providers, "Providers") {
       Person(developer, "Service Provider (SP)")
@@ -164,8 +127,8 @@ on *general* and *advanced users*. They are defined as follows:
       System_Ext(europeandataportal, "European Data Portal")
    }
 
-   System_Boundary(sendafind, "S-ENDA Find"){
-      System(sendafind_nodes, "S-ENDA Find Nodes")
+   System_Boundary(sendafind, "S-ENDA Metadata Service"){
+      System(sendafind_nodes, "S-ENDA Metadata Service Nodes")
    }
 
    Rel(users, portals, "Users search portals", "Web-UI/API")
@@ -173,8 +136,8 @@ on *general* and *advanced users*. They are defined as follows:
 
    @enduml
 
-S-ENDA Find Boundary 
-====================
+S-ENDA Metadata Service Boundary 
+================================
 
 Context with a central catalogue
 --------------------------------
@@ -184,16 +147,16 @@ At present, there is no way for any system to know the other systems apriori. Ea
    .. uml:: context.puml
 
 
-Context with a distributed S-ENDA find solution
------------------------------------------------
+Context with a distributed S-ENDA Metadata Service solution
+-----------------------------------------------------------
 
-An alternative solution to the central catalogue system, is a system based on a gossip protocol [2]_. In this system, the distributed data centres use peer-to-peer *gossip* to ensure that metadata is disseminated to all members of the *S-ENDA Find* system. In this setting, there is no dependence on a central catalog, and the external systems can connect to any internal node in order to discover all of them. This would be a more truly *distributed system*. The context diagram for such a solution is shown below.
+An alternative solution to the central catalogue system, is a system based on a gossip protocol [2]_. In this system, the distributed data centres use peer-to-peer *gossip* to ensure that metadata is disseminated to all members of the *S-ENDA Metadata Service* system. In this setting, there is no dependence on a central catalog, and the external systems can connect to any internal node in order to discover all of them. This would be a more truly *distributed system*. The context diagram for such a solution is shown below.
 
 .. uml:: context-gossip.puml
 
-----------------------------------
-S-ENDA Find Node Container Diagram
-----------------------------------
+----------------------------------------------
+S-ENDA Metadata Service Node Container Diagram
+----------------------------------------------
 
 Data and service providers interact with a Web data/service registration User Interface (UI) or command line (console) registration tool to register their data/service. These tools communicate with the Metadata store via a web data/service registration API. The contents of the metadata store are served as CSW using pyCSW API.
 
@@ -202,7 +165,7 @@ First iteration with xslt and some python code to modify MMD metadata
 
   .. uml:: container.puml
 
-A metadata store and an API that exposes metadata in MMD. The application listens to an event engine that provides information from the production system. S-ENDA Find should also provide functionality for registering and updating datasets and data services. The application should validate the metadata and provide detailed user feedback before storing the metadata.
+A metadata store and an API that exposes metadata in MMD. The application listens to an event engine that provides information from the production system. S-ENDA Metadata Service should also provide functionality for registering and updating datasets and data services. The application should validate the metadata and provide detailed user feedback before storing the metadata.
 
 Dynamic Geo-Assets Component Diagram
 ------------------------------------
@@ -212,7 +175,7 @@ Dynamic Geo-Assets Component Diagram
 Second iteration with more containers and functionality
 =====================================================================
 
-.. uml:: new_S_ENDA_Find_container.puml
+.. uml:: new_S_ENDA_metadata_service_container.puml
 
 The Dynamic Geo-Assets API is split into several containers with different purposes. It is unclear how the Usage Statistics container should be linked to the other containers.
 

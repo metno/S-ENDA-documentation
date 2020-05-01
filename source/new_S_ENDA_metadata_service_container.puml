@@ -7,7 +7,7 @@ System_Ext(geonorge, "Portals", "External portals harvest metadata on various st
 System_Ext(user, "Advanced Users", "Advanced users harvest metadata with OpenSearch")
 System_Ext(eventengine, "Event Engine", "")
 
-System_Boundary(dgaAPI, "S-ENDA Find Node") {
+System_Boundary(dgaAPI, "S-ENDA Metadata Service Node") {
 
 Container(mmd_web_registrar, "MMD Web Registrar", "", "Provides functionality for a user to register discovery metadata online.")
 Container(mmd_cli_registrar, "MMD CLI Registrar", "", "Provides functionality for a user to register discovery metadata from a Command Line Interface (CLI).")

@@ -4,9 +4,9 @@
 LAYOUT_LEFT_RIGHT
 
 System_Boundary(senda, "S-ENDA aggregated (gossip coordinated)") {
-    System(sendafind1, "S-ENDA Find Node 1")
-    System(sendafind2, "S-ENDA Find Node 2")
-    System(sendafindn, "S-ENDA Find Node n")
+    System(sendafind1, "S-ENDA Metadata Service Node 1")
+    System(sendafind2, "S-ENDA Metadata Service Node 2")
+    System(sendafindn, "S-ENDA Metadata Service Node n")
 }
 
 Person(users, "Users")

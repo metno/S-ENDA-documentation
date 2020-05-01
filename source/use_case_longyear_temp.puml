@@ -8,7 +8,7 @@ Person(researcher, "Researcher/Advanced user")
 System_Ext(machine2machine, "M2M API")
 System_Ext(searchengine, "Web Search Engines")
 
-System(senda, "S-ENDA Find/Central")
+System(senda, "S-ENDA Metadata Service/Central")
 
 Rel(researcher, searchengine, "Searches", "Web UI")
 Rel(researcher, machine2machine, "Searches", "API")
