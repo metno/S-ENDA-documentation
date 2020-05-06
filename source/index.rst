@@ -25,6 +25,7 @@ Welcome to S-ENDA's documentation!
    git_conventions
    definition_of_done
    devel_environ
+   devel_docker_ci
    write_docs
    debating
 
