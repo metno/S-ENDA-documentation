@@ -5,14 +5,18 @@ Docker CI with GitHub Actions
 .. _Docker Hub: https://hub.docker.com/
 .. _Docker: https://www.docker.com/
 .. _GitHub: https://github.com/
-.. _CI: https://en.wikipedia.org/wiki/Continuous_integration
+.. _Continuous integration: https://en.wikipedia.org/wiki/Continuous_integration
 .. _GitHub Actions Documentation: https://help.github.com/en/actions
 .. _GitHub Actions: https://github.com/features/actions
 .. _Overview of Docker Compose: https://docs.docker.com/compose/
 .. _Automated repository tests: https://docs.docker.com/docker-hub/builds/automated-testing/
-.. _semver.org: https://semver.org/
+.. _Semantic Versioning 2.0.0: https://semver.org/
+.. _Travis CI: https://travis-ci.org/
+.. _Coveralls: https://coveralls.io/
 
-Linking repositories to `Docker Hub`_ and let the Docker_ site build containers is excruciating slow. Lately GitHub_ has started to provide a CI_ system called `GitHub Actions`_ which integrate CI into the repository. GitHubs' integrated CI is up to 10 times faster than Dockers' system with free accounts. Read more about GitHub Actions at `GitHub Actions Documentation`_.
+All docker containers, and all code should be tested. `Continuous integration`_, CI, with `GitHub Actions`_ takes care of this for repositories that has a Docker_ container. Repositories that comes without a Docker container can be tested with, e.g., `Travis CI`_ and Coveralls_ for monitoring test coverage.
+
+Linking repositories to `Docker Hub`_ and let the Docker site build containers is excruciating slow. Lately GitHub_ has started to provide a CI system called GitHub Actions which integrate CI into the repository. GitHubs' integrated CI is up to 10 times faster than Dockers' system with free accounts. Read more about GitHub Actions at `GitHub Actions Documentation`_.
 
 Docker Hub has already a recommended way of running test suites on a container. We reuse this with GitHub actions. We also reuse Dockers' way of building and setting up services with ``docker-compose``. Two files will be needed in our repositories containing containers.
 
@@ -30,7 +34,7 @@ Day to day usage
 
 This will produce containers on Docker Hub where GitHub master branch is marked with tag ``dev``. A release tag in GitHub, example ``1.0.0``, will be marked with the tags ``1.0.0`` and ``1.0``, ``1`` and ``latest`` if it is the latest release.
 
-Release tag is on the semantic versioning format without prefixed *v*, see semver.org_.
+Release tag is on the semantic versioning format without prefixed *v*, see `Semantic Versioning 2.0.0`_.
 
 1. Set environment variable ``LATEST_TAG`` in ``.github/workflows/docker.yml`` with repository release tag.
 
