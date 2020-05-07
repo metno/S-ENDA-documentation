@@ -9,8 +9,8 @@ DOIs are a key element to make digital resources findable on the web, thus allow
 they can be used when citing a specific resource on the web. 
 
 DOIs practically consist of an alphanumeric string made up by a prefix and a suffix. The combination of a unique DOI prefix (assigned 
-to a particular DOI registrant, i.e. METNO) and a unique DOI suffix (provided by that registrant for a specific object, or automatically 
-assigned at registration time) is unique. Suffix and prefix are separated by a forward slash (e.g. 10.21343/z9n1-qw63). 
+to a particular DOI registrant, e.g. MET Norway) and a unique DOI suffix (provided by that registrant for a specific object, or automatically 
+assigned at registration time) is unique. Suffix and prefix are separated by a forward slash (e.g. ``10.21343/z9n1-qw63``). 
 
 DOIs in a FAIR perspective
 ==========================
