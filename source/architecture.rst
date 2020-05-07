@@ -85,12 +85,8 @@ If a data provider wishes to assign a DOI to their dataset, there are three alte
       Person(dataprovider, "Data Provider (DP)")
    }
 
-   System_Ext(doiregistrar, "DOI Registrar")
-
-   Rel(dataprovider, doiregistrar, "Alt. 1: DP registers DOI")
-   Rel(dgaAPI, doiregistrar, "Alt. 2: DGA API registers DOI", "DataCite API")
    Rel(dataprovider, dgaAPI, "DP registers dataset", "API/Web UI")
-   Rel(dgaAPI, dataprovider, "DGA API gives feedback", "Validation/Monitoring/user questions")
+   Rel(dgaAPI, dataprovider, "DGA API gives feedback", "Validation/Monitoring/user questions/DOI")
 
    Rel(developer, dgaAPI, "SP registers service", "API/Web UI")
    Rel(dgaAPI, developer, "DGA API gives feedback", "Validation/Monitoring/user questions")
