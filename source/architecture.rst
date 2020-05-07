@@ -163,6 +163,15 @@ First iteration with xslt and some python code to modify MMD metadata
 
 A metadata store and an API that exposes metadata in MMD. The application listens to an event engine that provides information from the production system. S-ENDA Metadata Service should also provide functionality for registering and updating datasets and data services. The application should validate the metadata and provide detailed user feedback before storing the metadata.
 
+An alternative based on two levels of metadata
+===============================================
+File-level metadata editable only via ACDD, higher level in their own catalogue. The file-level
+metadata can contain parent-child link relationships to the higher level datasets (series/collections).
+The Dynamic Geo-Assets API in this version is essentialy replaced by a set of tools assisting in
+creation of metadata in ACDD.
+
+  .. uml:: acdd_and_curated_catalogue.puml
+
 Dynamic Geo-Assets Component Diagram
 ------------------------------------
 
@@ -175,12 +184,24 @@ Second iteration with more containers and functionality
 
 The Dynamic Geo-Assets API is split into several containers with different purposes. It is unclear how the Usage Statistics container should be linked to the other containers.
 
-PyCSW component diagram
------------------------
+Third iteration with more containers and functionality
+=====================================================================
 
-.. uml:: pyCSW_component_diagram.puml
+.. uml:: newer_S_ENDA_metadata_service_container.puml
 
-We need to write the MMD plugin and output schema. See pyCSW docs at https://docs.pycsw.org/en/2.4.2/introduction.html.
+The Dynamic Geo-Assets API is split into several containers with different purposes.
+
+
+PyCSW diagram
+--------------
+.. uml:: pyCSW_harvesting_diagram.puml
+
+PyCSW component diagram for a system based on MMD
+--------------------------------------------------
+
+.. uml:: pyCSW_MMD_component_diagram.puml
+
+For the MMD variant we would need to write the MMD plugin and output schema. See pyCSW docs at https://docs.pycsw.org/en/2.4.2/introduction.html.
 
   .. [1] https://en.wikipedia.org/wiki/Catalogue_Service_for_the_Web
 
