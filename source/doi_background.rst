@@ -4,7 +4,7 @@ Background
 What is a DOI?
 ==============
 
-A DOI is a unique, persistent and web resolvable identifier (PID), that uniquely and persistently resolve to a digital resource. 
+A DOI is a unique, persistent and web resolvable identifier (PID), that uniquely and persistently resolves to a digital resource. 
 DOIs are a key element to make digital resources findable on the web, thus allowing for their easy discovery. Additionally 
 they can be used when citing a specific resource on the web. 
 
