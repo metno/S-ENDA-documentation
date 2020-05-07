@@ -54,7 +54,7 @@ The below figure illustrates S-ENDA's and Geonorge's position in the national an
    Rel(geonorge, senda, "Harvests metadata", "CSW")
    Rel(searchengine, geonorge, "Harvests metadata", "DCAT")
    Rel(inspire, geonorge, "Harvests metadata", "?")
-   Rel(datanorge, geonorge, "Harvests metadata", "?")
+   Rel(datanorge, senda, "Harvests metadata", "DCAT")
    Rel(edp, datanorge, "Harvests metadata", "?")
 
    @enduml
