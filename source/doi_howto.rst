@@ -76,7 +76,7 @@ Once data are prepared, with necessary metadata as described above, these data s
 Data should be structured to allow for aggregation if needed, to reflect a useful granularity, and selected services, depending on the data provided, should be 
 exposed on the data server, as for example OPeNDAP access to data to allow remote data stream. 
 
-.. note:: More on how to configure a dataset relatates to the issue: `Document how to make data available on thredds (or other DAP server) <https://app.zenhub.com/workspaces/s-enda-5e7b1b4acfc5ca185fb6b53c/issues/metno/s-enda-documentation/139>`_
+.. note:: More on how to configure a dataset relatates to the issue: `Document how to make data available on thredds (or other DAP server) <https://github.com/metno/S-ENDA-documentation/issues/139>`_
 
 Creation of MMD files and storage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
