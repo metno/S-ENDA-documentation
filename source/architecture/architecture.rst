@@ -17,7 +17,7 @@ Contexts
 
 S-ENDA is part of a larger effort within the national geodata strategy (*"Alt skjer et sted"*), and relates to this strategy through Geonorge, which is developed and operated by the Norwegian Mapping Authority (*"Kartverket"*). GeoNorge, in turn, relates to the European Inspire Geoportal through the Inspire directive. In particular, S-ENDA is responsible for *Action 20* of the Norwegian geodata strategy.  The goal of action 20 is to *establish a distributed, virtual data center for use and management of dynamic geodata*. S-ENDA's vision is that *everyone, from professional users to the general public, should have easy, secure and stable access to dynamic geodata*. 
 
-The vision of S-ENDA and the goal of action 20 are aligned with international guidelines, in particular the `FAIR Guiding Principles for scientific data management and stewardship <https://www.nature.com/articles/sdata201618>`_. To achieve these goals, we focus initially on two main systems: (1) S-ENDA Metadata Service, and (2) S-ENDA Data Access Service. Provided these two systems are well designed and documented, they should support the I(nteroperable) and R(eusable) of the FAIR principles as well.
+The vision of S-ENDA and the goal of action 20 are aligned with international guidelines, in particular the `FAIR Guiding Principles for scientific data management and stewardship <https://www.nature.com/articles/sdata201618>`_. To achieve these goals, we focus initially on two main systems: (1) S-ENDA Metadata Service, and (2) S-ENDA Data Access Service.
 
 About the *S-ENDA Metadata Service*: 
 
@@ -29,7 +29,7 @@ S-ENDA harvest context
 
 The below figure illustrates S-ENDA's and Geonorge's position in the national and international context. As illustrated, GeoNorge CSW harvesting should also make S-ENDA metadata findable by other portals. This does not mean, however, that S-ENDA shall not provide catalog services in, e.g., DCAT or schema.org to provide direct harvesting access from the other portals at a later stage.
 
-.. uml:: 
+.. uml::
 
    @startuml S-ENDA context diagram
    !includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Context.puml
