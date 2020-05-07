@@ -11,9 +11,9 @@ Welcome to S-ENDA's documentation!
    :maxdepth: 2
    :caption: Contents
 
-   architecture
+   architecture/architecture
    metadata_management_heritage
-   use_cases
+   use_case_descriptions/use_cases
    catalog_service_API
    dm_recipes
 
