@@ -5,17 +5,17 @@ What is a DOI?
 ==============
 
 A DOI is a unique, persistent and web resolvable identifier (PID), that uniquely and persistently resolve to a digital resource. 
-DOIs are a key element to make digital resource findable on the web, thus allowing for an easy discovery of a resource. Additionally 
+DOIs are a key element to make digital resources findable on the web, thus allowing for their easy discovery. Additionally 
 they can be used when citing a specific resource on the web. 
 
-DOIs practically consists of an alphanumeric string made up by a prefix and a suffix. The combination of a unique DOI prefix (assigned 
+DOIs practically consist of an alphanumeric string made up by a prefix and a suffix. The combination of a unique DOI prefix (assigned 
 to a particular DOI registrant, i.e. METNO) and a unique DOI suffix (provided by that registrant for a specific object, or automatically 
-assigned at registration time) is unique. Suffix and prefix are separated by a forward slash. 
+assigned at registration time) is unique. Suffix and prefix are separated by a forward slash (e.g. 10.21343/z9n1-qw63). 
 
 DOIs in a FAIR perspective
 ==========================
 
-The use if DOIs for datasets relates more specifically with Findability and Reusability principles: 
+The use of DOIs for datasets relates more specifically with Findability and Reusability principles: 
 
 Findability
 -----------
@@ -31,7 +31,7 @@ Additionally, the third principle for findability:
 - F3: Metadata clearly and explicitly include the identifier of the data they describe.
 
 points out that metadata and the dataset should be connected explicitly by mentioning a dataset’s globally unique and persistent identifier in the metadata of that 
-specific datasets. This applies more particularly for data formats that do not include metadata in their headers, usually resulting in separate files for data and
+specific dataset. This applies more particularly for data formats that do not include metadata in their headers, usually resulting in separate files for data and
 metadata. 
 
 Reusability

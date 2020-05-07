@@ -4,7 +4,7 @@ How-to
 Preparing a Dataset
 ===================
 Below, the steps required to prepare and expose a dataset are briefly overviewed, together with the steps necessary to have a DOI assigned by METNO's DOI registration agency, i.e. DataCite. 
-The focus here is on netCDF data. Guidance on how to create dataset in netCDF format can be found online, and will not be included in this documentation. 
+The focus here is on netCDF data. Guidance on how to create datasets in netCDF format can be found online, and will not be included in this documentation. 
 
 Supplying the right Metadata
 ----------------------------
@@ -12,9 +12,9 @@ According to the FAIR principle:
 
 - F2: Data are described with rich metadata
 
-Metadata, i.e. data that describes data, should be as extensive and comprehensive as possible. The concept of rich metadata can vary, depending on area of research as well as on 
-the community in which the data are produced and used. Generally speaking, metadata should be able to allow interested people, even with different background and experience, to be
-able to find and understand what the data are about, just using the metadata provided. Being compliant with this principle allows people to find data, the correct access information, 
+Metadata, i.e. data that describes data, should be as extensive and comprehensive as possible. The concept of rich metadata can vary, depending on the area of research as well as on 
+the community in which the data are produced and used. Generally speaking, metadata should allow interested people, even with different background and experience, to find and understand 
+what the data are about, just using the metadata provided. Being compliant with this principle allows people to find data, the correct access information, 
 possible restrictions on use, how to cite the data and so on, thus enabling re-use as well as correct citation.
 
 A key point is to provide metadata following standards, i.e. that specific set of rules and conventions that communities have agreed upon, so that definitions and meaning are clearly stated
@@ -59,13 +59,24 @@ Once the data are found, it is essential to be able to understand  unequivocally
 
 When correct, all information can be valuable. 
 
-Compliance with the above mentioned standard can be checked using online validation tools. 
+Compliance with the above mentioned standard can be checked using online validation tools. A locally implemented version of IOOS compliance checker can be found on the adc.met.no portal (https://adc.met.no/dataset_validation/form), while other online tools are also listed below:
+
+* NetCDF/CF and ACDD checkers:
+
+ - http://cfconventions.org/compliance-checker.html
+ - http://puma.nerc.ac.uk/cgi-bin/cf-checker.pl
+ - Source code (standalone Python) https://pypi.python.org/pypi/cfchecker
+ - https://podaac-uat.jpl.nasa.gov/mcc/ (Both CF and ACDD)
+ - https://data.ioos.us/compliance/index.html
+ - https://github.com/ioos/compliance-checker(Both CF and ACDD)
 
 Make a Dataset available
 ------------------------
 Once data are prepared, with necessary metadata as described above, these data should be made available, as for example through THREDDS or HYRAX data servers. 
 Data should be structured to allow for aggregation if needed, to reflect a useful granularity, and selected services, depending on the data provided, should be 
 exposed on the data server, as for example OPeNDAP access to data to allow remote data stream. 
+
+.. note:: More on how to configure a dataset relatates to the issue: `Document how to make data available on thredds (or other DAP server) <https://app.zenhub.com/workspaces/s-enda-5e7b1b4acfc5ca185fb6b53c/issues/metno/s-enda-documentation/139>`_
 
 Creation of MMD files and storage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -79,7 +90,7 @@ the dataset in searchable resources.
 Compiling the metadata collection webform (not recommended)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 When automatic extraction of metadata cannot be done, it is possible to fill in a `webform <https://adc.met.no/metadata-collection-form>`_ to supply metadata for a specific dataset, or data collection.
-Metadata information are then extracted automatically on the adc.met.no portal, and translated into mmd format, using an xslt transformation (see. mmd repository). 
+Metadata information are then extracted automatically on the adc.met.no portal, and translated into mmd format, using an xslt transformation (see mmd repository). 
 
 Creation of landing pages and assignment of DOI
 ===============================================
