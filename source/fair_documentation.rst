@@ -8,7 +8,7 @@ FAIR data principles focus on Findability, Accessibility, Interoperability and R
 
 The FAIR principles tackle the key points to allow people to find, access and use data, with specific focus on human and machine-to-machine interaction. Findability principles help to create a good description of (meta)data, to allow resources to be discovered; Accessibility principles concerns the protocols to access the (meta)data which are discovered; Interoperabiliy principles focus on the content of the digital resources and their representation, to allow data integration and proper understanding of the accessed resources; and finally Reusabity principles stress the importance of proper information to allow correct reuse and citation. 
 
-Detailed descriptions and explanations of the FAIR principles can be found in many online resources and will therefore not reported here, but a list of relevant links is provided instead:
+Detailed descriptions and explanations of the FAIR principles can be found in many online resources and will therefore not be reported here, but a list of relevant links is provided instead:
 
 Some ongoing projects and initiatives:
 
