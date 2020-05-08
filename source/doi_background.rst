@@ -37,7 +37,7 @@ metadata.
 Reusability
 -----------
 Reusability of data is strictly related with the possibility of citing data. When the DOI is incorporated into a citation it becomes a guaranteed location for the 
-data, because the DOI will always resolve to the right web address (URL). Using a DOI allows then for proper citation of data when it is reused, giving the right 
+resource cited, because the DOI will always resolve to the right web address (URL). Using a DOI allows then for proper citation of data when it is reused, giving the right 
 credits and visibility to scientists. 
 
 .. note:: Further reading and resources

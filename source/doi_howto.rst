@@ -3,7 +3,7 @@ How-to
 
 Preparing a Dataset
 ===================
-Below, the steps required to prepare and expose a dataset are briefly overviewed, together with the steps necessary to have a DOI assigned by METNO's DOI registration agency, i.e. DataCite. 
+Below, the steps required to prepare and expose a dataset are briefly overviewed, together with the steps necessary to have a DOI assigned by MET Norway's DOI registration agency, i.e. DataCite. 
 The focus here is on netCDF data. Guidance on how to create datasets in netCDF format can be found online, and will not be included in this documentation. 
 
 Supplying the right Metadata
@@ -95,7 +95,7 @@ Metadata information are then extracted automatically on the adc.met.no portal, 
 Creation of landing pages and assignment of DOI
 ===============================================
 
-In order for the DOI registration agency (DataCite) to assign a DOI, METNO has to send: 
+In order for the DOI registration agency (DataCite) to assign a DOI, MET Norway has to send: 
 
 1. A metadata file containing at least the DataCite mandatory elements
 2. A URL of the landing page, which will be the persistent URL to which the DOI resolves
