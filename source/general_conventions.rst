@@ -1,7 +1,16 @@
 General conventions
 """""""""""""""""""
 
-All repositories should establish some general guidelines/conventions, e.g.,
+S-ENDA concerns both software development and generation of dynamic geodata. In line with the recommendations from MET Norway and the FAIR principles, all S-ENDA relevant data and code shall use the following licenses to foster reusability:
+
+* Double licensing for data:
+  
+  * CC-BY 4.0 International (`<https://creativecommons.org/licenses/by/4.0/>`_), and 
+  * The Norwegian Licence for Open Government Data (NLOD) (`<https://data.norge.no/nlod/en/2.0>`_)
+
+* The GNU General Public License (GPL) (`<https://www.gnu.org/licenses/gpl-3.0.en.html>`_) for software 
+
+All software repositories should also establish general guidelines/conventions, such as:
 
 * Use version control, preferably GIT
 * Open-source code should be openly available, e.g., at GitHub or a similar open service
