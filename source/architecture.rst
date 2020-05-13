@@ -104,33 +104,7 @@ on *general* and *advanced users*. They are defined as follows:
 * **General User:** Any user interested in dynamical geodata
 * **Advanced User:** An experienced user who knows how to access and process data in their tool of choice (in addition to the WebUI portals they need a machine-to-machine interface, which they can integrate in their software or command line tools)
 
-.. uml::
-
-   @startuml S-ENDA search context
-   !includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Context.puml
-
-   LAYOUT_LEFT_RIGHT
-
-   Boundary(users, "Users") {
-      Person(advanced, "Advanced user")
-      Person(user, "General user")
-   }
-
-   System_Boundary(portals, "Portals") {
-      System_Ext(geonorge, "GeoNorge")
-      System_Ext(searchengine, "Web Search Engines")
-      System_Ext(adc, "ADC")
-      System_Ext(europeandataportal, "European Data Portal")
-   }
-
-   System_Boundary(sendafind, "S-ENDA Metadata Service"){
-      System(sendafind_nodes, "S-ENDA Metadata Service Nodes")
-   }
-
-   Rel(users, portals, "Users search portals", "Web-UI/API")
-   Rel(advanced, sendafind, "Users search S-ENDA", "OpenSearch, CSW")
-
-   @enduml
+.. uml:: search-context.puml
 
 S-ENDA Metadata Service Boundary 
 ================================

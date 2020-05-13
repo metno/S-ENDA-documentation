@@ -1,0 +1,32 @@
+ @startuml S-ENDA search context
+   !includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Context.puml
+   
+   LAYOUT_LEFT_RIGHT
+
+   'Boundary(users, "Users") {
+    '  Person(advanced, "Advanced user")
+    '  Person(user, "General user")
+   '}
+
+    System(msys, "my system")
+
+   node "users" {
+      Person(advanced, "Advanced user")
+      Person(user, "General user")
+   }
+
+   Boundary(portals, "Portals") {
+      System_Ext(geonorge, "GeoNorge")
+      System_Ext(searchengine, "Web Search Engines")
+      System_Ext(adc, "ADC")
+      System_Ext(europeandataportal, "European Data Portal")
+   }
+
+   System_Boundary(sendafind, "S-ENDA Metadata Service"){
+      System(sendafind_nodes, "S-ENDA Metadata Service Nodes")
+   }
+
+   Rel(users, msys, "Users search portals", "Web-UI/API")
+   Rel(advanced, sendafind, "Users search S-ENDA", "OpenSearch, CSW")
+
+   @enduml
