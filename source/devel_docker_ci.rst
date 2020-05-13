@@ -16,6 +16,10 @@ Docker CI with GitHub Actions
 
 All docker containers, and all code should be tested. `Continuous integration`_, CI, with `GitHub Actions`_ takes care of this for repositories that has a Docker_ container. Repositories that comes without a Docker container can be tested with, e.g., `Travis CI`_ and Coveralls_ for monitoring test coverage.
 
+------------------------
+Test Build of Containers
+------------------------
+
 Linking repositories to `Docker Hub`_ and let the Docker site build containers is excruciating slow. Lately GitHub_ has started to provide a CI system called GitHub Actions which integrate CI into the repository. GitHubs' integrated CI is up to 10 times faster than Dockers' system with free accounts. Read more about GitHub Actions at `GitHub Actions Documentation`_.
 
 Docker Hub has already a recommended way of running test suites on a container. We reuse this with GitHub actions. We also reuse Dockers' way of building and setting up services with ``docker-compose``. Two files will be needed in our repositories containing containers.
@@ -27,6 +31,52 @@ Docker Hub has already a recommended way of running test suites on a container. 
 * ``docker-compose.test.yml``, see `Automated repository tests`_.
 
     Containing definitions for building and testing one or more containers.
+
+-------------------
+Set Up Unit Testing
+-------------------
+
+The following files are needed:
+
+* ``Dockerfile.unittests``
+* ``.github/workflows/unittests.yml``
+* ``docker-compose.unittests.yml``
+* ``run_unittests.sh``
+
+The setup can be tested locally by running ``vagrant up`` .
+
+.. Note::
+
+   To work locally, the ``Vagrantfile`` should contain the following:
+   ::
+   
+      config.vm.provision "shell", "run": "always", inline: <<-SHELL
+         docker-compose -f docker-compose.unittests.yml up --build --exit-code-from unittests
+      SHELL
+
+------------------------
+Set Up Coverage Testing
+------------------------
+
+The following files are needed:
+
+* ``Dockerfile.coverage``
+* ``.github/workflows/coverage.yml``
+* ``docker-compose.coverage.yml``
+* ``run_coveragetests.sh``
+
+The setup can be tested locally by running ``vagrant up`` .
+
+.. Note::
+
+   To work locally, the ``Vagrantfile`` should contain the following:
+   ::
+   
+      config.vm.provision "shell", "run": "always", inline: <<-SHELL
+         docker-compose -f docker-compose.coverage.yml up --build --exit-code-from coverage
+      SHELL
+
+
 
 ----------------
 Day to day usage
