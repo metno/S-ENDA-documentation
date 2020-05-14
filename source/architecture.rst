@@ -141,7 +141,10 @@ S-ENDA Metadata Service C4 Container Diagram
 
 .. note::
 
-   File-level metadata is editable only via ACDD compliant NetCDF-CF files. Higher level datasets (i.e., collections and series) are added via the *CLI Registrar* or the *Web Application*, and stored in their own catalogue (IS THIS NECESSARY?). The file-level metadata can contain parent-child relationships to the higher level datasets (series/collections). The Dynamic Geo-Assets API in this version is essentialy replaced by a set of tools assisting in creation of metadata in ACDD.
+   * File-level metadata is editable only via ACDD compliant NetCDF-CF files. Higher level datasets (i.e., collections and series) are added via the *CLI Registrar* or the *Web Application*, and stored in their own catalogue (IS THIS NECESSARY?). The file-level metadata can contain parent-child relationships to the higher level datasets (series/collections). The Dynamic Geo-Assets API in this version is essentialy replaced by a set of tools assisting in creation of metadata in ACDD.
+   * api.met.no and similar APIs that serve merged data, point to the source datasets in the *Service Metadata*
+   * APIs that serve single datasets (e.g., Frost, after it has been decided what is a dataset, collection and series) needs to be better displayed here (at the moment we store netcdf-cf files from Frost but this is not the intention for the long term)
+
 
 S-ENDA Metadata Service Node C4 Component Diagrams
 ==================================================
