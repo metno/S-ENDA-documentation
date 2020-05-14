@@ -8,4 +8,4 @@
    :maxdepth: 1
 
    doi_background.rst
-   doi_how_to.rst
+   doi_howto.rst

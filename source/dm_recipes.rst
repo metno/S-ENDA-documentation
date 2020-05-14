@@ -67,4 +67,4 @@ Under the ``Search`` tab, you can then add search parameters, click ``Search``, 
 DOI registration at MET
 -----------------------
 
-.. include:: doi_registration.rst
+.. include:: doi_at_met.rst
