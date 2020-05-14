@@ -119,19 +119,41 @@ Third iteration with more containers and functionality
 
 The Dynamic Geo-Assets API is split into several containers with different purposes.
 
-Merge of three previous headings (REMOVE PREVIOUS WHEN WE AGREE AND KEEP THIS FOR LATER REFERENCE)
-===================================================================================================
+--------------------------------------------------------------------------------------------------
+S-ENDA Metadata Service C4 Diagrams
+--------------------------------------------------------------------------------------------------
+
+.. note::
+
+   This is an attempted merge of the previous headings (REMOVE PREVIOUS WHEN WE AGREE AND KEEP THIS FOR LATER REFERENCE)
+
+For simplicity, a node is hereinafter equivalent to the *S-ENDA Central Catalogue* or a node in the *S-ENDA aggregated (gossip coordinated)* system.
+
+S-ENDA Metadata Service C4 Context Diagram
+============================================
+
+.. uml:: S-ENDA-metadata-service-context-diagram.puml
+
+S-ENDA Metadata Service C4 Container Diagram
+============================================
 
 .. uml:: S-ENDA-metadata-service-container-diagram.puml
 
 .. note::
 
-   * (*) Harvesting by pyCSW from the Metadata Store is currently only supported by ISO19139 and MMD (through XSLT and a script) - plugins for GeoDCAT-AP and MMD are needed in pyCSW if we want to use that
-   * I still need to do some consistency checking before we discuss...
+   File-level metadata is editable only via ACDD compliant NetCDF-CF files. Higher level datasets (i.e., collections and series) are added via the *CLI Registrar* or the *Web Application*, and stored in their own catalogue (IS THIS NECESSARY?). The file-level metadata can contain parent-child relationships to the higher level datasets (series/collections). The Dynamic Geo-Assets API in this version is essentialy replaced by a set of tools assisting in creation of metadata in ACDD.
 
-PyCSW diagram
---------------
+S-ENDA Metadata Service Node C4 Component Diagrams
+==================================================
+
+PyCSW component diagram for a system based on GeoDCAT-AP
+--------------------------------------------------------
+
 .. uml:: pyCSW_harvesting_diagram.puml
+
+.. note::
+
+   How to handle translation from GeoDCAT-AP to ISO19139?
 
 PyCSW component diagram for a system based on MMD
 --------------------------------------------------
@@ -140,6 +162,24 @@ PyCSW component diagram for a system based on MMD
 
 For the MMD variant we would need to write the MMD plugin and output schema. See pyCSW docs at https://docs.pycsw.org/en/2.4.2/introduction.html.
 
-  .. [1] https://en.wikipedia.org/wiki/Catalogue_Service_for_the_Web
 
-  .. [2] https://en.wikipedia.org/wiki/Gossip_protocol
+
+.. note::
+
+   * (*) Harvesting by pyCSW from the Metadata Store is currently only supported by ISO19139 and MMD (through XSLT and a script) - plugins for GeoDCAT-AP and MMD are needed in pyCSW if we want to use that
+   * I still need to do some consistency checking before we discuss...
+
+Container Diagram for Production Hubs 
+=====================================
+
+.. See commented code in S-ENDA-metadata-service-context-diagram.puml
+
+
+Container Diagram for Distribution Systems 
+==========================================
+
+.. See commented code in S-ENDA-metadata-service-context-diagram.puml
+
+.. [1] https://en.wikipedia.org/wiki/Catalogue_Service_for_the_Web
+
+.. [2] https://en.wikipedia.org/wiki/Gossip_protocol

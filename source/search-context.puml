@@ -20,6 +20,7 @@
    }
 
    Rel(user, portals, "Users search portals", "Web-UI/API")
+   Rel(portals, sendafind, "Harvest metadata", "CSW: ISO19139")
    Rel(advanced, sendafind, "Users search S-ENDA", "CSW OpenSearch: ISO19115/MMD/DCAT")
 
-   @enduml
+@enduml

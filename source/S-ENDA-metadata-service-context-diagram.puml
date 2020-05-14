@@ -1,0 +1,51 @@
+@startuml S-ENDA metadata service C4 context diagram
+!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Context.puml
+   
+LAYOUT_TOP_DOWN
+
+Boundary(users, "Users"){
+    Person(advanced, "Advanced Users", "An experienced user who knows how to access and process data in their tool of choice (in addition to the WebUI portals they need a machine-to-machine interface, which they can integrate in their software or command line tools).")
+    Person(user, "General user", "Any user interested in dynamical geodata")
+}
+    
+System_Ext(portals, "Portals", "External portals harvest metadata on various standards")
+
+Rel(advanced, portals, "Search portals", "Web-UI/API")
+Rel(user, portals, "Search portals", "Web-UI/API")
+
+System(senda, 'S-ENDA Metadata Service')
+
+Rel(advanced, senda, "Search", "CSW OpenSearch: ISO19115/DCAT/MMD")
+Rel(portals, senda, "Harvest metadata", "CSW: ISO19139")
+
+Boundary(providers, "Providers") {
+    Person(dataprovider, "Dataset Provider")
+    Person(datacurator, "Data curator")
+    Person(serviceprovider, "Service Provider")
+}
+
+Rel(providers, senda, "Register metadata")
+Rel(providers, senda, "Check usage statistics and metadata consistency/status.")
+
+System_Ext(productionhub, "Production Hubs", "Dataset production hubs provide new datasets (ACDD compliant NetCDF-CF files).")
+System_Ext(dist_systems, "Distribution Systems", "Thredds servers with ACDD compliant NetCDF-CF files.")
+
+'System_Boundary(productionhub, "Production Hubs") {
+'    System_Ext(ph1, "Production Hub 1", "Dataset production hub provides new datasets (ACDD compliant NetCDF-CF files).")
+'    System_Ext(ph2, "Production Hub 2")
+'    System_Ext(metricsPH, "Metrics provider")
+'    System_Ext(eventengine, "Event Engine", "NATS")
+'}
+'
+'System_Boundary(dist_systems, "Distribution Systems") {
+'    System_Ext(ds1, "Distribution System 1", "Thredds server with ACDD compliant NetCDF-CF files.")
+'    System_Ext(ds2, "Distribution System 2")
+'    System_Ext(metricsDS, "Metrics provider")
+'}
+
+Rel(dataprovider, productionhub, "Sets up production of netCDF-CF files with ACDD metadata")
+Rel(productionhub, dist_systems, "Store", "ACDD compliant netCDF-CF files")
+Rel(senda, productionhub, "Listen in order to get last updated info, and harvest metrics")
+Rel(senda, dist_systems, "Harvest metadata and metrics")
+
+@enduml
