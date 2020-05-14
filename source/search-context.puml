@@ -1,18 +1,11 @@
  @startuml S-ENDA search context
    !includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Context.puml
    
-   LAYOUT_LEFT_RIGHT
+   LAYOUT_TOP_DOWN
 
-   'Boundary(users, "Users") {
-    '  Person(advanced, "Advanced user")
-    '  Person(user, "General user")
-   '}
-
-    System(msys, "my system")
-
-   node "users" {
-      Person(advanced, "Advanced user")
-      Person(user, "General user")
+   Boundary(users, "Users") {
+     Person(advanced, "Advanced user")
+     Person(user, "General user")
    }
 
    Boundary(portals, "Portals") {
@@ -26,7 +19,7 @@
       System(sendafind_nodes, "S-ENDA Metadata Service Nodes")
    }
 
-   Rel(users, msys, "Users search portals", "Web-UI/API")
+   Rel(user, portals, "Users search portals", "Web-UI/API")
    Rel(advanced, sendafind, "Users search S-ENDA", "CSW OpenSearch: ISO19115/MMD/DCAT")
 
    @enduml
