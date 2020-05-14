@@ -1,0 +1,19 @@
+@startuml S-ENDA provider context
+!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Context.puml
+
+LAYOUT_LEFT_RIGHT
+
+System(dgaAPI, "S-ENDA Metadata Service Node")
+
+Boundary(providers, "Providers") {
+   Person(developer, "Service Provider (SP)")
+   Person(dataprovider, "Data Provider (DP)")
+}
+
+Rel(dataprovider, dgaAPI, "DP registers dataset", "API/Web UI: ISO19115/DCAT/MMD")
+Rel(dgaAPI, dataprovider, "Metadata Service gives feedback (validation/monitoring/user questions/DOI)", "Web UI")
+
+Rel(developer, dgaAPI, "SP registers service", "API/Web UI: DCAT")
+Rel(dgaAPI, developer, "DGA API gives feedback (validation/monitoring/user questions)", "Web UI")
+
+@enduml

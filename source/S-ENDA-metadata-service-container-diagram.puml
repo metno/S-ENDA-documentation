@@ -1,0 +1,59 @@
+@startuml S-ENDA metadata service containter diagram
+!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Component.puml
+
+'LAYOUT_LEFT_RIGHT
+LAYOUT_TOP_DOWN
+
+Boundary(providers, "Providers") {
+    Person(dataprovider, "Dataset Provider")
+    Person(datacurator, "Data curator")
+    Person(serviceprovider, "Service Provider")
+    System_Ext(productionhub, "Production Hubs", "Dataset production hubs provide new datasets (ACDD compliant NetCDF-CF files).")
+    System_Ext(dist_systems, "Distribution Systems", "Thredds servers with ACDD compliant NetCDF-CF files.")
+
+    Rel(dataprovider, productionhub, "Sets up production of netCDF-CF files with ACDD metadata")
+}
+
+Boundary(users, "Users"){
+    Person(user, "Advanced Users", "Advanced users harvest metadata with OpenSearch")
+    Person(guser, "General user")
+    
+    System_Ext(geonorge, "Portals", "External portals harvest metadata on various standards")
+
+    Rel(guser, geonorge, "Search portals", "Web-UI/API")
+    Rel(user, geonorge, "Search portals", "Web-UI/API")
+}
+
+System_Boundary(mserviceSystem, "S-ENDA Metadata Service Node") {
+
+    Container(service_metadata, "Service Metadata Store", "GeoDCAT-AP", "Serves as the authoritative source of metadata for services.")
+    Container(updater, "Metadata Updater", "", "Provides functionality to compare provided and existing content, delete content, and create and update content in the discovery and configuration metadata store.")
+    Container(metadata_store, "Dataset Metadata Store", "ISO19115/GeoDCAT-AP/MMD", "Serves as the authoritative source of discovery and configuration metadata for datasets.")
+    Container(csapi, "Dataset Catalog Service API", "pycsw/Solr", "Indexes the metadata store to allow fast search.")
+    Container(catalog_of_catalogs, "Catalog of catalogs", "GeoDCAT-AP", "All service and dataset catalogs for one Metadata Service Node.")
+    Container(web_app, "Web Application", "HTML", "Provides functionality to register dataset and service metadata, display dataset and service usage statistics, production status, and monitor metadata to display errors and warnings (e.g., about dead links).")
+
+    Rel(updater, csapi, "Read", "CSW: ISO19115/GeoDCAT-AP/MMD")
+    Rel(updater, metadata_store, "Create/update/delete", "?:?")
+    Rel(csapi, metadata_store, "Harvest", "?: ISO19139/GeoDCAT-AP/MMD(*)")
+    Rel(catalog_of_catalogs, csapi, "Harvest", "CSW: GeoDCAT-AP")
+    Rel(catalog_of_catalogs, service_metadata, "Harvest", "CSW: GeoDCAT-AP")
+    Rel(web_app, catalog_of_catalogs, "Read metadata and harvest metrics", "CSW: GeoDCAT-AP")
+    Rel(web_app, csapi, "Read metadata and harvest metrics", "CSW: ISO19115")
+    Rel(web_app, updater, "Push discovery metadata")
+}
+
+Rel(geonorge, csapi, "Harvest", "CSW: ISO19115/Geo-DCAT-AP/DIF")
+Rel(geonorge, catalog_of_catalogs, "Harvest", "CSW: Geo-DCAT-AP")
+Rel(user, csapi, "Harvest", "CSW OpenSearch")
+Rel(updater, dist_systems, "Harvest", "OPeNDAP: ACDD/CF")
+Rel(productionhub, dist_systems, "Store", "ACDD compliant netCDF-CF files")
+Rel(updater, productionhub, "Listens in order to get last updated info", "CloudEvents")
+Rel(web_app, productionhub, "Harvest metrics")
+Rel(web_app, dist_systems, "Harvest metrics")
+Rel(datacurator, web_app, "Configures data series and collections (by adding metadata), checks statistics and metadata consistency/status.")
+Rel(dataprovider, web_app, "Check dataset statistics and metadata consistency/status.")
+Rel(serviceprovider, web_app, "Check statistics and metadata consistency/status.")
+Rel(serviceprovider, service_metadata, "Register service metadata.", "CSW: GeoDCAT-AP")
+
+@enduml

@@ -27,6 +27,6 @@
    }
 
    Rel(users, msys, "Users search portals", "Web-UI/API")
-   Rel(advanced, sendafind, "Users search S-ENDA", "OpenSearch, CSW")
+   Rel(advanced, sendafind, "Users search S-ENDA", "CSW OpenSearch: ISO19115/MMD/DCAT")
 
    @enduml

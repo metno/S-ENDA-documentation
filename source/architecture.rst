@@ -23,46 +23,23 @@ About the *S-ENDA Metadata Service*:
 
 - Data and service providers register (see `S-ENDA provider context`_) their datasets or services via a WebUI or a web registration API in their own system nodes (see `S-ENDA Metadata Service Boundary`_). These nodes expose CSW [1]_ catalogue services for harvesting, either in `Context with a central catalogue`_, or in `Context with a distributed S-ENDA Metadata Service solution`_. 
 
+.. note::
+
+   Relations in the C4 diagrams illustrate protocol and standard in brackets as [<protocol>: <standard>].
+   
+   When the protocol/standard is represented by several instances divided by a forward slash "/", the final solution may contain several protocols/standards or is still open for discussion.
 
 S-ENDA harvest context
 ======================
 
 The below figure illustrates S-ENDA's and Geonorge's position in the national and international context. As illustrated, GeoNorge CSW harvesting should also make S-ENDA metadata findable by other portals. This does not mean, however, that S-ENDA shall not provide catalog services in, e.g., DCAT or schema.org to provide direct harvesting access from the other portals at a later stage.
 
-.. uml::
-
-   @startuml S-ENDA context diagram
-   !includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Context.puml
-
-   LAYOUT_LEFT_RIGHT
-
-   System_Boundary(portals, "Portals"){
-      System_Ext(edp, "European Data Portal")
-      System_Ext(searchengine, "Web Search Engines")
-      System_Ext(inspire, "Inspire Geoportal")
-      System_Ext(datanorge, "Data Norge")
-      System_Ext(geonorge, "GeoNorge")
-      System_Ext(adc, "ADC")
-   }
-
-   'Not sure about the following...
-   System_Boundary(senda, "S-ENDA Metadata Service"){
-      System(sendafind, "S-ENDA Metadata Service Nodes")
-   }
-
-   Rel(adc, senda, "Harvests metadata", "CSW")
-   Rel(geonorge, senda, "Harvests metadata", "CSW")
-   Rel(searchengine, senda, "Harvests metadata", "DCAT")
-   Rel(inspire, geonorge, "Harvests metadata", "?")
-   Rel(datanorge, senda, "Harvests metadata", "DCAT")
-   Rel(edp, datanorge, "Harvests metadata", "?")
-
-   @enduml
+.. uml:: harvest_context.puml
 
 S-ENDA provider context
 =====================================
 
-* **Data Provider:** Produces (meta)data and wants to make the (meta)data discoverable and available to users
+* **Data Provider:** Produces discovery and configuration (meta)data and wants to make them discoverable and available to users
 * **Service Provider:** Creates data services, and wants to make the data services discoverable and available to users
 
 If a data provider wishes to assign a DOI to their dataset, there are three alternatives: 
@@ -71,35 +48,12 @@ If a data provider wishes to assign a DOI to their dataset, there are three alte
 #. The S-ENDA Dynamic Geo-Assets API system handles DOI registration (and update) through the DataCite API
 #. If they do not wish to have a DOI assigned to their dataset, this is also possible.
 
-.. uml::
-
-   @startuml S-ENDA provider context
-   !includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Context.puml
-
-   LAYOUT_LEFT_RIGHT
-
-   System(dgaAPI, "S-ENDA Metadata Service Node")
-
-   Boundary(providers, "Providers") {
-      Person(developer, "Service Provider (SP)")
-      Person(dataprovider, "Data Provider (DP)")
-   }
-
-   Rel(dataprovider, dgaAPI, "DP registers dataset", "API/Web UI")
-   Rel(dgaAPI, dataprovider, "DGA API gives feedback", "Validation/Monitoring/user questions/DOI")
-
-   Rel(developer, dgaAPI, "SP registers service", "API/Web UI")
-   Rel(dgaAPI, developer, "DGA API gives feedback", "Validation/Monitoring/user questions")
-
-   @enduml
+.. uml:: provider_context.puml
 
 S-ENDA search context
 =====================
 
-The goal of the project is to make sure that all kinds of potential users of dynamical geodata will
-be able to find and use the data. There is a broad spectrum of users with varying expertise in data
-management and domain knowledge when it comes to dynamical geodata. In the search context diagram, we focus
-on *general* and *advanced users*. They are defined as follows:
+The goal of the project is to make sure that all kinds of potential users of dynamical geodata will be able to find and use the data. There is a broad spectrum of users with varying expertise in data management and domain knowledge when it comes to dynamical geodata. In the search context diagram, we focus on *general* and *advanced users*. They are defined as follows:
 
 * **General User:** Any user interested in dynamical geodata
 * **Advanced User:** An experienced user who knows how to access and process data in their tool of choice (in addition to the WebUI portals they need a machine-to-machine interface, which they can integrate in their software or command line tools)
@@ -133,9 +87,14 @@ Data and service providers interact with a Web data/service registration User In
 First iteration with xslt and some python code to modify MMD metadata
 =======================================================================
 
-  .. uml:: container.puml
+  .. uml:: puml/container.puml
 
 A metadata store and an API that exposes metadata in MMD. The application listens to an event engine that provides information from the production system. S-ENDA Metadata Service should also provide functionality for registering and updating datasets and data services. The application should validate the metadata and provide detailed user feedback before storing the metadata.
+
+Dynamic Geo-Assets Component Diagram
+------------------------------------
+
+.. uml:: dgaAPI_component.puml
 
 An alternative based on two levels of metadata
 ===============================================
@@ -145,11 +104,6 @@ The Dynamic Geo-Assets API in this version is essentialy replaced by a set of to
 creation of metadata in ACDD.
 
   .. uml:: acdd_and_curated_catalogue.puml
-
-Dynamic Geo-Assets Component Diagram
-------------------------------------
-
-.. uml:: dgaAPI_component.puml
 
 Second iteration with more containers and functionality
 =====================================================================
@@ -165,6 +119,15 @@ Third iteration with more containers and functionality
 
 The Dynamic Geo-Assets API is split into several containers with different purposes.
 
+Merge of three previous headings (REMOVE PREVIOUS WHEN WE AGREE AND KEEP THIS FOR LATER REFERENCE)
+===================================================================================================
+
+.. uml:: S-ENDA-metadata-service-container-diagram.puml
+
+.. note::
+
+   * (*) Harvesting by pyCSW from the Metadata Store is currently only supported by ISO19139 and MMD (through XSLT and a script) - plugins for GeoDCAT-AP and MMD are needed in pyCSW if we want to use that
+   * I still need to do some consistency checking before we discuss...
 
 PyCSW diagram
 --------------
