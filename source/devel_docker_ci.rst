@@ -291,7 +291,7 @@ Take note of the following files in the repository:
 * ``Dockerfile.coverage``
 * ``.github/workflows/coverage.yml``
 * ``docker-compose.coverage.yml``
-* ``run_coveragetests.sh``
+* ``tests-coverage.sh``
 
 The setup can also be tested locally by running ``vagrant up`` .
 
