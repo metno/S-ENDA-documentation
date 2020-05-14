@@ -78,46 +78,46 @@ An alternative solution to the central catalogue system, is a system based on a 
 
 .. uml:: context-gossip.puml
 
-----------------------------------------------
-S-ENDA Metadata Service Node Container Diagram
-----------------------------------------------
-
-Data and service providers interact with a Web data/service registration User Interface (UI) or command line (console) registration tool to register their data/service. These tools communicate with the Metadata store via a web data/service registration API. The contents of the metadata store are served as CSW using pyCSW API.
-
-First iteration with xslt and some python code to modify MMD metadata
-=======================================================================
-
-  .. uml:: puml/container.puml
-
-A metadata store and an API that exposes metadata in MMD. The application listens to an event engine that provides information from the production system. S-ENDA Metadata Service should also provide functionality for registering and updating datasets and data services. The application should validate the metadata and provide detailed user feedback before storing the metadata.
-
-Dynamic Geo-Assets Component Diagram
-------------------------------------
-
-.. uml:: dgaAPI_component.puml
-
-An alternative based on two levels of metadata
-===============================================
-File-level metadata editable only via ACDD, higher level in their own catalogue. The file-level
-metadata can contain parent-child link relationships to the higher level datasets (series/collections).
-The Dynamic Geo-Assets API in this version is essentialy replaced by a set of tools assisting in
-creation of metadata in ACDD.
-
-  .. uml:: acdd_and_curated_catalogue.puml
-
-Second iteration with more containers and functionality
-=====================================================================
-
-.. uml:: new_S_ENDA_metadata_service_container.puml
-
-The Dynamic Geo-Assets API is split into several containers with different purposes. It is unclear how the Usage Statistics container should be linked to the other containers.
-
-Third iteration with more containers and functionality
-=====================================================================
-
-.. uml:: newer_S_ENDA_metadata_service_container.puml
-
-The Dynamic Geo-Assets API is split into several containers with different purposes.
+.. ----------------------------------------------
+.. S-ENDA Metadata Service Node Container Diagram
+.. ----------------------------------------------
+.. 
+.. Data and service providers interact with a Web data/service registration User Interface (UI) or command line (console) registration tool to register their data/service. These tools communicate with the Metadata store via a web data/service registration API. The contents of the metadata store are served as CSW using pyCSW API.
+.. 
+.. First iteration with xslt and some python code to modify MMD metadata
+.. =======================================================================
+.. 
+..   .. uml:: puml/container.puml
+.. 
+.. A metadata store and an API that exposes metadata in MMD. The application listens to an event engine that provides information from the production system. S-ENDA Metadata Service should also provide functionality for registering and updating datasets and data services. The application should validate the metadata and provide detailed user feedback before storing the metadata.
+.. 
+.. Dynamic Geo-Assets Component Diagram
+.. ------------------------------------
+.. 
+.. .. uml:: dgaAPI_component.puml
+.. 
+.. An alternative based on two levels of metadata
+.. ===============================================
+.. File-level metadata editable only via ACDD, higher level in their own catalogue. The file-level
+.. metadata can contain parent-child link relationships to the higher level datasets (series/collections).
+.. The Dynamic Geo-Assets API in this version is essentialy replaced by a set of tools assisting in
+.. creation of metadata in ACDD.
+.. 
+..   .. uml:: acdd_and_curated_catalogue.puml
+.. 
+.. Second iteration with more containers and functionality
+.. =====================================================================
+.. 
+.. .. uml:: new_S_ENDA_metadata_service_container.puml
+.. 
+.. The Dynamic Geo-Assets API is split into several containers with different purposes. It is unclear how the Usage Statistics container should be linked to the other containers.
+.. 
+.. Third iteration with more containers and functionality
+.. =====================================================================
+.. 
+.. .. uml:: newer_S_ENDA_metadata_service_container.puml
+.. 
+.. The Dynamic Geo-Assets API is split into several containers with different purposes.
 
 --------------------------------------------------------------------------------------------------
 S-ENDA Metadata Service C4 Diagrams
