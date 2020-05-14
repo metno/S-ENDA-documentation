@@ -136,7 +136,7 @@ UML diagram
       System_Ext(ndvi_tool, "NDVI Tool")
    }
 
-   System(senda, "S-ENDA Find/Central")
+   System(senda, "S-ENDA Metadata Service/Central")
 
    Rel(professional, ndvi_tool, "Defines time and region of interest", "GUI / text based UI")
    Rel(ndvi_tool, senda, "Searches Sentinel-2 data covering region of interest", "API")

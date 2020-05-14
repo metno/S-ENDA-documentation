@@ -116,7 +116,7 @@ UML diagram
       Rel(malawi_farmer, search_interface, "Searches for information relevant for farming.", "Web UI")
       Rel(search_interface, malawi_farmer, "Web interface returns links to nwp paramters to WMS and links to relevant parameters for download.", "Web UI")
 
-      System(senda, "S-ENDA Find+Access/Central")
+      System(senda, "S-ENDA Metadata Service + S-ENDA Data Access Service/Central")
       Rel(search_interface, senda, "Find and access weather prediction", "CSW and WMS")
 
       @enduml

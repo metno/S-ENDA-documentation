@@ -3,10 +3,10 @@
 
 LAYOUT_LEFT_RIGHT
 
-System_Boundary(senda, "S-ENDA Find with Central Catalogue") {
-    System(sendafind1, "S-ENDA Find Node 1")
-    System(sendafind2, "S-ENDA Find Node 2")
-    System(sendafindn, "S-ENDA Find Node n")
+System_Boundary(senda, "S-ENDA Metadata Service with Central Catalogue") {
+    System(sendafind1, "S-ENDA Metadata Service Node 1")
+    System(sendafind2, "S-ENDA Metadata Service Node 2")
+    System(sendafindn, "S-ENDA Metadata Service Node n")
     System(senda_central, "S-ENDA Central Catalogue")
 }
 

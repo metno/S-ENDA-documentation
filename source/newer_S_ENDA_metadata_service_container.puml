@@ -1,0 +1,56 @@
+@startuml S-ENDA dgaAPI Container diagram
+!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Container.puml
+
+LAYOUT_LEFT_RIGHT
+
+System_Boundary(ph, "Production Hubs") {
+    System_Ext(ph1, "Production Hub 1")
+    System_Ext(ph2, "Production Hub 2")
+    System_Ext(metricsPH, "Metrics provider")
+    System_Ext(eventengine, "Event Engine", "NATS")
+}
+
+System_Boundary(ds, "Distribution Systems") {
+    System_Ext(ds1, "Distribution System 1")
+    System_Ext(ds2, "Distribution System 2")
+    System_Ext(metricsDS, "Metrics provider")
+}
+
+System_Boundary(dsp, "Data Search Portals") {
+    System_Ext(datanorge, "data.norge.no")
+}
+
+System_Boundary(dgaAPI, "S-ENDA Metadata Service Node") {
+
+Container(web_registrar, "Web Registrar", "", "Provides functionality for a user to register discovery metadata online.")
+Container(cli_registrar, "CLI Registrar", "", "Provides functionality for a user to register discovery metadata from a Command Line Interface (CLI).")
+Container(dcat_catalog_of_catalogs, "Catalog of catalogs in DCAT", "", "All DCAT service and dataset catalogs for one organization listed.")
+
+Container(metadata_store, "Metadata Store", "GeoDCAT-AP")
+Container(csapi, "Catalog Service API", "pycsw")
+
+Container(updater, "Metadata Updater", "", "Provides functionality to compare provided and existing content, delete content, and create and update content in the discovery and configuration metadata store.")
+
+Container(usage_stats, "Web Page with Usage Statistics", "", "Provides functionality to display dataset usage statistics on a web page.")
+Container(prod_status, "Web Page with Production status", "", "Provides functionality to display dataset production status on a web page.")
+
+
+Rel(updater, eventengine, "Listens in order to get last updated info", "CloudEvents")
+Rel(prod_status, eventengine, "Listens in order to get last updated info", "CloudEvents")
+
+
+Rel(web_registrar, updater, "Provides discovery metadata")
+Rel(cli_registrar, updater, "Provides discovery metadata")
+
+Rel(updater, csapi, "Read", "CSW: GeoDCAT-AP")
+Rel(updater, metadata_store, "Create/update/delete")
+Rel(csapi, metadata_store, "Harvest", "ISO19139")
+
+}
+
+Rel(prod_status, metricsDS, "Harvest metrics")
+Rel(prod_status, metricsPH, "Harvest metrics")
+Rel(prod_status, csapi, "Get metadata")
+
+Rel(datanorge, dcat_catalog_of_catalogs, "Harvest metadata", "HTTP (DCAT)")
+@enduml

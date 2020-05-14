@@ -9,7 +9,7 @@ Register context
 Data Provider registers dataset
 ===============================
 
-In order to make a dataset findable, a dataset must be registered in S-ENDA Find with appropriate metadata, which is indexed and exposed in CSW. The procedure is as follows:
+In order to make a dataset findable, a dataset must be registered in S-ENDA Metadata Service with appropriate metadata, which is indexed and exposed in CSW. The procedure is as follows:
 
 #. Create MMD XML record of metadata
 #. Translate from MMD to ISO19115
@@ -23,9 +23,10 @@ This is done with the s-enda-find Virtual Machine (VM), for which a Vagrant conf
 * manually in the VM
 * through the geoassets API
 
-S-ENDA Find gives feedback
-==========================
-S-ENDA Find has two main types of feedback for the data provider:
+S-ENDA Metadata Service gives feedback
+======================================
+
+S-ENDA Metadata Service has two main types of feedback for the data provider:
 
 #. Questions/praise/bug reports etc. from users.
 #. Operational metrics about downloads and production runs for each dataset.
@@ -47,13 +48,13 @@ GeoNorge.no
 
 **TODO:** describe how to search in geonorge, possibly with screenshots
 
-User searches S-ENDA Find system
-================================
+User searches S-ENDA Metadata Service system
+============================================
 
 CSW Protocol
 ------------
 
-A prototype catalogue service of S-ENDA Find is available at http://senda1.lab-a.met.no:8000/. This can, e.g., be used from QGIS, as follows:
+A prototype catalogue service of S-ENDA Metadata Service is available at http://senda1.lab-a.met.no:8000/. This can, e.g., be used from QGIS, as follows:
 
 * Select ``Web > MetaSearch > MetaSearch`` menu item
 * Select ``Services > New``

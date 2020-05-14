@@ -1,3 +1,4 @@
+*.png
 *.log
 .vagrant
 make.bat

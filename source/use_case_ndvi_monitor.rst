@@ -134,7 +134,7 @@ UML diagram from user perspective:
       System_Ext(ndvi_mobile_app, "NDVI mobile app")
    }
 
-   System(senda_central, "S-ENDA Find/Central")
+   System(senda_central, "S-ENDA Metadata Service/Central")
 
    Rel(general_user, portals, "Zooms into region of interest", "Web UI / Mobile app")
    Rel(portals, senda_central, "Listens for new NDVI datasets", "CloudEvents")
@@ -156,7 +156,7 @@ UML diagram from user perspective:
 ..       System_Ext(ndvi_tool, "NDVI Tool")
 ..    }
 .. 
-..    System(senda_find, "(Instance of) S-ENDA Find")
+..    System(senda_find, "(Instance of) S-ENDA Metadata Service")
 .. 
 ..    Rel(senda_find, providers, "Sends usage statistics to provider", "Rest")
 ..    Rel(senda_find, providers, "Sends (meta)data validation and search statistics to provider", "Rest")
