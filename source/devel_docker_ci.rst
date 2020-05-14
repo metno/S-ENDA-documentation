@@ -16,6 +16,10 @@ Docker CI with GitHub Actions
 
 All docker containers, and all code should be tested. `Continuous integration`_, CI, with `GitHub Actions`_ takes care of this for repositories that has a Docker_ container. Repositories that comes without a Docker container can be tested with, e.g., `Travis CI`_ and Coveralls_ for monitoring test coverage.
 
+------------------------------------
+Set up automatic Build of Containers
+------------------------------------
+
 Linking repositories to `Docker Hub`_ and let the Docker site build containers is excruciating slow. Lately GitHub_ has started to provide a CI system called GitHub Actions which integrate CI into the repository. GitHubs' integrated CI is up to 10 times faster than Dockers' system with free accounts. Read more about GitHub Actions at `GitHub Actions Documentation`_.
 
 Docker Hub has already a recommended way of running test suites on a container. We reuse this with GitHub actions. We also reuse Dockers' way of building and setting up services with ``docker-compose``. Two files will be needed in our repositories containing containers.
@@ -28,9 +32,9 @@ Docker Hub has already a recommended way of running test suites on a container. 
 
     Containing definitions for building and testing one or more containers.
 
-----------------
+
 Day to day usage
-----------------
+================
 
 This will produce containers on Docker Hub where GitHub master branch is marked with tag ``dev``. A release tag in GitHub, example ``1.0.0``, will be marked with the tags ``1.0.0`` and ``1.0``, ``1`` and ``latest`` if it is the latest release.
 
@@ -60,9 +64,8 @@ Release tag is on the semantic versioning format without prefixed *v*, see `Sema
      git tag 1.0.0
      git push --tags
 
-------------------------
 Configure GitHub Actions
-------------------------
+========================
 
 Our goals.
 
@@ -75,7 +78,7 @@ Our goals.
 Live example at GitHub `metno/pycsw-container <https://github.com/metno/pycsw-container>`_ and result at Docker Hub `metno/pycsw <https://hub.docker.com/repository/docker/metno/pycsw>`_.
 
 Authentication to Docker Hub
-============================
+----------------------------
 
 Before we start we need link a Docker Hub repository with the GitHub repository. We're using a loose coupling, meaning we don't actually link it. We only provide the GitHub with our Docker Hub credentials.
 
@@ -106,7 +109,7 @@ Before we start we need link a Docker Hub repository with the GitHub repository.
         Add the application credential you created in step one here.
 
 Minimum repository content
-==========================
+--------------------------
 
 This is an example. Replace repository content with your content.
 
@@ -141,7 +144,7 @@ This is an example. Replace repository content with your content.
          command: echo Start test script here e.g. ./run_tests.sh
 
 Add CI definition file
-======================
+----------------------
 
 Add the following file in the repository as ``.github/workflows/docker.yml``.
 
@@ -250,6 +253,58 @@ Make a note of ``FIXME`` and ``TODO``. ``TODO`` marks where you need to update w
                   docker-compose push
                 done
               fi
+
+
+-------------------
+Set Up Unit Testing
+-------------------
+
+Unit testing can be done in the same way as building containers. Please see a working example in the repository `steingod / mmd <https://github.com/steingod/mmd>`_.
+
+Take note of the following files in the repository:
+
+* ``Dockerfile.unittests``
+* ``.github/workflows/unittests.yml``
+* ``docker-compose.unittests.yml``
+* ``run_unittests.sh``
+
+The setup can also be tested locally by running ``vagrant up``.
+
+.. Note::
+
+   To work locally, the ``Vagrantfile`` should contain the following:
+
+   .. code-block:: ruby
+
+      config.vm.provision "shell", "run": "always", inline: <<-SHELL
+         docker-compose -f docker-compose.unittests.yml up --build --exit-code-from unittests
+      SHELL
+
+------------------------
+Set Up Coverage Testing
+------------------------
+
+Coverage testing can be done in the same way as building containers and unit testing. Please see the same working example in the repository `steingod / mmd <https://github.com/steingod/mmd>`_.
+
+Take note of the following files in the repository:
+
+* ``Dockerfile.coverage``
+* ``.github/workflows/coverage.yml``
+* ``docker-compose.coverage.yml``
+* ``tests-coverage.sh``
+
+The setup can also be tested locally by running ``vagrant up`` .
+
+.. Note::
+
+   To work locally, the ``Vagrantfile`` should contain the following:
+
+   .. code-block:: ruby
+
+      config.vm.provision "shell", "run": "always", inline: <<-SHELL
+         docker-compose -f docker-compose.coverage.yml up --build --exit-code-from coverage
+      SHELL
+
 
 ..
   # vim: set spell spelllang=en:
