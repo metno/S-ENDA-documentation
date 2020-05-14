@@ -16,10 +16,15 @@ System_Boundary(ds, "Distribution Systems") {
     System_Ext(metricsDS, "Metrics provider")
 }
 
+System_Boundary(dsp, "Data Search Portals") {
+    System_Ext(datanorge, "data.norge.no")
+}
+
 System_Boundary(dgaAPI, "S-ENDA Metadata Service Node") {
 
 Container(web_registrar, "Web Registrar", "", "Provides functionality for a user to register discovery metadata online.")
 Container(cli_registrar, "CLI Registrar", "", "Provides functionality for a user to register discovery metadata from a Command Line Interface (CLI).")
+Container(dcat_catalog_of_catalogs, "Catalog of catalogs in DCAT", "", "All DCAT service and dataset catalogs for one organization listed.")
 
 Container(metadata_store, "Metadata Store", "GeoDCAT-AP")
 Container(csapi, "Catalog Service API", "pycsw")
@@ -47,4 +52,5 @@ Rel(prod_status, metricsDS, "Harvest metrics")
 Rel(prod_status, metricsPH, "Harvest metrics")
 Rel(prod_status, csapi, "Get metadata")
 
+Rel(datanorge, dcat_catalog_of_catalogs, "Harvest metadata", "HTTP (DCAT)")
 @enduml

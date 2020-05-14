@@ -6,6 +6,7 @@ LAYOUT_LEFT_RIGHT
 System_Ext(geonorge, "GeoNorge", "description")
 System_Ext(searchengine, "Web Search Engines", "General web search engines plus google data search")
 System_Ext(datanorge, "Data Norge")
+System_Ext(api_met_no, "api.met.no")
 
 
 System_Boundary(senda, "S-ENDA Metadata Service") {
@@ -14,11 +15,9 @@ Container(eventengine, "Event Engine", "NATS")
 
 Container(data_store, "Metadata Store", "mocked as in-memory structure in Dynamic Geo-Assets container")
 Container(geoasset_api, "Dynamic Geo-Assets API", "custom written API for Metadata store")
-Container(api_met_no, "api.met.no", "Met Norway open data REST services gateway")
 
 Container(csapi, "Catalog Service API", "pyCSW + custom adapter for MMD")
 
-Rel(api_met_no, geoasset_api, "Register api_met_no DCAT-AP-NO catalog")
 Rel(csapi, geoasset_api, "Reads metadata updates", "REST (MMD)")
 Rel(geoasset_api, data_store, "Create/Read/Update/Delete metadata in the metadata store")
 Rel(geoasset_api, eventengine, "Listens in order to get last updated info", "CloudEvents")
