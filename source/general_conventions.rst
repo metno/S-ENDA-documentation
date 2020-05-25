@@ -1,4 +1,4 @@
-.. _general_conventions:
+.. _general-conventions:
 
 General conventions
 """""""""""""""""""
