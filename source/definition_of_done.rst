@@ -5,7 +5,7 @@ The following requirements must be satisfied before a task can be considered don
 
 * The solution is in agreement with the design
 * Software repositories are licensed (see :ref:`general-conventions`)
-* The headers of all software code files contain a reference to the repository license
+* The headers of all software code files contain a reference to the repository license (i.e., with a statement such as "License: This file is part of <repository>. <Repository> is licensed under <license name> (<link to license>)")
 * 100% test coverage of production code
 * Aim for 80% test coverage of prototype code
 * Continuous integration
