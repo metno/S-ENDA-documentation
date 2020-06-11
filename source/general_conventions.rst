@@ -1,3 +1,5 @@
+.. _general-conventions:
+
 General conventions
 """""""""""""""""""
 
