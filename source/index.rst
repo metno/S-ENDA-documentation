@@ -9,13 +9,18 @@ Welcome to S-ENDA's documentation!
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents
+   :caption: Background
 
    fair_documentation
    architecture
    metadata_management_heritage
    use_cases
    catalog_service_API
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Data Management Recipes
+
    dm_recipes
 
 .. toctree::
