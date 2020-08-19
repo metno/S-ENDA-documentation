@@ -7,18 +7,20 @@ There are 2 types of users:
  2. Those that consume data 
 
 Producers:
-* Volvo car data
-* Private weather station data (Netatmo)
-* Vegvesen
-* Weather model data
-* Ocean model data
-* Warnings forecast 
+* Volvo car data.
+* Private weather station data (Netatmo).
+* Vegvesen.
+* Weather model data.
+* Ocean model data.
+* Warnings forecast.
 
 
 Consumers:
-* Climate Predictions (klima i norge 2100)
-* Klimavakt (MET)
-* Developer 
+* Climate Predictions (klima i norge 2100).
+* Klimavakt (MET).
+* Developer.
+* Farmer. 
+* Event organizer. 
 
  
 .. toctree::
