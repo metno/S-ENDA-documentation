@@ -5,6 +5,7 @@ Users
 There are 2 types of users:
  1. Those that create / produce data
  2. Those that consume data 
+One can both consume data and produce it, or just have one of these roles.
 
 Producers:
 
