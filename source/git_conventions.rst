@@ -1,6 +1,7 @@
 GIT Conventions
 """"""""""""""""
 
+S-ENDA developers and team members are advised to use branches within the git repositories to write and update code. Externals may fork the repositories and submit pull requests to apply changes or new code.
 
 We adopt the following system for branching and merging:
 
