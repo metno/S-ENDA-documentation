@@ -10,7 +10,11 @@ S-ENDA concerns both software development and generation of dynamic geodata. In 
   * CC-BY 4.0 International (`<https://creativecommons.org/licenses/by/4.0/>`_), and 
   * The Norwegian Licence for Open Government Data (NLOD) (`<https://data.norge.no/nlod/en/2.0>`_)
 
-* The GNU General Public License (GPL) (`<https://www.gnu.org/licenses/gpl-3.0.en.html>`_) for software 
+* One of the following licenses for software:
+
+  * `Apache License, Version 2.0 <https://www.apache.org/licenses/LICENSE-2.0>`_
+  * `The MIT license <https://opensource.org/licenses/MIT>`_
+  * `The GNU General Public License (GPL) version 2 <https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html>`_ (all derivative work must be licensed with GPLv2)
 
 All software repositories should also establish general guidelines/conventions, such as:
 
