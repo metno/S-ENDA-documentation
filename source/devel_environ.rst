@@ -212,6 +212,10 @@ The `S-ENDA csw catalog service <https://github.com/metno/S-ENDA-csw-catalog-ser
 
 The csw-catalog-service is now started, and the catalog can be accessed on `<http://10.20.30.10>`_. Unless you have already ingested some metadata, the catalog should be empty.
 
+  .. note::
+
+    The git repositories with editable code is now available in the ``lib`` folder. If you need to add some repositories, please do it by editing the file ``build_container.dev.sh``
+
 * Access VM:
 
   .. code-block:: bash
