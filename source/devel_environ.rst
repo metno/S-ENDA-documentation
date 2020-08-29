@@ -251,5 +251,9 @@ You can now search the metadata catalog, e.g., using `QGIS <https://qgis.org/en/
 Contents of the S-ENDA-csw-catalog-service repository
 =====================================================
 
-* The file `pycsw_local.dev.cfg` is the pycsw configuration file used for local development. It contains configuration instructions to run the csw catalog service on your local Docker container which runs on the local virtual machine.
+* The file ``pycsw_local.dev.cfg`` is the pycsw configuration file used for local development. It contains configuration instructions to run the csw catalog service on your local Docker container which runs on the local virtual machine.
+* ``Vagrantfile`` is the vagrant configuration currently containing the development vm (TODO: add vm for non-development local testing)
+* ``Dockerfile.devel`` - Dockerfile for the development environment
+* ``build_container.dev.sh`` - shell script to add git repositories, run and set up volumes in the container ``catalog-dev``
+* ``docker-compose.*`` - docker-compose files to set up local test environment (not for development of tools) and run Continuous Integration
 
