@@ -197,3 +197,59 @@ To increase the capacity of the VM disk, you need the ``vagrant-disksize`` plugi
 
 ..
   # vim: set spell spelllang=en:
+
+--------------------------------------------------------------------------
+Development of the S-ENDA csw catalog service and relevant Python packages
+--------------------------------------------------------------------------
+
+The `S-ENDA csw catalog service <https://github.com/metno/S-ENDA-csw-catalog-service>`_ contains a Vagrant virtual machine configuration and a Docker container to run the catalog in a development environment that allows easy debugging of the relevant tools used by the service. All tools are downloaded to a folder called ``lib``, which is added in the vagrant shared folder (the root folder of the `S-ENDA csw catalog service <https://github.com/metno/S-ENDA-csw-catalog-service>`_ repository). You can then use your preferred editor to debug, change and update code. This is not intended for a regular user, but for people who wants to extend functionality or debug software.
+
+* Start VM:
+
+  .. code-block:: bash
+
+    vagrant up
+
+The csw-catalog-service is now started, and the catalog can be accessed on `<http://10.20.30.10>`_. Unless you have already ingested some metadata, the catalog should be empty.
+
+* Access VM:
+
+  .. code-block:: bash
+
+    vagrant ssh
+
+* Enter the docker container to run some code
+
+  .. code-block:: bash
+
+    sudo docker exec -it catalog-dev bash
+
+* Copy an example MMD xml file and test metadata ingestion
+
+  .. code-block:: bash
+
+    cp mmd/input-examples/sentinel-1-mmd.xml mmd_in/
+    cd mmd/bin/
+    # Translate from MMD to ISO19139
+    ./sentinel1_mmd_to_csw_iso19139.py -i ../../mmd_in -o ../../iso_out # OBS: the way to do this will change - NEEDS UPDATE
+    cd ../..
+    # Ingest the ISO19139 record(s)
+    python3 /usr/bin/pycsw-admin.py -c load_records -f /etc/pycsw/pycsw.cfg -p iso_out -r -y
+
+You can now search the metadata catalog, e.g., using `QGIS <https://qgis.org/en/site/>`_ (v3.14 or higher):
+
+* `Download and install QGIS <https://qgis.org/en/site/forusers/download.html>`_
+* Run ``qgis``
+* Select ``Web > MetaSearch > MetaSearch`` menu item
+* Select ``Services > New``
+* Type, e.g., ``testcatalog`` for the name
+* Type ``http://10.20.30.10`` for the URL
+* Under the ``Search`` tab, you can then add search parameters, click ``Search``, and get a list of available datasets.
+* Select a dataset
+* Click ``Add Data`` and select a WMS channel - the data will then be displayed in QGIS
+
+Contents of the S-ENDA-csw-catalog-service repository
+=====================================================
+
+* The file `pycsw_local.dev.cfg` is the pycsw configuration file used for local development. It contains configuration instructions to run the csw catalog service on your local Docker container which runs on the local virtual machine.
+
