@@ -202,15 +202,21 @@ To increase the capacity of the VM disk, you need the ``vagrant-disksize`` plugi
 Development of the S-ENDA csw catalog service and relevant Python packages
 --------------------------------------------------------------------------
 
+.. _local-developmen-env:
+
+Local development environment
+=============================
+
 The `S-ENDA csw catalog service <https://github.com/metno/S-ENDA-csw-catalog-service>`_ contains a Vagrant virtual machine configuration and a Docker container to run the catalog in a development environment that allows easy debugging of the relevant tools used by the service. All tools are downloaded to a folder called ``lib``, which is added in the vagrant shared folder (the root folder of the `S-ENDA csw catalog service <https://github.com/metno/S-ENDA-csw-catalog-service>`_ repository). You can then use your preferred editor to debug, change and update code. This is not intended for a regular user, but for people who wants to extend functionality or debug software.
 
+* Add MMD test files to ``lib/input_mmd_xml_files`` (this directory is accessible by the pycsw ``load_records`` command executed in ``catalog-service-api/pycsw_setup.sh``)
 * Start VM:
 
   .. code-block:: bash
 
-    vagrant up
+    vagrant up localdev
 
-The csw-catalog-service is now started, and the catalog can be accessed on `<http://10.20.30.10>`_. Unless you have already ingested some metadata, the catalog should be empty.
+The csw-catalog-service is now started, and the catalog can be accessed on `<http://10.20.30.11>`_. Unless you have already ingested some metadata, the catalog should be empty.
 
   .. note::
 
@@ -220,7 +226,7 @@ The csw-catalog-service is now started, and the catalog can be accessed on `<htt
 
   .. code-block:: bash
 
-    vagrant ssh
+    vagrant ssh localdev
 
 * Enter the docker container to run some code
 
@@ -246,18 +252,20 @@ You can now search the metadata catalog, e.g., using `QGIS <https://qgis.org/en/
 * Run ``qgis``
 * Select ``Web > MetaSearch > MetaSearch`` menu item
 * Select ``Services > New``
-* Type, e.g., ``testcatalog`` for the name
-* Type ``http://10.20.30.10`` for the URL
+* Type, e.g., ``localdev`` for the name
+* Type ``http://10.20.30.11`` for the URL
 * Under the ``Search`` tab, you can then add search parameters, click ``Search``, and get a list of available datasets.
 * Select a dataset
 * Click ``Add Data`` and select a WMS channel - the data will then be displayed in QGIS
 
-Contents of the S-ENDA-csw-catalog-service repository
-=====================================================
+..
+  Contents of the S-ENDA-csw-catalog-service repository
+  =====================================================
 
-* The file ``pycsw_local.dev.cfg`` is the pycsw configuration file used for local development. It contains configuration instructions to run the csw catalog service on your local Docker container which runs on the local virtual machine.
-* ``Vagrantfile`` is the vagrant configuration currently containing the development vm (TODO: add vm for non-development local testing)
-* ``Dockerfile.devel`` - Dockerfile for the development environment
-* ``build_container.dev.sh`` - shell script to add git repositories, run and set up volumes in the container ``catalog-dev``
-* ``docker-compose.*`` - docker-compose files to set up local test environment (not for development of tools) and run Continuous Integration
+..
+  * The file ``pycsw_local.dev.cfg`` is the pycsw configuration file used for local development. It contains configuration instructions to run the csw catalog service on your local Docker container which runs on the local virtual machine.
+  * ``Vagrantfile`` is the vagrant configuration currently containing the development vm (TODO: add vm for non-development local testing)
+  * ``Dockerfile.devel`` - Dockerfile for the development environment
+  * ``build_container.dev.sh`` - shell script to add git repositories, run and set up volumes in the container ``catalog-dev``
+  * ``docker-compose.*`` - docker-compose files to set up local test environment (not for development of tools) and run Continuous Integration
 
