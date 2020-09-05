@@ -113,10 +113,26 @@ DOI registration at MET
 Search context
 --------------
 
-User searches the catalog with opensearch
+User searches the catalog with OpenSearch
 =========================================
 
-TODO: test and describe..
+The ``localtest`` and ``localdev`` virtual machines provide OpenSearch support through `pyCSW <https://github.com/geopython/pycsw>`_. To test OpenSearch via the browser, start the ``localtest`` vm (``vagrant up localtest``) and go to the following address:
+
+* `<http://10.20.30.10/pycsw/csw.py?mode=opensearch&service=CSW&version=2.0.2&request=GetCapabilities>`_
+
+This will return a description document of the catalog service. The `URL` field in the description document is a template format that can be used to represent a parameterized form of the search. The search client will process the URL template and attempt to replace each instance of a template parameter, generally represented in the form {name}, with a value determined at query time (`OpenSearch URL template syntax <https://github.com/dewitt/opensearch/blob/master/opensearch-1-1-draft-6.md#opensearch-url-template-syntax>`_). The question mark following any search parameter means that the parameter is optional.
+
+We can now find all datasets in the catalog:
+
+* `<http://10.20.30.10/?mode=opensearch&service=CSW&version=2.0.2&request=GetRecords&elementsetname=full&typenames=csw:Record&resulttype=results>`_
+
+Or datasets within a given time span:
+
+* `<http://10.20.30.10/?mode=opensearch&service=CSW&version=2.0.2&request=GetRecords&elementsetname=full&typenames=csw:Record&resulttype=results&time=2000-01-01/2020-09-01>`_
+
+Or, datasets from any of the Sentinel satellites:
+
+* `<http://10.20.30.10/?mode=opensearch&service=CSW&version=2.0.2&request=GetRecords&elementsetname=full&typenames=csw:Record&resulttype=results&q=sentinel>`_
 
 User searches web portals
 =========================
