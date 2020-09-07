@@ -209,14 +209,12 @@ Local development environment
 
 The `S-ENDA csw catalog service <https://github.com/metno/S-ENDA-csw-catalog-service>`_ contains a Vagrant virtual machine configuration and a Docker container to run the catalog in a development environment that allows easy debugging of the relevant tools used by the service. All tools are downloaded to a folder called ``lib``, which is added in the vagrant shared folder (the root folder of the `S-ENDA csw catalog service <https://github.com/metno/S-ENDA-csw-catalog-service>`_ repository). You can then use your preferred editor to debug, change and update code. This is not intended for a regular user, but for people who wants to extend functionality or debug software.
 
-* Add MMD test files to ``lib/input_mmd_xml_files`` (this directory is accessible by the pycsw ``load_records`` command executed in ``catalog-service-api/pycsw_setup.sh``)
+* Add MMD test files to ``lib/input_mmd_xml_files``
 * Start VM:
 
   .. code-block:: bash
 
     vagrant up localdev
-
-The csw-catalog-service is now started, and the catalog can be accessed on `<http://10.20.30.11>`_. Unless you have already ingested some metadata, the catalog should be empty.
 
   .. note::
 
@@ -228,25 +226,37 @@ The csw-catalog-service is now started, and the catalog can be accessed on `<htt
 
     vagrant ssh localdev
 
+* Rebuild the docker container (if necessary)
+
+  .. code-block:: bash
+
+    cd /vagrant
+    sudo ./build_container.localdev.sh
+
+.. note::
+
+  The Docker container (called ``catalog-dev``) is started with ``sleep 1d``. This means that it will run in the background for 1 day after running the ``build_container.localdev.sh`` script. This is a "hack" to be able to enter the container and run ``/usr/local/bin/entrypoint.py`` interactively. If you cannot access the container with ``sudo docker exec ...``, try rerunning the script again.
+
 * Enter the docker container to run some code
 
   .. code-block:: bash
 
     sudo docker exec -it catalog-dev bash
 
-* Copy an example MMD xml file and test metadata ingestion
+* Translate from MMD to ISO19139, ingest metadata, and run the local web server
 
   .. code-block:: bash
 
-    cp mmd/input-examples/sentinel-1-mmd.xml mmd_in/
     cd mmd/bin/
     # Translate from MMD to ISO19139
     ./sentinel1_mmd_to_csw_iso19139.py -i ../../mmd_in -o ../../iso_out # OBS: the way to do this will change - NEEDS UPDATE
     cd ../..
     # Ingest the ISO19139 record(s)
     python3 /usr/bin/pycsw-admin.py -c load_records -f /etc/pycsw/pycsw.cfg -p iso_out -r -y
+    # Start the web server
+    python3 /usr/local/bin/entrypoint.py --reload
 
-You can now search the metadata catalog, e.g., using `QGIS <https://qgis.org/en/site/>`_ (v3.14 or higher):
+The csw-catalog-service is now started, and the catalog can be accessed on `<http://10.20.30.11>`_. Unless you have already ingested some metadata, the catalog should be empty. You can search the metadata catalog using, e.g., `QGIS <https://qgis.org/en/site/>`_ (v3.14 or higher):
 
 * `Download and install QGIS <https://qgis.org/en/site/forusers/download.html>`_
 * Run ``qgis``
@@ -257,6 +267,25 @@ You can now search the metadata catalog, e.g., using `QGIS <https://qgis.org/en/
 * Under the ``Search`` tab, you can then add search parameters, click ``Search``, and get a list of available datasets.
 * Select a dataset
 * Click ``Add Data`` and select a WMS channel - the data will then be displayed in QGIS
+
+If you want to debug the code, you can add break points and access the running process in the terminal window where the web server was started (``python3 /usr/local/bin/entrypoint.py --reload``).
+
+Breakpoints are set by adding the following lines somewhere in the Python code:
+
+.. code-block:: bash
+
+  import ipdb
+  ipdb.set_trace()
+
+To run tests:
+
+.. code-block:: bash
+
+  py.test -m unit
+
+.. note::
+
+  Pytest runs all available test code. Currently it fails on ``/home/pycsw/mmd/tests/test__nc_to_mmd.py`` because netcdf4 is not installed. This is on the todo-list... See `<https://github.com/metno/S-ENDA-csw-catalog-service/issues/2>`_
 
 ..
   Contents of the S-ENDA-csw-catalog-service repository
