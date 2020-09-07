@@ -1,14 +1,19 @@
+===============================
 Heritage of metadata management
-""""""""""""""""""""""""""""""""
-
-MET Norway
-==========
+===============================
 
 .. toctree::
    :maxdepth: 1
-   :caption: Contents
 
    meta_heritage_template
+
+----------
+MET Norway
+----------
+
+.. toctree::
+   :maxdepth: 1
+
    service_catalog
    stinfosys
    api.met.no

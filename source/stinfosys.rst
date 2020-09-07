@@ -1,12 +1,12 @@
-Heritage system: Stinfosys
-"""""""""""""""""""""""""""
+Stinfosys
+=========
 
 .. Insert the name of the heritage metadata system in the above heading. No   
    other text should go under
    this heading.
  
 Responsible (Who?)
-==================
+------------------
 
 .. Required. Who is responsible for this heritage system. This can be a 
    group, a role or an administrative unit. Try to avoid linking to specific  
@@ -19,7 +19,7 @@ Responsible (Who?)
  * Content management: OKD
 
 Description (What?)
-===================
+-------------------
 
 .. Required. Short description of the system: 
    - what types of metadata is stored in this system.
@@ -38,7 +38,7 @@ and a small amount of information for some stations outside Norway.
 * Message: communication of data from the stations to MET
 
 Documentation (Where/how?)
-==========================
+--------------------------
 
 .. Required. Links to system dokumentation as comments, mark links that are 
    only available for internal users
@@ -58,7 +58,7 @@ written in Norwegian.
 
 
 Conditions and dependencies (why?)
-==================================
+----------------------------------
 
 .. Required. Please add a short paragraph explaining in words why the system is as it is
 
