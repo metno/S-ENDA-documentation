@@ -256,7 +256,7 @@ The `S-ENDA csw catalog service <https://github.com/metno/S-ENDA-csw-catalog-ser
     # Ingest the ISO19139 record(s)
     python3 /usr/bin/pycsw-admin.py -c load_records -f /etc/pycsw/pycsw.cfg -p iso_out -r -y
     # Start the web server
-    python3 /usr/local/bin/entrypoint.py --reload
+    python3 /usr/local/bin/entrypoint.py
 
 The csw-catalog-service is now started, and the catalog can be accessed on `<http://10.20.30.11>`_. Unless you have already ingested some metadata, the catalog should be empty. You can search the metadata catalog using, e.g., `QGIS <https://qgis.org/en/site/>`_ (v3.14 or higher):
 
