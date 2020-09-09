@@ -44,13 +44,18 @@ When the new MMD file is added to the metadata repository, it will be translated
 Local test environment
 ----------------------
 
-This vm is used to test your MMD XML-files locally before pushing them to the main discovery metadata repository. Put your test files in the folder ``lib/input_mmd_xml_files``, then:
+This vm is used to test your MMD XML-files locally before pushing them to the main discovery metadata repository. 
 
 * Start VM:
 
   .. code-block:: bash
 
     vagrant up localtest
+
+Put your test files in the folder ``lib/input_mmd_xml_files``, then:
+
+  .. code-block:: bash
+
     vagrant ssh localtest
     cd /vagrant
     sudo MMD_IN=/vagrant/lib/input_mmd_xml_files ./deploy-metadata.sh
