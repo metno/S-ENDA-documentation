@@ -130,6 +130,10 @@ Or datasets within a given time span:
 
 * `<http://10.20.30.10/?mode=opensearch&service=CSW&version=2.0.2&request=GetRecords&elementsetname=full&typenames=csw:Record&resulttype=results&time=2000-01-01/2020-09-01>`_
 
+.. note::
+
+  pyCSW opensearch time queries do not relate to the "expected" ``start_date`` and ``end_date`` MMD fields, or the associated ``beginPosition`` and ``endPosition``, in the pyCSW ISO19139 profile. We are working to understand and handle this...
+
 Or, datasets from any of the Sentinel satellites:
 
 * `<http://10.20.30.10/?mode=opensearch&service=CSW&version=2.0.2&request=GetRecords&elementsetname=full&typenames=csw:Record&resulttype=results&q=sentinel>`_

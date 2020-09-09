@@ -279,6 +279,11 @@ Breakpoints are set by adding the following lines somewhere in the Python code:
   import ipdb
   ipdb.set_trace()
 
+Search, e.g., datasets within a given time span:
+
+* http://10.20.30.11/?mode=opensearch&service=CSW&version=2.0.2&request=GetRecords&elementsetname=full&typenames=csw:Record&resulttype=results&time=2000-01-01/2020-09-01
+
+
 To run tests:
 
 .. code-block:: bash
@@ -288,6 +293,7 @@ To run tests:
 .. note::
 
   Pytest runs all available test code. Currently it fails on ``/home/pycsw/mmd/tests/test__nc_to_mmd.py`` because netcdf4 is not installed. This is on the todo-list... See `<https://github.com/metno/S-ENDA-csw-catalog-service/issues/2>`_
+
 
 ..
   Contents of the S-ENDA-csw-catalog-service repository
