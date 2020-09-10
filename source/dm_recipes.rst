@@ -6,8 +6,40 @@ Data Management Recipes
 Register context
 ----------------
 
-Data Provider registers dataset
-===============================
+Tips for generating MMD files from scratch (best practices)
+===========================================================
+
+This is a list of best practices when generating MMD files from other sources. Sources may include internal systems and less standardized file formats.
+
+1. Get familiar with the MMD format
+-----------------------------------
+
+A full specification of the MMD format can be found in the git repository in the doc folder as .pdf, .adoc and .html. This specification also includes the controlled vocabularies needed for some of the metadata elements in the format.
+
+2. Decide about the granularity of your datasets
+------------------------------------------------
+
+There is no set definition of a dataset in S-ENDA or in the standards the S-ENDA project is following. The Data Provider may decide themselves what a useful definition of a dataset is. However, the decision about the granulation of the dataset should keep the needs of the users of the discovery metadata in mind:
+
+* A user searching for data will, in most cases, search for a given type of data, in a given timeframe, in a given location. The discovery metadata should be set up in such a way that the user will be able to find the data he or she is interested in when searching this way. It is useful to review the FAIR principles and assess your evaluation against them before deciding about the dataset granulation.
+* Deciding the granulation of your datasets before starting the translation and registration work will save time later in the process. 
+  
+..
+  The decision process MET went through when deciding on the granulation of the definition of a dataset from their surface observation network can be found here.
+
+3. Link the MMD metadata elements to your metadata
+--------------------------------------------------
+
+It is a useful exercise to make an overview of the connection between your metadata and the metadata elements in MMD. Take particular care to check that the required fields will be filled from your source. You might need to get some of the metadata from other sources or generate them in another way if the required metadata fields are not available from the source you are working from.
+
+4. Use controlled vocabularies
+------------------------------
+
+Some of the metadata elements require use of controlled vocabularies. These can be found in chapter 4 of the MMD documentation. Which controlled vocabulary to use is described under the appropriate metadata element. The information that exists in your source for these metadata elements are not necessarily in the same "formats" as these controlled vocabularies. In that case, one needs to create mappings between the information that exist for these metadata elements in the source to the appropriate controlled vocabulary, or suggest updates to the controlled vocabularies in MMD.
+
+
+How to test MMD records and register datasets
+=============================================
 
 In order to make a dataset findable, a dataset must be registered in a searchable catalog with appropriate metadata. The (meta)data catalog is indexed and exposed through `CSW <https://en.wikipedia.org/wiki/Catalogue_Service_for_the_Web>`_. 
 
@@ -117,6 +149,8 @@ DOI registration at MET
 =======================
 
 .. include:: doi_at_met.rst
+
+.. _`search-context`:
 
 --------------
 Search context

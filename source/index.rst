@@ -15,6 +15,7 @@ Welcome to S-ENDA's documentation!
    architecture
    metadata_management_heritage
    use_cases
+   catalog
 
 ..
    catalog_service_API
