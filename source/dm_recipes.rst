@@ -52,13 +52,13 @@ This vm is used to test your MMD XML-files locally before pushing them to the ma
 
     vagrant up localtest
 
-Put your test files in the folder ``lib/input_mmd_xml_files``, then:
+Put your test files in the folder ``lib/input_mmd_files``, then:
 
   .. code-block:: bash
 
     vagrant ssh localtest
     cd /vagrant
-    sudo MMD_IN=/vagrant/lib/input_mmd_xml_files ./deploy-metadata.sh
+    sudo MMD_IN=/vagrant/lib/input_mmd_files ./deploy-metadata.sh
 
 .. note::
 

@@ -209,7 +209,7 @@ Local development environment
 
 The `S-ENDA csw catalog service <https://github.com/metno/S-ENDA-csw-catalog-service>`_ contains a Vagrant virtual machine configuration and a Docker container to run the catalog in a development environment that allows easy debugging of the relevant tools used by the service. All tools are downloaded to a folder called ``lib``, which is added in the vagrant shared folder (the root folder of the `S-ENDA csw catalog service <https://github.com/metno/S-ENDA-csw-catalog-service>`_ repository). You can then use your preferred editor to debug, change and update code. This is not intended for a regular user, but for people who wants to extend functionality or debug software.
 
-* Add MMD test files to ``lib/input_mmd_xml_files``
+* Add MMD test files to ``lib/input_mmd_files``
 * Start VM:
 
   .. code-block:: bash
