@@ -1,12 +1,8 @@
 api.met.no
-^^^^^^^^^^^
-
-Heritage system: api.met.no
-"""""""""""""""""""""""""""
-
+==========
 
 Responsible (Who?)
-==================
+------------------
 
 .. Required. Who is responsible for this heritage system. This can be a
    group, a role or an administrative unit. Try to avoid linking to specific
@@ -15,7 +11,7 @@ Responsible (Who?)
 MET Norway, IT Department, Team Punkt.
 
 Description (What?)
-===================
+-------------------
 
 .. Required. Short description of the system:
    - what types of metadata is stored in this system.
@@ -36,7 +32,7 @@ but its not clear at the moment weather apis.json will co-exist with DCAT or be 
 
 
 Documentation(Where/how?)
-=========================
+-------------------------
 
 .. Required. Links to system dokumentation as comments, mark links that are
    only available for internal users
@@ -44,7 +40,7 @@ Documentation(Where/how?)
 api.met.no is documented with swagger and additional free text in html. See https://api.met.no for more information.
 
 Conditions and dependencies(why?)
-=================================
+---------------------------------
 
 .. Required. Please add a short paragraph explaining in words why the system is as it is
 

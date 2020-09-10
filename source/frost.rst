@@ -1,5 +1,5 @@
-Heritage system: Frost
-""""""""""""""""""""""
+Frost
+=====
 
 .. Insert the name of the heritage metadata system in the above heading. No   
    other text should go under
@@ -7,7 +7,7 @@ Heritage system: Frost
 
 
 Responsible (Who?)
-==================
+------------------
 
 .. Required. Who is responsible for this heritage system. This can be a 
    group, a role or an administrative unit. Try to avoid linking to specific  
@@ -16,7 +16,7 @@ Responsible (Who?)
 MET Norway, Department of Observation and Climate, Division for Observation quality and data processing.
 
 Description (What?)
-===================
+-------------------
 
 .. Required. Short description of the system: 
    - what types of metadata is stored in this system.
@@ -30,7 +30,7 @@ from KDVH (Klimadatavarehuset). An element is for example temperature at 2m or w
 a specific location and at a time.
 
 Documentation(Where/how?)
-=========================
+-------------------------
 
 .. Required. Links to system dokumentation as comments, mark links that are 
    only available for internal users
@@ -38,7 +38,7 @@ Documentation(Where/how?)
 Frost is documented with swagger. See https://frost.met.no/api.html for more information.
 
 Conditions and dependencies(why?)
-=================================
+---------------------------------
 
 .. Required. Please add a short paragraph explaining in words why the system is as it is
 

@@ -9,36 +9,143 @@ Register context
 Data Provider registers dataset
 ===============================
 
-In order to make a dataset findable, a dataset must be registered in S-ENDA Metadata Service with appropriate metadata, which is indexed and exposed in CSW. The procedure is as follows:
+In order to make a dataset findable, a dataset must be registered in a searchable catalog with appropriate metadata. The (meta)data catalog is indexed and exposed through `CSW <https://en.wikipedia.org/wiki/Catalogue_Service_for_the_Web>`_. 
 
-#. Create MMD XML record of metadata
+The procedure to register a dataset in the catalog is as follows:
+
+#. Create `MMD <https://htmlpreview.github.io/?https://github.com/metno/mmd/blob/master/doc/mmd-specification.html>`_ XML record of metadata
 #. Translate from MMD to ISO19115
 #. Index in CSW
 #. Expose ISO19115 metadata via CSW to the internet
 
-This is done with the s-enda-find Virtual Machine (VM), for which a Vagrant configuration is available in https://github.com/metno/S-ENDA-Prototype.
+We have prepared Virtual Machine (VM) configurations and Docker containers to handle points 2-4 above.
 
-**TODO:** We need to describe how to do this:
+..
+  Note to reviewers: Please consider if this makes sense, and can be done now
 
-* manually in the VM
-* through the geoassets API
+The workflow which a data provider should follow in order to add new datasets to the common metadata catalog service is then as follows:
 
-S-ENDA Metadata Service gives feedback
-======================================
+#. Create `MMD <https://htmlpreview.github.io/?https://github.com/metno/mmd/blob/master/doc/mmd-specification.html>`_ XML record of metadata
+#. Clone the `S-ENDA-csw-catalog <https://github.com/metno/S-ENDA-csw-catalog-service>`_ repository
+#. Test your MMD XML file(s) using the localtest vm (:ref:`local-test-env`)
+#. Add an issue to the `S-ENDA-metadata <https://github.com/metno/S-ENDA-metadata>`_ repository (e.g., "New foo model dataset" [the issue is numbered, e.g., 131])
+#. Clone the `S-ENDA-metadata <https://github.com/metno/S-ENDA-metadata>`_ repository
+#. Create an issue branch: ``git branch issue131_foo_dataset``
+#. Add your MMD file in the new branch, then commit, push, and create a pull request
+#. A reviewer will evaluate the new dataset, and provide feedback or direcly accept and merge
 
-S-ENDA Metadata Service has two main types of feedback for the data provider:
+..
+  Note to reviewers: I now interpret http://senda1.lab-a.met.no as a staging server. How do we go from that to production, and what needs to be done? Please review and/or add issues in https://github.com/metno/S-ENDA-project-plan..
 
-#. Questions/praise/bug reports etc. from users.
-#. Operational metrics about downloads and production runs for each dataset.
+When the new MMD file is added to the metadata repository, it will be translated to a `pyCSW <https://github.com/geopython/pycsw>`_ ISO19139 profile, indexed in a postgis database, and exposed to the public via the `(meta)data catalog <http://senda1.lab-a.met.no/>`_ in the same way as demonstrated in the localtest vm (:ref:`local-test-env`).
 
-Feedback from users would come as either e-mails into a ticketing system, or as messages in a forum.
+.. _`local-test-env`:
 
-Operational metrics will be harvested from metrics server (e.g Prometheus),
-giving the data provider information such as number of downloads pr. day for each type of service(WMS, DAP etc.) and delays in producing the datasets.
+Local test environment
+----------------------
+
+This vm is used to test your MMD XML-files locally before pushing them to the main discovery metadata repository. 
+
+* Start VM:
+
+  .. code-block:: bash
+
+    vagrant up localtest
+
+Put your test files in the folder ``lib/input_mmd_xml_files``, then:
+
+  .. code-block:: bash
+
+    vagrant ssh localtest
+    cd /vagrant
+    sudo MMD_IN=/vagrant/lib/input_mmd_xml_files ./deploy-metadata.sh
+
+.. note::
+
+  The three last commands above should be handled through the provisioning but this currently does not work...
+
+..
+  * Check that the postgis db is added
+
+..
+  .. code-block:: bash
+
+..
+    vagrant ssh localtest
+    cd /vagrant/
+    sudo docker-compose exec postgis bash
+    psql -U postgis csw_db
+    \dt
+    select * from records;
+
+The csw-catalog-service is now started, and the catalog can be accessed on `<http://10.20.30.10>`_. Note that there is no point in debugging or changing code used in this environment. It is only meant to test the content of `S-ENDA-metadata <https://github.com/metno/S-ENDA-metadata>`_. If you want to modify code used in the catalog service, please refer to :ref:`local-developmen-env`.
+
+Search the metadata catalog using `QGIS <https://qgis.org/en/site/>`_ (v3.14 or higher):
+
+* `Download and install QGIS <https://qgis.org/en/site/forusers/download.html>`_
+* Run ``qgis``
+* Select ``Web > MetaSearch > MetaSearch`` menu item
+* Select ``Services > New``
+* Type, e.g., ``localtest`` for the name
+* Type ``http://10.20.30.10`` for the URL
+* Under the ``Search`` tab, you can then add search parameters, click ``Search``, and get a list of available datasets.
+* Select a dataset
+* Click ``Add Data`` and select a WMS channel - the data will then be displayed in QGIS
+
+.. note::
+
+  If you get an error about unexpected keyword argument 'auth' when searching for data, it is most likely due to a bug in QGIS: `<https://github.com/qgis/QGIS/issues/38074>`_
+
+..
+  S-ENDA Metadata Service gives feedback
+  ======================================
+
+..
+  S-ENDA Metadata Service has two main types of feedback for the data provider:
+
+..
+  #. Questions/praise/bug reports etc. from users.
+  #. Operational metrics about downloads and production runs for each dataset.
+
+..
+  Feedback from users would come as either e-mails into a ticketing system, or as messages in a forum.
+
+..
+  Operational metrics will be harvested from metrics server (e.g Prometheus), giving the data provider information such as number of downloads pr. day for each type of service(WMS, DAP etc.) and delays in producing the datasets.
+
+DOI registration at MET
+=======================
+
+.. include:: doi_at_met.rst
 
 --------------
 Search context
 --------------
+
+User searches the catalog with OpenSearch
+=========================================
+
+The ``localtest`` and ``localdev`` virtual machines provide OpenSearch support through `pyCSW <https://github.com/geopython/pycsw>`_. To test OpenSearch via the browser, start the ``localtest`` vm (``vagrant up localtest``) and go to the following address:
+
+* `<http://10.20.30.10/pycsw/csw.py?mode=opensearch&service=CSW&version=2.0.2&request=GetCapabilities>`_
+
+This will return a description document of the catalog service. The `URL` field in the description document is a template format that can be used to represent a parameterized form of the search. The search client will process the URL template and attempt to replace each instance of a template parameter, generally represented in the form {name}, with a value determined at query time (`OpenSearch URL template syntax <https://github.com/dewitt/opensearch/blob/master/opensearch-1-1-draft-6.md#opensearch-url-template-syntax>`_). The question mark following any search parameter means that the parameter is optional.
+
+We can now find all datasets in the catalog:
+
+* `<http://10.20.30.10/?mode=opensearch&service=CSW&version=2.0.2&request=GetRecords&elementsetname=full&typenames=csw:Record&resulttype=results>`_
+
+Or datasets within a given time span:
+
+* `<http://10.20.30.10/?mode=opensearch&service=CSW&version=2.0.2&request=GetRecords&elementsetname=full&typenames=csw:Record&resulttype=results&time=2000-01-01/2020-09-01>`_
+
+.. note::
+
+  pyCSW opensearch time queries do not relate to the "expected" ``start_date`` and ``end_date`` MMD fields, or the associated ``beginPosition`` and ``endPosition``, in the pyCSW ISO19139 profile. We are working to understand and handle this...
+
+Or, datasets from any of the Sentinel satellites:
+
+* `<http://10.20.30.10/?mode=opensearch&service=CSW&version=2.0.2&request=GetRecords&elementsetname=full&typenames=csw:Record&resulttype=results&q=sentinel>`_
 
 User searches web portals
 =========================
@@ -48,13 +155,10 @@ GeoNorge.no
 
 **TODO:** describe how to search in geonorge, possibly with screenshots
 
-User searches S-ENDA Metadata Service system
-============================================
+User searches from QGIS
+=======================
 
-CSW Protocol
-------------
-
-A prototype catalogue service of S-ENDA Metadata Service is available at http://senda1.lab-a.met.no:8000/. This can, e.g., be used from QGIS, as follows:
+A staging server for the CSW catalog service is available at http://senda1.lab-a.met.no:8000/. This can be used from QGIS, as follows:
 
 * Select ``Web > MetaSearch > MetaSearch`` menu item
 * Select ``Services > New``
@@ -63,8 +167,3 @@ A prototype catalogue service of S-ENDA Metadata Service is available at http://
 
 Under the ``Search`` tab, you can then add search parameters, click ``Search``, and get a list of available datasets.
 
------------------------
-DOI registration at MET
------------------------
-
-.. include:: doi_at_met.rst
