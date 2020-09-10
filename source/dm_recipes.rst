@@ -92,6 +92,10 @@ Search the metadata catalog using `QGIS <https://qgis.org/en/site/>`_ (v3.14 or 
 * Select a dataset
 * Click ``Add Data`` and select a WMS channel - the data will then be displayed in QGIS
 
+.. note::
+
+  If you get an error about unexpected keyword argument 'auth' when searching for data, it is most likely due to a bug in QGIS: `<https://github.com/qgis/QGIS/issues/38074>`_
+
 ..
   S-ENDA Metadata Service gives feedback
   ======================================
