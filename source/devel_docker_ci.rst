@@ -259,7 +259,7 @@ Make a note of ``FIXME`` and ``TODO``. ``TODO`` marks where you need to update w
 Set Up Unit Testing
 -------------------
 
-Unit testing can be done in the same way as building containers. Please see a working example in the repository `steingod / mmd <https://github.com/steingod/mmd>`_.
+Unit testing can be done in the same way as building containers. Please see a working example in the repository `metno/mmd <https://github.com/metno/mmd>`_.
 
 Take note of the following files in the repository:
 
