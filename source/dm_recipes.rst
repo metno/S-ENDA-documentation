@@ -55,13 +55,13 @@ We have prepared Virtual Machine (VM) configurations and Docker containers to ha
 ..
   Note to reviewers: Please consider if this makes sense, and can be done now
 
-The workflow which a data provider should follow in order to add new datasets to the common metadata catalog service is then as follows:
+The workflow which a MET data provider should follow in order to add new datasets to the common metadata catalog service is then as follows:
 
 #. Create `MMD <https://htmlpreview.github.io/?https://github.com/metno/mmd/blob/master/doc/mmd-specification.html>`_ XML record of metadata
 #. Clone the `S-ENDA-csw-catalog <https://github.com/metno/S-ENDA-csw-catalog-service>`_ repository
 #. Test your MMD XML file(s) using the localtest vm (:ref:`local-test-env`)
-#. Add an issue to the `S-ENDA-metadata <https://github.com/metno/S-ENDA-metadata>`_ repository (e.g., "New foo model dataset" [the issue is numbered, e.g., 131])
-#. Clone the `S-ENDA-metadata <https://github.com/metno/S-ENDA-metadata>`_ repository
+#. Add an issue to the `S-ENDA-mmd-xml <https://gitlab.met.no/mmd/s-enda-mmd-xml>`_ repository (e.g., "New foo model dataset" [the issue is numbered, e.g., 131]; note that this is only available inside the network of MET Norway)
+#. Clone the `S-ENDA-mmd-xml <https://gitlab.met.no/mmd/s-enda-mmd-xml>`_ repository
 #. Create an issue branch: ``git branch issue131_foo_dataset``
 #. Add your MMD file in the new branch, then commit, push, and create a pull request
 #. A reviewer will evaluate the new dataset, and provide feedback or direcly accept and merge
@@ -110,7 +110,7 @@ Put your test files in the folder ``lib/input_mmd_files``, then:
     \dt
     select * from records;
 
-The csw-catalog-service is now started, and the catalog can be accessed on `<http://10.20.30.10>`_. Note that there is no point in debugging or changing code used in this environment. It is only meant to test the content of `S-ENDA-metadata <https://github.com/metno/S-ENDA-metadata>`_. If you want to modify code used in the catalog service, please refer to :ref:`local-developmen-env`.
+The csw-catalog-service is now started, and the catalog can be accessed on `<http://10.20.30.10>`_. Note that there is no point in debugging or changing code used in this environment. It is only meant to test the your MMD files. If you want to modify code used in the catalog service, please refer to :ref:`local-developmen-env`.
 
 Search the metadata catalog using `QGIS <https://qgis.org/en/site/>`_ (v3.14 or higher):
 
