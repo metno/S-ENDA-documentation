@@ -159,6 +159,9 @@ Search context
 User searches the catalog with OpenSearch
 =========================================
 
+Local testing
+-------------
+
 The ``localtest`` and ``localdev`` virtual machines provide OpenSearch support through `pyCSW <https://github.com/geopython/pycsw>`_. To test OpenSearch via the browser, start the ``localtest`` vm (``vagrant up localtest``) and go to the following address:
 
 * `<http://10.20.30.10/pycsw/csw.py?mode=opensearch&service=CSW&version=2.0.2&request=GetCapabilities>`_
@@ -180,6 +183,14 @@ Or datasets within a given time span:
 Or, datasets from any of the Sentinel satellites:
 
 * `<http://10.20.30.10/?mode=opensearch&service=CSW&version=2.0.2&request=GetRecords&elementsetname=full&typenames=csw:Record&resulttype=results&q=sentinel>`_
+
+Online catalog
+---------------
+
+For searching the online metadata catalog, please refer to `<http://senda1.lab-a.met.no/>`_ instead of `<http://10.20.30.10/>`_:
+
+* `Service description document <http://senda1.lab-a.met.no/pycsw/csw.py?mode=opensearch&service=CSW&version=2.0.2&request=GetCapabilities>`_
+* `All available datasets <http://senda1.lab-a.met.no/?mode=opensearch&service=CSW&version=2.0.2&request=GetRecords&elementsetname=full&typenames=csw:Record&resulttype=results>`_
 
 User searches web portals
 =========================
