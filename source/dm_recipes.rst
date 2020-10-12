@@ -55,13 +55,13 @@ We have prepared Virtual Machine (VM) configurations and Docker containers to ha
 ..
   Note to reviewers: Please consider if this makes sense, and can be done now
 
-The workflow which a data provider should follow in order to add new datasets to the common metadata catalog service is then as follows:
+The workflow which a MET data provider should follow in order to add new datasets to the common metadata catalog service is then as follows:
 
 #. Create `MMD <https://htmlpreview.github.io/?https://github.com/metno/mmd/blob/master/doc/mmd-specification.html>`_ XML record of metadata
 #. Clone the `S-ENDA-csw-catalog <https://github.com/metno/S-ENDA-csw-catalog-service>`_ repository
 #. Test your MMD XML file(s) using the localtest vm (:ref:`local-test-env`)
-#. Add an issue to the `S-ENDA-metadata <https://github.com/metno/S-ENDA-metadata>`_ repository (e.g., "New foo model dataset" [the issue is numbered, e.g., 131])
-#. Clone the `S-ENDA-metadata <https://github.com/metno/S-ENDA-metadata>`_ repository
+#. Add an issue to the `S-ENDA-mmd-xml <https://gitlab.met.no/mmd/s-enda-mmd-xml>`_ repository (e.g., "New foo model dataset" [the issue is numbered, e.g., 131]; note that this is only available inside the network of MET Norway)
+#. Clone the `S-ENDA-mmd-xml <https://gitlab.met.no/mmd/s-enda-mmd-xml>`_ repository
 #. Create an issue branch: ``git branch issue131_foo_dataset``
 #. Add your MMD file in the new branch, then commit, push, and create a pull request
 #. A reviewer will evaluate the new dataset, and provide feedback or direcly accept and merge
@@ -110,7 +110,7 @@ Put your test files in the folder ``lib/input_mmd_files``, then:
     \dt
     select * from records;
 
-The csw-catalog-service is now started, and the catalog can be accessed on `<http://10.20.30.10>`_. Note that there is no point in debugging or changing code used in this environment. It is only meant to test the content of `S-ENDA-metadata <https://github.com/metno/S-ENDA-metadata>`_. If you want to modify code used in the catalog service, please refer to :ref:`local-developmen-env`.
+The csw-catalog-service is now started, and the catalog can be accessed on `<http://10.20.30.10>`_. Note that there is no point in debugging or changing code used in this environment. It is only meant to test the your MMD files. If you want to modify code used in the catalog service, please refer to :ref:`local-developmen-env`.
 
 Search the metadata catalog using `QGIS <https://qgis.org/en/site/>`_ (v3.14 or higher):
 
@@ -159,6 +159,9 @@ Search context
 User searches the catalog with OpenSearch
 =========================================
 
+Local testing
+-------------
+
 The ``localtest`` and ``localdev`` virtual machines provide OpenSearch support through `pyCSW <https://github.com/geopython/pycsw>`_. To test OpenSearch via the browser, start the ``localtest`` vm (``vagrant up localtest``) and go to the following address:
 
 * `<http://10.20.30.10/pycsw/csw.py?mode=opensearch&service=CSW&version=2.0.2&request=GetCapabilities>`_
@@ -180,6 +183,14 @@ Or datasets within a given time span:
 Or, datasets from any of the Sentinel satellites:
 
 * `<http://10.20.30.10/?mode=opensearch&service=CSW&version=2.0.2&request=GetRecords&elementsetname=full&typenames=csw:Record&resulttype=results&q=sentinel>`_
+
+Online catalog
+---------------
+
+For searching the online metadata catalog, please refer to `<http://senda1.lab-a.met.no/>`_ instead of `<http://10.20.30.10/>`_:
+
+* `Service description document <http://senda1.lab-a.met.no/pycsw/csw.py?mode=opensearch&service=CSW&version=2.0.2&request=GetCapabilities>`_
+* `All available datasets <http://senda1.lab-a.met.no/?mode=opensearch&service=CSW&version=2.0.2&request=GetRecords&elementsetname=full&typenames=csw:Record&resulttype=results>`_
 
 User searches web portals
 =========================
