@@ -9,7 +9,7 @@ One can both consume data and produce it, or just have one of these roles.
 
 Producers:
 
-* Volvo car data.
+* Car, bus, self driving vehicle data.
 
 * Private weather station data (Netatmo).
 
