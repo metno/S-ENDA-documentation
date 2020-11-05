@@ -44,6 +44,10 @@ By documenting and formatting your data using NetCDF following the `CF conventio
 
 Information about how to format the NetCDF files is available at `<https://adc.met.no/node/4>`_. Most importantly, this contains an overview of the global NetCDF attributes required to generate an MMD file.
 
+.. note::
+
+  The NASA GCMD/DIF keywords can be used for many of the ACDD attributes. You can use `py-thesaurus-interface <https://github.com/nansencenter/py-thesaurus-interface>`_ to get them (helps to avoid typos etc.). `py-thesaurus-interface <https://github.com/nansencenter/py-thesaurus-interface>`_ is also (soon) synchronised with the `MMD thesauri <https://github.com/metno/mmd/tree/master/thesauri>`_ and the `CF variables <http://mmisw.org/ont/cf/parameter>`_.
+
 How to test MMD records and register datasets
 =============================================
 
