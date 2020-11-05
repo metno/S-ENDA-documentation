@@ -13,11 +13,27 @@ Producers:
 
 * Private weather station data (Netatmo).
 
-* Vegvesen.
+* Croudsourced observations?
+
+* Vegvesen (roadside weather stations, webcameras, and moving observations of road conditions).
+
+* Weather station observation data.
+
+* Boat, buoy, oil platform observation data. 
+
+* Lightning strike data.
+
+* Radiosonde data.
+
+* Radar and HF radar data.
+
+* Satelitte data. 
 
 * Weather model data.
 
 * Ocean model data.
+
+* Drone, gliders (underwater) or other drone like devices that observations.
 
 * Warnings forecast.
 
@@ -28,9 +44,13 @@ Consumers:
 
 * Klimavakt (MET).
 
-* Developer.
+* Reasearcher.
 
-* Farmer. 
+* Developer (app, website, control systems, machine learning, etc.).
+
+* Farmer, or other people who work with the land like tree planters. 
+
+* Energy sector (hydro, energy prices). 
 
 * Event organizer. 
 
