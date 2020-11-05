@@ -37,6 +37,12 @@ It is a useful exercise to make an overview of the connection between your metad
 
 Some of the metadata elements require use of controlled vocabularies. These can be found in chapter 4 of the MMD documentation. Which controlled vocabulary to use is described under the appropriate metadata element. The information that exists in your source for these metadata elements are not necessarily in the same "formats" as these controlled vocabularies. In that case, one needs to create mappings between the information that exist for these metadata elements in the source to the appropriate controlled vocabulary, or suggest updates to the controlled vocabularies in MMD.
 
+Generate MMD files via NetCDF files
+===================================
+
+By documenting and formatting your data using NetCDF following the `CF conventions <https://cfconventions.org/>`_ and the `Attribute Convention for Data Discovery (ACDD) <https://wiki.esipfed.org/Attribute_Convention_for_Data_Discovery_1-3>`_, MMD files can be automatically generated from the NetCDF files. The CF conventions is a controlled vocabulary providing a definitive description of what the data in each variable represents, and the spatial and temporal properties of the data. The ACDD vocabulary describes attributes recommended for describing a NetCDF dataset to data discovery systems.
+
+Information about how to format the NetCDF files is available at `<https://adc.met.no/node/4>`_. Most importantly, this contains an overview of the global NetCDF attributes required to generate an MMD file.
 
 How to test MMD records and register datasets
 =============================================
