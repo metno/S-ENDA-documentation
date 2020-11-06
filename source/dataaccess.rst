@@ -15,6 +15,7 @@ Functionality
 * The dataset need to be on a widely adopted open data format standard.
 * The data access service as a whole need to be easy to use with familiar tools from the meteorological/climate/oceanographic domain, both for upload and download.
 * The data access service must work together with an event-driven production system.
+* The data acccess service should support the Harmonised Data API from European Weather Cloud.
 
 -------------------------------------------------------------
 Quality attributes
