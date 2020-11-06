@@ -8,6 +8,7 @@ There are 2 types of users:
 One can both consume data and produce it, or just have one of these roles.
 
 Producers:
+
 * In situ Weather observations:
 
  * Car, bus, self driving vehicle data.
