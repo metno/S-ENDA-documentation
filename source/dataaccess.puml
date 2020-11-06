@@ -1,0 +1,31 @@
+@startuml Data access context diagram
+!includeurl <C4/C4_Context>
+
+LAYOUT_LEFT_RIGHT
+
+System_Boundary(MET, "Met Norway"){
+    System(dataaccess, "Data access")
+    System_Ext(PPI, "PPI")
+    System_Ext(HPC, "HPC")
+
+    Rel(PPI, dataaccess, "Push data", "S3/Zarr")
+    Rel(HPC, dataaccess, "Push data", "S3/Zarr")
+
+    Rel(dataaccess, PPI, "Access data", "CIFS")
+    Rel(PPI, dataaccess, "Push data", "S3/Zarr")
+}
+
+Person(researcher1, "Researcher")
+System_Ext(jupyter1, "Jupyter notebook")
+
+Person(researcher2, "Old school researcher")
+System_Ext(jupyter2, "Jupyter notebook")
+
+Rel(researcher1, jupyter1, "Interactive data mining", "Web GUI")
+Rel(researcher2, jupyter2, "Interactive data mining", "Web GUI")
+
+Rel(jupyter1, dataaccess, "Access data", "S3/Zarr")
+Rel(jupyter2, dataaccess, "Access data", "OpenDAP")
+
+
+@enduml
