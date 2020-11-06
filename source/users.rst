@@ -69,7 +69,3 @@ Consumers:
 * External partners. 
 
  
-.. toctree::
-   :maxdepth: 1
-   
-   use_cases.rst   
