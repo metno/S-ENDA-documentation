@@ -37,6 +37,8 @@ Producers:
 
 * Warnings forecast.
 
+* Biodiversity data (NINA). 
+
 
 Consumers:
 
@@ -53,6 +55,8 @@ Consumers:
 * Energy sector (hydro, energy prices). 
 
 * Event organizer. 
+
+* External partners. 
 
  
 .. toctree::
