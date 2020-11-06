@@ -8,18 +8,21 @@ There are 2 types of users:
 One can both consume data and produce it, or just have one of these roles.
 
 Producers:
+* In situ Weather observations:
 
-* Car, bus, self driving vehicle data.
+ * Car, bus, self driving vehicle data.
 
-* Private weather station data (Netatmo).
+ * Private weather station data (Netatmo).
 
-* Croudsourced observations?
+ * Croudsourced observations?
 
-* Vegvesen (roadside weather stations, webcameras, and moving observations of road conditions).
+ * Vegvesen (roadside weather stations, webcameras, and moving observations of road conditions).
 
-* Weather station observation data.
+ * Weather station observation data.
 
-* Boat, buoy, oil platform observation data. 
+ * Boat, buoy, oil platform observation data. 
+ 
+ * Drone, gliders (underwater) or other drone like devices that observations.
 
 * Lightning strike data.
 
@@ -32,8 +35,6 @@ Producers:
 * Weather model data.
 
 * Ocean model data.
-
-* Drone, gliders (underwater) or other drone like devices that observations.
 
 * Warnings forecast.
 
