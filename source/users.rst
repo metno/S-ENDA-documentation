@@ -9,7 +9,7 @@ One can both consume data and produce it, or just have one of these roles.
 
 Producers:
 
-* In situ Weather observations:
+* In situ observations:
 
  * Car, bus, self driving vehicle data.
 
@@ -25,21 +25,29 @@ Producers:
  
  * Drone, gliders (underwater) or other drone like devices that observations.
 
-* Lightning strike data.
+ * Radiosonde data.
+ 
+ * Biodiversity data (NINA). 
 
-* Radiosonde data.
+* Remote sensing observations:
 
-* Radar and HF radar data.
+ * Radar and HF radar data.
 
-* Satelitte data. 
+ * Satelitte data. 
+ 
+ * Lightning strike data.
+ 
+* Modelling & forecast data: 
 
-* Weather model data.
+ * Weather model data.
 
-* Ocean model data.
+ * Ocean model data.
 
-* Warnings forecast.
-
-* Biodiversity data (NINA). 
+ * Warnings forecast.
+ 
+ * Air quality model.
+ 
+ * Climate models.
 
 
 Consumers:
