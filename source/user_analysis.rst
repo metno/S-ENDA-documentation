@@ -1,4 +1,8 @@
 
+===================
+User analysis
+===================
+
 .. toctree::
    :maxdepth: 2
 
