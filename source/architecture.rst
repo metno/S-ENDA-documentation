@@ -63,8 +63,8 @@ The goal of the project is to make sure that all kinds of potential users of dyn
 S-ENDA advanced data access context
 =====================
 Data access can be categorized into two broad categories:
-* Advanced use: For those who need access to data for doing research, creating products or for post-processsing.
-* Simple use: Access to high-level products meant to help people make context specific decisions.
+  * Advanced use: For those who need access to data for doing research, creating products or for post-processsing.
+  * Simple use: Access to high-level products meant to help people make context specific decisions.
 
 The system described here is concerned with advanced use.
 
