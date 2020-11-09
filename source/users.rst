@@ -14,6 +14,8 @@ Producers
 
 **In situ observations:**
 
+Obeservations can contain uncertainty and errors, and thus they may need to be linked to quality control information. It should also be possible for a producer or consumer to flag suspicious data. 
+
 * Car, bus, self driving vehicle data.
 
 * Private weather station data (Netatmo).
@@ -34,6 +36,8 @@ Producers
 
 **Remote sensing observations:**
 
+These observations can contain uncertainties and noise, and how this should be interpreted varies based on the use case. 
+
 * Radar and HF radar data.
 
 * Satellite data. 
@@ -41,6 +45,8 @@ Producers
 * Lightning strike data.
  
 **Modelling & forecast data:**
+
+Models are often generic (for example: probabilistic), and thus their use needs to be tailored for the end user.
 
 * Weather model data.
 
@@ -72,7 +78,7 @@ Specific users:
 
 Example questions:
 
-* Is this particular data a record (coldest, warmest, wettest...)
+* Is this observation a record / weather extreme (coldest, warmest, wettest...)
 
 * Amount of rain in last Month in a certain watershed 
 
