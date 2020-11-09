@@ -15,18 +15,16 @@ System_Boundary(MET, "Met Norway"){
     Rel(PPI, dataaccess, "Push data", "S3/Zarr")
 }
 
-Person(researcher1, "Researcher")
-System_Ext(jupyter1, "Jupyter notebook")
+Person(researcher, "Researcher")
+System_Ext(jupyter, "Jupyter lab")
 System_Ext(web_maps, "Web page with climate maps")
 
-Person(researcher2, "Old school researcher")
-System_Ext(jupyter2, "Jupyter notebook")
+System_Ext(prodgen, "Product-generation system")
 
-Rel(researcher1, jupyter1, "Interactive data mining", "Web GUI")
-Rel(researcher2, jupyter2, "Interactive data mining", "Web GUI")
+Rel(researcher, jupyter, "Interactive data mining", "Web GUI")
 
-Rel(jupyter1, dataaccess, "Access data", "S3/Zarr")
-Rel(jupyter2, dataaccess, "Access data", "OpenDAP")
+Rel(jupyter, dataaccess, "Access data", "S3/Zarr")
+Rel(prodgen, dataaccess, "Access data", "OpenDAP")
 Rel(web_maps, dataaccess, "Web page with climate maps", "OGC API")
 
 @enduml
