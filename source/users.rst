@@ -23,12 +23,19 @@ Producers
 ==========  =========================================  =========================================  =========================================
     1       * Weather station observation data
             * Car, bus, self driving vehicle data
-            * Vegvesen (roadside weather stations, 
-            webcameras, and moving observations of 
-            road conditions)
+            * Vegvesen roadside sensors, webcameras
+            * Private weather station data (Netatmo)
+            * Boat, buoy, oil platform observation data
+            * Drone, gliders (underwater) etc
+            * Radiosonde data
+            * Biodiversity data (NINA) - automatic
     2
     3
-    4
+    4       * Weather model data
+            * Ocean model data
+            * Air quality model
+            * Climate models
+            
 ==========  =========================================  =========================================  =========================================
 
 **In situ observations:**
@@ -37,21 +44,6 @@ Obeservations can contain uncertainty and errors, and thus they may need to be l
 
 *Primary Automatic* (sensors, etc.):
 
-
-
-* .
-
-* Private weather station data (Netatmo).
-
-.
-
-* Boat, buoy, oil platform observation data. 
- 
-* Drone, gliders (underwater) or other drone like devices that observations.
-
-* Radiosonde data.
- 
-* Biodiversity data (NINA) - automatic. 
 
 *Secondary Automatic:*
 
@@ -99,13 +91,6 @@ Models are often generic (for example: probabilistic), and thus their use needs 
 
 *Secondary Automatic* (computer software, input from observations and other data etc.):
 
-* Weather model data.
-
-* Ocean model data.
- 
-* Air quality model.
- 
-* Climate models.
 
 *Secondary Partially Manual* (based on models, etc), may be more fully automatic in future:
 
