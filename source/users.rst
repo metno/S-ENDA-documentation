@@ -34,13 +34,15 @@ Obeservations can contain uncertainty and errors, and thus they may need to be l
  
 * Biodiversity data (NINA) - automatic. 
 
-* Quality control system
+* Quality control system.
 
 *Manual* (user observations):
 
-* Manual weather observations for a specific station location
+* Manual weather observations for a specific station location.
 
-* Crowdsourced observations?
+* Crowdsourced observations.
+
+* Human quality control.
 
 * Biodiversity data (NINA) - manual / fieldwork. 
 
