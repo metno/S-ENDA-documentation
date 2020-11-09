@@ -36,7 +36,7 @@ Obeservations can contain uncertainty and errors, and thus they may need to be l
 
 * Quality control system.
 
-*Manual* (user observations):
+*Manual* (user observations / corrections):
 
 * Manual weather observations for a specific station location.
 
@@ -86,7 +86,7 @@ Consumers
 
 Example questions:
 
-* Need all historical weather data, that can be used to model / predict the weather in the future
+* Need all historical weather data, that can be used to model / predict the weather in the future.
 
 Specific users: 
 
@@ -98,9 +98,9 @@ Specific users:
 
 Example questions:
 
-* Is this observation a record / weather extreme (coldest, warmest, wettest...)
+* Is this observation a record / weather extreme (coldest, warmest, wettest...)?
 
-* Amount of rain in last Month in a certain watershed 
+* Amount of rain in last Month in a certain watershed.
 
 Specific users: 
 
