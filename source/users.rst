@@ -16,7 +16,7 @@ Producers
 
 Obeservations can contain uncertainty and errors, and thus they may need to be linked to quality control information. It should also be possible for a producer or consumer to flag suspicious data. 
 
-Automatic (sensors, etc.):
+*Automatic* (sensors, etc.):
 
 * Weather station observation data.
 
@@ -36,7 +36,7 @@ Automatic (sensors, etc.):
 
 * Quality control system
 
-Manual (user observations):
+*Manual* (user observations):
 
 * Manual weather observations for a specific station location
 
@@ -48,7 +48,7 @@ Manual (user observations):
 
 These observations can contain uncertainties and noise, and how this should be interpreted varies based on the use case.
 
-Automatic (sensors, etc.):
+*Automatic* (sensors, etc.):
 
 * Radar and HF radar data.
 
@@ -60,7 +60,7 @@ Automatic (sensors, etc.):
 
 Models are often generic (for example: probabilistic), and thus their use needs to be tailored for the end user.
 
-Automatic (computer software, etc.):
+*Automatic* (computer software, etc.):
 
 * Weather model data.
 
@@ -70,7 +70,7 @@ Automatic (computer software, etc.):
  
 * Climate models.
 
-Partially manual (based on models, etc), may be more fully automatic in future:
+*Partially manual* (based on models, etc), may be more fully automatic in future:
 
 * Warnings forecast.
 
