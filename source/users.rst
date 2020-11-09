@@ -57,6 +57,11 @@ These observations can contain uncertainties and noise, and how this should be i
 * Satellite data. 
  
 * Lightning strike data.
+
+*Higher level* (calibrated, interpreted, merged products):
+
+* A user accesses the "raw data" and calibrates it or interprets it in some way
+* This user shares data further on as a *data producer*
  
 **Modelling & forecast data:**
 
