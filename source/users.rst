@@ -16,7 +16,7 @@ Producers
 
 Obeservations can contain uncertainty and errors, and thus they may need to be linked to quality control information. It should also be possible for a producer or consumer to flag suspicious data. 
 
-*Automatic* (sensors, etc.):
+*Primary Automatic* (sensors, etc.):
 
 * Weather station observation data.
 
@@ -38,7 +38,7 @@ Obeservations can contain uncertainty and errors, and thus they may need to be l
 
 * Quality control system.
 
-*Manual* (user observations / corrections):
+*Primary Manual* (user observations / corrections):
 
 * Manual weather observations for a specific station location.
 
@@ -54,7 +54,7 @@ Obeservations can contain uncertainty and errors, and thus they may need to be l
 
 These observations can contain uncertainties and noise, and how this should be interpreted varies based on the use case.
 
-*Automatic* (sensors, etc.):
+*Primary Automatic* (sensors, etc.):
 
 * Radar and HF radar data.
 
@@ -78,7 +78,7 @@ These observations can contain uncertainties and noise, and how this should be i
 
 Models are often generic (for example: probabilistic), and thus their use needs to be tailored for the end user.
 
-*Automatic* (computer software, etc.):
+*Secondary Automatic* (computer software, input from observations and other data etc.):
 
 * Weather model data.
 
