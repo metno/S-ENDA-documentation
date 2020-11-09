@@ -9,6 +9,9 @@ There are 2 types of users:
 
 One can both consume data and produce it, or just have one of these roles.
 
+We tried to use the levels described here: http://codes.wmo.int/wmdr/_LevelOfData
+As well as the sources (at least automatic, manual, and human) described here: http://codes.wmo.int/wmdr/_SourceOfObservation
+
 Producers
 =========
 
