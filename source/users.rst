@@ -18,14 +18,18 @@ Producers
 =========
 
 
-==========  ===================================  ===================================  ===================================
-  Level                 Automatic                              Manual                               Human
-==========  ===================================  ===================================  ===================================
-    1    
+==========  =========================================  =========================================  =========================================
+  Level                     Automatic                                    Manual                                     Human
+==========  =========================================  =========================================  =========================================
+    1       * Weather station observation data
+            * Car, bus, self driving vehicle data
+            * Vegvesen (roadside weather stations, 
+            webcameras, and moving observations of 
+            road conditions)
     2
     3
     4
-==========  ===================================  ===================================  ===================================
+==========  =========================================  =========================================  =========================================
 
 **In situ observations:**
 
@@ -33,13 +37,13 @@ Obeservations can contain uncertainty and errors, and thus they may need to be l
 
 *Primary Automatic* (sensors, etc.):
 
-* Weather station observation data.
 
-* Car, bus, self driving vehicle data.
+
+* .
 
 * Private weather station data (Netatmo).
 
-* Vegvesen (roadside weather stations, webcameras, and moving observations of road conditions).
+.
 
 * Boat, buoy, oil platform observation data. 
  
