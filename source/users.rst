@@ -34,6 +34,8 @@ Obeservations can contain uncertainty and errors, and thus they may need to be l
  
 * Biodiversity data (NINA) - automatic. 
 
+*Secondary Automatic:*
+
 * Quality control system.
 
 *Manual* (user observations / corrections):
@@ -42,9 +44,11 @@ Obeservations can contain uncertainty and errors, and thus they may need to be l
 
 * Crowdsourced observations.
 
-* Human quality control.
-
 * Biodiversity data (NINA) - manual / fieldwork. 
+
+*Secondary Manual:*
+
+* Human quality control.
 
 **Remote sensing observations:**
 
@@ -58,10 +62,17 @@ These observations can contain uncertainties and noise, and how this should be i
  
 * Lightning strike data.
 
-*Higher level* (calibrated, interpreted, merged products):
+*Secondary Automatic* (calibrated, interpreted, merged products):
 
-* A user accesses the "raw data" and calibrates it or interprets it in some way
-* This user shares data further on as a *data producer*
+* A computer program accesses the raw data and processes or calibrates it in some way.
+
+* A computer program accesses more than one source of data and creates an merged product. 
+
+*Secondary Manual*:
+
+* A user accesses the raw or processed data and calibrates it or interprets it in some way.
+
+* This user shares data further on as a *data producer*.
  
 **Modelling & forecast data:**
 
@@ -77,7 +88,7 @@ Models are often generic (for example: probabilistic), and thus their use needs 
  
 * Climate models.
 
-*Partially manual* (based on models, etc), may be more fully automatic in future:
+*Secondary Partially Manual* (based on models, etc), may be more fully automatic in future:
 
 * Warnings forecast.
 
