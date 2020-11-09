@@ -1,8 +1,8 @@
 .. _use-cases-section:
 
-=====================
+---------------------
 Use Case Descriptions
-=====================
+---------------------
 
 This section contains descriptions of use cases based on typical data needs and related workflows
 that should be supported by S-ENDA. You can use the use case template as a guide for describing a
