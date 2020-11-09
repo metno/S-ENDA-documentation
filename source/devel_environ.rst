@@ -197,3 +197,112 @@ To increase the capacity of the VM disk, you need the ``vagrant-disksize`` plugi
 
 ..
   # vim: set spell spelllang=en:
+
+--------------------------------------------------------------------------
+Development of the S-ENDA csw catalog service and relevant Python packages
+--------------------------------------------------------------------------
+
+.. _local-developmen-env:
+
+Local development environment
+=============================
+
+The `S-ENDA csw catalog service <https://github.com/metno/S-ENDA-csw-catalog-service>`_ contains a Vagrant virtual machine configuration and a Docker container to run the catalog in a development environment that allows easy debugging of the relevant tools used by the service. All tools are downloaded to a folder called ``lib``, which is added in the vagrant shared folder (the root folder of the `S-ENDA csw catalog service <https://github.com/metno/S-ENDA-csw-catalog-service>`_ repository). You can then use your preferred editor to debug, change and update code. This is not intended for a regular user, but for people who wants to extend functionality or debug software.
+
+* Add MMD test files to ``lib/input_mmd_files``
+* Start VM:
+
+  .. code-block:: bash
+
+    vagrant up localdev
+
+  .. note::
+
+    The git repositories with editable code is now available in the ``lib`` folder. If you need to add some repositories, please do it by editing the file ``build_container.dev.sh``
+
+* Access VM:
+
+  .. code-block:: bash
+
+    vagrant ssh localdev
+
+* Rebuild the docker container (if necessary)
+
+  .. code-block:: bash
+
+    cd /vagrant
+    sudo ./build_container.localdev.sh
+
+.. note::
+
+  The Docker container (called ``catalog-dev``) is started with ``sleep 1d``. This means that it will run in the background for 1 day after running the ``build_container.localdev.sh`` script. This is a "hack" to be able to enter the container and run ``/usr/local/bin/entrypoint.py`` interactively. If you cannot access the container with ``sudo docker exec ...``, try rerunning the script again.
+
+* Enter the docker container to run some code
+
+  .. code-block:: bash
+
+    sudo docker exec -it catalog-dev bash
+
+* Translate from MMD to ISO19139, ingest metadata, and run the local web server
+
+  .. code-block:: bash
+
+    cd mmd/bin/
+    # Translate from MMD to ISO19139
+    ./sentinel1_mmd_to_csw_iso19139.py -i ../../mmd_in -o ../../iso_out # OBS: the way to do this will change - NEEDS UPDATE
+    cd ../..
+    # Create database
+    python3 /usr/bin/pycsw-admin.py -c setup_db -f /etc/pycsw/pycsw.cfg
+    # Ingest the ISO19139 record(s)
+    python3 /usr/bin/pycsw-admin.py -c load_records -f /etc/pycsw/pycsw.cfg -p iso_out -r -y
+    # Start the web server
+    python3 /usr/local/bin/entrypoint.py
+
+The csw-catalog-service is now started, and the catalog can be accessed on `<http://10.20.30.11>`_. Unless you have already ingested some metadata, the catalog should be empty. You can search the metadata catalog using, e.g., `QGIS <https://qgis.org/en/site/>`_ (v3.14 or higher):
+
+* `Download and install QGIS <https://qgis.org/en/site/forusers/download.html>`_
+* Run ``qgis``
+* Select ``Web > MetaSearch > MetaSearch`` menu item
+* Select ``Services > New``
+* Type, e.g., ``localdev`` for the name
+* Type ``http://10.20.30.11`` for the URL
+* Under the ``Search`` tab, you can then add search parameters, click ``Search``, and get a list of available datasets.
+* Select a dataset
+* Click ``Add Data`` and select a WMS channel - the data will then be displayed in QGIS
+
+If you want to debug the code, you can add break points and access the running process in the terminal window where the web server was started (``python3 /usr/local/bin/entrypoint.py --reload``).
+
+Breakpoints are set by adding the following lines somewhere in the Python code:
+
+.. code-block:: bash
+
+  import ipdb
+  ipdb.set_trace()
+
+Search, e.g., datasets within a given time span:
+
+* http://10.20.30.11/?mode=opensearch&service=CSW&version=2.0.2&request=GetRecords&elementsetname=full&typenames=csw:Record&resulttype=results&time=2000-01-01/2020-09-01
+
+
+To run tests:
+
+.. code-block:: bash
+
+  py.test -m unit
+
+.. note::
+
+  Pytest runs all available test code. Currently it fails on ``/home/pycsw/mmd/tests/test__nc_to_mmd.py`` because netcdf4 is not installed. This is on the todo-list... See `<https://github.com/metno/S-ENDA-csw-catalog-service/issues/2>`_
+
+
+..
+  Contents of the S-ENDA-csw-catalog-service repository
+  =====================================================
+
+..
+  * The file ``pycsw_local.dev.cfg`` is the pycsw configuration file used for local development. It contains configuration instructions to run the csw catalog service on your local Docker container which runs on the local virtual machine.
+  * ``Vagrantfile`` is the vagrant configuration currently containing the development vm (TODO: add vm for non-development local testing)
+  * ``Dockerfile.devel`` - Dockerfile for the development environment
+  * ``build_container.dev.sh`` - shell script to add git repositories, run and set up volumes in the container ``catalog-dev``
+  * ``docker-compose.*`` - docker-compose files to set up local test environment (not for development of tools) and run Continuous Integration
+

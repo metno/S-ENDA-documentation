@@ -1,5 +1,6 @@
-Heritage system: Template
-""""""""""""""""""""""""""
+--------------------------------------------------------------------
+Template for description of heritage systems used in data management
+--------------------------------------------------------------------
 
 .. Insert the name of the heritage metadata system in the above heading. No   
    other text should go under
@@ -7,7 +8,7 @@ Heritage system: Template
 
 
 Responsible(Who?)
-==================
+=================
 
 .. Required. Who is responsible for this heritage system. This can be a 
    group, a role or an administrative unit. Try to avoid linking to specific  
