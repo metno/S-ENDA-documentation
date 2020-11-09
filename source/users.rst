@@ -16,15 +16,15 @@ Producers
 
 Obeservations can contain uncertainty and errors, and thus they may need to be linked to quality control information. It should also be possible for a producer or consumer to flag suspicious data. 
 
+Automatic (sensors, etc.):
+
+* Weather station observation data.
+
 * Car, bus, self driving vehicle data.
 
 * Private weather station data (Netatmo).
 
-* Crowdsourced observations?
-
 * Vegvesen (roadside weather stations, webcameras, and moving observations of road conditions).
-
-* Weather station observation data.
 
 * Boat, buoy, oil platform observation data. 
  
@@ -32,11 +32,23 @@ Obeservations can contain uncertainty and errors, and thus they may need to be l
 
 * Radiosonde data.
  
-* Biodiversity data (NINA). 
+* Biodiversity data (NINA) - automatic. 
+
+* Quality control system
+
+Manual (user observations):
+
+* Manual weather observations for a specific station location
+
+* Crowdsourced observations?
+
+* Biodiversity data (NINA) - manual / fieldwork. 
 
 **Remote sensing observations:**
 
-These observations can contain uncertainties and noise, and how this should be interpreted varies based on the use case. 
+These observations can contain uncertainties and noise, and how this should be interpreted varies based on the use case.
+
+Automatic (sensors, etc.):
 
 * Radar and HF radar data.
 
@@ -48,15 +60,21 @@ These observations can contain uncertainties and noise, and how this should be i
 
 Models are often generic (for example: probabilistic), and thus their use needs to be tailored for the end user.
 
+Automatic (computer software, etc.):
+
 * Weather model data.
 
 * Ocean model data.
-
-* Warnings forecast.
  
 * Air quality model.
  
 * Climate models.
+
+Partially manual (based on models, etc), may be more fully automatic in future:
+
+* Warnings forecast.
+
+* Avalanche forecast.
 
 
 Consumers
