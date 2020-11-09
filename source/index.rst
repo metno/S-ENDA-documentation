@@ -15,7 +15,7 @@ Welcome to S-ENDA's documentation!
    architecture
    metadata_management_heritage
    user_analysis
-   catalog_service_API
+   catalog
 
 .. toctree::
    :maxdepth: 2
