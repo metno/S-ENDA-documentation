@@ -4,53 +4,53 @@ Users
 
 There are 2 types of users:
 
- 1. Those that create / produce data
- 2. Those that consume data 
+1. Those that create / produce data
+2. Those that consume data 
 
 One can both consume data and produce it, or just have one of these roles.
 
 Producers
 =========
 
-* In situ observations:
+**In situ observations:**
 
- * Car, bus, self driving vehicle data.
+* Car, bus, self driving vehicle data.
 
- * Private weather station data (Netatmo).
+* Private weather station data (Netatmo).
 
- * Crowdsourced observations?
+* Crowdsourced observations?
 
- * Vegvesen (roadside weather stations, webcameras, and moving observations of road conditions).
+* Vegvesen (roadside weather stations, webcameras, and moving observations of road conditions).
 
- * Weather station observation data.
+* Weather station observation data.
 
- * Boat, buoy, oil platform observation data. 
+* Boat, buoy, oil platform observation data. 
  
- * Drone, gliders (underwater) or other drone like devices that observations.
+* Drone, gliders (underwater) or other drone like devices that observations.
 
- * Radiosonde data.
+* Radiosonde data.
  
- * Biodiversity data (NINA). 
+* Biodiversity data (NINA). 
 
-* Remote sensing observations:
+**Remote sensing observations:**
 
- * Radar and HF radar data.
+* Radar and HF radar data.
 
- * Satellite data. 
+* Satellite data. 
  
- * Lightning strike data.
+* Lightning strike data.
  
-* Modelling & forecast data: 
+**Modelling & forecast data:**
 
- * Weather model data.
+* Weather model data.
 
- * Ocean model data.
+* Ocean model data.
 
- * Warnings forecast.
+* Warnings forecast.
  
- * Air quality model.
+* Air quality model.
  
- * Climate models.
+* Climate models.
 
 
 Consumers
