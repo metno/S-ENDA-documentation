@@ -56,18 +56,50 @@ Producers
 Consumers
 =========
 
-* Climate Predictions (klima i norge 2100).
+**Advanced:**
 
-* Klimavakt (MET).
+Example questions:
+
+* Need all historical weather data, that can be used to model / predict the weather in the future
+
+Specific users: 
 
 * Researcher.
 
-* Developer (app, website, control systems, machine learning, etc.).
+* Climate Predictions (klima i norge 2100).
 
-* Farmer, or other people who work with the land like tree planters. 
+**Intermediate:**
+
+Example questions:
+
+* Is this particular data a record (coldest, warmest, wettest...)
+
+* Amount of rain in last Month in a certain watershed 
+
+Specific users: 
+
+* Klimavakt (MET).
+
+* Developer (app, website, control systems, machine learning, etc.).
 
 * Energy sector (hydro, energy prices). 
 
+* External partners. 
+
+**Simple:**
+
+Example questions:
+ 
+* Can the event take place, or will the weather impeed it?
+
+* When should I harvest my crops?
+
+Specific users: 
+
 * Event organizer. 
 
-* External partners. 
+* Journalist.
+
+* Farmer, or other people who work with the land like tree planters. 
+
+
