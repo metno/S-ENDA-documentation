@@ -18,7 +18,7 @@ Producers
 
  * Private weather station data (Netatmo).
 
- * Croudsourced observations?
+ * Crowdsourced observations?
 
  * Vegvesen (roadside weather stations, webcameras, and moving observations of road conditions).
 
@@ -36,7 +36,7 @@ Producers
 
  * Radar and HF radar data.
 
- * Satelitte data. 
+ * Satellite data. 
  
  * Lightning strike data.
  
@@ -60,7 +60,7 @@ Consumers
 
 * Klimavakt (MET).
 
-* Reasearcher.
+* Researcher.
 
 * Developer (app, website, control systems, machine learning, etc.).
 
