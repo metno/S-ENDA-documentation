@@ -46,7 +46,7 @@ Information about how to format the NetCDF files is available at `<https://adc.m
 
 .. note::
 
-  The NASA GCMD/DIF keywords can be used for many of the ACDD attributes. You can use `py-thesaurus-interface <https://github.com/nansencenter/py-thesaurus-interface>`_ to get them (helps to avoid typos etc.). `py-thesaurus-interface <https://github.com/nansencenter/py-thesaurus-interface>`_ is also (soon) synchronised with the `MMD thesauri <https://github.com/metno/mmd/tree/master/thesauri>`_ and the `CF variables <http://mmisw.org/ont/cf/parameter>`_.
+  The NASA GCMD/DIF keywords can be used for many of the ACDD attributes. You can use `py-thesaurus-interface <https://github.com/nansencenter/py-thesaurus-interface>`_ to get them (helps to avoid typos etc.). The `py-thesaurus-interface <https://github.com/nansencenter/py-thesaurus-interface>`_ is also synchronized with the `MMD thesauri <https://github.com/metno/mmd/tree/master/thesauri>`_ (although not yet merged) and the `CF variables <http://mmisw.org/ont/cf/parameter>`_.
 
 How to test MMD records and register datasets
 =============================================
