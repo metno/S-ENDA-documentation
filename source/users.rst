@@ -21,72 +21,46 @@ Producers
 ==========  ================================================  ================================================  ================================================
   Level                       Automatic                                            Manual                                              Human
 ==========  ================================================  ================================================  ================================================
-    1       * Weather station observation data                * Manual weather observations at a station.
-            * Car, bus, self driving vehicle data             * Crowdsourced observations.                      * Crowdsourced observations.
-            * Vegvesen roadside sensors, webcameras           * Biodiversity data (NINA) - manual.              * Biodiversity data (NINA) - fieldwork. 
+    1       * Weather station observation data                * Manual weather observations at a station
+            * Car, bus, self driving vehicle data             * Crowdsourced observations                       * Crowdsourced observations
+            * Vegvesen roadside sensors, webcameras           * Biodiversity data (NINA) - manual               * Biodiversity data (NINA) - fieldwork 
             * Private weather station data (Netatmo)
             * Boat, buoy, oil platform observation data
             * Drone, gliders (underwater) etc
             * Radiosonde data
             * Biodiversity data (NINA) - automatic
-    2
-    3
+            * Radar and HF radar data
+            * Satellite data
+            * Lightning sensor data
+    2       * Quality control system                          * Human quality control - manual control          * Human quality control - subjective control
+            * Aggregated time series                          * User manually creates aggregated dataset        * User subjectively creates a dataset 
+            * Lightning strike location data                  * User manually creates calibrated dataset
+            * Calibrated products based on radar data         * User manually creates merge dataset 
+            * Calibrated products based on satelite data
+            * Merged products based on level 1 data
+    3       * Resampled time series
+            * Gridded datasets based on level 1 data
     4       * Weather model data
             * Ocean model data
             * Air quality model
             * Climate models
+            
 ==========  ================================================  ================================================  ================================================
 
 **In situ observations:**
 
 Obeservations can contain uncertainty and errors, and thus they may need to be linked to quality control information. It should also be possible for a producer or consumer to flag suspicious data. 
 
-*Primary Automatic* (sensors, etc.):
-
-
-*Secondary Automatic:*
-
-* Quality control system.
-
-*Primary Manual* (user observations / corrections):
-
-
-*Secondary Manual:*
-
-* Human quality control.
 
 **Remote sensing observations:**
 
 These observations can contain uncertainties and noise, and how this should be interpreted varies based on the use case.
 
-*Primary Automatic* (sensors, etc.):
-
-* Radar and HF radar data.
-
-* Satellite data. 
- 
-* Lightning strike data.
-
-*Secondary Automatic* (calibrated, interpreted, merged products):
-
-* A computer program accesses the raw data and processes or calibrates it in some way.
-
-* A computer program accesses more than one source of data and creates an merged product. 
-
-*Secondary Manual*:
-
-* A user accesses the raw or processed data and calibrates it or interprets it in some way.
-
-* This user shares data further on as a *data producer*.
  
 **Modelling & forecast data:**
 
 Models are often generic (for example: probabilistic), and thus their use needs to be tailored for the end user.
-
-*Secondary Automatic* (computer software, input from observations and other data etc.):
-
-
-*Secondary Partially Manual* (based on models, etc), may be more fully automatic in future:
+Some forecasts do this by using thresholds, for example: 
 
 * Warnings forecast.
 
