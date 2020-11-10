@@ -65,9 +65,9 @@ S-ENDA data access context
 
 We categorize data consumers in three levels:
 
-* Advanced use: For those who need access to data for doing research, creating products or for post-processsing.
-* Intermediate use: 
-* Simple use: Access to high-level products meant to help people make context specific decisions.
+* Advanced use: See :ref:`advanced-consumers`
+* Intermediate use: See :ref:`intermediate-consumers`
+* Simple use: See :ref:`simple-consumers`
 
 
 S-ENDA advanced data access context
