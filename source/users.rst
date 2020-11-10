@@ -59,7 +59,7 @@ These observations can contain uncertainties and noise, and how this should be i
  
 **Modelling & forecast data:**
 
-Models are often generic (for example: probabilistic), and thus their use needs to be tailored for the end user.
+Models are often generic (for example: probabilistic), and thus their use needs to be tailored for the end user potentially with particular types of forecasts.
 
 
 Consumers
