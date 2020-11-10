@@ -4,14 +4,12 @@ Users
 
 There are 2 types of users:
 
-1. Those that create / produce data
-2. Those that consume data 
+1. *Producers*: Those that create / produce data
+2. *Consumers*: Those that consume data 
 
-One can both consume data and produce it, or just have one of these roles.
+Users typically consume some type of data in order to do something and produce a new type of data. We refer to these data types as levels, following the `WMO WIGOS definition for levels of data <http://codes.wmo.int/wmdr/_LevelOfData>`_. The typical workflow is reflected by the below table, where a consumer of one level of data is the producer of the next level of data. The columns of this table define the observation source (i.e., automatic, manual, human) of datasets covered by the user analysis. The observation source definitions follow the `WMO WIGOS definition for source of observation <http://codes.wmo.int/wmdr/_SourceOfObservation>`_.
 
-We tried to use the levels described here: http://codes.wmo.int/wmdr/_LevelOfData
-
-As well as the sources (at least automatic, manual, and human) described here: http://codes.wmo.int/wmdr/_SourceOfObservation
+A user can both consume data and produce data, or just have one of these roles (i.e., at the start/end of the production chain).
 
 
 Producers
@@ -23,7 +21,7 @@ Producers
 =========  ================================================  ================================================  ================================================
     1      * Weather station observation data                * Manual weather observations at a station
            * Car, bus, self driving vehicle data             * Crowdsourced observations                       * Crowdsourced observations
-           * Vegvesen roadside sensors, webcameras           * Biodiversity data (NINA) - manual               * Biodiversity data (NINA) - fieldwork 
+           * Vegvesenet roadside sensors, webcameras         * Biodiversity data (NINA) - manual               * Biodiversity data (NINA) - fieldwork 
            * Private weather station data (Netatmo)
            * Boat, buoy, oil platform observation data
            * Drone, gliders (underwater) etc
@@ -36,7 +34,7 @@ Producers
            * Aggregated time series                          * Producer manually creates aggregated dataset    * Producer subjectively creates a dataset 
            * Lightning strike location data                  * Produce manually creates calibrated dataset
            * Calibrated products based on radar data         * Producer manually creates merge dataset 
-           * Calibrated products based on satelite data
+           * Calibrated products based on satellite data
            * Merged products based on level 1 data
     3      * Resampled time series                           * Producer manually resamples time series
            * Gridded datasets based on level 1 data
@@ -64,9 +62,12 @@ Models are often generic (for example: probabilistic), and thus their use needs 
 Consumers
 =========
 
-**Advanced:**
+.. _`advanced-consumers`:
 
-Advanced consumers require enough metadata (including provenance) to gain a full understanding of what data exists so they can choose the data appropriate for their use. 
+Advanced consumers
+------------------
+
+**Definition:** Advanced consumers require information in the form of data and metadata (including provenance) to gain a full understanding of what data exists and how to use it (discovery and use metadata), and to automatize the generation of derived data (new knowledge generation), verification (of information), and validation of data products.
 
 Example questions:
 
@@ -78,9 +79,12 @@ Specific consumers:
 
 * Climate Predictions (klima i norge 2100).
 
-**Intermediate:**
+.. _`intermediate-consumers`:
 
-Intermediate consumers need enough metadata to understand if the data can answer their question(s), also they often want to cross reference a dataset with another dataset or metadata. 
+Intermediate consumers
+----------------------
+
+**Definition:** Intermediate consumers need enough information to find data and understand if it can answer their question(s) (discovery and use metadata). Also, they often want to cross reference a dataset with another dataset or metadata for inter-comparative verification of information.
 
 Example questions:
 
@@ -98,11 +102,16 @@ Specific consumers:
 
 * External partners. 
 
-**Simple:**
+.. _`simple-consumers`:
 
-Simple consumers are not able to understand all the metadata and are most likely looking for a derived product that more simply answers their question(s).
+Simple consumers
+----------------
+
+**Definition:** Simple consumers do not have any prior knowledge about the data. Information in the form of text or illustrations is sufficient for their decision making. They do not need to understand either data or metadata, and they are most likely looking for answers to simple questions.
 
 Example questions:
+
+* Will it be raining today?
  
 * Can the event take place, or will the weather impeed it?
 
@@ -116,4 +125,6 @@ Specific consumers:
 
 * Farmer, or other people who work with the land like tree planters. 
 
+.. note::
 
+  An advanced consumer may discover information pertaining a role as a simple consumer. Such a user may, for some reason, be interested in tracking the data in order to use it together with other data (interoperability) or to verify the information. Therefore, it is important to have provenance metadata pointing to the basic data source(s) also at the simplest information level.
