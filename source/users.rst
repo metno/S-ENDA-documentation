@@ -18,12 +18,12 @@ Producers
 =========
 
 
-==========  ============================================  ============================================  ============================================
-  Level                     Automatic                                        Manual                                         Human
-==========  ============================================  ============================================  ============================================
-    1       * Weather station observation data
-            * Car, bus, self driving vehicle data
-            * Vegvesen roadside sensors, webcameras
+==========  ================================================  ================================================  ================================================
+  Level                       Automatic                                            Manual                                              Human
+==========  ================================================  ================================================  ================================================
+    1       * Weather station observation data                * Manual weather observations at a station.
+            * Car, bus, self driving vehicle data             * Crowdsourced observations.
+            * Vegvesen roadside sensors, webcameras           * Biodiversity data (NINA) - manual / fieldwork. 
             * Private weather station data (Netatmo)
             * Boat, buoy, oil platform observation data
             * Drone, gliders (underwater) etc
@@ -35,7 +35,7 @@ Producers
             * Ocean model data
             * Air quality model
             * Climate models
-==========  ============================================  ============================================  ============================================
+==========  ================================================  ================================================  ================================================
 
 **In situ observations:**
 
@@ -50,11 +50,6 @@ Obeservations can contain uncertainty and errors, and thus they may need to be l
 
 *Primary Manual* (user observations / corrections):
 
-* Manual weather observations for a specific station location.
-
-* Crowdsourced observations.
-
-* Biodiversity data (NINA) - manual / fieldwork. 
 
 *Secondary Manual:*
 
