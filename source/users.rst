@@ -18,34 +18,33 @@ Producers
 =========
 
 
-==========  ================================================  ================================================  ================================================
+=========  ================================================  ================================================  ================================================
   Level                       Automatic                                            Manual                                              Human
-==========  ================================================  ================================================  ================================================
-    1       * Weather station observation data                * Manual weather observations at a station
-            * Car, bus, self driving vehicle data             * Crowdsourced observations                       * Crowdsourced observations
-            * Vegvesen roadside sensors, webcameras           * Biodiversity data (NINA) - manual               * Biodiversity data (NINA) - fieldwork 
-            * Private weather station data (Netatmo)
-            * Boat, buoy, oil platform observation data
-            * Drone, gliders (underwater) etc
-            * Radiosonde data
-            * Biodiversity data (NINA) - automatic
-            * Radar and HF radar data
-            * Satellite data
-            * Lightning sensor data
-    2       * Quality control system                          * Human quality control - manual control          * Human quality control - subjective control
-            * Aggregated time series                          * User manually creates aggregated dataset        * User subjectively creates a dataset 
-            * Lightning strike location data                  * User manually creates calibrated dataset
-            * Calibrated products based on radar data         * User manually creates merge dataset 
-            * Calibrated products based on satelite data
-            * Merged products based on level 1 data
-    3       * Resampled time series                           * User manually resamples time series
-            * Gridded datasets based on level 1 data
-    4       * Weather model data                              * Warnings forecast                               * Climate predictions
-            * Ocean model data                                * Avalanche forecast
-            * Air quality model                               * Nowcast
-            * Climate models                                  
-            
-==========  ================================================  ================================================  ================================================
+=========  ================================================  ================================================  ================================================
+    1      * Weather station observation data                * Manual weather observations at a station
+           * Car, bus, self driving vehicle data             * Crowdsourced observations                       * Crowdsourced observations
+           * Vegvesen roadside sensors, webcameras           * Biodiversity data (NINA) - manual               * Biodiversity data (NINA) - fieldwork 
+           * Private weather station data (Netatmo)
+           * Boat, buoy, oil platform observation data
+           * Drone, gliders (underwater) etc
+           * Radiosonde data
+           * Biodiversity data (NINA) - automatic
+           * Radar and HF radar data
+           * Satellite data
+           * Lightning sensor data
+    2      * Quality control system                          * Human quality control - manual control          * Human quality control - subjective control
+           * Aggregated time series                          * Producer manually creates aggregated dataset    * Producer subjectively creates a dataset 
+           * Lightning strike location data                  * Produce manually creates calibrated dataset
+           * Calibrated products based on radar data         * Producer manually creates merge dataset 
+           * Calibrated products based on satelite data
+           * Merged products based on level 1 data
+    3      * Resampled time series                           * Producer manually resamples time series
+           * Gridded datasets based on level 1 data
+    4      * Weather model data                              * Warnings forecast                               * Climate predictions
+           * Ocean model data                                * Avalanche forecast
+           * Air quality model                               * Nowcast
+           * Climate models                                   
+=========  ================================================  ================================================  ================================================
 
 **In situ observations:**
 
@@ -67,11 +66,13 @@ Consumers
 
 **Advanced:**
 
+Advanced consumers require enough metadata (including provenance) to gain a full understanding of what data exists so they can choose the data appropriate for their use. 
+
 Example questions:
 
 * Need all historical weather data, that can be used to model / predict the weather in the future.
 
-Specific users: 
+Specific consumers: 
 
 * Researcher.
 
@@ -79,13 +80,15 @@ Specific users:
 
 **Intermediate:**
 
+Intermediate consumers need enough metadata to understand if the data can answer their question(s), also they often want to cross reference a dataset with another dataset or metadata. 
+
 Example questions:
 
 * Is this observation a record / weather extreme (coldest, warmest, wettest...)?
 
 * Amount of rain in last Month in a certain watershed.
 
-Specific users: 
+Specific consumers: 
 
 * Klimavakt (MET).
 
@@ -97,13 +100,15 @@ Specific users:
 
 **Simple:**
 
+Simple consumers are not able to understand all the metadata and are most likely looking for a derived product that more simply answers their question(s).
+
 Example questions:
  
 * Can the event take place, or will the weather impeed it?
 
 * When should I harvest my crops?
 
-Specific users: 
+Specific consumers: 
 
 * Event organizer. 
 
