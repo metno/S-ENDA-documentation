@@ -37,7 +37,7 @@ The below figure illustrates S-ENDA's and Geonorge's position in the national an
 .. uml:: harvest_context.puml
 
 S-ENDA provider context
-=====================================
+=======================
 
 * **Data Provider:** Produces discovery and configuration (meta)data and wants to make them discoverable and available to users
 * **Service Provider:** Creates data services, and wants to make the data services discoverable and available to users
@@ -61,15 +61,18 @@ The goal of the project is to make sure that all kinds of potential users of dyn
 .. uml:: search-context.puml
 
 S-ENDA advanced data access context
-=====================
+===================================
+
 Data access can be categorized into two broad categories:
-  * Advanced use: For those who need access to data for doing research, creating products or for post-processsing.
-  * Simple use: Access to high-level products meant to help people make context specific decisions.
+
+* Advanced use: For those who need access to data for doing research, creating products or for post-processsing.
+* Simple use: Access to high-level products meant to help people make context specific decisions.
 
 The system described here is concerned with advanced use.
 
 Functionality
----------------------
+-------------
+
 * Users should be able to produce a dataset and upload to the data access service without time-consuming transformations.
 * Users must be able to download a copy of the entire dataset.
 * Users must be able to stream and filter parts of the dataset.

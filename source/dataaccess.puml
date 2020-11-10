@@ -1,5 +1,5 @@
 @startuml Data access context diagram
-!includeurl <C4/C4_Context>
+!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Context.puml
 
 LAYOUT_LEFT_RIGHT
 
