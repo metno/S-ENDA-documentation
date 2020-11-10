@@ -60,18 +60,23 @@ The goal of the project is to make sure that all kinds of potential users of dyn
 
 .. uml:: search-context.puml
 
-S-ENDA advanced data access context
-===================================
+S-ENDA data access context
+==========================
 
-Data access can be categorized into two broad categories:
+We categorize data consumers in three levels:
 
 * Advanced use: For those who need access to data for doing research, creating products or for post-processsing.
+* Intermediate use: 
 * Simple use: Access to high-level products meant to help people make context specific decisions.
+
+
+S-ENDA advanced data access context
+-----------------------------------
 
 The system described here is concerned with advanced use.
 
 Functionality
--------------
+"""""""""""""
 
 * Users should be able to produce a dataset and upload to the data access service without time-consuming transformations.
 * Users must be able to download a copy of the entire dataset.
@@ -87,7 +92,8 @@ Functionality
 
 
 Quality attributes
----------------------
+""""""""""""""""""
+
 * The total throughput and storage size for the data access service need to scale with massively increasing size of a dataset.
 * The total throughput, storage size and number of objects of the data access service need to scale with massively increasing number of datasets.
 * Scaling for increasing size of datasets and increasing number of datasets must not significantly increase latency or decrease throughput for individual requests.
@@ -95,7 +101,8 @@ Quality attributes
 * The relationship between response time and size of data requested should be predictable, and not worse than linear response time increase with data size.
 
 Constraints
----------------------
+"""""""""""
+
 * The data access service has no search mechanism for datasets, and assumes that the datasets can be listed/found/searched
   through a separate metadata mechanism.
 
