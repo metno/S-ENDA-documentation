@@ -38,12 +38,12 @@ Producers
             * Calibrated products based on radar data         * User manually creates merge dataset 
             * Calibrated products based on satelite data
             * Merged products based on level 1 data
-    3       * Resampled time series
+    3       * Resampled time series                           * User manually resamples time series
             * Gridded datasets based on level 1 data
-    4       * Weather model data
-            * Ocean model data
-            * Air quality model
-            * Climate models
+    4       * Weather model data                              * Warnings forecast                               * Climate predictions
+            * Ocean model data                                * Avalanche forecast
+            * Air quality model                               * Nowcast
+            * Climate models                                  
             
 ==========  ================================================  ================================================  ================================================
 
@@ -60,11 +60,6 @@ These observations can contain uncertainties and noise, and how this should be i
 **Modelling & forecast data:**
 
 Models are often generic (for example: probabilistic), and thus their use needs to be tailored for the end user.
-Some forecasts do this by using thresholds, for example: 
-
-* Warnings forecast.
-
-* Avalanche forecast.
 
 
 Consumers
