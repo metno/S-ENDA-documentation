@@ -14,11 +14,8 @@ Welcome to S-ENDA's documentation!
    fair_documentation
    architecture
    metadata_management_heritage
-   use_cases
+   user_analysis
    catalog
-
-..
-   catalog_service_API
 
 .. toctree::
    :maxdepth: 2
