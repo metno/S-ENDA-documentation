@@ -49,7 +49,7 @@ Producers
 
 **In situ observations:**
 
-Obeservations can contain uncertainty and errors, and thus they may need to be linked to quality control information. It should also be possible for a producer or consumer to flag suspicious data. 
+Observations can contain uncertainty and errors, and thus they may need to be linked to quality control information. It should also be possible for a producer or consumer to flag suspicious data. 
 
 
 **Remote sensing observations:**
