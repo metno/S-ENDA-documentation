@@ -22,8 +22,8 @@ Producers
   Level                       Automatic                                            Manual                                              Human
 ==========  ================================================  ================================================  ================================================
     1       * Weather station observation data                * Manual weather observations at a station.
-            * Car, bus, self driving vehicle data             * Crowdsourced observations.
-            * Vegvesen roadside sensors, webcameras           * Biodiversity data (NINA) - manual / fieldwork. 
+            * Car, bus, self driving vehicle data             * Crowdsourced observations.                      * Crowdsourced observations.
+            * Vegvesen roadside sensors, webcameras           * Biodiversity data (NINA) - manual.              * Biodiversity data (NINA) - fieldwork. 
             * Private weather station data (Netatmo)
             * Boat, buoy, oil platform observation data
             * Drone, gliders (underwater) etc
