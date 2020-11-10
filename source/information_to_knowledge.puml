@@ -1,0 +1,28 @@
+@startuml
+
+state "Knowledge generation" as kg {
+state Data {
+  Data : Mercury pressure
+  Data : Wind speed and direction
+}
+
+state Information {
+  Information : Temperature change
+  Information : Southerly and increasing wind
+}
+
+state Knowledge {
+  Knowledge : It will most likely be raining
+}
+
+state "Tailored knowledge" as tk {
+  tk : Flight conditions are safe
+}
+}
+
+Data --> Information
+Information --> Knowledge
+Knowledge --> tk
+tk --> Data : Trace and verify
+
+@enduml

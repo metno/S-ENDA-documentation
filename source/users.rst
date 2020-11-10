@@ -60,8 +60,8 @@ A consumer of one level of data is typically a producer of data at the next leve
 
 .. uml:: users.puml
 
-Consumers
-=========
+Data Consumers
+==============
 
 .. _`advanced-consumers`:
 
@@ -131,7 +131,9 @@ Specific consumers:
   An advanced consumer may discover information pertaining a role as a simple consumer. Such a user may, for some reason, be interested in tracking the data in order to use it together with other data (interoperability) or to verify the information. Therefore, it is important to have provenance metadata pointing to the basic data source(s) also at the simplest information level.
 
 
-Producers
-=========
+.. _`data-producers`:
+
+Data Producers
+==============
 
 :Definition: A producer is an advanced consumer at one level of data that generate new information at a higher level. This new information could be in the form of actual data or simple information, such as an illustration or a text summary. It is essential that any information can be traced back to the source(s).

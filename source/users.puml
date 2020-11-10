@@ -1,0 +1,19 @@
+@startuml
+
+package "Level 0 data" as L0 {
+  (Consume data) as (CD0)
+}
+
+package "Level 1 data" as L1 {
+  (Produce data) as (PD1)
+  (Consume data) as (CD1)
+}
+
+actor "L0 consumer" as L0C
+actor "L1 consumer" as L1C
+
+L0C --> (CD0)
+L0C --> (PD1)
+L1C --> (CD1)
+
+@enduml
