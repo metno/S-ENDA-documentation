@@ -12,9 +12,10 @@ Welcome to S-ENDA's documentation!
    :caption: Background
 
    fair_documentation
-   architecture
-   metadata_management_heritage
    user_analysis
+   metadata_management_heritage
+   requirements
+   architecture
    catalog
 
 .. toctree::
