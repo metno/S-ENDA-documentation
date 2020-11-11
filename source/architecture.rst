@@ -207,9 +207,9 @@ Functional requirements
 * :ref:`advanced-consumers` must be able to stream and filter parts of the dataset
 * :ref:`advanced-consumers` need access to enough use metadata to be able to locally post-process, reproject, etc., the dataset
 * The data access service must support the FAIR principles, in particular (meta)data interoperability and reusability
-* The transport mechanism used in the data access service need to be a widely adopted standard solution, and it must be open-source
-* The dataset need to be on a widely adopted open data format standard
-* The data access service as a whole need to be easy to use with familiar tools from the meteorological/climate/oceanographic domain, both for upload and download
+* The transport mechanism used in the data access service needs to be a widely adopted standard solution, and it must be open-source
+* The dataset needs to be on a widely adopted open data format standard
+* The data access service as a whole needs to be easy to use with familiar tools from the meteorological/climate/oceanographic domain, both for upload and download
 * The data access service must work together with an event-driven production system
 * The data acccess service should support the Harmonised Data API from the European Weather Cloud
 * :ref:`advanced-consumers` need to able to give feedback on the data access service and each individual dataset.
