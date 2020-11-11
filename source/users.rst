@@ -21,9 +21,13 @@ Users typically consume some type of data in order to do something, and produce 
 =========  ================================================  ================================================  ================================================
   Level                       Automatic                                            Manual                                              Human
 =========  ================================================  ================================================  ================================================
-    1      * Weather station observation data                * Manual weather observations at a station
-           * Car, bus, self driving vehicle data             * Crowdsourced observations                       * Crowdsourced observations
-           * Vegvesenet roadside sensors, webcameras         * Biodiversity data (NINA) - manual               * Biodiversity data (NINA) - fieldwork 
+    0      * Voltages from instrument readings
+           * Satellite radiances
+           * Water-vapour pressure
+    1      * Weather station observation data (in            * Manual weather observations at a station
+             appropriate physical units)                     * Crowdsourced observations
+           * Car, bus, self driving vehicle data             * Biodiversity data (NINA) - manual               * Crowdsourced observations
+           * Vegvesenet roadside sensors, webcameras                                                           * Biodiversity data (NINA) - fieldwork 
            * Private weather station data (Netatmo)
            * Boat, buoy, oil platform observation data
            * Drone, gliders (underwater) etc
