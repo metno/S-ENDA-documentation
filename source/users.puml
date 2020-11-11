@@ -9,7 +9,7 @@ package "Level 1 data" as L1 {
   (Consume data) as (CD1)
 }
 
-actor "L0 consumer" as L0C
+actor "L0 consumer / L1 producer" as L0C
 actor "L1 consumer" as L1C
 
 L0C --> (CD0)
