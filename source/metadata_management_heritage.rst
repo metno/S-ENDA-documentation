@@ -1,3 +1,5 @@
+.. _`heritage-systems`:
+
 ===============================
 Heritage of metadata management
 ===============================

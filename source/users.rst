@@ -1,27 +1,33 @@
------
-Users 
------
+-------
+Context
+-------
 
-There are 2 types of users:
+:Vision: Everyone, from professional users to the general public, should have easy, secure and stable access to dynamic geodata. S-ENDA shall achieve cross-sectoral coordination of data management and cost-effective use of resources on both the supplier and consumer side.
 
-1. *Producers*: Those that create / produce data
-2. *Consumers*: Those that consume data 
+:Goals:
 
-Users typically consume some type of data in order to do something and produce a new type of data. We refer to these data types as levels, following the `WMO WIGOS definition for levels of data <http://codes.wmo.int/wmdr/_LevelOfData>`_. The typical workflow is reflected by the below table, where a consumer of one level of data is the producer of the next level of data. The columns of this table define the observation source (i.e., automatic, manual, human) of datasets covered by the user analysis. The observation source definitions follow the `WMO WIGOS definition for source of observation <http://codes.wmo.int/wmdr/_SourceOfObservation>`_.
+* Increased use of real-time and historical dynamic geodata at all user levels
+* Information made available in the form of dynamic geodata must be verifiable and traceable (back to basic/raw data)
+* Reduced costs for establishment and operation of effective management of dynamic geodata at the partner institutions
 
-A user can both consume data and produce data, or just have one of these roles (i.e., at the start/end of the production chain).
+.. uml:: information_to_knowledge.puml
 
+As displayed in the above figure, data can be used to generate tailored knowledge (e.g., about flight conditions) for end users. This is presented as information in the form of actual data, illustrations, text or other forms of communication. In this context, an illustration is a representation of data, whereas data means the numerical values needed to analyse and interpret a natural process (i.e., calibrated or with calibration information; it must be possible to understand the meaning of the numerical value from the available and machine-readable information).
 
-Producers
-=========
+:Definition: Data means the numerical values needed to analyse and interpret a natural process (i.e., calibrated or with calibration information; it must be possible to understand the meaning of the numerical value from the available and machine-readable information).
 
+Users typically consume some type of data in order to do something, and produce a new type of data. Following the `WMO WIGOS definition for levels of data <http://codes.wmo.int/wmdr/_LevelOfData>`_, data comes at different levels (see the below table). The columns in the below table define the observation source (i.e., automatic, manual, human) of the data. The observation source definitions follow the `WMO WIGOS definition for source of observation <http://codes.wmo.int/wmdr/_SourceOfObservation>`_.
 
 =========  ================================================  ================================================  ================================================
   Level                       Automatic                                            Manual                                              Human
 =========  ================================================  ================================================  ================================================
-    1      * Weather station observation data                * Manual weather observations at a station
-           * Car, bus, self driving vehicle data             * Crowdsourced observations                       * Crowdsourced observations
-           * Vegvesenet roadside sensors, webcameras         * Biodiversity data (NINA) - manual               * Biodiversity data (NINA) - fieldwork 
+    0      * Voltages from instrument readings
+           * Satellite radiances
+           * Water-vapour pressure
+    1      * Weather station observation data (in            * Manual weather observations at a station
+             appropriate physical units)                     * Crowdsourced observations
+           * Car, bus, self driving vehicle data             * Biodiversity data (NINA) - manual               * Crowdsourced observations
+           * Vegvesenet roadside sensors, webcameras                                                           * Biodiversity data (NINA) - fieldwork 
            * Private weather station data (Netatmo)
            * Boat, buoy, oil platform observation data
            * Drone, gliders (underwater) etc
@@ -45,15 +51,28 @@ Producers
 =========  ================================================  ================================================  ================================================
 
 
-Consumers
-=========
+-----
+Users 
+-----
+
+We define two types of users:
+
+1. **Producers**: Those that create / produce data
+2. **Consumers**: Those that consume data 
+
+A consumer of one level of data is typically a producer of data at the next level. A user can both consume data and produce data, or just have one of these roles (i.e., at the start/end of the production chain).
+
+.. uml:: users.puml
+
+Data Consumers
+==============
 
 .. _`advanced-consumers`:
 
 Advanced consumers
 ------------------
 
-**Definition:** Advanced consumers require information in the form of data and metadata (including provenance) to gain a full understanding of what data exists and how to use it (discovery and use metadata), and to automatize the generation of derived data (new knowledge generation), verification (of information), and validation of data products.
+:Definition: Advanced consumers require information in the form of data and metadata (including provenance) to gain a full understanding of what data exists and how to use it (discovery and use metadata), and to automatize the generation of derived data (new knowledge generation), verification (of information), and validation of data products.
 
 Example questions:
 
@@ -70,7 +89,7 @@ Specific consumers:
 Intermediate consumers
 ----------------------
 
-**Definition:** Intermediate consumers need enough information to find data and understand if it can answer their question(s) (discovery and use metadata). Also, they often want to cross reference a dataset with another dataset or metadata for inter-comparative verification of information.
+:Definition: Intermediate consumers need enough information to find data and understand if it can answer their question(s) (discovery and use metadata). Also, they often want to cross reference a dataset with another dataset or metadata for inter-comparative verification of information.
 
 Example questions:
 
@@ -93,7 +112,7 @@ Specific consumers:
 Simple consumers
 ----------------
 
-**Definition:** Simple consumers do not have any prior knowledge about the data. Information in the form of text or illustrations is sufficient for their decision making. They do not need to understand either data or metadata, and they are most likely looking for answers to simple questions.
+:Definition: Simple consumers do not have any prior knowledge about the data. Information in the form of text or illustrations is sufficient for their decision making. They do not need to understand either data or metadata, and they are most likely looking for answers to simple questions.
 
 Example questions:
 
@@ -114,3 +133,11 @@ Specific consumers:
 .. note::
 
   An advanced consumer may discover information pertaining a role as a simple consumer. Such a user may, for some reason, be interested in tracking the data in order to use it together with other data (interoperability) or to verify the information. Therefore, it is important to have provenance metadata pointing to the basic data source(s) also at the simplest information level.
+
+
+.. _`data-producers`:
+
+Data Producers
+==============
+
+:Definition: A producer is an advanced consumer at one level of data that generate new information at a higher level. This new information could be in the form of actual data or simple information, such as an illustration or a text summary. It is essential that any information can be traced back to the source(s).

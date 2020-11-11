@@ -1,0 +1,30 @@
+@startuml Data access context diagram
+!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Context.puml
+
+LAYOUT_LEFT_RIGHT
+
+System_Boundary(MET, "Met Norway"){
+    System(dataaccess, "Data access")
+    System_Ext(PPI, "PPI")
+    System_Ext(HPC, "HPC")
+
+    Rel(PPI, dataaccess, "Push data", "S3/Zarr")
+    Rel(HPC, dataaccess, "Push data", "S3/Zarr")
+
+    Rel(dataaccess, PPI, "Access data", "CIFS")
+    Rel(PPI, dataaccess, "Push data", "S3/Zarr")
+}
+
+Person(researcher, "Researcher")
+System_Ext(jupyter, "Jupyter lab")
+System_Ext(web_maps, "Web page with climate maps")
+
+System_Ext(prodgen, "Product-generation system")
+
+Rel(researcher, jupyter, "Interactive data mining", "Web GUI")
+
+Rel(jupyter, dataaccess, "Access data", "S3/Zarr")
+Rel(prodgen, dataaccess, "Access data", "OpenDAP")
+Rel(web_maps, dataaccess, "Web page with climate maps", "OGC API")
+
+@enduml
