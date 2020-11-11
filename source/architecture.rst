@@ -215,8 +215,8 @@ Functional requirements
 * :ref:`advanced-consumers` need to able to give feedback on the data access service and each individual dataset.
 
 
-Qualitative requirements
-------------------------
+Quality attributes
+------------------
 
 * The total throughput and storage size for the data access service need to scale with massively increasing dataset sizes
 * The total throughput, storage size and number of objects of the data access service need to scale with massively increasing number of datasets
