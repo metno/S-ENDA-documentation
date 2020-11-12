@@ -218,7 +218,7 @@ The `S-ENDA csw catalog service <https://github.com/metno/S-ENDA-csw-catalog-ser
 
   .. note::
 
-    The git repositories with editable code is now available in the ``lib`` folder. If you need to add some repositories, please do it by editing the file ``build_container.dev.sh``
+    The git repositories with editable code is now available in the ``lib`` folder. If you need to add some repositories, please do it by editing line 13 in the file ``clone_or_update_git_repositories.sh``
 
 * Access VM:
 
@@ -252,9 +252,9 @@ The `S-ENDA csw catalog service <https://github.com/metno/S-ENDA-csw-catalog-ser
     ./sentinel1_mmd_to_csw_iso19139.py -i ../../mmd_in -o ../../iso_out # OBS: the way to do this will change - NEEDS UPDATE
     cd ../..
     # Create database
-    python3 /usr/bin/pycsw-admin.py -c setup_db -f /etc/pycsw/pycsw.cfg
+    python3 /usr/local/bin/pycsw-admin.py -c setup_db -f /etc/pycsw/pycsw.cfg
     # Ingest the ISO19139 record(s)
-    python3 /usr/bin/pycsw-admin.py -c load_records -f /etc/pycsw/pycsw.cfg -p iso_out -r -y
+    python3 /usr/local/bin/pycsw-admin.py -c load_records -f /etc/pycsw/pycsw.cfg -p iso_out -r -y
     # Start the web server
     python3 /usr/local/bin/entrypoint.py
 
@@ -289,11 +289,6 @@ To run tests:
 .. code-block:: bash
 
   py.test -m unit
-
-.. note::
-
-  Pytest runs all available test code. Currently it fails on ``/home/pycsw/mmd/tests/test__nc_to_mmd.py`` because netcdf4 is not installed. This is on the todo-list... See `<https://github.com/metno/S-ENDA-csw-catalog-service/issues/2>`_
-
 
 ..
   Contents of the S-ENDA-csw-catalog-service repository
