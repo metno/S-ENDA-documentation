@@ -94,12 +94,12 @@ UML diagram, example;
 
 .. uml::
 
-   @startuml
+   @startuml Provider use case
+   !includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Context.puml
 
    LAYOUT_LEFT_RIGHT
 
-   System(data_provider, "Data provider")
-
+   Person(data_provider, "Data provider")
    System(senda_provider_interface, "S-ENDA Data Provider interface")
 
    Rel(senda_provider_interface, data_provider, "Feedback about if the data was registered.", "Web UI")

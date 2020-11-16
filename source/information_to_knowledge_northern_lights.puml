@@ -1,0 +1,30 @@
+@startuml
+
+state "Knowledge generation" as kg {
+
+state Data {
+  Data : Satellite data
+  Data : Model data
+}
+
+state Information {
+  Information : Cloud movement direction and speed
+  Information : Current time
+}
+
+state Knowledge {
+  Knowledge : Area where likely to see northern lights
+}
+
+state "Tailored knowledge" as tk {
+  tk : This particular sub area is likely be clear enough
+  tk : Best to try to see northern lights at time X
+}
+}
+
+Data --> Information
+Information --> Knowledge
+Knowledge --> tk
+tk --> Data : Trace and verify
+
+@enduml

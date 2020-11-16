@@ -1,0 +1,16 @@
+@startuml
+
+package "Level 2 data" as L2 {
+  (Consume radar cloud products) as (CD2)
+}
+
+package "Level 4 data" as L4 {
+  (Consume model data) as (CD4)
+}
+
+actor "L1 consumer / L4 consumer" as LC
+
+LC --> (CD2)
+LC --> (CD4)
+
+@enduml
