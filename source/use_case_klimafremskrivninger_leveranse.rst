@@ -14,6 +14,9 @@ Use Case Goal
 
 Norsk klimaservicesenter skal beregne nye klima- og hydrologifremskrivninger (forventede endringer i fremtiden) for Norge.
 
+.. uml:: information_to_knowledge_klima_leveranse.puml
+
+
 Actors
 ======
 
@@ -24,6 +27,8 @@ Actors
    will participate in completing the Use Case). Different actors often correspond to different user classes, or roles, identified from the customer community that will use the product.
 
 Norsk klimaservicesenter med partnere: MET, NVE, NORCE, Bjerknessenteret. Miljødirektoratet er bestiller.
+
+.. uml:: users_klima_leveranse_og_bruker.puml
 
 Trigger
 =======

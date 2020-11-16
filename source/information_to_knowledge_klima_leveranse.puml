@@ -1,0 +1,31 @@
+@startuml
+
+state "Knowledge generation" as kg {
+
+state Data {
+  Data : Gridded historical weather observations
+  Data : Aggregated time series (averages for certain time periods)
+  Data : Hydrology and other model Data
+}
+
+state Information {
+  Information : Statistics 
+  Information : Modeling forward in time
+}
+
+state Knowledge {
+  Knowledge : Likely scenarios
+}
+
+state "Tailored knowledge" as tk {
+  tk : On average it will be warmer / colder in the future
+  tk : These certain areas will be more affected by extremes
+}
+}
+
+Data --> Information
+Information --> Knowledge
+Knowledge --> tk
+tk --> Data : Trace and verify
+
+@enduml

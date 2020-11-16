@@ -1,0 +1,22 @@
+@startuml
+
+package "Level 2 data" as L2 {
+  (Aggregated time series) as (CD2)
+}
+package "Level 3 data" as L3 {
+  (Gridded datasets) as (CD3)
+}
+
+package "Level 4 data" as L4 {
+  (Climate model data) as (CD4)
+}
+
+actor "L2 & L3 consumer / L4 producer" as LC234
+actor "L4 consumer" as LC4
+
+LC234 --> (CD2)
+LC234 --> (CD3)
+LC234 --> (CD4)
+LC4 --> (CD4)
+
+@enduml

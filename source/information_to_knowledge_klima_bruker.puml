@@ -1,0 +1,29 @@
+@startuml
+
+state "Knowledge generation" as kg {
+
+state Data {
+  Data : Climate model data
+  Data : Maps, other data for crossreferencing
+}
+
+state Information {
+  Information : Statistics 
+  Information : Likely scenarios
+}
+
+state Knowledge {
+  Knowledge : Visualizations of what it will be like in certain areas
+}
+
+state "Tailored knowledge" as tk {
+  tk : Possible effects and outcomes of these changes
+}
+}
+
+Data --> Information
+Information --> Knowledge
+Knowledge --> tk
+tk --> Data : Trace and verify
+
+@enduml
