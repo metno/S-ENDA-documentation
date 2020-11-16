@@ -35,7 +35,7 @@ Trigger
 .. Event that initiates the Use Case (an external business event, a system event, or the first step
    in the normal flow.
 
-A researcher needs data to answer their research questions. They might first go to gbif.org but 
+A researcher needs data to answer their research questions. They might first go to https://www.gbif.org/ but 
 then when they want to cross reference with weather data search and find MET services.  
 
 Pre-conditions
@@ -56,6 +56,7 @@ Post-conditions
 
 * User is able to find biodiversity data.
 * User is able to cross reference biodiversity data with weather observation data.
+* User is able to give feedback on quality of the data.
 
 Normal Flow
 ===========
@@ -67,6 +68,7 @@ Normal Flow
 User actions:
 - User searches to find all occurences of species X in and area over time.
 - User tries to also find weather observations or other weather information for that area and time. 
+- User examines data and wants finds sections that are of potentially low quality, they want to report this back to integrate with the data.
 
 System responses:
 
@@ -75,6 +77,8 @@ Alternative Flows
 =================
 
 .. Other, legitimate usage scenarios that can take place within this Use Case.
+
+- The user finds the biodiversity data on a different website, and then only wants to find relavant weather data from MET.
 
 Exceptions
 ==========
@@ -90,21 +94,22 @@ Location does not have data, the search is for an area outside our datasets:
 Includes
 ========
 
-.. Other Use Cases that are included (“called”) by this Use Case (common functionality appearing in
-   multiple Use Cases can be described in a separate Use Case included by the ones that need that
-   common functionality).
+N/A
 
 Notes and Issues
 ================
 
-.. Additional comments about this Use Case and any remaining open issues that must be resolved. (It
-   is useful to Identify who will resolve each such issue and by what date.)
+N/A
 
 Relevant software
 =================
 
+N/A
+
 Relevant datasets
 =================
+
+N/A
 
 UML diagram
 ===========
@@ -116,6 +121,13 @@ UML diagram, example;
 .. uml::
 
    @startuml
-   Alice -> Bob: Hi!
-   Alice <- Bob: How are you?
+
+   LAYOUT_LEFT_RIGHT
+
+   Person(researcher, "Biodiversity researcher")
+
+   System(senda_search_interface, "S-ENDA Metadata Service/Central")
+
+   Rel(senda_search_interface, researcher, "Returns applicable biodiversity and weather datasets.", "Web UI")
+   Rel(researcher, senda_search_interface, "Searches for biodivesity data and related weather data for a region and time range.", "Web UI")
    @enduml
