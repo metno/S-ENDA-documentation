@@ -73,11 +73,17 @@ Pre-conditions
 .. Activities that must take place, or any conditions that must be true, before the Use Case can be
    started.
 
+The following datasets must be available to the producer:
+
 * Bias adjusted time series from EURO-COREX (CMIP5 og CMIP6).
 * Calculated climate indexes, averages over certain time periods, etc.
 * Gridded historical weather observations.
 * Calculations of averages for fylke, kommune, and other regions.
 
+The following services should be used to present results:
+
+* OGC Web Map Service (WMS)
+* A solution for getting data
 
 Post-conditions
 ---------------
@@ -85,8 +91,9 @@ Post-conditions
 .. The state of the system at the conclusion of the Use Case execution.
 
 * A dataset is created that contains climate predictions forward in time until 2100.
+* The data should be stored on netcdf on a 1x1 km grid (follow-up: why netcdf?)
 * This dataset includes predictions about temperature, as well as many other variables.
-* The results of this dataset are distilled into the report - Climate in Norway 2100.
+* The results of this dataset are distilled into a report (e.g., pdf) - Climate in Norway 2100.
 
 Normal Flow
 -----------
@@ -95,10 +102,15 @@ Normal Flow
    execution of the Use Case under normal, expected conditions. This dialog sequence will ultimately
    lead to accomplishing the goal stated in the Use Case name and description.
 
-* A masters student downloads the climate predictions for temperature for the whole time range.
-* A researcher downloads the climate prediction medians as an average over the period 2071-2100.
-* A journalist choses parameters on a website to se what the extreme temperatures will be in 2041-2070.
-* A state agency updates their maps with expected changes, to reflect future changes in water flow.
+* The researcher investigates the data
+
+  * downloads the climate predictions for temperature for the whole time range.
+  * downloads the climate prediction medians as an average over the period 2071-2100.
+
+* The journalist choses parameters on a website to se what the extreme temperatures will be in 2041-2070.
+* The state agency updates their maps with expected changes, to reflect future changes in water flow.
+
+The consumers of the projections for Norway produce new knowledge based on that data, as illustrated below. Note that it is the consumers' responsibility to enable others to trace and verify their results.
 
 .. uml:: information_to_knowledge_klima_bruker.puml
 
@@ -127,6 +139,7 @@ Notes and Issues
    is useful to Identify who will resolve each such issue and by what date.)
 
 See how the current data is used and visualized today:
+
 * https://klimaservicesenter.no/faces/desktop/scenarios.xhtml
 
 Relevant software

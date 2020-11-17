@@ -3,7 +3,7 @@
 state "Knowledge generation" as kg {
 
 state Data {
-  Data : Climate model data
+  Data : Projections for Norway
   Data : Maps, other data for crossreferencing
 }
 
@@ -17,13 +17,12 @@ state Knowledge {
 }
 
 state "Tailored knowledge" as tk {
-  tk : Possible effects and outcomes of these changes (can we build here?)
+  tk : Possible effects and outcomes of these changes\n(e.g., newspaper article, restriction on where to build houses, a scientific paper)
 }
 }
 
 Data --> Information
 Information --> Knowledge
 Knowledge --> tk
-tk --> Data : Trace and verify
 
 @enduml
