@@ -1,8 +1,8 @@
 Climate Projection (Temperature) - producers and consumers
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+==========================================================
 
 Use Case Goal
-=============
+-------------
 
 .. Required
 
@@ -19,7 +19,7 @@ weather Norway will experience in the future (forward in time to 2100).
 Consumers of this data will include other researchers as well as simpler users like a journalist.
 
 Actors
-======
+------
 
 .. Required
 
@@ -38,7 +38,7 @@ End users of the data might include:
 .. uml:: users_klima_leveranse_og_bruker.puml
 
 Trigger
-=======
+-------
 
 .. Event that initiates the Use Case (an external business event, a system event, or the first step
    in the normal flow.
@@ -48,7 +48,7 @@ The climate model data is needed to write this report.
 
 
 Pre-conditions
-==============
+--------------
 
 .. Activities that must take place, or any conditions that must be true, before the Use Case can be
    started.
@@ -60,7 +60,7 @@ Pre-conditions
 
 
 Post-conditions
-===============
+---------------
 
 .. The state of the system at the conclusion of the Use Case execution.
 
@@ -69,7 +69,7 @@ Post-conditions
 * The results of this dataset are distilled into the report - Climate in Norway 2100.
 
 Normal Flow
-===========
+-----------
 
 .. Detailed description of the user actions and system responses that will take place during
    execution of the Use Case under normal, expected conditions. This dialog sequence will ultimately
@@ -83,25 +83,25 @@ Normal Flow
 .. uml:: information_to_knowledge_klima_bruker.puml
 
 Alternative Flows
-=================
+-----------------
 
 .. Other, legitimate usage scenarios that can take place within this Use Case.
 
 Exceptions
-==========
+----------
 
 .. Anticipated error conditions that could occur during execution of the Use Case, and how the
    system is to respond to those conditions, or the Use Case execution fails for some reason.
 
 Includes
-========
+--------
 
 .. Other Use Cases that are included (“called”) by this Use Case (common functionality appearing in
    multiple Use Cases can be described in a separate Use Case included by the ones that need that
    common functionality).
 
 Notes and Issues
-================
+----------------
 
 .. Additional comments about this Use Case and any remaining open issues that must be resolved. (It
    is useful to Identify who will resolve each such issue and by what date.)
@@ -110,19 +110,19 @@ See how the current data is used and visualized today:
 * https://klimaservicesenter.no/faces/desktop/scenarios.xhtml
 
 Relevant software
-=================
+-----------------
 
 * cdi and nco for netcdf file manipulation
 
 Relevant datasets
-=================
+-----------------
 
 * seNorge2018 for adjusting bias and grid specifications
 * EURO-CORDEX climate prediction data that will be downscaled from a 12x12 km grid to 1x1 km for Norway.
 * CMIP5 og CMIP6 climate predictions that will be downscaled for Norway.
 
 UML diagram
-===========
+-----------
 
 .. uml::
 
