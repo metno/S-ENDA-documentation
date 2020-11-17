@@ -11,7 +11,7 @@ package "Level 4 data" as L4 {
   (Climate model data) as (CD4)
 }
 
-package "New Knowledge" {
+package "New Knowledge (Level 4 data)" {
   (Projections for yearly average and extreme air temperatures in Norway) as NK 
 }
 
