@@ -1,5 +1,5 @@
-Climate Projection (Temperature) - producers and consumers
-==========================================================
+Climate Projection of Yearly Air Temperature in Norway
+======================================================
 
 Use Case Goal
 -------------
@@ -9,14 +9,17 @@ Use Case Goal
    Brief description of the reason for and outcome of this Use Case, or a high-level description of
    the sequence of actions and the outcome of executing the Use Case.
 
+Various users who work with climate adaptation or products for climate adaptation must obtain relevant data on expected future climate change (climate projections), including hydrology and natural hazards. The Norwegian Climate Service Center will calculate new climate and hydrology projections (expected changes in the future) for Norway up to the year 2100.
 
-The Norwegian climate service centre wants to produce new predictions for the average and extreme
-temperatures, as well for many other weather parameters and their effects. This will try to model the 
-weather Norway will experience in the future (forward in time to 2100).
+This use case focuses on the new projections for the yearly average and extreme air temperatures in Norway, forward in time to year 2100. We follow the model presented in the :ref:`users-definition` section:
+
+* **Producers:** the Norwegian Climate Service Center
+
+* **Consumers:** :ref:`advanced-consumers` (e.g., researchers), :ref:`intermediate-consumers`, and :ref:`simple-consumers`  (e.g., journalists)
+
+The knowledge generation is described in the below figure. The data (see :ref:`user-analysis-context`) used to generate the air temperature projections is a combination of gridded historical weather observations (level 3), aggregated time series (level 2), and model simulations (level 4; BUT WHAT EXACTLY?). The information generated from this data is statistics of historical air temperature and simulations of future air temperature using an ensemble of climate models. From this, likely future scenarios can be estimated (knowledge) to provide general and specific information about the future climate. 
 
 .. uml:: information_to_knowledge_klima_leveranse.puml
-
-Consumers of this data will include other researchers as well as simpler users like a journalist.
 
 Actors
 ------
@@ -28,7 +31,24 @@ Actors
    will participate in completing the Use Case). Different actors often correspond to different user
    classes, or roles, identified from the customer community that will use the product.
 
-The Norwegian climate service centre and partners (MET, NVE, NORCE, Bjerknessenteret) will create the data.
+.. note::
+
+  We need to understand the data flow - what is used, what is produced at intermediate levels (if anything), and what is the end product. Then, the interfaces between each stage are important:
+
+  * do they comply with the FAIR principles?
+  * are there any bottlenecks?
+  * what can be done to remove the bottlenecks?
+
+Producers
+"""""""""
+
+The Norwegian climate service centre and partners (MET, NVE, NORCE, Bjerknessenteret) will produce the new predictions for the average and extreme air temperatures in Norway, forward in time to year 2100.
+
+.. uml:: air_temperature_projection_producer.puml
+
+Consumers
+"""""""""
+
 End users of the data might include: 
 
 * A researcher that wants to use the data in their biology model to predict the effect on ticks. 

@@ -1,0 +1,25 @@
+@startuml
+
+package "Level 2 data" as L2 {
+  (Aggregated time series from Frost?) as (CD2)
+}
+package "Level 3 data" as L3 {
+  (Gridded historical weather observations from ?? or is this produced?) as (CD3)
+}
+
+package "Level 4 data" as L4 {
+  (Climate model data) as (CD4)
+}
+
+package "New Knowledge" {
+  (Projections for yearly average and extreme air temperatures in Norway) as NK 
+}
+
+actor "Producer" as Producer
+
+Producer --> (CD2) : Consumes
+Producer --> (CD3) : Consumes
+Producer --> (CD4) : Consumes
+Producer --> (NK)  : Produces
+
+@enduml

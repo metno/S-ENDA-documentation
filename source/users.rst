@@ -1,3 +1,5 @@
+.. _`user-analysis-context`:
+
 -------
 Context
 -------
@@ -50,10 +52,11 @@ Users typically consume some type of data in order to do something, and produce 
            * Climate models                                   
 =========  ================================================  ================================================  ================================================
 
+.. _`users-definition`:
 
------
-Users 
------
+----------------
+Users definition
+----------------
 
 We define two types of users:
 

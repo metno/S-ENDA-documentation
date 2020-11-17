@@ -17,7 +17,7 @@ state Knowledge {
 }
 
 state "Tailored knowledge" as tk {
-  tk : Possible effects and outcomes of these changes
+  tk : Possible effects and outcomes of these changes (can we build here?)
 }
 }
 
