@@ -19,8 +19,7 @@ new use case, or to modify an existing one.
    use_case_ndvi_investigate.rst
    use_case_ndvi_monitor.rst
    use_case_swimming_comp.rst
-   use_case_klimafremskrivninger_bruker.rst
-   use_case_klimafremskrivninger_leveranse.rst
+   use_case_climate_projection.rst
    use_case_NINA.rst
    use_case_generic_provider.rst
 
