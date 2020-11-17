@@ -120,7 +120,8 @@ UML diagram, example;
 
 .. uml::
 
-   @startuml
+   @startuml Nina use case
+   !includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Container.puml
 
    LAYOUT_LEFT_RIGHT
 
