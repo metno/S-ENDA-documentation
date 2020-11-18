@@ -24,5 +24,6 @@ state "Tailored knowledge" as tk {
 Data --> Information
 Information --> Knowledge
 Knowledge --> tk
+tk --> Data : Trace and verify
 
 @enduml

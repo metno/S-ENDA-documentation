@@ -11,7 +11,11 @@ Use Case Goal
 
 Various users who work with climate adaptation or products for climate adaptation must obtain relevant data on expected future climate change (climate projections), including hydrology and natural hazards. The Norwegian Climate Service Center will calculate new climate and hydrology projections (expected changes in the future) for Norway up to the year 2100.
 
-This use case focuses on the new projections for the yearly average and extreme air temperatures in Norway, forward in time to year 2100. We follow the model presented in the :ref:`users-definition` section:
+This use case focuses on the new projections for the yearly average and extreme air temperatures in Norway, forward in time to year 2100.
+
+**Goal:** To produce new climate projections of yearly air temperatures in Norway.
+
+We follow the model presented in the :ref:`users-definition` section:
 
 * **Producers:** the Norwegian Climate Service Center
 
@@ -102,15 +106,43 @@ Normal Flow
    execution of the Use Case under normal, expected conditions. This dialog sequence will ultimately
    lead to accomplishing the goal stated in the Use Case name and description.
 
-* The researcher investigates the data
+Producer
+""""""""
 
-  * downloads the climate predictions for temperature for the whole time range.
-  * downloads the climate prediction medians as an average over the period 2071-2100.
+1. The producer searches and accesses the following data:
 
-* The journalist choses parameters on a website to se what the extreme temperatures will be in 2041-2070.
-* The state agency updates their maps with expected changes, to reflect future changes in water flow.
+* Aggregated time series
+* Gridded historical weather observations
+* Climate model data
 
-The consumers of the projections for Norway produce new knowledge based on that data, as illustrated below. Note that it is the consumers' responsibility to enable others to trace and verify their results.
+2. The producer runs an algorithm to produce climate projections
+
+3. The producer stores the results and discovery and configuration metadata on a netcdf file
+
+4. The netcdf file is registered on `<https://thredds.met.no>`_
+
+5. The data is made available via OPeNDAP and visualised through WMS
+
+Consumer
+""""""""
+
+1. The consumer searches for data
+2. The consumer investigates and interprets data
+
+  * The researcher investigates the data
+
+    * Downloads the climate projection for temperature for the whole time range
+    * Downloads the climate projection medians as an average over the period 2071-2100
+    * Collocates the climate projections with their biology model simulation results
+
+  * The journalist chooses parameters on a website to see what the extreme temperatures will be in 2041-2070
+  * The state agency updates their maps with expected changes, to reflect future changes in permafrost
+
+3. The consumer concludes and summarizes their findings
+
+  * The researcher publishes a scientific paper
+  * The journalist publishes a newspaper article
+  * The state agency establishes hazard zones due to melting permafrost
 
 .. uml:: information_to_knowledge_klima_bruker.puml
 
@@ -118,6 +150,8 @@ Alternative Flows
 -----------------
 
 .. Other, legitimate usage scenarios that can take place within this Use Case.
+
+* The journalist wants to know the temperature on 25th June, 2074. It must be clear from the discovery metadata that the projections cannot be used for that purpose.
 
 Exceptions
 ----------
