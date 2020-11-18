@@ -141,7 +141,7 @@ How is this currently done? What are the main challenges?
 
 How is this currently done? What are the main challenges?
 
-5. The data is made available via OPeNDAP and visualised through WMS
+5. The data is made available
 
 How is this currently done? What are the main challenges?
 
