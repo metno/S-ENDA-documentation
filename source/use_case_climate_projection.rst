@@ -134,6 +134,7 @@ Consumer
     * Downloads the climate projection for temperature for the whole time range
     * Downloads the climate projection medians as an average over the period 2071-2100
     * Collocates the climate projections with their biology model simulation results
+    * Runs an algorithm to predict the effect on ticks
 
   * The journalist chooses parameters on a website to see what the extreme temperatures will be in 2041-2070
   * The state agency updates their maps with expected changes, to reflect future changes in permafrost
