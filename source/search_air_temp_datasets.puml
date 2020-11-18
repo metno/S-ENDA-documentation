@@ -1,0 +1,13 @@
+@startuml
+
+actor "Level 4 projections producer" as PP
+actor "Level 2/3/4 data producer" as DM
+database "Level 2/3/4 data" as DMC
+
+PP -> DM : Ask for aggregated time\nseries of air temperature
+PP -> DM : Ask for gridded histor-\nical weather observations
+PP -> DM : Ask for climate model\ndata
+DM -> DMC : Get URIs
+DM -> PP : Give back URIs
+
+@enduml

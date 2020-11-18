@@ -109,19 +109,41 @@ Normal Flow
 Producer
 """"""""
 
-1. The producer searches and accesses the following data:
+1. The producer searches for the following data:
 
 * Aggregated time series
 * Gridded historical weather observations
 * Climate model data
 
-2. The producer runs an algorithm to produce climate projections
+How is this currently done? Are they using one of the following methods, both, or some other way? What are the main challenges?
 
-3. The producer stores the results and discovery and configuration metadata on a netcdf file
+Example 1:
 
-4. The netcdf file is registered on `<https://thredds.met.no>`_
+.. uml:: search_air_temp_datasets.puml
+
+Example 2:
+
+.. uml:: search_air_temp_datasets_in_catalog.puml
+
+2. The producer accesses the found data:
+
+* Aggregated time series
+* Gridded historical weather observations
+* Climate model data
+
+How is this currently done? What are the main challenges?
+
+3. The producer runs an algorithm to produce climate projections
+
+How is this currently done? What are the main challenges?
+
+4. The producer stores the results and associated metadata
+
+How is this currently done? What are the main challenges?
 
 5. The data is made available via OPeNDAP and visualised through WMS
+
+How is this currently done? What are the main challenges?
 
 Consumer
 """"""""
