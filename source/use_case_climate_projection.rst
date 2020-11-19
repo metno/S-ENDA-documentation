@@ -9,7 +9,17 @@ Use Case Goal
    Brief description of the reason for and outcome of this Use Case, or a high-level description of
    the sequence of actions and the outcome of executing the Use Case.
 
-Various users who work with climate adaptation or products for climate adaptation must obtain relevant data on expected future climate change (climate projections), including hydrology and natural hazards. The Norwegian Climate Service Center will calculate new climate and hydrology projections (expected changes in the future) for Norway up to the year 2100.
+Various users who work with climate adaptation or products for climate adaptation must obtain relevant data on expected future climate change 
+(climate projections), including hydrology and natural hazards. The Norwegian Climate Service Center will calculate new climate and hydrology 
+projections (expected changes in the future) for Norway up to the year 2100.
+
+Climate projections have a systematic bias for temperature and precipitation. Because of this they run climate models for 100 years or so, 
+such that they have an overlap with observational gridded datasets for 30-40 years. The time period where the climate projections and 
+observational datasets overlaps is used to compute systematic differences that are used to rescale climate projections such that 
+the systematic differences are removed.
+
+National services (such at MET) downscale and remove biases from the global projections to get it to fit more locally. 
+MET downscales using both numerical models and stastical methods.
 
 This use case focuses on the new projections for the yearly average and extreme air temperatures in Norway, forward in time to year 2100.
 
@@ -21,7 +31,8 @@ We follow the model presented in the :ref:`users-definition` section:
 
 * **Consumers:** :ref:`advanced-consumers` (e.g., researchers), :ref:`intermediate-consumers`, and :ref:`simple-consumers`  (e.g., journalists)
 
-The knowledge generation is described in the below figure. The data (see :ref:`user-analysis-context`) used to generate the air temperature projections is a combination of gridded historical weather observations (level 3), aggregated time series (level 2), and model simulations (level 4; BUT WHAT EXACTLY?). The information generated from this data is statistics of historical air temperature and simulations of future air temperature using an ensemble of climate models. From this, likely future scenarios can be estimated (knowledge) to provide general and specific information about the future climate. 
+The knowledge generation is described in the below figure. The data (see :ref:`user-analysis-context`) used to generate the air temperature 
+projections is a combination of gridded historical weather observations (level 3), aggregated time series (level 2), and model simulations (level 4; BUT WHAT EXACTLY?). The information generated from this data is statistics of historical air temperature and simulations of future air temperature using an ensemble of climate models. From this, likely future scenarios can be estimated (knowledge) to provide general and specific information about the future climate. 
 
 .. uml:: information_to_knowledge_klima_leveranse.puml
 
@@ -116,6 +127,10 @@ Producer
 * Climate model data
 
 How is this currently done? Are they using one of the following methods, both, or some other way? What are the main challenges?
+
+Currently at MET the gridded observations can be found on both lustre and thredds (and likely use Example 1 workflow, since these are not easily searchable).
+The global climate models can be found in online portals which can potentially be searched (Example 2), but its also possible that the users are being told 
+exactly where the data they want is found (Example 1).
 
 Example 1:
 
