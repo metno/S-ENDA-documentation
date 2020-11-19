@@ -247,10 +247,10 @@ The `S-ENDA csw catalog service <https://github.com/metno/S-ENDA-csw-catalog-ser
 
   .. code-block:: bash
 
-    cd mmd/bin/
+    cd scripts/
     # Translate from MMD to ISO19139
-    ./sentinel1_mmd_to_csw_iso19139.py -i ../../mmd_in -o ../../iso_out # OBS: the way to do this will change - NEEDS UPDATE
-    cd ../..
+    ./xmlconverter.py -i ~/mmd_in -o ~/iso_out -t ~/mmd/xslt/mmd-to-iso.xsl
+    cd
     # Create database
     python3 /usr/local/bin/pycsw-admin.py -c setup_db -f /etc/pycsw/pycsw.cfg
     # Ingest the ISO19139 record(s)
