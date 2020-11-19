@@ -249,7 +249,7 @@ The `S-ENDA csw catalog service <https://github.com/metno/S-ENDA-csw-catalog-ser
 
     cd scripts/
     # Translate from MMD to ISO19139
-    ./xmlconverter.py -i ~/mmd_in -o ~/iso_out -t ~/mmd/xslt/mmd-to-iso.xsl
+    ./xmlconverter.py -i ~/mmd_in -o ~/isostore -t ~/mmd/xslt/mmd-to-iso.xsl
     cd
     # Create database
     python3 /usr/local/bin/pycsw-admin.py -c setup_db -f /etc/pycsw/pycsw.cfg
