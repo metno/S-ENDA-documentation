@@ -51,7 +51,8 @@ Consumers
 
 End users of the data might include: 
 
-* A researcher that wants to use the data to remove biases in a global climate prediction model 
+* A researcher that wants to use the data to remove biases in a global climate prediction model.
+* NVE uses the data in their hydrological and snow modeling.
 * A Journalist that wants to create visualizations of climate changes.
 
 
@@ -61,8 +62,9 @@ Trigger
 .. Event that initiates the Use Case (an external business event, a system event, or the first step
    in the normal flow.
 
-A newer version of the dataset should be produced every so often as newer observations become available, 
-or if the methods for producing the dataset are improved.
+An update of the dataset is produced daily and the data is made available on thredds.  
+Less often a full rerun of the interpolation is done, and this dataset is published with more traceability (DOI). 
+It also benefits from and updates or improvements in the quality control routines.
 
 
 Pre-conditions
@@ -116,11 +118,13 @@ Consumer
 2. The consumer investigates and interprets data
 
   * The researcher downloads the whole dataset off thredds to investigate different parameters. 
+  * NVE uses the atmospheric data to initialize the hydrological and snow simulations for modeling.
   * The journalist chooses parameters on a website like http://www.senorge.no to look at the data through visualizations
 
 3. The consumer concludes and summarizes their findings
 
   * The researcher publishes a scientific paper
+  * Hydrological and snow model data is produced. 
   * The journalist publishes a newspaper article
 
 
