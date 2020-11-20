@@ -103,7 +103,7 @@ This vm is used to test your MMD XML-files locally before pushing them to the ma
     cd /vagrant
     sudo MMD_IN=/vagrant/lib/input_mmd_files ./deploy-metadata.sh
 
-* Or, if you want to translate and index MMD files from the main gitlab repository:
+* Or, if you want to translate and index MMD files from the main gitlab repository (requires vpn connection to MET):
 
   .. code-block:: bash
 
