@@ -88,13 +88,14 @@ Local test environment
 
 This vm is used to test your MMD XML-files locally before pushing them to the main discovery metadata repository. 
 
+* Put your test files in the folder ``lib/input_mmd_files`` (you may have to create this folder)
 * Start VM:
 
   .. code-block:: bash
 
     vagrant up localtest
 
-Put your test files in the folder ``lib/input_mmd_files``, then:
+* If you want to test other MMD files after ``vagrant up localtest``:
 
   .. code-block:: bash
 
@@ -102,9 +103,11 @@ Put your test files in the folder ``lib/input_mmd_files``, then:
     cd /vagrant
     sudo MMD_IN=/vagrant/lib/input_mmd_files ./deploy-metadata.sh
 
-.. note::
+* Or, if you want to translate and index MMD files from the main gitlab repository (requires vpn connection to MET):
 
-  The three last commands above should be handled through the provisioning but this currently does not work...
+  .. code-block:: bash
+
+    sudo MMD_IN=/vagrant/lib/s-enda-mmd-xml ./deploy-metadata.sh
 
 ..
   * Check that the postgis db is added
@@ -120,7 +123,7 @@ Put your test files in the folder ``lib/input_mmd_files``, then:
     \dt
     select * from records;
 
-The csw-catalog-service is now started, and the catalog can be accessed on `<http://10.20.30.10>`_. Note that there is no point in debugging or changing code used in this environment. It is only meant to test the your MMD files. If you want to modify code used in the catalog service, please refer to :ref:`local-developmen-env`.
+The csw-catalog-service is now started, and the catalog can be accessed on `<http://10.20.30.10>`_. Note that there is no point in debugging or changing code used in this environment. It is only meant to test the MMD files. If you want to modify code used in the catalog service, please refer to :ref:`local-developmen-env`.
 
 Search the metadata catalog using `QGIS <https://qgis.org/en/site/>`_ (v3.14 or higher):
 
