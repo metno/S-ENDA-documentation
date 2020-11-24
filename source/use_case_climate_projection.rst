@@ -95,6 +95,9 @@ The following datasets must be available to the producer:
 * Gridded historical weather observations.
 * Calculations of averages for fylke, kommune, and other regions.
 
+https://klimaservicesenter.no/faces/desktop/article.xhtml?uri=klimaservicesenteret/klima-og-hydrologiske-data/datagrunnlag-klimafremskrivninger
+
+
 The following services should be used to present results:
 
 * OGC Web Map Service (WMS)
@@ -108,9 +111,6 @@ Post-conditions
 * A dataset is created that contains climate predictions forward in time until 2100.
 * The data should be stored on netcdf on a 1x1 km grid (follow-up: why netcdf?)
 * This dataset includes predictions about temperature, as well as many other variables.
-Some of this data can be found here: 
-https://drive.google.com/drive/folders/1czjY8UR8RxUCwZsdsqNa-09cvRi5bVLB
-
 * The results of this dataset are distilled into a report (e.g., pdf) - Climate in Norway 2100.
 
 Normal Flow
@@ -162,6 +162,19 @@ How is this currently done? What are the main challenges?
 5. The data is made available
 
 How is this currently done? What are the main challenges?
+
+A significant challenge is that the creators of the data feel a need to have some control 
+over how the data is used and presented, since otherwise there is a potential for misinterpretation
+and/or misrepresentation. For example averages over larger areas over longer time periods might be
+considered appropriate use, but using the finer scale data to make decisions about landuse is likely 
+innapropriate. Most simple users are unable to grasp the uncertainty contained in the model data.
+
+The distribution of the data is therefore somewhat limited. One can download particular aggregations 
+of the data her:
+https://klimaservicesenter.no/faces/desktop/scenarios.xhtml
+
+Some of the netcdf data can be found here: 
+https://drive.google.com/drive/folders/1czjY8UR8RxUCwZsdsqNa-09cvRi5bVLB
 
 Consumer
 """"""""
