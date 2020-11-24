@@ -165,13 +165,15 @@ How is this currently done? What are the main challenges?
 
 A significant challenge is that the creators of the data feel a need to have some control 
 over how the data is used and presented, since otherwise there is a potential for misinterpretation
-and/or misrepresentation. For example averages over larger areas over longer time periods might be
-considered appropriate use, but using the finer scale data to make decisions about landuse is likely 
-innapropriate. Most simple users are unable to grasp the uncertainty contained in the model data.
+and/or misrepresentation. For example averages over larger areas / over longer time periods might be
+considered appropriate use, but using the finer scale data to make decisions about landuse (or zoom
+way in on a map) is likely innapropriate. Most simple consumers are unable to grasp the uncertainty 
+contained in the model data, and the varying quality for the different aggregation scales.
 
 The distribution of the data is therefore somewhat limited. One can download particular aggregations 
 of the data her:
 https://klimaservicesenter.no/faces/desktop/scenarios.xhtml
+https://nedlasting.nve.no/klimadata/kss
 
 Some of the netcdf data can be found here: 
 https://drive.google.com/drive/folders/1czjY8UR8RxUCwZsdsqNa-09cvRi5bVLB
