@@ -108,6 +108,9 @@ Post-conditions
 * A dataset is created that contains climate predictions forward in time until 2100.
 * The data should be stored on netcdf on a 1x1 km grid (follow-up: why netcdf?)
 * This dataset includes predictions about temperature, as well as many other variables.
+Some of this data can be found here: 
+https://drive.google.com/drive/folders/1czjY8UR8RxUCwZsdsqNa-09cvRi5bVLB
+
 * The results of this dataset are distilled into a report (e.g., pdf) - Climate in Norway 2100.
 
 Normal Flow

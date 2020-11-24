@@ -4,22 +4,19 @@ state "Knowledge generation" as kg {
 
 state Data {
   Data : Gridded historical weather observations
-  Data : Aggregated time series (averages for certain time periods)
-  Data : Hydrology and other model Data
+  Data : Climate model data
 }
 
-state Information {
-  Information : Statistics 
-  Information : Modeling forward in time
+state Information { 
+  Information : Bias correction
 }
 
 state Knowledge {
-  Knowledge : Likely scenarios
+  Knowledge :  Downscaled climate model data
 }
 
 state "Tailored knowledge" as tk {
-  tk : On average it will be warmer / colder in the future
-  tk : These certain areas will be more affected by extremes
+  tk : Changes in the average number of days with snow on the ground
 }
 }
 
