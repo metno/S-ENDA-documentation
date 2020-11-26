@@ -14,8 +14,6 @@ Use Case Goal
 
 Ulike brukere som jobber med klimatilpasning eller produkter for klimatilpasning skal hente relevante data om forventede endringer i fremtidsklima  (klimafremskrivninger) fra Norsk klimaservicesenter. Dette inkluderer hydrologi og effekter på naturfare.
 
-.. uml:: information_to_knowledge_klima_bruker.puml
-
 Actors
 ======
 

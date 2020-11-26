@@ -21,8 +21,8 @@ new use case, or to modify an existing one.
    use_case_swimming_comp.rst
    use_case_senorge.rst
    use_case_climate_projection.rst
-   use_case_klimafremskrivninger_bruker.rst
-   use_case_klimafremskrivninger_leveranse.rst
    use_case_NINA.rst
    use_case_generic_provider.rst
+   .. use_case_klimafremskrivninger_bruker.rst
+   .. use_case_klimafremskrivninger_leveranse.rst
 

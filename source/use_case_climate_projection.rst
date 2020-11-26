@@ -1,5 +1,6 @@
 Climate Projection of Yearly Air Temperature in Norway
 ======================================================
+.. _`climate-projection-of-yearly-air-temperature-in-norway`:
 
 Use Case Goal
 -------------
@@ -46,13 +47,6 @@ Actors
    will participate in completing the Use Case). Different actors often correspond to different user
    classes, or roles, identified from the customer community that will use the product.
 
-.. note::
-
-  We need to understand the data flow - what is used, what is produced at intermediate levels (if anything), and what is the end product. Then, the interfaces between each stage are important:
-
-  * do they comply with the FAIR principles?
-  * are there any bottlenecks?
-  * what can be done to remove the bottlenecks?
 
 Producers
 """""""""
@@ -93,14 +87,13 @@ The following datasets must be available to the producer:
 * Bias adjusted time series from EURO-COREX (CMIP5 og CMIP6).
 * Calculated climate indexes, averages over certain time periods, etc.
 * Gridded historical weather observations.
-* Calculations of averages for fylke, kommune, and other regions.
 
 https://klimaservicesenter.no/faces/desktop/article.xhtml?uri=klimaservicesenteret/klima-og-hydrologiske-data/datagrunnlag-klimafremskrivninger
 
 
 The following services should be used to present results:
 
-* OGC Web Map Service (WMS)
+
 * A solution for getting data
 
 Post-conditions
@@ -123,60 +116,30 @@ Normal Flow
 Producer
 """"""""
 
-1. The producer searches for the following data:
+1. The producer searches and accesses the following data:
 
-* Aggregated time series
 * Gridded historical weather observations
 * Climate model data
+* Some specific time series may be used in post processing
 
-How is this currently done? Are they using one of the following methods, both, or some other way? What are the main challenges?
+Currently at MET the gridded observations can be found on both lustre and thredds.
+The global climate models can be found in online portals which can potentially be searched, 
+but its also possible that the users are being told exactly where the data they want is found.
 
-Currently at MET the gridded observations can be found on both lustre and thredds (and likely use Example 1 workflow, since these are not easily searchable).
-The global climate models can be found in online portals which can potentially be searched (Example 2), but its also possible that the users are being told 
-exactly where the data they want is found (Example 1).
+2. The producer creates the climate projections, and other aggregated values / time series (e.g. fylke averages).
 
-Example 1:
+3. The data is made available to consumers. 
 
-.. uml:: search_air_temp_datasets.puml
+.. note::
 
-Example 2:
+   A significant challenge is that the creators of the data feel a need to have some control 
+   over how the data is used and presented, since otherwise there is a potential for misinterpretation
+   and/or misrepresentation. For example averages over larger areas / over longer time periods might be
+   considered appropriate use, but using the finer scale data to make decisions about landuse (or zoom
+   way in on a map) is likely innapropriate. Most simple consumers are unable to grasp the uncertainty 
+   contained in the model data, and the varying quality for the different aggregation scales.
 
-.. uml:: search_air_temp_datasets_in_catalog.puml
-
-2. The producer accesses the found data:
-
-* Aggregated time series
-* Gridded historical weather observations
-* Climate model data
-
-How is this currently done? What are the main challenges?
-
-3. The producer runs an algorithm to produce climate projections
-
-How is this currently done? What are the main challenges?
-
-4. The producer stores the results and associated metadata
-
-How is this currently done? What are the main challenges?
-
-5. The data is made available
-
-How is this currently done? What are the main challenges?
-
-A significant challenge is that the creators of the data feel a need to have some control 
-over how the data is used and presented, since otherwise there is a potential for misinterpretation
-and/or misrepresentation. For example averages over larger areas / over longer time periods might be
-considered appropriate use, but using the finer scale data to make decisions about landuse (or zoom
-way in on a map) is likely innapropriate. Most simple consumers are unable to grasp the uncertainty 
-contained in the model data, and the varying quality for the different aggregation scales.
-
-The distribution of the data is therefore somewhat limited. One can download particular aggregations 
-of the data her:
-https://klimaservicesenter.no/faces/desktop/scenarios.xhtml
-https://nedlasting.nve.no/klimadata/kss
-
-Some of the netcdf data can be found here: 
-https://drive.google.com/drive/folders/1czjY8UR8RxUCwZsdsqNa-09cvRi5bVLB
+4. The report is written based on interpreting the predictions. 
 
 Consumer
 """"""""
@@ -207,35 +170,7 @@ Alternative Flows
 
 .. Other, legitimate usage scenarios that can take place within this Use Case.
 
-* The journalist wants to know the temperature on 25th June, 2074. It must be clear from the discovery metadata that the projections cannot be used for that purpose.
-
-Exceptions
-----------
-
-.. Anticipated error conditions that could occur during execution of the Use Case, and how the
-   system is to respond to those conditions, or the Use Case execution fails for some reason.
-
-Includes
---------
-
-.. Other Use Cases that are included (“called”) by this Use Case (common functionality appearing in
-   multiple Use Cases can be described in a separate Use Case included by the ones that need that
-   common functionality).
-
-Notes and Issues
-----------------
-
-.. Additional comments about this Use Case and any remaining open issues that must be resolved. (It
-   is useful to Identify who will resolve each such issue and by what date.)
-
-See how the current data is used and visualized today:
-
-* https://klimaservicesenter.no/faces/desktop/scenarios.xhtml
-
-Relevant software
------------------
-
-* cdi and nco for netcdf file manipulation
+The journalist wants to know the temperature on 25th June, 2074. It must be clear from the discovery metadata that the projections cannot be used for that purpose.
 
 Relevant datasets
 -----------------
@@ -243,6 +178,32 @@ Relevant datasets
 * seNorge2018 for adjusting bias and grid specifications
 * EURO-CORDEX climate prediction data that will be downscaled from a 12x12 km grid to 1x1 km for Norway.
 * CMIP5 og CMIP6 climate predictions that will be downscaled for Norway.
+
+
+Current workflow(s)
+-------------------
+
+.. Additional comments about this Use Case and any remaining open issues that must be resolved. (It
+   is useful to Identify who will resolve each such issue and by what date.)
+
+Because it is very easy for consumers to misinterpret the data (see note above in under normal flow), 
+the distribution of the data is somewhat limited. 
+
+One can download particular aggregations of the data her:
+https://klimaservicesenter.no/faces/desktop/scenarios.xhtml
+https://nedlasting.nve.no/klimadata/kss
+
+Some of the netcdf data can be found here: 
+https://drive.google.com/drive/folders/1czjY8UR8RxUCwZsdsqNa-09cvRi5bVLB
+
+See how the current data is used and visualized today:
+https://klimaservicesenter.no/faces/desktop/scenarios.xhtml
+
+**Relevant software:**
+
+* CDI and NCO for netcdf file manipulation
+* OGC Web Map Service (WMS) for presenting results
+
 
 UML diagram
 -----------
