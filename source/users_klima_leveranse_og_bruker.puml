@@ -1,0 +1,15 @@
+@startuml
+
+package "Level 4 data" as L4 {
+  (Projections for Norway) as (CD4)
+}
+
+actor "Advanced consumer\n(researcher)" as AC
+actor "Intermediate consumer\n(state agency)" as IC
+actor "Simple consumer\n(journalist)" as SC
+
+AC --> (CD4)
+IC --> (CD4)
+SC --> (CD4)
+
+@enduml

@@ -14,6 +14,7 @@ Use Case Goal
 
 Norsk klimaservicesenter skal beregne nye klima- og hydrologifremskrivninger (forventede endringer i fremtiden) for Norge.
 
+
 Actors
 ======
 
@@ -24,6 +25,7 @@ Actors
    will participate in completing the Use Case). Different actors often correspond to different user classes, or roles, identified from the customer community that will use the product.
 
 Norsk klimaservicesenter med partnere: MET, NVE, NORCE, Bjerknessenteret. Miljødirektoratet er bestiller.
+
 
 Trigger
 =======

@@ -1,18 +1,20 @@
 @startuml
 
 state "Knowledge generation" as kg {
+
 state Data {
-  Data : Mercury pressure
-  Data : Wind speed and direction
+  Data : Satellite data
+  Data : Model data
+  Data : Time 
+  Data : Geographical region
 }
 
 state "Processing and interpretation" as PI { 
-  PI : Temperature changes
-  PI : Wind changes
+  PI : Cloud movement over the region
 }
 
 state Knowledge {
-  Knowledge :  It will most likely be raining
+  Knowledge : Where to likely see northern lights
 }
 
 }

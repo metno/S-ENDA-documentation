@@ -1,0 +1,29 @@
+@startuml
+
+state "Knowledge generation" as kg {
+
+state Data {
+  Data : Projections for Norway
+  Data : Maps, other data for crossreferencing
+}
+
+state Information {
+  Information : Statistics 
+  Information : Likely scenarios
+}
+
+state Knowledge {
+  Knowledge : Visualizations of what it will be like in certain areas
+}
+
+state "Tailored knowledge" as tk {
+  tk : Possible effects and outcomes of these changes\n(e.g., newspaper article, restriction on where to build houses, a scientific paper)
+}
+}
+
+Data --> Information
+Information --> Knowledge
+Knowledge --> tk
+tk --> Data : Trace and verify
+
+@enduml

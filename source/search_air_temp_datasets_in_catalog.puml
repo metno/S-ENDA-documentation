@@ -1,0 +1,10 @@
+@startuml
+
+actor "Level 4 projections producer" as PP
+database "Discovery metadata catalog" as DMC
+
+PP -> DMC : Search for aggregated timeseries\nof air temperature
+PP -> DMC : Search for gridded historical \nweather observations
+PP -> DMC : Search for climate modeldata
+
+@enduml

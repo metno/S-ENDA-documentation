@@ -1,0 +1,18 @@
+@startuml
+
+package "Level 3 data" as L3 {
+  (Gridded historical weather observations) as (CD3)
+}
+
+package "Level 4 data" as L4 {
+  (Climate model data) as (CD4)
+  (Projections for Norway) as NK 
+}
+
+actor "Producer" as Producer
+
+Producer --> (CD3) : Consumes
+Producer --> (CD4) : Consumes
+Producer --> (NK)  : Produces
+
+@enduml

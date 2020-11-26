@@ -1,0 +1,19 @@
+@startuml
+
+package "Level 1 data" as L1 {
+  (Historical observations\nSource:) as (CD1)
+}
+package "Level 2 data" as L2 {
+  (Aggregated time series\nSource:) as (CD2)
+}
+package "Level 3 data" as L3 {
+  (Gridded historical weather observations\nSource:) as (CD3)
+}
+
+actor "Producer" as Producer
+
+Producer --> (CD1) : Consumes
+Producer --> (CD2) : Consumes
+Producer --> (CD3) : Produces
+
+@enduml

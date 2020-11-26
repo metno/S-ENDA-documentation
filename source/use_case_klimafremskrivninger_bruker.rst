@@ -28,6 +28,7 @@ Actors
 * En journalist som vil lage en visualisering av klimaendringer i alle norske kommuner
 * En statlig myndighet som vil undersøke effekter av klimaendringer innen sitt ansvarsområde
 
+
 Trigger
 =======
 
