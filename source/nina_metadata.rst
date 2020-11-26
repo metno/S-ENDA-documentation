@@ -25,7 +25,7 @@ Description(What?)
    - formats/language
 
 NINA is building FAIR data infrastructures. The main data portal, under construction,
-will serve mainly as a FAIR metadata catalog, and with some limits also for data distribution.
+will serve mainly as a FAIR metadata catalog, with limited data sharing capabilities.
 
 Discovery metadata will be exposed as RDF documents serialized using the Data Catalog vocabulary (DCAT).
 
