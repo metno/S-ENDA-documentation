@@ -14,7 +14,7 @@ package "Level 4 data" as L4 {
 
 actor "Producer" as Producer
 
-Producer --> (CD2) : Consumes
+Producer --> (CD2) : Produces and Consumes
 Producer --> (CD3) : Consumes
 Producer --> (CD4) : Consumes
 Producer --> (NK)  : Produces
