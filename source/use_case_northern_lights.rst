@@ -1,12 +1,8 @@
 Find latest satellite image describing cloud cover for visibility of Northern Lights
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-..
-
 Use Case Goal
 =============
-
-.. 
 
 A user (tourist guide) wants to see Northern lights, but the current location is
 cloudy. Find information about cloud cover in the nearby areas to find places
@@ -18,8 +14,6 @@ analysed cloud products.
 
 Actors
 ======
-
-.. 
 
 - Random user with limited experience
 - Random user (tourist guide) doing this every evening to plan an excursion
@@ -33,8 +27,6 @@ Actors
 
 Trigger
 =======
-
-.. 
 
 - User experiences cloudy conditions and wants to find nearby areas with less clouds.
 - User planning an excursion wants to check the recent cloud cover information to plan the excursion.
@@ -56,8 +48,6 @@ Post-conditions
 Normal Flow
 ===========
 
-.. 
-
 - User search for cloud cover over Northern Norway (skydekke Nord-Norge)
 - Return possible sources of cloud cover data
 
@@ -71,14 +61,10 @@ Normal Flow
 Alternative Flows
 =================
 
-.. 
-
 - If a more experienced guide is using this, then the normal flow will be different as this user know what to search for. This user will go directly to the source and download the latest data. Then display this in his/her favorite display tool.
 
 Exceptions
 ==========
-
-.. 
 
 - Satellite data is too old to be relevant for the user
 - WMS display system is not working

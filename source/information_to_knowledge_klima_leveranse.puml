@@ -7,22 +7,18 @@ state Data {
   Data : Climate model data
 }
 
-state Information { 
-  Information : Bias correction
+state "Processing and interpretation" as PI { 
+  PI : Bias correction
 }
 
 state Knowledge {
-  Knowledge :  Downscaled climate model data
+  Knowledge :  Dataset of downscaled climate model data (projections)
 }
 
-state "Tailored knowledge" as tk {
-  tk : Changes in the average number of days with snow on the ground
-}
 }
 
-Data --> Information
-Information --> Knowledge
-Knowledge --> tk
-tk --> Data : Trace and verify
+Data --> PI
+PI --> Knowledge
+Knowledge --> Data : Trace and verify
 
 @enduml

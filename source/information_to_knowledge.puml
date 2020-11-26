@@ -6,23 +6,19 @@ state Data {
   Data : Wind speed and direction
 }
 
-state Information {
-  Information : Temperature change
-  Information : Southerly and increasing wind
+state "Processing and interpretation" as PI { 
+  PI : Temperature changes
+  PI : Wind changes
 }
 
 state Knowledge {
-  Knowledge : It will most likely be raining
+  Knowledge :  It will most likely be raining
 }
 
-state "Tailored knowledge" as tk {
-  tk : Flight conditions are safe
-}
 }
 
-Data --> Information
-Information --> Knowledge
-Knowledge --> tk
-tk --> Data : Trace and verify
+Data --> PI
+PI --> Knowledge
+Knowledge --> Data : Trace and verify
 
 @enduml

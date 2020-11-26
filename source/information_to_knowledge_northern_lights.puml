@@ -5,26 +5,22 @@ state "Knowledge generation" as kg {
 state Data {
   Data : Satellite data
   Data : Model data
+  Data : Time 
+  Data : Geographical region
 }
 
-state Information {
-  Information : Cloud movement direction and speed
-  Information : Current time
+state "Processing and interpretation" as PI { 
+  PI : Cloud movement over the region
 }
 
 state Knowledge {
-  Knowledge : Area where likely to see northern lights
+  Knowledge : Where to likely see northern lights
 }
 
-state "Tailored knowledge" as tk {
-  tk : This particular sub area is likely be clear enough
-  tk : Best to try to see northern lights at time X
-}
 }
 
-Data --> Information
-Information --> Knowledge
-Knowledge --> tk
-tk --> Data : Trace and verify
+Data --> PI
+PI --> Knowledge
+Knowledge --> Data : Trace and verify
 
 @enduml
