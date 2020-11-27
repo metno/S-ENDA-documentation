@@ -27,6 +27,9 @@ Description(What?)
 NINA is building FAIR data infrastructures. The main data portal, under construction,
 will serve mainly as a FAIR metadata catalog, with limited data sharing capabilities.
 
+Most of the NINA datasets deal with Terrestrial ecology and Biodiveristy.
+For example, species occurrences during field sampling events.
+
 Discovery metadata will be exposed as RDF documents serialized using the Data Catalog vocabulary (DCAT).
 
 DCAT is an RDF vocabulary designed to facilitate interoperability
@@ -62,5 +65,5 @@ Conditions and dependencies(why?)
 * only part of the data from NINA can be considered dynamic geodata
 * Geospatial data in NINA are shared with a Geodata portal, exposing OGC web-services endpoints
 * Geospatial data provide additionally ISO 19135 metadata shared through a CSW service
-* NINA metadata sharing facilities could be modified partially to comply with MET requirements
-* Ad-hoc data sharing platforms could be designed to meet specific MET requirements for data sharing in case of specific selected datasets
+* NINA metadata sharing facilities could be modified partially to comply with S-ENDS requirements
+* Ad-hoc data sharing platforms could be designed to meet specific S-ENDA requirements for data sharing in case of specific selected datasets
