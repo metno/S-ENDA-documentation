@@ -24,8 +24,8 @@ Actors
   - Services such as: fiskinfo, barentswatch 
 
 
-At first glance it appears there are mostly advanced and intermediate consumers of this data. However, the question is if this is 
-because the simple users actually use a product derived from this data (or just use Yr), but not the data directly?
+There are mostly advanced and intermediate consumers of this data, because the simple users actually use a product 
+derived from this data (for example: Yr).
 
 
 Trigger
