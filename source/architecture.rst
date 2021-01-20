@@ -9,9 +9,9 @@ About the architecture drafts:
 - The implementation of the metadata store is not yet decided. Amongst viable possibilities is one of the document-oriented databases (https://en.wikipedia.org/wiki/Document-oriented_database)
 - They are to a high degree based on the use cases outlined in :ref:`use-cases-section`
 
---------
-Contexts
---------
+----------------
+General Contexts
+----------------
 
 .. note:: This is a draft under development. We highly appreciate input and help in correcting any mistakes.
 
@@ -78,19 +78,17 @@ An alternative solution to the central catalogue system, is a system based on a 
 
 .. uml:: context-gossip.puml
 
---------------------------------------------------------------------------------------------------
-S-ENDA Discovery Metadata Service C4 Diagrams
---------------------------------------------------------------------------------------------------
+
+-------------------------
+S-ENDA C4 Context Diagram
+-------------------------
 
 For simplicity, a node is hereinafter equivalent to the *S-ENDA Central Catalogue* or a node in the *S-ENDA aggregated (gossip coordinated)* system.
 
-S-ENDA C4 Context Diagram
-=========================
-
 .. uml:: S-ENDA-metadata-service-context-diagram.puml
 
-S-ENDA Discovery Metadata Service C4 Container Diagram
-======================================================
+S-ENDA Discovery Metadata Service - C4 container diagram
+========================================================
 
 .. uml:: S-ENDA-metadata-service-container-diagram.puml
 
@@ -101,8 +99,8 @@ S-ENDA Discovery Metadata Service C4 Container Diagram
    * APIs that serve single datasets (e.g., Frost, after it has been decided what is a dataset, collection and series) needs to be better displayed here (at the moment we store netcdf-cf files from Frost but this is not the intention for the long term)
 
 
-S-ENDA Discovery Metadata Service Node C4 Component Diagrams
-============================================================
+Dataset catalog service API - C4 component diagram
+--------------------------------------------------
 
 .. uml:: pyCSW_MMD_component_diagram.puml
 
@@ -115,22 +113,23 @@ For the MMD variant we would need to write the MMD plugin and output schema. See
    * (*) Harvesting by pyCSW from the Discovery Metadata Store is currently only supported by ISO19139 and MMD (through XSLT and a script) - plugins for GeoDCAT-AP and MMD are needed in pyCSW if we want to use that
    * I still need to do some consistency checking before we discuss...
 
-Container Diagram for Production Hubs 
-=====================================
+Production Hubs - C4 container diagram
+======================================
 
 .. See commented code in S-ENDA-metadata-service-context-diagram.puml
 
 
-Container Diagram for Distribution Systems 
-==========================================
+Distribution Systems - C4 container diagram 
+===========================================
 
 .. See commented code in S-ENDA-metadata-service-context-diagram.puml
 
---------------------------------------
-S-ENDA Data Access Service C4 Diagrams
---------------------------------------
+.. uml:: S-ENDA-data-distribution-container-diagram.puml
 
-.. note:: This is a distribution system. The diagram below should be updated to reflect the distribution system conatiner in the context diagram above.
+S3/Zarr - C4 component diagram
+------------------------------
+
+.. note:: This is part of a distribution system. The diagram below should be updated to reflect the distribution system container in the context diagram above.
 
 We categorize data consumers in three levels:
 
@@ -138,14 +137,10 @@ We categorize data consumers in three levels:
 * :ref:`intermediate-consumers`
 * :ref:`simple-consumers`
 
-
-S-ENDA advanced data access context
-===================================
-
 The system described here is concerned with :ref:`advanced-consumers` and :ref:`data-producers`.
 
 Functional requirements
------------------------
+^^^^^^^^^^^^^^^^^^^^^^^
 
 * :ref:`data-producers` should be able to produce a dataset and upload results to the data access service without time-consuming transformations
 * :ref:`advanced-consumers` must be able to download a copy of the entire dataset
@@ -161,7 +156,7 @@ Functional requirements
 
 
 Quality attributes
-------------------
+^^^^^^^^^^^^^^^^^^
 
 * The total throughput and storage size for the data access service need to scale with massively increasing dataset sizes
 * The total throughput, storage size and number of objects of the data access service need to scale with massively increasing number of datasets
@@ -170,9 +165,12 @@ Quality attributes
 * The relationship between response time and size of data requested should be predictable, and not worse than a linear increase in response time with data size
 
 Constraints
------------
+^^^^^^^^^^^
 
 * The data access service has no search mechanism for datasets, and assumes that the datasets can be listed/found/searched through a separate metadata catalog
+
+S3/Zarr - C4 component diagram
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. uml:: dataaccess.puml
 
