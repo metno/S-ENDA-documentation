@@ -5,7 +5,7 @@
 LAYOUT_TOP_DOWN
 
 Boundary(providers, "Providers") {
-    Person(dataprovider, "Dataset Provider")
+    Person(dataprovider, "Dataset Producer")
     Person(datacurator, "Data curator")
     Person(serviceprovider, "Service Provider")
 }
@@ -40,6 +40,6 @@ Rel(productionhub, dist_systems, "Store", "ACDD compliant netCDF-CF files")
 Rel(mserviceSystem, productionhub, "Listens in order to get last updated info", "CloudEvents")
 Rel(mserviceSystem, productionhub, "Harvest metrics")
 Rel(mserviceSystem, dist_systems, "Harvest metrics")
-Rel(providers, mserviceSystem, "Register/configure/check.")
+Rel(providers, mserviceSystem, "Register/configure/check")
 
 @enduml
