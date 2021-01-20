@@ -49,6 +49,6 @@ System(dist_systems, "Data Distribution", "Thredds servers with ACDD compliant N
 Rel(dataprovider, productionhub, "Sets up production of netCDF-CF files with ACDD metadata")
 Rel(productionhub, dist_systems, "Store", "ACDD compliant netCDF-CF files")
 Rel(senda, productionhub, "Listen in order to get last updated info, and harvest metrics")
-Rel(senda, dist_systems, "Harvest metadata and metrics")
+Rel(senda, dist_systems, "Get metadata and metrics")
 
 @enduml
