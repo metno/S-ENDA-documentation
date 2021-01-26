@@ -85,7 +85,7 @@ S-ENDA C4 Context Diagram
 
 For simplicity, a node is hereinafter equivalent to the *S-ENDA Central Catalogue* or a node in the *S-ENDA aggregated (gossip coordinated)* system.
 
-.. uml:: S-ENDA-metadata-service-context-diagram.puml
+.. uml:: puml/S-ENDA-metadata-service-context-diagram.puml
 
 S-ENDA Discovery Metadata Service - C4 container diagram
 ========================================================
