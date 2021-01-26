@@ -21,17 +21,17 @@ Rel(advanced, portals, "Search portals", "Web-UI/API")
 Rel(intermediate, portals, "Search portals", "Web-UI/API")
 Rel(simple, portals, "Search portals", "Web-UI/API")
 
-System(senda, 'S-ENDA Discovery Metadata Service')
+System(senda, "S-ENDA Discovery Metadata Service", "CSW, OAI-PMH, OpenSearch")
 
-Rel(advanced, senda, "Search", "CSW OpenSearch: ISO19115/DCAT/MMD")
-Rel(portals, senda, "Harvest metadata", "CSW: ISO19139")
+Rel(advanced, senda, "Search", "CSW/OpenSearch: ISO19115/DCAT/MMD")
+Rel(portals, senda, "Harvest metadata", "CSW/OAI-PMH: ISO19139")
 
 
 Rel(providers, senda, "Register metadata")
 Rel(providers, senda, "Check usage statistics and metadata consistency/status.")
 
 System(productionhub, "Production", "Dataset production hubs provide new datasets (ACDD compliant NetCDF-CF files).")
-System(dist_systems, "Data Distribution", "Thredds servers with ACDD compliant NetCDF-CF files.")
+System(dist_systems, "Data Distribution", "OPeNDAP, ZARR, WMS, WMTS, etc.")
 
 'System_Boundary(productionhub, "Production Hubs") {
 '    System_Ext(ph1, "Production Hub 1", "Dataset production hub provides new datasets (ACDD compliant NetCDF-CF files).")
