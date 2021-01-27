@@ -15,16 +15,18 @@ Boundary(providers, "Providers") {
     Person(serviceprovider, "Service Provider")
 }
 
-System_Ext(portals, "Portals", "External portals harvest metadata on various standards")
+System_Ext(portals, "Portals", "External portals harvest metadata on various standards. Can also prepare data delivery (e.g., basket solution).")
+System_Ext(apps, "Web/mobile apps", "External apps harvest metadata on various standardsi, and presents data in customized ways.")
 
 Rel(advanced, portals, "Search portals", "Web-UI/API")
 Rel(intermediate, portals, "Search portals", "Web-UI/API")
-Rel(simple, portals, "Search portals", "Web-UI/API")
+Rel(simple, apps, "Search portals", "Web-UI/API")
 
 System(senda, "S-ENDA Discovery Metadata Service")
 
 Rel(advanced, senda, "Search", "CSW/OpenSearch: ISO19115/DCAT/MMD")
 Rel(portals, senda, "Harvest metadata", "CSW/OAI-PMH: ISO19139")
+Rel(apps, senda, "Harvest metadata", "CSW/OAI-PMH: ISO19139")
 
 
 Rel(providers, senda, "Register metadata")
@@ -50,5 +52,8 @@ Rel(dataprovider, productionhub, "Sets up production of netCDF-CF files with ACD
 Rel(productionhub, dist_systems, "Store", "e.g., ACDD compliant netCDF-CF files")
 Rel(senda, productionhub, "Listen in order to get last updated info, and harvest metrics")
 Rel(senda, dist_systems, "Get metadata and metrics")
+Rel(apps, dist_systems, "Stream data")
+Rel(portals, dist_systems, "Stream data")
+Rel(advanced, dist_systems, "Stream data")
 
 @enduml
