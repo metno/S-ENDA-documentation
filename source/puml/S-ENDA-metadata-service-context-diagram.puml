@@ -16,7 +16,7 @@ Boundary(providers, "Providers") {
 }
 
 System_Ext(portals, "Portals", "External portals harvest metadata on various standards. Can also prepare data delivery (e.g., basket solution).")
-System_Ext(apps, "Web/mobile apps", "External apps harvest metadata on various standardsi, and presents data in customized ways.")
+System_Ext(apps, "Web/mobile apps", "External apps harvest metadata on various standards, and presents data in customized ways.")
 
 Rel(advanced, portals, "Search portals", "Web-UI/API")
 Rel(intermediate, portals, "Search portals", "Web-UI/API")
