@@ -1,0 +1,45 @@
+@startuml S-ENDA-workflow
+
+|Local development|
+
+start
+:Create/clone/pull software repository;
+:Start work environment
+(i.e., conda/python virtual environment 
+or container where the code is editable
+from the host machine);
+repeat
+ :Develop;
+ :Run tests;
+repeatwhile ()
+:Push updates to software repository;
+:Continuous Integration
+(test, build and push containers);
+
+|Local testing|
+
+:Pull new containers;
+repeat
+  :Integrate containers in S-ENDA system 
+  for local testing;
+  :Start test containers;
+  :Run tests;
+repeatwhile ()
+
+:Create/update staging environment;
+:Push updates;
+
+|Online Staging|
+
+:TBD;
+:Verify and demonstrate to users;
+:Accept into production;
+
+|Online Production|
+
+:TBD;
+:Run production system;
+
+stop
+
+@enduml

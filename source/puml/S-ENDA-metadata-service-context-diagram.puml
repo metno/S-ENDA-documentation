@@ -15,6 +15,12 @@ Boundary(providers, "Providers") {
     Person(serviceprovider, "Service Provider")
 }
 
+Boundary(systems, "S-ENDA") {
+    System(senda, 'S-ENDA Discovery Metadata Service')
+    System(productionhub, "Production", "Dataset production hubs provide new datasets (ACDD compliant NetCDF-CF files).")
+    System(dist_systems, "Data Distribution", "Thredds servers with ACDD compliant NetCDF-CF files.")
+}
+
 System_Ext(portals, "Portals", "External portals harvest metadata on various standards. Can also prepare data delivery (e.g., basket solution).")
 System_Ext(apps, "Web/mobile apps", "External apps present data in customized ways.")
 
@@ -22,31 +28,17 @@ Rel(advanced, portals, "Search portals", "Web-UI/API")
 Rel(intermediate, portals, "Search portals", "Web-UI/API")
 Rel(simple, apps, "Navigates to app", "Web-UI/API")
 
-System(senda, "S-ENDA Discovery Metadata Service")
+System(senda, "Discovery Metadata Service")
 
 Rel(advanced, senda, "Search", "CSW/OpenSearch: ISO19115/DCAT/MMD")
 Rel(portals, senda, "Harvest metadata", "CSW/OAI-PMH: ISO19139")
 Rel(apps, senda, "Harvest metadata", "CSW/OAI-PMH: ISO19139")
-
 
 Rel(providers, senda, "Register metadata")
 Rel(providers, senda, "Check usage statistics and metadata consistency/status.")
 
 System(productionhub, "Production")
 System(dist_systems, "Data Distribution")
-
-'System_Boundary(productionhub, "Production Hubs") {
-'    System_Ext(ph1, "Production Hub 1", "Dataset production hub provides new datasets (ACDD compliant NetCDF-CF files).")
-'    System_Ext(ph2, "Production Hub 2")
-'    System_Ext(metricsPH, "Metrics provider")
-'    System_Ext(eventengine, "Event Engine", "NATS")
-'}
-'
-'System_Boundary(dist_systems, "Data Distribution Systems") {
-'    System_Ext(ds1, "Data Distribution System 1", "Thredds server with ACDD compliant NetCDF-CF files.")
-'    System_Ext(ds2, "Data Distribution System 2")
-'    System_Ext(metricsDS, "Metrics provider")
-'}
 
 Rel(dataprovider, productionhub, "Sets up production of netCDF-CF files with ACDD metadata")
 Rel(productionhub, dist_systems, "Store", "e.g., ACDD compliant netCDF-CF files")
