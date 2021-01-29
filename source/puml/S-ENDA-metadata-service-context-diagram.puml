@@ -26,7 +26,7 @@ System_Ext(apps, "Web/mobile apps", "External apps present data in customized wa
 
 Rel(advanced, portals, "Search portals", "Web-UI/API")
 Rel(intermediate, portals, "Search portals", "Web-UI/API")
-Rel(simple, apps, "Navigates to app", "Web-UI/API")
+Rel(simple, apps, "Navigates to app", "Web/mobile UI")
 
 System(senda, "Discovery Metadata Service")
 
