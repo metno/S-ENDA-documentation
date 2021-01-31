@@ -77,17 +77,21 @@ Producer
 User actions:
 
 1. Review the literature on Arctic fox distribution and identify plausible (ecologically) variables that could explain the distribution.
-2. Search for occurrence data for Arctic fox in the geographic region of interest could also be survey data (more robust estimates of presence or absence than ad hoc sighting data) 
-   - Note: This search could be carried out using the s-enda catalogue endpoint.
-   - 2.1 Deduplicate the occcurence data, since different sources of data can contain the same data record. 
-   - 2.2 Identify biases in the data generation.
+2. Search for occurrence data for Arctic fox in the geographic region of interest could also be survey data (more robust estimates of presence or absence than ad hoc sighting data). Note: This search could be carried out using the s-enda catalogue endpoint.
+
+  - Deduplicate the occcurence data, since different sources of data can contain the same data record. 
+  - Identify biases in the data generation.
+
 3. Find covariates that explain the distribution of Arctic fox. Particularly Climate data and observations.
-   - Covariates could be e.g Red fox distribution or locations (from gbif or other); Small mammal records (line transect surveys carried out in Norway and Sweden), altitude (from a DEM), NOA (related to winter conditions), climate data, distance to forest line, etc.
-   - Identify and mitigate for biases in covariates 
+
+  - Covariates could be e.g Red fox distribution or locations (from gbif or other); Small mammal records (line transect surveys carried out in Norway and Sweden), altitude (from a DEM), NOA (related to winter conditions), climate data, distance to forest line, etc.
+  - Identify and mitigate for biases in covariates 
+
 4. Model the distribution of Arctic fox in relation to the covariates taking into account the major bias (which is a lack of absence points) and time. Integrate ancillary information into the model (survival estimates, reproduction rates etc. climate change models) to develop predictive models. 
 5. Model results are made available in the s-enda catalogue.
-   - Check licensing of each of the underlying datasets.
-   - Give appropriate license to newly created dataset. 
+
+  - Check licensing of each of the underlying datasets.
+  - Give appropriate license to newly created dataset. 
 
 Consumer
 """"""""
@@ -103,7 +107,7 @@ Alternative Flows
 
 .. Other, legitimate usage scenarios that can take place within this Use Case.
 
-- The occurence data is found on on gbif.org or on data repositories (usually a part of published papers that have archived data) - there are 410 records with location data on gbif. 
+- The occurence data is found on on `gbif.org <https://www.gbif.org/>`_ or on data repositories (usually a part of published papers that have archived data) - there are 410 records with location data on gbif. 
 - The climate and weather observation data must still be found from MET. 
 
 UML diagram
