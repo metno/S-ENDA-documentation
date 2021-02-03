@@ -3,7 +3,7 @@
 
 LAYOUT_LEFT_RIGHT
 
-System_Ext(edp, "European Data Portal", "European data (general)")
+'System_Ext(edp, "European Data Portal", "European data (general)")
 System_Ext(inspire, "Inspire Geoportal", "European geodata")
 
 System_Ext(datanorge, "Data Norge", "Norwegian data (general)")
@@ -24,7 +24,7 @@ Rel(other_harvester, sendafind, "Search and access")
 Rel(geonorge, sendafind, "Harvests metadata", "CSW: ISO19115")
 Rel(inspire, geonorge, "Harvests metadata")
 Rel(datanorge, geonorge, "Harvests metadata")
-Rel(edp, datanorge, "Harvests metadata")
+'Rel(edp, datanorge, "Harvests metadata")
 Rel(sendafind, met, "")
 Rel(sendafind, nina, "")
 Rel(sendafind, nilu, "")
