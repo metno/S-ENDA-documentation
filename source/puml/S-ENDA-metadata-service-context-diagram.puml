@@ -15,8 +15,8 @@ Boundary(providers, "Providers") {
     Person(serviceprovider, "Service Provider")
 }
 
-Boundary(systems, "S-ENDA") {
-    System(senda, 'S-ENDA Discovery Metadata Service')
+Boundary(systems, "Discovery Metadata Service") {
+    System(senda, 'Discovery Metadata Service')
     System(productionhub, "Production", "Dataset production hubs provide new datasets (ACDD compliant NetCDF-CF files).")
     System(dist_systems, "Data Distribution", "Thredds servers with ACDD compliant NetCDF-CF files.")
 }
