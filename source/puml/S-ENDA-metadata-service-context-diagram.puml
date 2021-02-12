@@ -1,0 +1,51 @@
+@startuml S-ENDA metadata service C4 context diagram
+!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Context.puml
+   
+LAYOUT_TOP_DOWN
+
+Boundary(consumers, "Data Consumers"){
+    Person(advanced, "Advanced")
+    Person(intermediate, "Intermediate")
+    Person(simple, "Simple")
+}
+    
+Boundary(providers, "Providers") {
+    Person(dataprovider, "Dataset Producer")
+    Person(datacurator, "Data curator")
+    Person(serviceprovider, "Service Provider")
+}
+
+Boundary(systems, "S-ENDA") {
+    System(senda, 'S-ENDA Discovery Metadata Service')
+    System(productionhub, "Production", "Dataset production hubs provide new datasets (ACDD compliant NetCDF-CF files).")
+    System(dist_systems, "Data Distribution", "Thredds servers with ACDD compliant NetCDF-CF files.")
+}
+
+System_Ext(portals, "Portals", "External portals harvest metadata on various standards. Can also prepare data delivery (e.g., basket solution).")
+System_Ext(apps, "Web/mobile apps", "External apps present data in customized ways.")
+
+Rel(advanced, portals, "Search portals", "Web-UI/API")
+Rel(intermediate, portals, "Search portals", "Web-UI/API")
+Rel(simple, apps, "Navigates to app", "Web/mobile UI")
+
+System(senda, "Discovery Metadata Service")
+
+Rel(advanced, senda, "Search", "CSW/OpenSearch: ISO19115/DCAT/MMD")
+Rel(portals, senda, "Harvest metadata", "CSW/OAI-PMH: ISO19139")
+Rel(apps, senda, "Harvest metadata", "CSW/OAI-PMH: ISO19139")
+
+Rel(providers, senda, "Register metadata")
+Rel(providers, senda, "Check usage statistics and metadata consistency/status.")
+
+System(productionhub, "Production")
+System(dist_systems, "Data Distribution")
+
+Rel(dataprovider, productionhub, "Sets up production of netCDF-CF files with ACDD metadata")
+Rel(productionhub, dist_systems, "Store", "e.g., ACDD compliant netCDF-CF files")
+Rel(senda, productionhub, "Listen in order to get last updated info, and harvest metrics")
+Rel(senda, dist_systems, "Get metadata and metrics")
+Rel(apps, dist_systems, "Stream data")
+Rel(portals, dist_systems, "Stream data")
+Rel(advanced, dist_systems, "Stream data")
+
+@enduml

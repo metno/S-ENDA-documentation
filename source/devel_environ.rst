@@ -10,6 +10,18 @@ Development environment
 .. _VirtualBox 6.1.x: https://www.virtualbox.org/wiki/Downloads
 .. _vagrant-disksize 0.1.3: https://github.com/sprotheroe/vagrant-disksize
 
+--------
+Workflow
+--------
+
+The workflow from local development to production goes through four main stages: local development, local testing of containers intended for the staging environment, online staging, and online production.
+
+.. uml:: puml/development_workflow.puml
+
+-------
+Vagrant
+-------
+
 In Wikipedia_, HashiCorps_' Vagrant_ is defined as
 
   Vagrant is an open-source software product for building and maintaining portable virtual software development environments, e.g. for VirtualBox, KVM, Hyper-V, Docker containers, VMware, and AWS. It tries to simplify the software configuration management of virtualizations in order to increase development productivity.
