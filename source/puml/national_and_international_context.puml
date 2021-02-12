@@ -1,0 +1,34 @@
+@startuml S-ENDA in a national and international context
+!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Context.puml
+
+LAYOUT_LEFT_RIGHT
+
+'System_Ext(edp, "European Data Portal", "European data (general)")
+System_Ext(inspire, "Inspire Geoportal", "European geodata")
+
+System_Ext(datanorge, "Data Norge", "Norwegian data (general)")
+System_Ext(geonorge, "GeoNorge", "Norwegian geodata")
+
+System_Ext(other_harvester, "Other")
+
+System_Boundary(senda, "Dynamic geodata"){
+  System(sendafind, "S-ENDA")
+  System(met, "MET", "Værobservasjoner, værvarsler, etc.")
+  System(nina, "NINA", "Økologiske data.")
+  System(nilu, "NILU", "Atmosfære og klima, f.eks. urban luftkvalitet.")
+  System(niva, "NIVA", "Vann og vannmiljø, f.eks. miljøgifter i marine miljøer.")
+  System(other, "OTHER", "F.eks. drift av torskeegg og lakselus eller kjøreforhold på veiene.")
+}
+
+Rel(other_harvester, sendafind, "Search and access")
+Rel(geonorge, sendafind, "Harvests metadata", "CSW: ISO19115")
+Rel(inspire, geonorge, "Harvests metadata")
+Rel(datanorge, geonorge, "Harvests metadata")
+'Rel(edp, datanorge, "Harvests metadata")
+Rel(sendafind, met, "")
+Rel(sendafind, nina, "")
+Rel(sendafind, nilu, "")
+Rel(sendafind, niva, "")
+Rel(sendafind, other, "")
+
+@enduml
