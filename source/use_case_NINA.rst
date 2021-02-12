@@ -107,7 +107,7 @@ Alternative Flows
 
 .. Other, legitimate usage scenarios that can take place within this Use Case.
 
-- The occurence data is found on on `gbif.org <https://www.gbif.org/>`_ or on data repositories (usually a part of published papers that have archived data) - there are 410 records with location data on gbif. 
+- The occurence data is found on on `gbif.org <https://www.gbif.org/>`_ or on data repositories (usually a part of published papers that have archived data)
 - The climate and weather observation data must still be found from MET. 
 
 UML diagram
