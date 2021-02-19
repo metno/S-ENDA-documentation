@@ -225,3 +225,22 @@ A staging server for the CSW catalog service is available at http://senda1.lab-a
 
 Under the ``Search`` tab, you can then add search parameters, click ``Search``, and get a list of available datasets.
 
+How to add NetCDF-CF data to thredds
+====================================
+
+How should you proceed to add your NetCDF-CF data to thredds? Follow these steps and your data will be discovered by thredds.
+
+1. You need to make your NetCDF-CF data available on our lustre filesystem.
+
+  a. If you need help to transfere data please contact service desk.
+  b. Please also make sure you have sufficient quota on lustre for your data.
+  c. You can either use your userspace or some other area you have access to within a project.
+  d. Make sure you add the same data to both the A and B side if you need redundancy. Extra steps need to be taken for this to work.
+
+2. Then thredds needs to be able to discover your data.
+
+  a. Take contact with service desk which will put you in contact the responsible person for adding data to thredds. He or she will need the full path to your data or base directory of your data structure. All data files ending with `.nc` ( or `.ncml` ) below this basedir will be displayed on thredds.
+  b. You can have a look here for some user data https://thredds.met.no/thredds/catalog/metusers/catalog.html. All users can add NetCDF-CF data under their user area, mainly for testing.
+
+3. Your NetCDF-CF data will now become visible on thredds. You can look here in the base catalog https://thredds.met.no/thredds/catalog.html to discover your data.
+
