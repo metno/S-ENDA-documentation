@@ -22,6 +22,7 @@ MET Norway
    frost
    mmd
    productstatus
+   nina_metadata
 
 ..
   Project partner x
