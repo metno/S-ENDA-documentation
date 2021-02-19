@@ -229,6 +229,7 @@ How to add NetCDF-CF data to thredds
 ====================================
 
 How should you proceed to add your NetCDF-CF data to thredds? Follow these steps and your data will be discovered by thredds.
+A critical assumption is this valid for the existing thredds server at MET NORWAY.
 
 1. You need to make your NetCDF-CF data available on our lustre filesystem.
 
