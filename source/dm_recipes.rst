@@ -37,16 +37,39 @@ It is a useful exercise to make an overview of the connection between your metad
 
 Some of the metadata elements require use of controlled vocabularies. These can be found in chapter 4 of the MMD documentation. Which controlled vocabulary to use is described under the appropriate metadata element. The information that exists in your source for these metadata elements are not necessarily in the same "formats" as these controlled vocabularies. In that case, one needs to create mappings between the information that exist for these metadata elements in the source to the appropriate controlled vocabulary, or suggest updates to the controlled vocabularies in MMD.
 
-Generate MMD files via NetCDF files
-===================================
+Submit data as NetCDF/CF
+========================
 
 By documenting and formatting your data using NetCDF following the `CF conventions <https://cfconventions.org/>`_ and the `Attribute Convention for Data Discovery (ACDD) <https://wiki.esipfed.org/Attribute_Convention_for_Data_Discovery_1-3>`_, MMD files can be automatically generated from the NetCDF files. The CF conventions is a controlled vocabulary providing a definitive description of what the data in each variable represents, and the spatial and temporal properties of the data. The ACDD vocabulary describes attributes recommended for describing a NetCDF dataset to data discovery systems.
 
-Information about how to format the NetCDF files is available at `<https://adc.met.no/node/4>`_. Most importantly, this contains an overview of the global NetCDF attributes required to generate an MMD file.
+Information about how to format the NetCDF files is available at `<https://adc.met.no/node/4>`_ and `<https://htmlpreview.github.io/?https://github.com/metno/data-management-handbook/blob/master/html/data-management-handbook.html>`_. The latter contains an updated overview of the global NetCDF attributes required to generate an MMD file.
 
 .. note::
 
   The NASA GCMD/DIF keywords can be used for many of the ACDD attributes. You can use `py-thesaurus-interface <https://github.com/nansencenter/py-thesaurus-interface>`_ to get them (helps to avoid typos etc.). The `py-thesaurus-interface <https://github.com/nansencenter/py-thesaurus-interface>`_ is also synchronized with the `MMD thesauri <https://github.com/metno/mmd/tree/master/thesauri>`_ (although not yet merged) and the `CF variables <http://mmisw.org/ont/cf/parameter>`_.
+
+
+How to add NetCDF-CF data to thredds
+====================================
+
+How should you proceed to add your NetCDF-CF data to thredds? Follow these steps and your data will be discoverable by thredds (this is valid for the existing thredds server at MET NORWAY), and then harvestable by the `py-mmd-tools <https://github.com/metno/py-mmd-tools>`_.
+
+1. You need to make your NetCDF-CF data available on our lustre filesystem.
+
+  a. If you need help to transfer data, please contact service desk.
+  b. Please also make sure you have sufficient quota on lustre for your data.
+  c. You can either use your userspace or some other area you have access to within a project.
+  d. Make sure you add the same data to both the A and B side if you need redundancy. Extra steps need to be taken for this to work.
+
+2. Then, thredds needs to be able to discover your data.
+
+  a. Take contact with service desk which will put you in contact the responsible person for adding data to thredds. He or she will need the full path to your data or base directory of your data structure. All data files ending with `.nc` ( or `.ncml` ) below this basedir will be displayed on thredds.
+  b. You can have a look here for some user data https://thredds.met.no/thredds/catalog/metusers/catalog.html. All users can add NetCDF-CF data under their user area, mainly for testing.
+
+3. Your NetCDF-CF data will now become visible on thredds. You can look here in the base catalog https://thredds.met.no/thredds/catalog.html to discover your data.
+
+If your files are correctly formatted and following the conventions, it is now also straightforward to add them to the discovery metadata catalog.
+
 
 How to test MMD records and register datasets
 =============================================
@@ -224,24 +247,4 @@ A staging server for the CSW catalog service is available at http://senda1.lab-a
 * Type ``http://senda1.lab-a.met.no`` for the URL
 
 Under the ``Search`` tab, you can then add search parameters, click ``Search``, and get a list of available datasets.
-
-How to add NetCDF-CF data to thredds
-====================================
-
-How should you proceed to add your NetCDF-CF data to thredds? Follow these steps and your data will be discovered by thredds.
-A critical assumption is this valid for the existing thredds server at MET NORWAY.
-
-1. You need to make your NetCDF-CF data available on our lustre filesystem.
-
-  a. If you need help to transfere data please contact service desk.
-  b. Please also make sure you have sufficient quota on lustre for your data.
-  c. You can either use your userspace or some other area you have access to within a project.
-  d. Make sure you add the same data to both the A and B side if you need redundancy. Extra steps need to be taken for this to work.
-
-2. Then thredds needs to be able to discover your data.
-
-  a. Take contact with service desk which will put you in contact the responsible person for adding data to thredds. He or she will need the full path to your data or base directory of your data structure. All data files ending with `.nc` ( or `.ncml` ) below this basedir will be displayed on thredds.
-  b. You can have a look here for some user data https://thredds.met.no/thredds/catalog/metusers/catalog.html. All users can add NetCDF-CF data under their user area, mainly for testing.
-
-3. Your NetCDF-CF data will now become visible on thredds. You can look here in the base catalog https://thredds.met.no/thredds/catalog.html to discover your data.
 
