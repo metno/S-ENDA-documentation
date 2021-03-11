@@ -16,9 +16,9 @@ Boundary(providers, "Providers") {
 }
 
 Boundary(systems, "S-ENDA") {
-    System(senda, 'S-ENDA Discovery Metadata Service')
-    System(productionhub, "Production", "Dataset production hubs provide new datasets (ACDD compliant NetCDF-CF files).")
-    System(dist_systems, "Data Distribution", "Thredds servers with ACDD compliant NetCDF-CF files.")
+    System(senda, "S-ENDA Discovery Metadata Service")
+    System(productionhub, "Production", "Dataset production hubs provide new datasets.")
+    System(dist_systems, "Data Distribution")
 }
 
 System_Ext(portals, "Portals", "External portals harvest metadata on various standards. Can also prepare data delivery (e.g., basket solution).")
@@ -40,8 +40,8 @@ Rel(providers, senda, "Check usage statistics and metadata consistency/status.")
 System(productionhub, "Production")
 System(dist_systems, "Data Distribution")
 
-Rel(dataprovider, productionhub, "Sets up production of netCDF-CF files with ACDD metadata")
-Rel(productionhub, dist_systems, "Store", "e.g., ACDD compliant netCDF-CF files")
+Rel(dataprovider, productionhub, "Sets up data production")
+Rel(productionhub, dist_systems, "Store")
 Rel(senda, productionhub, "Listen in order to get last updated info, and harvest metrics")
 Rel(senda, dist_systems, "Get metadata and metrics")
 Rel(apps, dist_systems, "Stream data")
