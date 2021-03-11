@@ -34,44 +34,9 @@ Geonorge is the national website for map data and other location information in 
 
 The below figure illustrates S-ENDA's position in the national and international context. As illustrated, GeoNorge CSW harvesting should also make S-ENDA datasets findable by other systems.
 
-.. uml:: puml/national_and_international_context.puml
+.. uml:: puml/architecture/national_and_international_context.puml
 
 ..
-  S-ENDA provider context
-  =======================
-  
-  * **Data Provider:** Produces discovery and configuration (meta)data and wants to make them discoverable and available to users
-  * **Service Provider:** Creates data services, and wants to make the data services discoverable and available to users
-  
-  If a data provider wishes to assign a DOI to their dataset, there are three alternatives: 
-  
-  #. They register a DOI following established procedures in their own organisation (e.g., `DOI registration at MET <dm_recipes.html#doi-registration-at-met>`_)
-  #. The S-ENDA Dynamic Geo-Assets API system handles DOI registration (and update) through the DataCite API
-  #. If they do not wish to have a DOI assigned to their dataset, this is also possible.
-  
-  .. uml:: provider_context.puml
-  
-  S-ENDA search context
-  =====================
-  
-  The goal of the project is to make sure that all kinds of potential users of dynamical geodata will be able to find and use the data. There is a broad spectrum of users with varying expertise in data management and domain knowledge when it comes to dynamical geodata. In the search context diagram, we focus on *general* and *advanced users*. They are defined as follows:
-  
-  * **General User:** Any user interested in dynamical geodata
-  * **Advanced User:** An experienced user who knows how to access and process data in their tool of choice (in addition to the WebUI portals they need a machine-to-machine interface, which they can integrate in their software or command line tools)
-  
-  .. uml:: search-context.puml
-
-  S-ENDA Discovery Metadata Service Boundary 
-  ==========================================
-  
-  Context with a central catalogue
-  --------------------------------
-  
-  At present, there is no way for any system to know the other systems apriori. Each system must be informed about the existence of other systems. In the context of a central S-ENDA catalogue, external systems such as Geonorge and ADC harvest metadata from the central S-ENDA catalogue. This system then knows about the internal data centres in S-ENDA (serving dynamical geodata), and performs metadata harvesting from these. This is illustrated below.
-  
-     .. uml:: context.puml
-  
-  
   Context with a distributed S-ENDA Discovery Metadata Service solution
   ---------------------------------------------------------------------
   
@@ -86,12 +51,12 @@ S-ENDA C4 Context Diagram
 
 The below diagram describes the S-ENDA system in the boundary for dynamic geodata above. The data consumers are defined in :ref:`users-definition`.
 
-.. uml:: puml/S-ENDA-metadata-service-context-diagram.puml
+.. uml:: puml/architecture/S-ENDA-context-diagram.puml
 
 S-ENDA Discovery Metadata Service - C4 container diagram
 ========================================================
 
-.. uml:: S-ENDA-metadata-service-container-diagram.puml
+.. uml:: puml/architecture/S-ENDA-discovery-metadata-service-container-diagram.puml
 
 .. note::
 
@@ -103,7 +68,7 @@ S-ENDA Discovery Metadata Service - C4 container diagram
 Dataset catalog service API - C4 component diagram
 --------------------------------------------------
 
-.. uml:: pyCSW_MMD_component_diagram.puml
+.. uml:: puml/architecture/pyCSW_MMD_component_diagram.puml
 
 For the MMD variant we would need to write the MMD plugin and output schema. See pyCSW docs at https://docs.pycsw.org/en/2.4.2/introduction.html.
 
@@ -117,15 +82,15 @@ For the MMD variant we would need to write the MMD plugin and output schema. See
 Production Hubs - C4 container diagram
 ======================================
 
-.. See commented code in S-ENDA-metadata-service-context-diagram.puml
+.. See commented code in puml/architecture/S-ENDA-discovery-metadata-service-context-diagram.puml
 
 
 Distribution Systems - C4 container diagram 
 ===========================================
 
-.. See commented code in S-ENDA-metadata-service-context-diagram.puml
+.. See commented code in puml/architecture/S-ENDA-discovery-metadata-service-context-diagram.puml
 
-.. uml:: S-ENDA-data-distribution-container-diagram.puml
+.. uml:: puml/architecture/S-ENDA-data-distribution-container-diagram.puml
 
 S3/Zarr - C4 component diagram
 ------------------------------
@@ -173,7 +138,7 @@ Constraints
 S3/Zarr - C4 component diagram
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. uml:: dataaccess.puml
+.. uml:: puml/architecture/data-access-component-diagram.puml
 
 
 

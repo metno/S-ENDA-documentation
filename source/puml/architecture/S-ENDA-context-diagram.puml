@@ -1,4 +1,4 @@
-@startuml S-ENDA metadata service C4 context diagram
+@startuml S-ENDA-C4-context-diagram
 !includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Context.puml
    
 LAYOUT_TOP_DOWN

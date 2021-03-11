@@ -19,7 +19,7 @@ We follow the model presented in the :ref:`users-definition` section:
 
 * **Consumers:** :ref:`advanced-consumers` (e.g., researchers), :ref:`intermediate-consumers`, and :ref:`simple-consumers`  (e.g., journalists)
 
-.. uml:: arctic_fox_model_producer.puml
+.. uml:: puml/user_analysis/arctic_fox_model_producer.puml
 
 
 Actors

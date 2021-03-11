@@ -9,7 +9,7 @@ cloudy. Find information about cloud cover in the nearby areas to find places
 with less clouds. This can be done with infrared satellite imagery and or
 analysed cloud products.
 
-.. uml:: information_to_knowledge_northern_lights.puml
+.. uml:: puml/user_analysis/information_to_knowledge_northern_lights.puml
 
 
 Actors
@@ -22,7 +22,7 @@ Actors
 - Data provider (satellite)(Obsklim, NBS)
 - Data provider (model)(SUV)
 
-.. uml:: users_northernlights.puml
+.. uml:: puml/user_analysis/users_northernlights.puml
 
 
 Trigger

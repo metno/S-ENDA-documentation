@@ -44,7 +44,7 @@ Producers
 
 Norwegian meteorological instutute.
 
-.. uml:: senorge_producer.puml
+.. uml:: puml/user_analysis/senorge_producer.puml
 
 Consumers
 """""""""

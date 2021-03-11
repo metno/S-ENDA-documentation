@@ -28,7 +28,7 @@ We follow the model presented in the :ref:`users-definition` section:
 
 The knowledge generation is described in the below figure. The data (see :ref:`user-analysis-context`) used to generate the air temperature projections is a combination of gridded historical weather observations (level 3) and model simulations (level 4). The processing and interpretation consists of using the weather observations to correct biases in the model results to produce a dataset of downscaled climate model data (from this, likely future scenarios can be estimated to provide general and specific information about the future climate).
 
-.. uml:: information_to_knowledge_klima_leveranse.puml
+.. uml:: puml/user_analysis/information_to_knowledge_klima_leveranse.puml
 
 Actors
 ------
@@ -46,7 +46,7 @@ Producers
 
 The Norwegian climate service centre and partners (MET, NVE, NORCE, Bjerknessenteret) will produce the new predictions for the average and extreme air temperatures in Norway, forward in time to year 2100.
 
-.. uml:: air_temperature_projection_producer.puml
+.. uml:: puml/user_analysis/air_temperature_projection_producer.puml
 
 Consumers
 """""""""
@@ -57,7 +57,7 @@ End users of the data might include:
 * A state agency that wants to investigate the effects temperature changes will have in each Norwegian kommune.
 * A Journalist that wants write about the potential changes that Norway will experience. 
 
-.. uml:: users_klima_leveranse_og_bruker.puml
+.. uml:: puml/user_analysis/users_klima_leveranse_og_bruker.puml
 
 Trigger
 -------
@@ -156,7 +156,7 @@ Consumer
   * The journalist publishes a newspaper article
   * The state agency establishes hazard zones due to melting permafrost
 
-.. uml:: information_to_knowledge_klima_bruker.puml
+.. uml:: puml/user_analysis/information_to_knowledge_klima_bruker.puml
 
 Alternative Flows
 -----------------
