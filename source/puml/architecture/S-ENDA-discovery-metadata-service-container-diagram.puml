@@ -1,15 +1,10 @@
 @startuml S-ENDA-metadata-service-container-diagram
 !includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Component.puml
-'!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/v2.2.0/C4_Container.puml
-'!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/releases/v2/C4_Container.puml
 
-'LAYOUT_LEFT_RIGHT
 LAYOUT_TOP_DOWN
 
 Boundary(providers, "Providers") {
     Person(dataprovider, "Dataset Producer", "An advanced consumer of low level data generating new information at a higher level.")
-'    Person(datacurator, "Data curator")
-'    Person(serviceprovider, "Service Provider")
 }
 
 System(productionhub, "Production Hubs", "Dataset production hubs provide new datasets (ACDD compliant NetCDF-CF files).")
@@ -31,44 +26,21 @@ Rel(advanced, geonorge, "Search portals", "Web-UI/API")
 
 System_Boundary(mserviceSystem, "S-ENDA Discovery Metadata Service Node") {
 
-'    Container(service_metadata, "Service Discovery Metadata Store", "GeoDCAT-AP", "Serves as the authoritative source of metadata for services.")
     Container(updater, "Discovery Metadata Catalog Ingestor API", "Python/Flask", "Provides functionality to  create content in metadata stores.")
     Container(metadata_store, "Backup Dataset Discovery Metadata Store", "Git", "MMD discovery and configuration metadata for datasets.")
     Container(csapi, "Dataset Catalog Service API", "pycsw", "CSW endpoint for search and harvesting. Serves INSPIRE, DIF etc. compliant metadata.")
      Container(solr, "Metadata Storage", "solr/or similar", "<b>Optional</b> other metadata storage.")
-'    Container(catalog_of_catalogs, "Catalog of catalogs", "GeoDCAT-AP", "All service and dataset catalogs for one Discovery Metadata Service Node.")
     Container(web_app, "Web Application", "HTML", "<b>Optional.</b> Provides functionality to register dataset and service metadata, display dataset and service usage statistics, production status, and monitor metadata to display errors and warnings (e.g., about dead links).")
-'    Container(cli_registrar, "CLI Registrar", "", "Provides functionality for a user to register metadata for datasets and services from a Command Line Interface (CLI).")
 
     Rel(updater, csapi, "Create/Delete", "HTTP POST: INSPIRE")
     Rel(updater, metadata_store, "Create/Delete", "git: MMD")
     Rel(updater, solr, "")
-'    Rel(csapi, metadata_store, "Harvest", "?: ISO19139/GeoDCAT-AP/MMD(*)")
-'    Rel(catalog_of_catalogs, csapi, "Harvest", "CSW: GeoDCAT-AP")
-'    Rel(catalog_of_catalogs, service_metadata, "Harvest", "CSW: GeoDCAT-AP")
-'    Rel(web_app, catalog_of_catalogs, "Read metadata and harvest metrics", "CSW: GeoDCAT-AP")
-'    Rel(web_app, csapi, "Read metadata and harvest metrics", "CSW: ISO19115")
-'    Rel(web_app, updater, "Push discovery metadata")
 }
 
 Rel(geonorge, csapi, "Harvest", "CSW/OAI-PMH")
-'Rel(geonorge, catalog_of_catalogs, "Harvest", "CSW: Geo-DCAT-AP")
 Rel(advanced, csapi, "Search", "CSW/OpenSearch")
-'Rel(dist_systems, updater, "Push MMD files", "DMCI API")
 Rel(productionhub, dist_systems, "Store", "ACDD compliant netCDF-CF files")
 Rel(productionhub, updater, "Create/Delete", "HTTP POST: MMD")
-'Rel(web_app, productionhub, "Harvest metrics")
-'Rel(web_app, dist_systems, "Harvest metrics")
-'Rel(datacurator, web_app, "Configures data series and collections (by adding metadata), checks statistics and metadata consistency/status.")
 Rel(dataprovider, web_app, "Check dataset statistics and metadata consistency/status.")
-'Rel(serviceprovider, web_app, "Check statistics and metadata consistency/status.")
-'Rel(serviceprovider, web_app, "Register service metadata.", "CSW: GeoDCAT-AP")
-'Rel(serviceprovider, cli_registrar, "Register service metadata.", "CSW: GeoDCAT-AP")
-'Rel(datacurator, cli_registrar, "Register metadata for collections and series.")
-'Rel(cli_registrar, updater, "Push metadata for collections and series.")
-'Rel(web_app, service_metadata, "Push service metadata")
-
-
-
 
 @enduml
