@@ -152,4 +152,4 @@ UML diagram
 
    UML diagram, example;
 
-   .. uml:: use_case_swimming_comp.puml
+   .. uml:: puml/user_analysis/use_case_swimming_comp.puml

@@ -12,7 +12,7 @@ Context
 * Information made available in the form of dynamic geodata must be verifiable and traceable (back to basic/raw data)
 * Reduced costs for establishment and operation of effective management of dynamic geodata at the partner institutions
 
-.. uml:: information_to_knowledge.puml
+.. uml:: puml/user_analysis/information_to_knowledge.puml
 
 As displayed in the above figure, data is processed and interpreted to generate knowledge (e.g., about the weather) for end users. The knowledge can be presented as information in the form of actual data, illustrations, text or other forms of communication. In this context, an illustration is a representation of data, whereas data means the numerical values needed to analyse and interpret a natural process (i.e., calibrated or with calibration information; it must be possible to understand the meaning of the numerical value from the available and machine-readable information).
 
@@ -65,7 +65,7 @@ We define two types of users:
 
 A consumer of one level of data is typically a producer of data at the next level. A user can both consume data and produce data, or just have one of these roles (i.e., at the start/end of the production chain).
 
-.. uml:: users.puml
+.. uml:: puml/user_analysis/users.puml
 
 Data Consumers
 ==============

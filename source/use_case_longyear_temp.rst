@@ -137,4 +137,4 @@ UML diagram
 
    UML diagram, example;
 
-   .. uml:: use_case_longyear_temp.puml
+   .. uml:: puml/user_analysis/use_case_longyear_temp.puml
