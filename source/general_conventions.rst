@@ -50,7 +50,7 @@ Versioning
 
 Software tools should be properly versioned, following the `Semantic Versioning`_ principles.
 
-The general principles of version increments, given a version number MAJOR.MINOR.PATCH, is:
+The general principles of version increments, given a version number MAJOR.MINOR.PATCH, are:
 
 1. MAJOR version when you make incompatible API changes,
 2. MINOR version when you add functionality in a backwards compatible manner, and
@@ -60,12 +60,13 @@ Additional labels for pre-release and build metadata are available as extensions
 MAJOR.MINOR.PATCH format. (Reference: `<https://semver.org/>`_)
 
 It is good practice to use ``0`` as the MAJOR version during the initial development stage, and
-increment the MINOR number for each release up until it is ready for production use.
+increment the MINOR number for each release up until it is ready for production use and a 1.0
+release.
 
 The main benefit of semantic versioning, when followed properly, is that other software that
-depends on these software packages have some idea what to expect from the version numbers, and can
-configure their own dependency requirements accordingly using broader filters rather than depending
-on pinning to specific versions or commits in a project's release history.
+depends on these software packages have some idea what to expect from the version numbers. It is
+then possible for the developer to configure their own dependency requirements accordingly, using
+version ranges and filters rather than version pinning or pinning to specific commits.
 
 .. _Semantic Versioning: https://semver.org/
 
