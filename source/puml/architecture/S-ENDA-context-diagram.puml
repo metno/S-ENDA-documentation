@@ -19,6 +19,7 @@ Boundary(systems, "S-ENDA") {
     System(senda, "S-ENDA Discovery Metadata Service")
     System(productionhub, "Production", "Dataset production hubs provide new datasets.")
     System(dist_systems, "Data Distribution")
+    System(monitoring, "Service Monitoring")
 }
 
 System_Ext(portals, "Portals", "External portals harvest metadata on various standards. Can also prepare data delivery (e.g., basket solution).")
@@ -47,5 +48,8 @@ Rel(senda, dist_systems, "Get metadata and metrics")
 Rel(apps, dist_systems, "Stream data")
 Rel(portals, dist_systems, "Stream data")
 Rel(advanced, dist_systems, "Stream data")
+
+'Rel(monitoring, dist_systems, "")
+'Rel(monitoring, senda, "")
 
 @enduml
