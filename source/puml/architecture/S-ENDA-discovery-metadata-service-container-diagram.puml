@@ -4,14 +4,14 @@
 LAYOUT_TOP_DOWN
 
 Boundary(providers, "Providers") {
-    Person(dataprovider, "Dataset Producer", "An advanced consumer of low level data generating new information at a higher level.")
+    Person(dataprovider, "Dataset Producer")
 }
 
 Boundary(systems, "S-ENDA") {
-  System(productionhub, "Production Hubs", "Dataset production hubs provide new datasets (ACDD compliant NetCDF-CF files).")
-  System(dist_systems, "Data Distribution Systems", "Thredds servers with ACDD compliant NetCDF-CF files.")
+  System(productionhub, "Production")
+  System(dist_systems, "Data Distribution")
   System(monitoring, "Service Monitoring")
-  System_Boundary(mserviceSystem, "S-ENDA Discovery Metadata Service Node") {
+  System_Boundary(mserviceSystem, "Discovery Metadata Service") {
 
     Container(updater, "Discovery Metadata Catalog Ingestor API", "Python/Flask", "Provides functionality to  create content in metadata stores.")
     Container(metadata_store, "Backup Dataset Discovery Metadata Store", "Git", "MMD discovery and configuration metadata for datasets.")
@@ -19,9 +19,9 @@ Boundary(systems, "S-ENDA") {
      Container(solr, "Metadata Storage", "solr/or similar", "<b>Optional</b> other metadata storage.")
     Container(web_app, "Web Application", "HTML", "<b>Optional.</b> Provides functionality to register dataset and service metadata, display dataset and service usage statistics, production status, and monitor metadata to display errors and warnings (e.g., about dead links).")
 
-    Rel(updater, csapi, "Create/Delete", "HTTP POST: INSPIRE")
-    Rel(updater, metadata_store, "Create/Delete", "git: MMD")
-    Rel(updater, solr, "")
+    Rel(updater, csapi, "Create/Update/Delete", "HTTP POST: INSPIRE")
+    Rel(updater, metadata_store, "Create/Update/Delete", "git: MMD")
+    Rel(updater, solr, "Create/Update/Delete")
   }
 }
 
@@ -32,18 +32,23 @@ Boundary(consumers, "Data Consumers"){
   Person(simple, "Simple")
 }
 
-System_Ext(geonorge, "Portals", "External portals harvest metadata on various standards")
+System_Ext(portals, "Portals", "External portals harvest metadata on various standards")
+System_Ext(apps, "Web/mobile apps", "External apps present data in customized ways.")
 
-Rel(dataprovider, productionhub, "Sets up production of netCDF-CF files with ACDD metadata")
+Rel(dataprovider, productionhub, "Sets up data production")
 
-Rel(simple, geonorge, "Search portals", "Web-UI/API")
-Rel(intermediate, geonorge, "Search portals", "Web-UI/API")
-Rel(advanced, geonorge, "Search portals", "Web-UI/API")
+Rel(simple, portals, "Search portals", "Web-UI/API")
+Rel(intermediate, portals, "Search portals", "Web-UI/API")
+Rel(advanced, portals, "Search portals", "Web-UI/API")
 
-Rel(geonorge, csapi, "Harvest", "CSW/OAI-PMH")
+Rel(apps, csapi, "Search", "CSW")
+Rel(apps, dist_systems, "Stream data")
+Rel(simple, apps, "Navigates to app", "Web/mobile UI")
+
+Rel(portals, csapi, "Harvest", "CSW/OAI-PMH")
 Rel(advanced, csapi, "Search", "CSW/OpenSearch")
 Rel(productionhub, dist_systems, "Store", "ACDD compliant netCDF-CF files")
-Rel(productionhub, updater, "Create/Delete", "HTTP POST: MMD")
+Rel(productionhub, updater, "Create/Update/Delete", "HTTP POST: MMD")
 Rel(dataprovider, web_app, "Check dataset statistics and metadata consistency/status.")
 
 @enduml
