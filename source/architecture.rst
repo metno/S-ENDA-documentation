@@ -68,16 +68,11 @@ S-ENDA Discovery Metadata Service - C4 container diagram
 Dataset catalog service API - C4 component diagram
 --------------------------------------------------
 
-.. uml:: puml/architecture/pyCSW_MMD_component_diagram.puml
+..
+  .. uml:: puml/architecture/pyCSW_MMD_component_diagram.puml
 
-For the MMD variant we would need to write the MMD plugin and output schema. See pyCSW docs at https://docs.pycsw.org/en/2.4.2/introduction.html.
-
-
-
-.. note::
-
-   * (*) Harvesting by pyCSW from the Discovery Metadata Store is currently only supported by ISO19139 and MMD (through XSLT and a script) - plugins for GeoDCAT-AP and MMD are needed in pyCSW if we want to use that
-   * I still need to do some consistency checking before we discuss...
+..
+  For the MMD variant we would need to write the MMD plugin and output schema. See pyCSW docs at https://docs.pycsw.org/en/2.4.2/introduction.html.
 
 Production Hubs - C4 container diagram
 ======================================

@@ -13,7 +13,7 @@ Boundary(systems, "S-ENDA") {
   System(mserviceSystem, "Discovery Metadata Service")
   System_Boundary(datadist, "Data Distribution") {
     Container(visualization, "Visualization Service", "OGC WMS", "OGC WMS service for visualizing raster datasets (supported by mapserver).")
-    Container(access, "Data Access Services", "OPeNDAP", "OPeNDAP service supported by, e.g., thredds or hyrax, to provide actual data access.")
+    Container(access, "Data Access Service", "OPeNDAP", "OPeNDAP service supported by, e.g., thredds or hyrax, to provide actual data access.")
   }
 }
 
