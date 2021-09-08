@@ -7,24 +7,11 @@ Boundary(providers, "Providers") {
     Person(dataprovider, "Dataset Producer", "An advanced consumer of low level data generating new information at a higher level.")
 }
 
-System(productionhub, "Production Hubs", "Dataset production hubs provide new datasets (ACDD compliant NetCDF-CF files).")
-System(dist_systems, "Data Distribution Systems", "Thredds servers with ACDD compliant NetCDF-CF files.")
-
-Rel(dataprovider, productionhub, "Sets up production of netCDF-CF files with ACDD metadata")
-
-Boundary(consumers, "Data Consumers"){
-    Person(advanced, "Advanced")
-    Person(intermediate, "Intermediate")
-    Person(simple, "Simple")
-}
-
-System_Ext(geonorge, "Portals", "External portals harvest metadata on various standards")
-
-Rel(simple, geonorge, "Search portals", "Web-UI/API")
-Rel(intermediate, geonorge, "Search portals", "Web-UI/API")
-Rel(advanced, geonorge, "Search portals", "Web-UI/API")
-
-System_Boundary(mserviceSystem, "S-ENDA Discovery Metadata Service Node") {
+Boundary(systems, "S-ENDA") {
+  System(productionhub, "Production Hubs", "Dataset production hubs provide new datasets (ACDD compliant NetCDF-CF files).")
+  System(dist_systems, "Data Distribution Systems", "Thredds servers with ACDD compliant NetCDF-CF files.")
+  System(monitoring, "Service Monitoring")
+  System_Boundary(mserviceSystem, "S-ENDA Discovery Metadata Service Node") {
 
     Container(updater, "Discovery Metadata Catalog Ingestor API", "Python/Flask", "Provides functionality to  create content in metadata stores.")
     Container(metadata_store, "Backup Dataset Discovery Metadata Store", "Git", "MMD discovery and configuration metadata for datasets.")
@@ -35,7 +22,23 @@ System_Boundary(mserviceSystem, "S-ENDA Discovery Metadata Service Node") {
     Rel(updater, csapi, "Create/Delete", "HTTP POST: INSPIRE")
     Rel(updater, metadata_store, "Create/Delete", "git: MMD")
     Rel(updater, solr, "")
+  }
 }
+
+
+Boundary(consumers, "Data Consumers"){
+  Person(advanced, "Advanced")
+  Person(intermediate, "Intermediate")
+  Person(simple, "Simple")
+}
+
+System_Ext(geonorge, "Portals", "External portals harvest metadata on various standards")
+
+Rel(dataprovider, productionhub, "Sets up production of netCDF-CF files with ACDD metadata")
+
+Rel(simple, geonorge, "Search portals", "Web-UI/API")
+Rel(intermediate, geonorge, "Search portals", "Web-UI/API")
+Rel(advanced, geonorge, "Search portals", "Web-UI/API")
 
 Rel(geonorge, csapi, "Harvest", "CSW/OAI-PMH")
 Rel(advanced, csapi, "Search", "CSW/OpenSearch")
