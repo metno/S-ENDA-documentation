@@ -1,45 +1,49 @@
 @startuml S-ENDA-data-distribution-container-diagram
 !includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Component.puml
 
-'LAYOUT_LEFT_RIGHT
 LAYOUT_TOP_DOWN
 
 Boundary(providers, "Providers") {
     Person(dataprovider, "Dataset Producer")
-    Person(datacurator, "Data curator")
-    Person(serviceprovider, "Service Provider")
 }
 
-System(productionhub, "Production Hubs", "Dataset production hubs provide new datasets (ACDD compliant NetCDF-CF files).")
-System(mserviceSystem, "S-ENDA Discovery Metadata Service")
-System_Boundary(dist_systems, "Data Distribution Systems") {
-    Container(zarr, "S3/Zarr", "S3/Zarr", "Provides data from S3/Zarr.")
-    Container(opendap, "thredds", "OPeNDAP", "Provides data.")
-    Container(wms, "thredds", "WMS", "Provides data visualization.")
+Boundary(systems, "S-ENDA") {
+  System(productionhub, "Production")
+  System(monitoring, "Service Monitoring")
+  System(mserviceSystem, "Discovery Metadata Service")
+  System_Boundary(datadist, "Data Distribution") {
+    Container(visualization, "Visualization Service", "OGC WMS", "OGC WMS service for visualizing raster datasets (supported by mapserver).")
+    Container(access, "Data Access Service", "OPeNDAP", "OPeNDAP service supported by, e.g., thredds or hyrax, to provide actual data access.")
+  }
 }
 
 
 Boundary(consumers, "Data Consumers"){
-    Person(advanced, "Advanced")
-    Person(intermediate, "Intermediate")
-    Person(simple, "Simple")
+  Person(advanced, "Advanced")
+  Person(intermediate, "Intermediate")
+  Person(simple, "Simple")
 }
 
-System_Ext(geonorge, "Portals", "External portals harvest metadata on various standards")
-
-Rel(simple, geonorge, "Search portals", "Web-UI/API")
-Rel(intermediate, geonorge, "Search portals", "Web-UI/API")
-Rel(advanced, geonorge, "Search portals", "Web-UI/API")
+System_Ext(portals, "Portals", "External portals harvest metadata on various standards")
+System_Ext(apps, "Web/mobile apps", "External apps present data in customized ways.")
 
 Rel(dataprovider, productionhub, "Sets up production of netCDF-CF files with ACDD metadata")
 
-Rel(geonorge, mserviceSystem, "Harvest", "CSW")
-Rel(advanced, mserviceSystem, "Search", "CSW OpenSearch")
-Rel(mserviceSystem, dist_systems, "Get discovery metadata", "OPeNDAP: ACDD/CF")
-Rel(productionhub, dist_systems, "Store", "ACDD compliant netCDF-CF files")
-Rel(mserviceSystem, productionhub, "Listens in order to get last updated info", "CloudEvents")
-Rel(mserviceSystem, productionhub, "Harvest metrics")
-Rel(mserviceSystem, dist_systems, "Harvest metrics")
-Rel(providers, mserviceSystem, "Register/configure/check")
+Rel(simple, portals, "Search portals", "Web-UI/API")
+Rel(intermediate, portals, "Search portals", "Web-UI/API")
+Rel(advanced, portals, "Search portals", "Web-UI/API")
+
+Rel(apps, mserviceSystem, "Search", "CSW")
+Rel(apps, visualization, "Stream", "WMS/WMTS/etc.")
+Rel(simple, apps, "Navigates to app", "Web/mobile UI")
+
+Rel(portals, mserviceSystem, "Harvest", "CSW/OAI-PMH")
+Rel(advanced, mserviceSystem, "Search", "CSW/OpenSearch")
+Rel(productionhub, datadist, "Store")
+Rel(productionhub, mserviceSystem, "Create/Update/Delete", "HTTP POST: MMD")
+Rel(dataprovider, mserviceSystem, "Check dataset statistics and metadata consistency/status.")
+
+Rel(portals, access, "Stream", "OPeNDAP/WMS/WMTS/etc.")
+Rel(advanced, access, "Stream", "OPeNDAP")
 
 @enduml
