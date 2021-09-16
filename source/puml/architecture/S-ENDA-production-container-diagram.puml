@@ -11,8 +11,6 @@ Boundary(systems, "S-ENDA") {
   System_Boundary(productionhub, "Production"){
     Container(job, "Job", "Production Script")
 
-    Container(netcdf, "Python/netCDF4", "netCDF-CF production")
-    Container(otherfile, "some tool", "Other file production")
     Container(mmd, "py-mmd-tools", "MMD production")
     Container(mms, "MMS", "Message production")
   }
@@ -50,8 +48,6 @@ Rel(dataprovider, mserviceSystem, "Check dataset statistics and metadata consist
 Rel(portals, datadist, "Stream", "OPeNDAP/WMS/WMTS/etc.")
 Rel(advanced, datadist, "Stream", "OPeNDAP")
 
-Rel(job, netcdf, "Generate product file")
-Rel(job, otherfile, "Generate product file")
 Rel(job, mmd, "Generate MMD file")
 Rel(job, mserviceSystem,"Register MMD file","HTTPS")
 Rel(job, mms,"Register MMS event","HTTPS")
