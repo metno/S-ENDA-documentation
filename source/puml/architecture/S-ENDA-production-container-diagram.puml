@@ -9,16 +9,20 @@ Boundary(providers, "Providers") {
 
 Boundary(systems, "S-ENDA") {
   System_Boundary(productionhub, "Production"){
-    Container(job, "Job", "Production Script")
+    Container(listen_update, "Production listener", "", "Listens for metadata updates, updates metdata in datafiles on behalf of authenticated user.")
+    Container(listen_delete, "Production listener", "", "Listens for metadata, and deletes files on behalf of authenticated user.")
+    Container(job, "Job", "SMS/PPI", "Production Script")
 
     Container(mmd, "py-mmd-tools", "MMD production")
     Container(mms, "MMS", "Message production")
+
+    Rel(listen_update, mms, "")
+    Rel(listen_delete, mms, "")
   }
   System(monitoring, "Service Monitoring")
   System(mserviceSystem, "Discovery Metadata Service")
   System(datadist, "Data Distribution")
 }
-
 
 Boundary(consumers, "Data Consumers"){
   Person(advanced, "Advanced")
