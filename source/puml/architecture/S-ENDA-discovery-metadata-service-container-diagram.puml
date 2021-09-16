@@ -16,12 +16,14 @@ Boundary(systems, "S-ENDA") {
     Container(updater, "Discovery Metadata Catalog Ingestor API", "Python/Flask", "Provides functionality to  create content in metadata stores.")
     Container(metadata_store, "Backup Dataset Discovery Metadata Store", "Git", "MMD discovery and configuration metadata for datasets.")
     Container(csapi, "Dataset Catalog Service API", "pycsw", "CSW endpoint for search and harvesting. Serves INSPIRE, DIF etc. compliant metadata.")
-     Container(solr, "Metadata Storage", "solr/or similar", "<b>Optional</b> other metadata storage.")
+    Container(solr, "Metadata Storage", "solr/or similar", "Metadata storage for Drupal websites.")
+    Container(mms, "Messaging", "MMS", "<b>Optional</b> message production.")
     Container(web_app, "Web Application", "HTML", "<b>Optional.</b> Provides functionality to register dataset and service metadata, display dataset and service usage statistics, production status, and monitor metadata to display errors and warnings (e.g., about dead links).")
 
     Rel(updater, csapi, "Create/Update/Delete", "HTTP POST: INSPIRE")
     Rel(updater, metadata_store, "Create/Update/Delete", "git: MMD")
     Rel(updater, solr, "Create/Update/Delete")
+    Rel(updater, mms, "Create")
   }
 }
 

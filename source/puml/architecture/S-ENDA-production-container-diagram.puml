@@ -1,0 +1,59 @@
+@startuml S-ENDA-production-container-diagram
+!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Component.puml
+
+LAYOUT_TOP_DOWN
+
+Boundary(providers, "Providers") {
+    Person(dataprovider, "Dataset Producer")
+}
+
+Boundary(systems, "S-ENDA") {
+  System_Boundary(productionhub, "Production"){
+    Container(job, "Job", "Production Script")
+
+    Container(netcdf, "Python/netCDF4", "netCDF-CF production")
+    Container(otherfile, "some tool", "Other file production")
+    Container(mmd, "py-mmd-tools", "MMD production")
+    Container(mms, "MMS", "Message production")
+  }
+  System(monitoring, "Service Monitoring")
+  System(mserviceSystem, "Discovery Metadata Service")
+  System(datadist, "Data Distribution")
+}
+
+
+Boundary(consumers, "Data Consumers"){
+  Person(advanced, "Advanced")
+  Person(intermediate, "Intermediate")
+  Person(simple, "Simple")
+}
+
+System_Ext(portals, "Portals", "External portals harvest metadata on various standards")
+System_Ext(apps, "Web/mobile apps", "External apps present data in customized ways.")
+
+Rel(dataprovider, job, "Sets up production of netCDF-CF files with ACDD metadata")
+
+Rel(simple, portals, "Search portals", "Web-UI/API")
+Rel(intermediate, portals, "Search portals", "Web-UI/API")
+Rel(advanced, portals, "Search portals", "Web-UI/API")
+
+Rel(apps, mserviceSystem, "Search", "CSW")
+Rel(apps, datadist, "Stream", "WMS/WMTS/etc.")
+Rel(simple, apps, "Navigates to app", "Web/mobile UI")
+
+Rel(portals, mserviceSystem, "Harvest", "CSW/OAI-PMH")
+Rel(advanced, mserviceSystem, "Search", "CSW/OpenSearch")
+Rel(job, datadist, "Store")
+Rel(job, mserviceSystem, "Create/Update/Delete", "HTTP POST: MMD")
+Rel(dataprovider, mserviceSystem, "Check dataset statistics and metadata consistency/status.")
+
+Rel(portals, datadist, "Stream", "OPeNDAP/WMS/WMTS/etc.")
+Rel(advanced, datadist, "Stream", "OPeNDAP")
+
+Rel(job, netcdf, "Generate product file")
+Rel(job, otherfile, "Generate product file")
+Rel(job, mmd, "Generate MMD file")
+Rel(job, mserviceSystem,"Register MMD file","HTTPS")
+Rel(job, mms,"Register MMS event","HTTPS")
+
+@enduml
