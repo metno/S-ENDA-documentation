@@ -6,7 +6,7 @@
 # Remove helper VM            : vagrant destroy
 
 Vagrant.configure("2") do |config|
-  config.vm.box = "ubuntu/focal64"
+  config.vm.box = "ubuntu/hirsute64"
   config.vm.provision "shell", inline: <<-SHELL
     apt-get update
     apt-get install -y graphviz plantuml python3-pip

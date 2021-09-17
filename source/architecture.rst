@@ -77,6 +77,8 @@ Dataset catalog service API - C4 component diagram
 Production Hubs - C4 container diagram
 ======================================
 
+.. uml:: puml/architecture/S-ENDA-production-container-diagram.puml
+
 .. See commented code in puml/architecture/S-ENDA-discovery-metadata-service-context-diagram.puml
 
 
