@@ -40,6 +40,7 @@ System_Ext(portals, "Portals", "External portals harvest metadata on various sta
 System_Ext(apps, "Web/mobile apps", "External apps present data in customized ways.")
 
 Rel(dataprovider, productionhub, "Sets up data production")
+Rel(productionhub, mms, "Listen for Create/Update/Delete", "MMD")
 
 Rel(simple, portals, "Search portals", "Web-UI/API")
 Rel(intermediate, portals, "Search portals", "Web-UI/API")
