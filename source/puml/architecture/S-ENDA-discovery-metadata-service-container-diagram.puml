@@ -14,16 +14,18 @@ Boundary(systems, "S-ENDA") {
   System_Boundary(mserviceSystem, "Discovery Metadata Service") {
 
     Container(updater, "Discovery Metadata Catalog Ingestor API", "Python/Flask", "Provides functionality to  create content in metadata stores.")
-    Container(metadata_store, "Backup Dataset Discovery Metadata Store", "Git", "MMD discovery and configuration metadata for datasets.")
+    Container(validator, "MMD validator", "Python", "Validator for MMD xml files.")
+    Container(metadata_store, "Backup Dataset Discovery Metadata Store", "File", "Backup MMD storage. Committed to git on regular intervals.")
     Container(csapi, "Dataset Catalog Service API", "pycsw", "CSW endpoint for search and harvesting. Serves INSPIRE, DIF etc. compliant metadata.")
-    Container(solr, "Metadata Storage", "solr/or similar", "Metadata storage for Drupal websites.")
+    Container(solr, "Metadata Storage", "Solr", "Metadata storage for Drupal websites.")
     Container(mms, "Messaging", "MMS", "<b>Optional</b> message production.")
     Container(web_app, "Web Application", "HTML", "<b>Optional.</b> Provides functionality to register dataset and service metadata, display dataset and service usage statistics, production status, and monitor metadata to display errors and warnings (e.g., about dead links).")
 
+    Rel(updater, validator, "Validate", "MMD")
     Rel(updater, csapi, "Create/Update/Delete", "HTTP POST: INSPIRE")
-    Rel(updater, metadata_store, "Create/Update/Delete", "git: MMD")
-    Rel(updater, solr, "Create/Update/Delete")
-    Rel(updater, mms, "Create")
+    Rel(updater, metadata_store, "Create/Update/Delete", "MMD")
+    Rel(updater, solr, "Create/Update/Delete", "MMD")
+    Rel(updater, mms, "Create/Update/Delete", "MMD")
   }
 }
 
@@ -50,7 +52,7 @@ Rel(simple, apps, "Navigates to app", "Web/mobile UI")
 Rel(portals, csapi, "Harvest", "CSW/OAI-PMH")
 Rel(advanced, csapi, "Search", "CSW/OpenSearch")
 Rel(productionhub, dist_systems, "Store", "ACDD compliant netCDF-CF files")
-Rel(productionhub, updater, "Create/Update/Delete", "HTTP POST: MMD")
+Rel(productionhub, updater, "Validate/Create/Update/Delete", "HTTP POST: MMD")
 Rel(dataprovider, web_app, "Check dataset statistics and metadata consistency/status.")
 
 @enduml
