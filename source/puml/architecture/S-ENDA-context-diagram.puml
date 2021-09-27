@@ -16,7 +16,7 @@ Boundary(providers, "Providers") {
 }
 
 Boundary(systems, "S-ENDA") {
-    System(senda, "S-ENDA Discovery Metadata Service")
+    System(dmservice, "S-ENDA Discovery Metadata Service")
     System(productionhub, "Production", "Dataset production hubs provide new datasets.")
     System(dist_systems, "Data Distribution")
     System(monitoring, "Service Monitoring")
@@ -29,27 +29,28 @@ Rel(advanced, portals, "Search portals", "Web-UI/API")
 Rel(intermediate, portals, "Search portals", "Web-UI/API")
 Rel(simple, apps, "Navigates to app", "Web/mobile UI")
 
-System(senda, "Discovery Metadata Service")
+System(dmservice, "Discovery Metadata Service")
 
-Rel(advanced, senda, "Search", "CSW/OpenSearch: ISO19115/DCAT/MMD")
-Rel(portals, senda, "Harvest metadata", "CSW/OAI-PMH: ISO19139")
-Rel(apps, senda, "Harvest metadata", "CSW/OAI-PMH: ISO19139")
+Rel(advanced, dmservice, "Search", "CSW/OpenSearch: ISO19115/DCAT/MMD")
+Rel(portals, dmservice, "Harvest metadata", "CSW/OAI-PMH: ISO19139")
+Rel(apps, dmservice, "Harvest metadata", "CSW/OAI-PMH: ISO19139")
 
-Rel(providers, senda, "Register metadata")
-Rel(providers, senda, "Check usage statistics and metadata consistency/status.")
+Rel(providers, dmservice, "Register metadata")
+Rel(providers, dmservice, "Check usage statistics and metadata consistency/status.")
 
 System(productionhub, "Production")
 System(dist_systems, "Data Distribution")
 
 Rel(dataprovider, productionhub, "Sets up data production")
 Rel(productionhub, dist_systems, "Store")
-Rel(senda, productionhub, "Listen in order to get last updated info, and harvest metrics")
-Rel(senda, dist_systems, "Get metadata and metrics")
+Rel(productionhub, dmservice, "Validate/create/update/delete", "HTTP POST: MMD")
+Rel(productionhub, dmservice, "Listen create/update/delete", "MMD")
+'Rel(dmservice, dist_systems, "Get metadata and metrics")
 Rel(apps, dist_systems, "Stream data")
 Rel(portals, dist_systems, "Stream data")
 Rel(advanced, dist_systems, "Stream data")
 
 'Rel(monitoring, dist_systems, "")
-'Rel(monitoring, senda, "")
+'Rel(monitoring, dmservice, "")
 
 @enduml
