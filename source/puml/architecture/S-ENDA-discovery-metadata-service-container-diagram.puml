@@ -51,6 +51,7 @@ Rel(apps, dist_systems, "Stream data")
 Rel(simple, apps, "Navigates to app", "Web/mobile UI")
 
 Rel(portals, csapi, "Harvest", "CSW/OAI-PMH")
+Rel(portals, solr, "Harvest", "CSW/OAI-PMH")
 Rel(advanced, csapi, "Search", "CSW/OpenSearch")
 Rel(productionhub, dist_systems, "Store", "ACDD compliant netCDF-CF files")
 Rel(productionhub, updater, "Validate/Create/Update/Delete", "HTTP POST: MMD")

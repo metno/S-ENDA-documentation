@@ -9,18 +9,11 @@ Boundary(providers, "Providers") {
 
 Boundary(systems, "S-ENDA") {
   System_Boundary(productionhub, "Production"){
-    Container(listen_update, "Update listener", "", "Listens for metadata updates, updates metdata in datafiles on behalf of authenticated user.")
+    Container(listen_update, "Update listener", "", "Listens for metadata updates, updates metadata in datafiles on behalf of authenticated user.")
     Container(listen_delete, "Deletion listener", "", "Listens for metadata, and deletes files on behalf of authenticated user.")
     Container(listen_start, "Production listener", "", "Listens for metadata, and starts new processing on behalf of authenticated user.")
     Container(job, "Production job", "SMS/PPI", "Production Script")
-    Container(udjob, "Update/delete job", "SMS/PPI", "Update metadata or delete data.")
 
-    Container(mmd, "py-mmd-tools", "MMD production")
-    Container(mms, "MMS", "Message production")
-
-    Rel(listen_update, mms, "")
-    Rel(listen_delete, mms, "")
-    Rel(listen_start, mms, "")
     Rel(listen_start, job, "Start job")
   }
   System(monitoring, "Service Monitoring")
@@ -37,8 +30,11 @@ Boundary(consumers, "Data Consumers"){
 System_Ext(portals, "Portals", "External portals harvest metadata on various standards")
 System_Ext(apps, "Web/mobile apps", "External apps present data in customized ways.")
 
+Rel(listen_update, mserviceSystem, "Listen update")
+Rel(listen_delete, mserviceSystem, "Listen delete")
+Rel(listen_start, mserviceSystem, "Listen create")
+
 Rel(dataprovider, job, "Sets up data production")
-Rel(dataprovider, udjob, "Update dataset")
 
 Rel(simple, portals, "Search portals", "Web-UI/API")
 Rel(intermediate, portals, "Search portals", "Web-UI/API")
@@ -52,15 +48,10 @@ Rel(portals, mserviceSystem, "Harvest", "CSW/OAI-PMH")
 Rel(advanced, mserviceSystem, "Search", "CSW/OpenSearch")
 Rel(job, datadist, "Store")
 Rel(job, mserviceSystem, "Create/Update/Delete", "HTTP POST: MMD")
-Rel(dataprovider, mserviceSystem, "Check dataset statistics and metadata consistency/status.")
 
 Rel(portals, datadist, "Stream", "OPeNDAP/WMS/WMTS/etc.")
 Rel(advanced, datadist, "Stream", "OPeNDAP")
 
-Rel(job, mmd, "Generate MMD file")
-Rel(udjob, mmd, "Generate MMD file")
 Rel(job, mserviceSystem,"Register MMD file","HTTPS")
-Rel(job, mms,"Register MMS event","HTTPS")
-Rel(udjob, mms,"Register MMS event","HTTPS")
 
 @enduml
