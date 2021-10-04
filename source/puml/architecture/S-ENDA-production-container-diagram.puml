@@ -52,6 +52,4 @@ Rel(job, mserviceSystem, "Create/Update/Delete", "HTTP POST: MMD")
 Rel(portals, datadist, "Stream", "OPeNDAP/WMS/WMTS/etc.")
 Rel(advanced, datadist, "Stream", "OPeNDAP")
 
-Rel(job, mserviceSystem,"Register MMD file","HTTPS")
-
 @enduml
