@@ -7,25 +7,55 @@ Boundary(providers, "Providers") {
     Person(dataprovider, "Dataset Producer")
 }
 
+System_Ext(partner_producer, "Partner system", "Uses the same event queue solution as MET (not the same infrastructure).")
+
 Boundary(systems, "S-ENDA") {
   System(productionhub, "Production")
   System(dist_systems, "Data Distribution")
   System(monitoring, "Service Monitoring")
   System_Boundary(mserviceSystem, "Discovery Metadata Service") {
+    System_Boundary(metms, "MET Metadata Handling") {
+      Container(dmci, "Discovery Metadata Catalog Ingestor (DMCI)", "Python/Flask", "Defines a REST API to trigger actions requiring MMD metadata. DMCI creates a CloudEvent with MMD as payload. The CloudEvent is posted in an event queue.")
+      Container(mms, "MMSd", "Python/Flask", "Defines a REST API for posting generic events in an event queue. The message is converted to a CloudEvent.")
+      Container(validator, "MMD validator", "Python", "Validator for MMD xml files.")
+    }
 
-    Container(updater, "Discovery Metadata Catalog Ingestor API", "Python/Flask", "Provides functionality to  create content in metadata stores.")
-    Container(validator, "MMD validator", "Python", "Validator for MMD xml files.")
-    Container(metadata_store, "Backup Dataset Discovery Metadata Store", "File", "Backup MMD storage. Committed to git on regular intervals.")
-    Container(csapi, "Dataset Catalog Service API", "pycsw", "CSW endpoint for search and harvesting. Serves INSPIRE, DIF etc. compliant metadata.")
-    Container(solr, "Metadata Storage", "Solr", "Metadata storage for Drupal websites.")
-    Container(mms, "Messaging", "MMS", "<b>Optional</b> message production.")
+    Container(queue, "Event queue", "NATS/Kafka/..", "Event queue with events containing metadata relevant for listening agents. Also maintains history for allowing temporarily failing agents to catch up.")
+
+    Rel(mms, queue, "CloudEvent")
+    Rel(dmci, queue, "CloudEvent")
+    Rel(partner_producer, queue, "CloudEvent")
+
+    System_Boundary(backup, "Backup") {
+      Container(metadata_store, "Backup Agent", "Agent", "Listens for create/update/delete MMD events, converts and ingests.")
+      SystemDb(file, "File", "Backup Dataset Discovery Metadata Store. Committed to git on regular intervals.")
+    }
+
+    Rel(metadata_store, file, "")
+    Rel(metadata_store, queue, "Listen")
+
+    System_Boundary(solrsyst, "SOLR") {
+      Container(solr_agent, "SOLR Agent", "Agent", "Listens for create/update/delete MMD events, converts and ingests.")
+      SystemDb(solr, "SOLR", "Dataset Discovery Metadata Store.")
+    }
+
+    Rel(solr_agent, solr, "")
+    Rel(solr_agent, queue, "Listen")
+
+    System_Boundary(csw, "CSW") {
+      Container(csw_agent, "CSW Agent", "Agent", "Listens for create/update/delete MMD events, converts and ingests. Can be removed when SOLR becomes the db backend for pycsw.")
+      Container(csapi, "pycsw", "CSW", "CSW endpoint for search and harvesting. Serves INSPIRE, DIF etc. compliant metadata.")
+      SystemDb(postgis, "PostGIS", "Dataset Discovery Metadata Store. Can be removed when SOLR becomes the db backend for pycsw.")
+    }
+
+    Rel(csw_agent, csapi, "")
+    Rel(csw_agent, queue, "Listen")
+    Rel(csapi, postgis, "")
+
+    Rel(productionhub, queue, "Listen")
+
     Container(web_app, "Web Application", "HTML", "<b>Optional.</b> Provides functionality to register dataset and service metadata, display dataset and service usage statistics, production status, and monitor metadata to display errors and warnings (e.g., about dead links).")
 
-    Rel(updater, validator, "Validate", "MMD")
-    Rel(updater, csapi, "Create/Update/Delete", "HTTP POST: INSPIRE")
-    Rel(updater, metadata_store, "Create/Update/Delete", "MMD")
-    Rel(updater, solr, "Create/Update/Delete", "MMD")
-    Rel(updater, mms, "Create/Update/Delete", "MMD")
   }
 }
 
@@ -40,7 +70,6 @@ System_Ext(portals, "Portals", "External portals harvest metadata on various sta
 System_Ext(apps, "Web/mobile apps", "External apps present data in customized ways.")
 
 Rel(dataprovider, productionhub, "Sets up data production")
-Rel(productionhub, mms, "Listen for Create/Update/Delete", "MMD")
 
 Rel(simple, portals, "Search portals", "Web-UI/API")
 Rel(intermediate, portals, "Search portals", "Web-UI/API")
@@ -54,7 +83,7 @@ Rel(portals, csapi, "Harvest", "CSW/OAI-PMH")
 Rel(portals, solr, "Harvest", "CSW/OAI-PMH")
 Rel(advanced, csapi, "Search", "CSW/OpenSearch")
 Rel(productionhub, dist_systems, "Store", "ACDD compliant netCDF-CF files")
-Rel(productionhub, updater, "Validate/Create/Update/Delete", "HTTP POST: MMD")
+Rel(productionhub, metms, "Validate/Create/Update/Delete", "HTTP POST: MMD/??")
 Rel(dataprovider, web_app, "Check dataset statistics and metadata consistency/status.")
 
 @enduml
