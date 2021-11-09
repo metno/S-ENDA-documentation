@@ -54,9 +54,7 @@ Rel(job, vis_systems, "Store/Configure")
 Rel(job, dist_systems, "Store")
 Rel(job, dmci, "Create/Update/Delete", "HTTP POST")
 
-Rel(monitoring, dist_systems, "Monitor")
 Rel(monitoring, job, "Monitor")
-Rel(monitoring, vis_systems, "Monitor")
 
 SHOW_LEGEND()
 
