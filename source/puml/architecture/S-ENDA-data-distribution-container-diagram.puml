@@ -46,4 +46,6 @@ Rel(dataprovider, mserviceSystem, "Check dataset statistics and metadata consist
 Rel(portals, access, "Stream", "OPeNDAP/WMS/WMTS/etc.")
 Rel(advanced, access, "Stream", "OPeNDAP")
 
+SHOW_LEGEND()
+
 @enduml

@@ -1,55 +1,63 @@
 @startuml S-ENDA-production-container-diagram
-!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Component.puml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 
-LAYOUT_TOP_DOWN
+LAYOUT_TOP_DOWN()
 
 Boundary(providers, "Providers") {
     Person(dataprovider, "Dataset Producer")
 }
 
 Boundary(systems, "S-ENDA") {
-  System_Boundary(productionhub, "Production"){
+  System_Boundary(dmservice, "Metadata Services", "Defines a REST API to add events to an event queue, which subsequently triggers subscriber actions. The API requires input metadata on a required format, and provides metadata validators (e.g., for MMD). Also contains various storage and search solutions for discovery metadata."){
+    Container(dmci, "Metadata Publisher", "Python/Flask", "Defines a REST API to add events to the event queue, which subsequently triggers subscriber actions. The API requires input metadata on a required format, e.g., MMD, and creates a CloudEvent with the metadata as payload. The CloudEvent is posted in an event queue. The metadata publisher also provides metadata validators.")
+
+    Container(queue, "Event queue", "NATS/Kafka/..", "Event queue with events containing metadata relevant for the subscribers. Maintains history for allowing temporarily failing subscribers to catch up.")
+
+    Rel(dmci, queue, "Publish", "CloudEvent")
+  }
+  System(dist_systems, "Data Distribution Services", "Primarily thredds/OPeNDAP.")
+  System(vis_systems, "Data Visualization Services", "Server side configurations for WMS, etc.")
+  System(monitoring, "Monitoring", "Monitoring of usage statistics, metadata consistency, and status of services and production chains.")
+
+  System_Boundary(productionhub, "Production", "Automated system for data production. ECFlow, PPI, SMS, etc."){
     'Container(listen_update, "Update listener", "", "Listens for metadata updates, updates metadata in datafiles on behalf of authenticated user.")
     'Container(listen_delete, "Deletion listener", "", "Listens for metadata, and deletes files on behalf of authenticated user.")
     Container(listen_start, "ECFlow Agent", "Agent", "Listens for relevant events, and acts.")
-    Container(job, "Production job", "SMS/PPI", "Production Script")
-
+    Container(job, "Production job", "ECFlow", "Production script.")
     Rel(listen_start, job, "Start job")
   }
-  System(monitoring, "Service Monitoring")
-  System(mserviceSystem, "Discovery Metadata Service")
-  System(datadist, "Data Distribution")
 }
 
-Boundary(consumers, "Data Consumers"){
-  Person(advanced, "Advanced")
-  Person(intermediate, "Intermediate")
-  Person(simple, "Simple")
-}
+'Boundary(consumers, "Data Consumers"){
+'  Person(advanced, "Advanced")
+'  Person(intermediate, "Intermediate")
+'  Person(simple, "Simple")
+'  System_Ext(portals, "Portals", "External portals harvest metadata on various standards")
+'  System_Ext(apps, "Web/mobile apps", "External apps present data in customized ways.")
+'}
+'
+'Rel(consumers, systems, "Search/Harvest", "CSW/OpenSearch/OAI-PMH")
+'Rel(consumers, systems, "Visualize", "e.g., WMS")
+'Rel(consumers, systems, "Stream", "OPeNDAP")
+'
+'Rel(simple, portals, "Search portals", "Web-UI/API")
+'Rel(simple, apps, "Navigates to app", "Web/mobile UI")
+'Rel(intermediate, portals, "Search portals", "Web-UI/API")
+'Rel(advanced, portals, "Search portals", "Web-UI/API")
 
-System_Ext(portals, "Portals", "External portals harvest metadata on various standards")
-System_Ext(apps, "Web/mobile apps", "External apps present data in customized ways.")
+'Rel(listen_update, dmservice, "Listen update")
+'Rel(listen_delete, dmservice, "Listen delete")
+Rel(listen_start, queue, "Listen")
 
-'Rel(listen_update, mserviceSystem, "Listen update")
-'Rel(listen_delete, mserviceSystem, "Listen delete")
-Rel(listen_start, mserviceSystem, "Listen create")
+Rel(dataprovider, productionhub, "Set up data production system")
+Rel(job, vis_systems, "Store/Configure")
+Rel(job, dist_systems, "Store")
+Rel(job, dmci, "Create/Update/Delete", "HTTP POST")
 
-Rel(dataprovider, job, "Sets up data production")
+Rel(monitoring, dist_systems, "Monitor")
+Rel(monitoring, job, "Monitor")
+Rel(monitoring, vis_systems, "Monitor")
 
-Rel(simple, portals, "Search portals", "Web-UI/API")
-Rel(intermediate, portals, "Search portals", "Web-UI/API")
-Rel(advanced, portals, "Search portals", "Web-UI/API")
-
-Rel(apps, mserviceSystem, "Search", "CSW")
-Rel(apps, datadist, "Stream", "WMS/WMTS/etc.")
-Rel(simple, apps, "Navigates to app", "Web/mobile UI")
-
-Rel(portals, mserviceSystem, "Harvest", "CSW/OAI-PMH")
-Rel(advanced, mserviceSystem, "Search", "CSW/OpenSearch")
-Rel(job, datadist, "Store")
-Rel(job, mserviceSystem, "Create/Update/Delete", "HTTP POST: MMD")
-
-Rel(portals, datadist, "Stream", "OPeNDAP/WMS/WMTS/etc.")
-Rel(advanced, datadist, "Stream", "OPeNDAP")
+SHOW_LEGEND()
 
 @enduml

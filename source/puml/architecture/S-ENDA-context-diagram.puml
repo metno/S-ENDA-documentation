@@ -48,7 +48,7 @@ Rel(consumers, systems, "Stream", "OPeNDAP")
 'Rel(providers, dmservice, "Register metadata")
 Rel(providers, monitoring, "Check status")
 
-Rel(dataprovider, productionhub, "Set up data production")
+Rel(dataprovider, productionhub, "Set up data production system")
 Rel(productionhub, dist_systems, "Store")
 Rel(productionhub, dmservice, "Validate/create/update/delete", "HTTP POST")
 Rel(productionhub, dmservice, "Listen", "CloudEvent")
@@ -58,5 +58,7 @@ Rel(monitoring, dist_systems, "Monitor")
 Rel(monitoring, dmservice, "Monitor")
 Rel(monitoring, productionhub, "Monitor")
 Rel(monitoring, vis_systems, "Monitor")
+
+SHOW_LEGEND()
 
 @enduml

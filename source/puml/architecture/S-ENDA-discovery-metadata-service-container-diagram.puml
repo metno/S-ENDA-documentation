@@ -54,7 +54,7 @@ Boundary(systems, "S-ENDA") {
 
 System(consumers, "Data Consumers")
 
-Rel(dataprovider, productionhub, "Sets up data production")
+Rel(dataprovider, productionhub, "Set up data production system")
 
 Rel(consumers, csapi, "Harvest/Search", "CSW")
 Rel(consumers, solr, "Use", "drupal")
