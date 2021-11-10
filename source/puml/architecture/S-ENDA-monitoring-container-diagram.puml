@@ -1,0 +1,24 @@
+@startuml S-ENDA-monitoring-container-diagram
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+LAYOUT_TOP_DOWN()
+
+Boundary(systems, "S-ENDA") {
+  System(productionhub, "Production", "Automated system for data production. ECFlow, PPI, SMS, etc.")
+  System(dist_systems, "Data Distribution", "Primarily thredds/OPeNDAP.")
+  System(vis_systems, "Data Visualization Services", "Server side configurations for WMS, etc.")
+  System_Boundary(monitoring, "Monitoring", "Monitoring of usage statistics, metadata consistency, and status of services and production chains."){
+    Container(checker, "Metadata Checker", "Python", "Regularly checks consistency between metadata, data and data representations/visualizations.")
+    Container(web_app, "Web Application", "HTML", "<b>Optional.</b> Provides functionality to register dataset and service metadata, display dataset and service usage statistics, production status, and monitor metadata to display errors and warnings (e.g., about dead links).")
+  }
+  System(mserviceSystem, "Discovery Metadata Service")
+}
+
+Rel(checker, mserviceSystem, "Read")
+Rel(checker, dist_systems, "Read")
+Rel(checker, vis_systems, "Read")
+
+SHOW_LEGEND()
+
+@enduml
+

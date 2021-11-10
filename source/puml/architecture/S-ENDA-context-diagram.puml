@@ -3,61 +3,57 @@
 
 LAYOUT_TOP_DOWN()
 
-Boundary(consumers, "Data Consumers"){
-  Person(advanced, "Advanced")
-  Person(intermediate, "Intermediate")
-  Person(simple, "Simple")
+Person(consumers, "Data Consumer", "A data consumer can be a human (advanced, intermediate or simple users) or a machine (e.g., a mobile app or a data portal). Simple and intermediate users search, inspect, and access data via an external interface (e.g., a mobile app or data portal). Advanced users acess the search, visualization, and distribution services directly. Open licenses and well documented data following international standards enable Interoperability and Reusability.")
 
-  System_Ext(portals, "Portals", "External portals harvest metadata on various standards, and present data in customized ways. Can also prepare data delivery (e.g., with basket solution).")
-  System_Ext(apps, "Web/mobile apps", "External apps present data in customized ways.")
-}
+'Boundary(consumers, "Data Consumers"){
+'  Person(advanced, "Advanced")
+'  Person(intermediate, "Intermediate")
+'  Person(simple, "Simple")
+'
+'  System_Ext(extportals, "Portals", "External portals harvest metadata on various standards, and present data in customized ways. Can also prepare data delivery (e.g., with basket solution).")
+'  System_Ext(apps, "Web/mobile apps", "External apps present data in customized ways.")
+'
+'  Rel(advanced, extportals, "Search portals", "Web-UI/API")
+'  Rel(intermediate, extportals, "Search portals", "Web-UI/API")
+'  Rel(simple, apps, "Navigates to app", "Web/mobile UI")
+'}
     
-Boundary(providers, "Providers") {
-    Person(dataprovider, "Dataset Producer")
-    Person(datacurator, "Data curator")
-    Person(serviceprovider, "Service Provider")
-}
+'Boundary(providers, "Providers") {
+    Person(dataproducer, "Dataset Producer")
+'    Person(datacurator, "Data curator")
+'    Person(serviceprovider, "Service Provider")
+'}
 
-Boundary(systems, "S-ENDA") {
-    System(dmservice, "Metadata Services", "Defines a REST API to add events to an event queue, which subsequently triggers subscriber actions. The API requires input metadata on a required format, and provides metadata validators (e.g., for MMD). Also contains various storage and search solutions for discovery metadata.")
-    System(productionhub, "Production", "Automated system for data production. ECFlow, PPI, SMS, etc.")
-    System(dist_systems, "Data Distribution Services", "Primarily thredds/OPeNDAP.")
-    System(vis_systems, "Data Visualization Services", "Server side configurations for WMS, etc.")
-    System(monitoring, "Monitoring", "Monitoring of usage statistics, metadata consistency, and status of services and production chains.")
-}
+'Boundary(senda, "S-ENDA and related"){
+  System(dmservice, "Metadata Services", "Defines a REST API to add events to an event queue, which subsequently triggers subscriber actions. The API requires input metadata on a required format, and provides metadata validators (e.g., for MMD). Also contains various storage and search solutions for discovery metadata.")
+  System(productionhub, "Production", "Automated system for data production. ECFlow, PPI, SMS, etc.")
+  System(dist_systems, "Data Distribution Services", "Primarily thredds/OPeNDAP.")
+  System(vis_systems, "Data Visualization Services", "Server side configurations for WMS, etc.")
+  System(monitoring, "Monitoring", "Monitoring of usage, metadata consistency, and status of services and production chains. Uses existing systems (e.g., prometheus/grafana).")
+'}
 
-Rel(advanced, portals, "Search portals", "Web-UI/API")
-Rel(intermediate, portals, "Search portals", "Web-UI/API")
-Rel(simple, apps, "Navigates to app", "Web/mobile UI")
 
-Rel(consumers, systems, "Search/Harvest", "CSW/OpenSearch/OAI-PMH")
-Rel(consumers, systems, "Visualize", "e.g., WMS")
-Rel(consumers, systems, "Stream", "OPeNDAP")
-
-'Rel(advanced, dmservice, "Search", "CSW/OpenSearch")
-'Rel(portals, dmservice, "Harvest metadata", "CSW/OAI-PMH")
-'Rel(apps, dmservice, "Harvest metadata", "CSW/OpenSearch")
-'
-'Rel(apps, vis_systems, "Visualize data")
-'Rel(portals, vis_systems, "Visualize data")
-'
-'Rel(portals, dist_systems, "Stream data")
-'Rel(advanced, dist_systems, "Stream data")
+Rel_U(consumers, dist_systems, "Access data")
+Rel_U(consumers, dmservice, "Find data", "CSW/OpenSearch")
+Rel_U(consumers, vis_systems, "Visualize data")
+'Rel_U(advanced, dist_systems, "Stream data")
+'Rel_U(advanced, dmservice, "Search", "CSW/OpenSearch")
+'Rel_U(advanced, vis_systems, "Visualize data")
+'Rel_U(extportals, dmservice, "Harvest metadata", "CSW")
+'Rel_U(apps, dmservice, "Harvest metadata", "CSW/OpenSearch")
+'Rel_U(apps, vis_systems, "Visualize data")
+'Rel_U(extportals, vis_systems, "Visualize data")
+'Rel_U(extportals, dist_systems, "Stream data")
 
 
 'Rel(providers, dmservice, "Register metadata")
-Rel(providers, monitoring, "Check status")
+Rel(dataproducer, monitoring, "Check status")
 
-Rel(dataprovider, productionhub, "Set up data production system")
+Rel(dataproducer, productionhub, "Set up data production system")
 Rel(productionhub, dist_systems, "Store")
 Rel(productionhub, dmservice, "Validate/create/update/delete", "HTTP POST")
 Rel(productionhub, dmservice, "Listen", "CloudEvent")
 Rel(productionhub, vis_systems, "Store/Configure")
-
-Rel(monitoring, dist_systems, "Monitor")
-Rel(monitoring, dmservice, "Monitor")
-Rel(monitoring, productionhub, "Monitor")
-Rel(monitoring, vis_systems, "Monitor")
 
 SHOW_LEGEND()
 

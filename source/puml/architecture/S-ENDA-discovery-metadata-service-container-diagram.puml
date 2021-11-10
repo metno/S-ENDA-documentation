@@ -3,64 +3,58 @@
 
 LAYOUT_TOP_DOWN()
 
-Boundary(providers, "Providers") {
-    Person(dataprovider, "Dataset Producer")
-}
+Person(consumers, "Data Consumer", "A data consumer can be a human (advanced, intermediate or simple users) or a machine (e.g., a mobile app or a data portal). Simple and intermediate users search, inspect, and access data via an external interface (e.g., a mobile app or data portal). Advanced users acess the search, visualization, and distribution services directly. Open licenses and well documented data following international standards enable Interoperability and Reusability.")
 
-Boundary(systems, "S-ENDA") {
-  System(productionhub, "Production", "Automated system for data production. ECFlow, PPI, SMS, etc.")
-  System(dist_systems, "Data Distribution", "Primarily thredds/OPeNDAP.")
-  System(vis_systems, "Data Visualization Services", "Server side configurations for WMS, etc.")
-  System(monitoring, "Monitoring", "Monitoring of usage statistics, metadata consistency, and status of services and production chains.")
-  System_Boundary(mserviceSystem, "Discovery Metadata Service") {
-    Container(dmci, "Metadata Publisher", "Python/Flask", "Defines a REST API to add events to the event queue, which subsequently triggers subscriber actions. The API requires input metadata on a required format, e.g., MMD, and creates a CloudEvent with the metadata as payload. The CloudEvent is posted in an event queue. The metadata publisher also provides metadata validators.")
+Person(dataproducer, "Dataset Producer")
 
-    Container(queue, "Event queue", "NATS/Kafka/..", "Event queue with events containing metadata relevant for the subscribers. Maintains history for allowing temporarily failing subscribers to catch up.")
+System(productionhub, "Production", "Automated system for data production. ECFlow, PPI, SMS, etc.")
+System(dist_systems, "Data Distribution Services", "Primarily thredds/OPeNDAP.")
+System(vis_systems, "Data Visualization Services", "Server side configurations for WMS, etc.")
+System(monitoring, "Monitoring", "Monitoring of usage, metadata consistency, and status of services and production chains. Uses existing systems (e.g., prometheus/grafana).")
 
-    Rel(dmci, queue, "Publish", "CloudEvent")
+System_Boundary(mserviceSystem, "Discovery Metadata Service") {
+  Container(dmci, "Metadata Publisher", "Python/Flask", "Defines a REST API to add events to the event queue, which subsequently triggers subscriber actions. The API requires input metadata on a required format, e.g., MMD, and creates a CloudEvent with the metadata as payload. The CloudEvent is posted in an event queue. The metadata publisher also provides metadata validators.")
 
-    System_Boundary(backup, "Backup") {
-      Container(metadata_store, "Backup Agent", "Agent", "Subscribes and listens for events of MMD create/update/delete, and writes to file storage.")
-      SystemDb(file, "File", "Backup Dataset Discovery Metadata Store. Committed to git on regular intervals.")
-    }
+  Container(queue, "Event queue", "NATS/Kafka/..", "Event queue with events containing metadata relevant for the subscribers. Maintains history for allowing temporarily failing subscribers to catch up.")
 
-    Rel(metadata_store, file, "Write")
-    Rel(metadata_store, queue, "Subscribe and listen", "CloudEvent w/MMD")
+  Container(metadata_store, "Backup Agent", "Agent", "Subscribes and listens for events of MMD create/update/delete, and writes to file storage.")
+  ContainerDb(file, "File", "Backup Dataset Discovery Metadata Store. Committed to git on regular intervals.")
 
-    System_Boundary(solrsyst, "SOLR") {
-      Container(solr_agent, "SOLR Agent", "Agent", "Subscribes and listens for events of MMD create/update/delete, and ingests in SOLR database.")
-      SystemDb(solr, "SOLR", "Dataset Discovery Metadata Store.")
-    }
-
-    Rel(solr_agent, solr, "Ingest")
-    Rel(solr_agent, queue, "Subscribe and listen", "CloudEvent w/MMD")
-
-    System_Boundary(csw, "CSW") {
-      Container(csw_agent, "CSW Agent", "Agent", "Subscribes and listens for events of MMD create/update/delete, converts to Norwegian INSPIRE profile, and ingests in pycsw. Can be removed when SOLR becomes the db backend for pycsw.")
-      Container(csapi, "pycsw", "CSW", "CSW endpoint for search and harvesting. Serves INSPIRE, DIF, etc., compliant metadata.")
-      SystemDb(postgis, "PostGIS", "Dataset Discovery Metadata Store. Can be removed when SOLR becomes the db backend for pycsw.")
-    }
-
-    Rel(csw_agent, csapi, "Create/Update/Delete", "Rest API")
-    Rel(csw_agent, queue, "Subscribe and listen", "CloudEvent w/MMD")
-    Rel(csapi, postgis, "Create/Update/Delete")
-
-    Rel(productionhub, dmci, "Validate/Create/Update/Delete", "xml")
-
-    'Container(web_app, "Web Application", "HTML", "<b>Optional.</b> Provides functionality to register dataset and service metadata, display dataset and service usage statistics, production status, and monitor metadata to display errors and warnings (e.g., about dead links).")
-
+  System_Boundary(solrsyst, "SOLR") {
+    Container(solr_agent, "SOLR Agent", "Agent", "Subscribes and listens for events of MMD create/update/delete, and ingests in SOLR database.")
+    SystemDb(solr, "SOLR", "Dataset Discovery Metadata Store.")
   }
+
+  System_Boundary(csw, "CSW") {
+    Container(csw_agent, "CSW Agent", "Agent", "Subscribes and listens for events of MMD create/update/delete, converts to Norwegian INSPIRE profile, and ingests in pycsw. Can be removed when SOLR becomes the db backend for pycsw.")
+    Container(csapi, "pycsw", "CSW", "CSW endpoint for search and harvesting. Serves INSPIRE, DIF, etc., compliant metadata.")
+    SystemDb(postgis, "PostGIS", "Dataset Discovery Metadata Store. Can be removed when SOLR becomes the db backend for pycsw.")
+  }
+
+  Container(rebuilder, "Catalog rebuilder", "Python", "Rebuild metadata catalogs (e.g., pycsw, solr) from file storage.")
+
+  Rel(dmci, queue, "Publish", "CloudEvent")
+  Rel(rebuilder, file, "Read")
+  Rel(rebuilder, solr, "Create")
+  Rel(rebuilder, csapi, "Create")
+  Rel_U(metadata_store, file, "Write")
+  Rel(metadata_store, queue, "Subscribe and listen", "CloudEvent w/MMD")
+  Rel(solr_agent, solr, "Ingest")
+  Rel(solr_agent, queue, "Subscribe and listen", "CloudEvent w/MMD")
+  Rel(csw_agent, csapi, "Create/Update/Delete", "Rest API")
+  Rel(csw_agent, queue, "Subscribe and listen", "CloudEvent w/MMD")
+  Rel(csapi, postgis, "Create/Update/Delete")
+  Rel(productionhub, dmci, "Validate/Create/Update/Delete", "xml")
+
 }
 
-System(consumers, "Data Consumers")
+Rel_D(dataproducer, productionhub, "Set up data production system")
 
-Rel(dataprovider, productionhub, "Set up data production system")
 
-Rel(consumers, csapi, "Harvest/Search", "CSW")
-Rel(consumers, solr, "Use", "drupal")
+Rel_U(consumers, csapi, "Harvest/Search/Use", "CSW/SOLR")
 
 'Rel(productionhub, dist_systems, "Store", "ACDD compliant netCDF-CF files")
-'Rel(dataprovider, web_app, "Check dataset statistics and metadata consistency/status.")
+'Rel(dataproducer, web_app, "Check dataset statistics and metadata consistency/status.")
 
 SHOW_LEGEND()
 

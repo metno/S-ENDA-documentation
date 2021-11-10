@@ -3,18 +3,11 @@
 
 LAYOUT_TOP_DOWN()
 
-Boundary(providers, "Providers") {
-    Person(dataprovider, "Dataset Producer")
-}
+Person(dataprovider, "Dataset Producer")
 
 Boundary(systems, "S-ENDA") {
-  System_Boundary(dmservice, "Metadata Services", "Defines a REST API to add events to an event queue, which subsequently triggers subscriber actions. The API requires input metadata on a required format, and provides metadata validators (e.g., for MMD). Also contains various storage and search solutions for discovery metadata."){
-    Container(dmci, "Metadata Publisher", "Python/Flask", "Defines a REST API to add events to the event queue, which subsequently triggers subscriber actions. The API requires input metadata on a required format, e.g., MMD, and creates a CloudEvent with the metadata as payload. The CloudEvent is posted in an event queue. The metadata publisher also provides metadata validators.")
+  System(dmservice, "Metadata Services", "Defines a REST API to add events to an event queue, which subsequently triggers subscriber actions. The API requires input metadata on a required format, and provides metadata validators (e.g., for MMD). Also contains various storage and search solutions for discovery metadata. The Metadata Publisher defines a REST API to add events to the event queue, which subsequently triggers subscriber actions. The API requires input metadata on a required format, e.g., MMD, and creates a CloudEvent with the metadata as payload. The CloudEvent is posted in an event queue. The metadata publisher also provides metadata validators. Event queue with events containing metadata relevant for the subscribers. Maintains history for allowing temporarily failing subscribers to catch up.")
 
-    Container(queue, "Event queue", "NATS/Kafka/..", "Event queue with events containing metadata relevant for the subscribers. Maintains history for allowing temporarily failing subscribers to catch up.")
-
-    Rel(dmci, queue, "Publish", "CloudEvent")
-  }
   System(dist_systems, "Data Distribution Services", "Primarily thredds/OPeNDAP.")
   System(vis_systems, "Data Visualization Services", "Server side configurations for WMS, etc.")
   System(monitoring, "Monitoring", "Monitoring of usage statistics, metadata consistency, and status of services and production chains.")
@@ -47,12 +40,13 @@ Boundary(systems, "S-ENDA") {
 
 'Rel(listen_update, dmservice, "Listen update")
 'Rel(listen_delete, dmservice, "Listen delete")
-Rel(listen_start, queue, "Listen")
+Rel(listen_start, dmservice, "Listen")
 
-Rel(dataprovider, productionhub, "Set up data production system")
+Rel(dataprovider, job, "Set up data production system")
+Rel(dataprovider, listen_start, "Set up data production system")
 Rel(job, vis_systems, "Store/Configure")
 Rel(job, dist_systems, "Store")
-Rel(job, dmci, "Create/Update/Delete", "HTTP POST")
+Rel(job, dmservice, "Create/Update/Delete", "HTTP POST")
 
 Rel(monitoring, job, "Monitor")
 
