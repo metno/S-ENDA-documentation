@@ -25,10 +25,10 @@ Person(consumers, "Data Consumer", "A data consumer can be a human (advanced, in
 '}
 
 'Boundary(senda, "S-ENDA and related"){
-  System(dmservice, "Metadata Services", "Defines a REST API to add events to an event queue, which subsequently triggers subscriber actions. The API requires input metadata on a required format, and provides metadata validators (e.g., for MMD). Also contains various storage and search solutions for discovery metadata.")
+  System(dmservice, "Metadata Services", "Defines a REST API to add events to an event queue, which subsequently triggers subscriber actions. The API requires input metadata on a required format, and provides metadata validators (e.g., for MMD). Also contains various storage and search solutions for discovery metadata. The event queue maintains history for allowing temporarily failing subscribers to catch up.")
   System(productionhub, "Production", "Automated system for data production. ECFlow, PPI, SMS, etc.")
   System(dist_systems, "Data Distribution Services", "Primarily thredds/OPeNDAP.")
-  System(vis_systems, "Data Visualization Services", "Server side configurations for WMS, etc.")
+  System(vis_systems, "Data Visualization Services", "WMS, etc.")
   System(monitoring, "Monitoring", "Monitoring of usage, metadata consistency, and status of services and production chains. Uses existing systems (e.g., prometheus/grafana).")
 '}
 
