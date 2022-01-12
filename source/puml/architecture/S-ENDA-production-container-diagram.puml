@@ -5,20 +5,19 @@ LAYOUT_TOP_DOWN()
 
 Person(dataproducer, "Dataset Producer")
 
-Boundary(systems, "S-ENDA") {
-  System(dmservice, "Metadata Services", "Defines a REST API to add events to an event queue, which subsequently triggers subscriber actions. The API requires input metadata on a required format, and provides metadata validators (e.g., for MMD). Also contains various storage and search solutions for discovery metadata. The event queue maintains history for allowing temporarily failing subscribers to catch up.")
+System(dmservice, "Metadata Services", "Defines a REST API to add events to an event queue, which subsequently triggers subscriber actions. The API requires input metadata on a required format, and provides metadata validators (e.g., for MMD). Also contains various storage and search solutions for discovery metadata. The event queue maintains history for allowing temporarily failing subscribers to catch up.")
 
-  System(dist_systems, "Data Distribution Services", "Primarily thredds/OPeNDAP.")
-  System(vis_systems, "Data Visualization Services", "Server side configurations for WMS, etc.")
-  System(monitoring, "Monitoring", "Monitoring of usage statistics, metadata consistency, and status of services and production chains.")
+System(dist_systems, "Data Distribution Services", "Primarily thredds/OPeNDAP.")
+System(vis_systems, "Data Visualization Services", "Server side configurations for WMS, etc.")
+'System(monitoring, "Monitoring", "Monitoring of usage statistics, metadata consistency, and status of services and production chains.")
+SystemDb(lustre, "Data storage", "Lustre file system.")
 
-  System_Boundary(productionhub, "Production", "Automated system for data production. ECFlow, PPI, SMS, etc."){
-    'Container(listen_update, "Update listener", "", "Listens for metadata updates, updates metadata in datafiles on behalf of authenticated user.")
-    'Container(listen_delete, "Deletion listener", "", "Listens for metadata, and deletes files on behalf of authenticated user.")
-    Container(listen_start, "ECFlow Agent", "Agent", "Listens for relevant events, and acts.")
-    Container(job, "Production job", "ECFlow", "Production script.")
-    Rel(listen_start, job, "Start job")
-  }
+System_Boundary(productionhub, "Production", "Automated system for data production. ECFlow, PPI, SMS, etc."){
+  'Container(listen_update, "Update listener", "", "Listens for metadata updates, updates metadata in datafiles on behalf of authenticated user.")
+  'Container(listen_delete, "Deletion listener", "", "Listens for metadata, and deletes files on behalf of authenticated user.")
+  Container(listen_start, "ECFlow Agent", "Agent", "Listens for relevant events, and acts.")
+  Container(job, "Production job", "ECFlow", "Production script.")
+  Rel(listen_start, job, "Start job")
 }
 
 'Boundary(consumers, "Data Consumers"){
@@ -44,12 +43,14 @@ Rel(listen_start, dmservice, "Listen")
 
 Rel(dataproducer, job, "Set up data production system")
 Rel(dataproducer, listen_start, "Set up data production system")
-Rel(job, vis_systems, "Store/Configure")
-Rel(job, dist_systems, "Store")
+'Rel(job, vis_systems, "Store/Configure")
+Rel_R(job, lustre, "Store")
 Rel(job, dmservice, "Create/Update/Delete", "HTTP POST")
+Rel_U(dist_systems, lustre, "Access")
+Rel_U(vis_systems, lustre, "Access")
 
 'Rel(monitoring, job, "Monitor")
-Rel(dataproducer, monitoring, "Check status")
+'Rel(dataproducer, monitoring, "Check status")
 
 SHOW_LEGEND()
 

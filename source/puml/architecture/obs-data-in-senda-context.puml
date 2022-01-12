@@ -1,0 +1,38 @@
+@startuml obs-data-in-senda-context
+!include <C4/C4_Component>
+
+LAYOUT_TOP_DOWN()
+'LAYOUT_LEFT_RIGHT()
+'LAYOUT_WITH_LEGEND()
+'LAYOUT_AS_SKETCH()
+'OBS - main code for this is at https://github.com/metno/oda2mmd/blob/main/README_C4.md
+
+Person(prod_user, "Data producer", "MET")
+Person_Ext(ext_user, "User", "External or internal user.")
+
+System(senda, "Metadata service", "PyCSW OGC interface for the user")
+System(thredds, "Data Distribution Service", "Thredds")
+System_Ext(frost, "Frost", "Rest API")
+SystemDb_Ext(oda, "ODA", "Observation database.")
+SystemDb(lustre, "Lustre", "File system")
+
+System_Boundary(ppi, "Production (PPI)") {
+  Container(netcdf, "NetCDF production", "Python script that creates and updates NC files")
+  Container(mmd, "MMD production", "Python script that creates and updates XML files containing all metadata for a dataset")
+}
+
+Rel(prod_user, netcdf, "cron job")
+Rel(prod_user, mmd, "cron job")
+Rel(ext_user, senda, "metadata")
+Rel(ext_user, thredds, "data NetCDF format")
+Rel(ext_user, frost, "data (+metadata) json format")
+Rel(mmd, senda, "dmci harvesting")
+Rel(netcdf, lustre, "file storage")
+Rel(frost, oda, "data")
+Rel(netcdf, frost, "data")
+Rel(mmd, frost, "metadata")
+Rel(netcdf, mmd, "get metadata")
+'Rel(ppi, oda, "")
+'Rel(ppi, lustre, "")
+Rel(thredds, lustre, "files")
+@enduml

@@ -1,50 +1,22 @@
 @startuml S-ENDA-data-distribution-container-diagram
-!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Component.puml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 
-LAYOUT_TOP_DOWN
+LAYOUT_TOP_DOWN()
 
-Boundary(providers, "Providers") {
-    Person(dataprovider, "Dataset Producer")
+Person(dataproducer, "Dataset Producer")
+Person(consumers, "Data Consumer", "A data consumer can be a human (advanced, intermediate or simple users) or a machine (e.g., a mobile app or a data portal). Simple and intermediate users search, inspect, and access data via an external interface (e.g., a mobile app or data portal). Advanced users acess the search, visualization, and distribution services directly. Open licenses and well documented data following international standards enable Interoperability and Reusability.")
+
+System(productionhub, "Production", "Automated system for data production. ECFlow, PPI, SMS, etc.")
+SystemDb(lustre, "Data storage", "Lustre file system.")
+System_Boundary(datadist, "Data Distribution Services") {
+  Container(access, "Data Access Service", "OPeNDAP", "OPeNDAP service supported by, e.g., thredds or hyrax, to provide actual data access.")
 }
 
-Boundary(systems, "S-ENDA") {
-  System(productionhub, "Production")
-  System(monitoring, "Service Monitoring")
-  System(mserviceSystem, "Discovery Metadata Service")
-  System_Boundary(datadist, "Data Distribution") {
-    Container(visualization, "Visualization Service", "OGC WMS", "OGC WMS service for visualizing raster datasets (supported by mapserver).")
-    Container(access, "Data Access Service", "OPeNDAP", "OPeNDAP service supported by, e.g., thredds or hyrax, to provide actual data access.")
-  }
-}
+Rel(dataproducer, productionhub, "Sets up production of netCDF-CF files with ACDD metadata")
 
-
-Boundary(consumers, "Data Consumers"){
-  Person(advanced, "Advanced")
-  Person(intermediate, "Intermediate")
-  Person(simple, "Simple")
-}
-
-System_Ext(portals, "Portals", "External portals harvest metadata on various standards")
-System_Ext(apps, "Web/mobile apps", "External apps present data in customized ways.")
-
-Rel(dataprovider, productionhub, "Sets up production of netCDF-CF files with ACDD metadata")
-
-Rel(simple, portals, "Search portals", "Web-UI/API")
-Rel(intermediate, portals, "Search portals", "Web-UI/API")
-Rel(advanced, portals, "Search portals", "Web-UI/API")
-
-Rel(apps, mserviceSystem, "Search", "CSW")
-Rel(apps, visualization, "Stream", "WMS/WMTS/etc.")
-Rel(simple, apps, "Navigates to app", "Web/mobile UI")
-
-Rel(portals, mserviceSystem, "Harvest", "CSW/OAI-PMH")
-Rel(advanced, mserviceSystem, "Search", "CSW/OpenSearch")
-Rel(productionhub, datadist, "Store")
-Rel(productionhub, mserviceSystem, "Create/Update/Delete", "HTTP POST: MMD")
-Rel(dataprovider, mserviceSystem, "Check dataset statistics and metadata consistency/status.")
-
-Rel(portals, access, "Stream", "OPeNDAP/WMS/WMTS/etc.")
-Rel(advanced, access, "Stream", "OPeNDAP")
+Rel_U(consumers, access, "Stream", "OPeNDAP")
+Rel(productionhub, lustre, "Store")
+Rel(access, lustre, "Access")
 
 SHOW_LEGEND()
 
