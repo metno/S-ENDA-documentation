@@ -1,0 +1,42 @@
+@startuml S-ENDA-monitoring-container-diagram
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+LAYOUT_TOP_DOWN()
+
+Person(dataproducer, "Dataset Producer")
+
+System(dmservice, "Metadata Services", "Defines a REST API to add events to an event queue, which subsequently triggers subscriber actions. The API requires input metadata on a required format, and provides metadata validators (e.g., for MMD). Also contains various storage and search solutions for discovery metadata. The event queue maintains history for allowing temporarily failing subscribers to catch up.")
+System(productionhub, "Production", "Automated system for data production. ECFlow, PPI, SMS, etc.")
+System(dist_systems, "Data Distribution Services", "Primarily thredds/OPeNDAP.")
+System(vis_systems, "Data Visualization Services", "WMS, etc.")
+
+System_Boundary(monitoring, "Monitoring", "Monitoring of usage, metadata consistency, and status of services and production chains. Uses existing systems (e.g., prometheus/grafana)."){
+
+  Container(checker, "Metadata Checker", "Python", "Regularly checks consistency between metadata, data and data representations/visualizations.")
+
+  Container(pagerduty, "Pagerduty", "--", "Needs description.")
+
+  Container(web_app, "Web Application", "HTML", "<b>Optional.</b> Provides functionality to register dataset and service metadata, display dataset and service usage statistics, production status, and monitor metadata to display errors and warnings (e.g., about dead links).")
+
+  Container(ghc, "Service Status and QoS Checker", "Python/Flask", "Probably GeoHealthCheck. GHC can be used to monitor overall health of OGC services (OWS) like WMS, WFS, WCS, WMTS, SOS, CSW and more, plus some recent OGC APIs like SensorThings API and WFS v3 (OGC Features API). But also standard web REST APIs and ordinary URLs can be monitored.")
+
+  Container(prometheus, "Prometheus", "Prometheus", "To be described..")
+  Container(grafana, "Grafana", "Grafana", "To be described..")
+
+}
+
+Rel(checker, dmservice, "Read")
+Rel(checker, dist_systems, "Read")
+Rel(checker, vis_systems, "Read")
+
+Rel(dataproducer, web_app, "Check status")
+
+Rel(dataproducer, productionhub, "Set up data production system")
+'Rel(productionhub, dist_systems, "Store")
+'Rel(productionhub, dmservice, "Validate/create/update/delete", "HTTP POST")
+'Rel(productionhub, dmservice, "Listen", "CloudEvent")
+'Rel(productionhub, vis_systems, "Store/Configure")
+
+SHOW_LEGEND()
+
+@enduml

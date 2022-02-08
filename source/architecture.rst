@@ -96,26 +96,26 @@ S3/Zarr - C4 component diagram
 
 We categorize data consumers in three levels:
 
-* :ref:`advanced-consumers`
-* :ref:`intermediate-consumers`
-* :ref:`simple-consumers`
+* advanced consumers
+* intermediate consumers
+* simple consumers
 
-The system described here is concerned with :ref:`advanced-consumers` and :ref:`data-producers`.
+The system described here is concerned with advanced consumers and data producers.
 
 Functional requirements
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-* :ref:`data-producers` should be able to produce a dataset and upload results to the data access service without time-consuming transformations
-* :ref:`advanced-consumers` must be able to download a copy of the entire dataset
-* :ref:`advanced-consumers` must be able to stream and filter parts of the dataset
-* :ref:`advanced-consumers` need access to enough use metadata to be able to locally post-process, reproject, etc., the dataset
+* Data producers should be able to produce a dataset and upload results to the data access service without time-consuming transformations
+* Advanced consumers must be able to download a copy of the entire dataset
+* Advanced consumers must be able to stream and filter parts of the dataset
+* Advanced consumers need access to enough use metadata to be able to locally post-process, reproject, etc., the dataset
 * The data access service must support the FAIR principles, in particular (meta)data interoperability and reusability
 * The transport mechanism used in the data access service needs to be a widely adopted standard solution, and it must be open-source
 * The dataset needs to be on a widely adopted open data format standard
 * The data access service as a whole needs to be easy to use with familiar tools from the meteorological/climate/oceanographic domain, both for upload and download
 * The data access service must work together with an event-driven production system
 * The data acccess service should support the Harmonised Data API from the European Weather Cloud
-* :ref:`advanced-consumers` need to able to give feedback on the data access service and each individual dataset.
+* Advanced consumers need to able to give feedback on the data access service and each individual dataset.
 
 
 Quality attributes
