@@ -1,7 +1,8 @@
 @startuml S-ENDA-discovery-metadata-service-container-diagram
 !include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 
-LAYOUT_TOP_DOWN()
+'LAYOUT_TOP_DOWN()
+LAYOUT_LEFT_RIGHT()
 
 Person(consumers, "Data Consumer", "A data consumer can be a human (advanced, intermediate or simple users) or a machine (e.g., a mobile app or a data portal). Simple and intermediate users search, inspect, and access data via an external interface (e.g., a mobile app or data portal). Advanced users acess the search, visualization, and distribution services directly. Open licenses and well documented data following international standards enable Interoperability and Reusability.")
 
@@ -14,62 +15,65 @@ System(productionhub, "Production", "Automated system for data production. ECFlo
 
 System_Ext(ext_repo, "External Data Repository", "External data repository (e.g., OPeNDAP, CSW, OAI-PMH) that can be harvested.")
 
+System(websites, "Websites", "Websites (drupal) for DOI landing pages, UUID landing pages, and custom sites for data search and access, etc. (e.g., ADC, SIOS, satellittdata.no, etc.). The UUID landing pages are created dynamically from MMD that is read from SOLR. Prefixes/namespaces define the location of the landing pages, and the combination of a namespace and a UUID provides a Persistent IDentifier (PID). Landing pages need to be on a specific and permanent domain. As such, the address that we choose to use (also relevant for DOIs) can never be changed. We can, e.g., use no.met.adc, no.met.data, no.met.oda but then we need to create the corresponding domains (data.met.no, oda.met.no) and enable dynamic landing pages there.")
+
 System_Boundary(mserviceSystem, "Metadata Services") {
-  Container(dmci, "Metadata Publisher", "Python/Flask", "Defines a REST API to add events to the event queue, which subsequently triggers subscriber actions. The API requires input metadata on a required format, e.g., MMD, and creates a CloudEvent with the metadata as payload. The CloudEvent is posted in an event queue. The metadata publisher also provides metadata validators, and creates a resolvable uuid for each dataset.")
+  Container(dmci, "Metadata Publisher", "Python/Flask", "Defines a REST API to add events to the event queue, which subsequently triggers subscriber actions. The API requires input metadata on a required format, e.g., MMD, and creates a CloudEvent with the metadata as payload. The CloudEvent is posted in an event queue. The metadata publisher also provides metadata validators.")
 
   Container(queue, "Event queue", "NATS/Kafka/..", "Event queue with events containing metadata relevant for the subscribers. Maintains history for allowing temporarily failing subscribers to catch up.")
 
-  Container(doi, "DOI registration tool", "Drupal", "The data producer decides if a DOI is needed, and at which level.")
-
-  Container(backupagent, "Backup Agent", "Agent", "Subscribes and listens for events of MMD create/update/delete, and writes to file storage.")
+  Container(backup_agent, "Backup Agent", "Agent", "Subscribes and listens for events of MMD create/update/delete, and writes to file storage.")
   ContainerDb(file, "File", "Backup Dataset Discovery Metadata Store. Committed to git on regular intervals.")
 
   Container(solr_agent, "SOLR Agent", "Agent", "Subscribes and listens for events of MMD create/update/delete, and ingests in SOLR database.")
   ContainerDb(solr, "SOLR", "Dataset Discovery Metadata Store.")
 
-  Container(csw_agent, "CSW Agent", "Agent", "Subscribes and listens for events of MMD create/update/delete, converts to Norwegian INSPIRE profile, and ingests in pycsw. Can be removed when SOLR becomes the db backend for pycsw.")
+  Container(csw_agent, "CSW Agent", "Agent", "Subscribes and listens for events of MMD create/update/delete. Can be removed when SOLR becomes the db backend for pycsw.")
   Container(csapi, "pycsw", "CSW", "CSW endpoint for search and harvesting. Serves INSPIRE, DIF, etc., compliant metadata. Currently using postgis as backend. This will be replaced by SOLR in a future version.")
   ContainerDb(postgis, "PostGIS", "Dataset Discovery Metadata Store. Can be removed when SOLR becomes the db backend for pycsw.")
 
-  Container(doi_site, "DOI site", "Drupal", "Website for DOI landing pages.")
-  Container(uuid_site, "UUID site", "Drupal", "Website for UUID landing pages. The landing pages are created dynamically from MMD that is read from SOLR. Prefixes/namespaces define the location of the landing pages. Landing pages need to be on a specific domain. The UUIDs are Persistent IDentifiers (PIDs) that are permanent, so the address that we choose to use (also relevant for DOIs) can never be changed. We can, e.g., use no.met.adc, no.met.data, no.met.oda but then we need to create the data.met.no and oda.met.no domains and enable dynamic landing pages there.")
-
   Container(rebuilder, "Catalog rebuilder", "Python", "Rebuild metadata catalogs (e.g., pycsw, solr) from file storage.")
 
-  Container(ext_ingest, "SOLR ingestor", "Python", "SOLR ingestor for metadata harvested from external repositories. This metadata does not need backup since it can be re-harvested when needed.")
+  Container(harvester, "MMD harvester", "Python", "Reads metadata from external data repositories (e.g., thredds, various ISO19115 profiles, DCAT), translates to MMD and pushes to the metadata stores. This metadata does not need backup since it can be re-harvested when needed.")
 
-  Rel_R(dmci, queue, "Publish", "CloudEvent")
-  Rel_L(rebuilder, file, "Read", "XML")
-  Rel_L(rebuilder, solr, "Create", "XML")
-  Rel_L(rebuilder, csapi, "Create")
-  Rel_R(backupagent, file, "Write", "XML")
-  Rel_L(backupagent, queue, "Subscribe and listen", "CloudEvent w/MMD")
-  Rel_R(solr_agent, solr, "Create/Update/Delete")
-  Rel_L(solr_agent, queue, "Subscribe and listen", "CloudEvent w/MMD")
-  Rel_R(csw_agent, csapi, "Create/Update/Delete", "Rest API")
-  Rel_L(csw_agent, queue, "Subscribe and listen", "CloudEvent w/MMD")
-  Rel_R(csapi, postgis, "Create/Update/Delete")
-  Rel_D(productionhub, dmci, "Validate/Create/Update/Delete", "xml")
-  Rel_D(productionhub, queue, "Listen", "CloudEvent")
-  Rel_L(productionhub, doi, "Register DOI", "XML/..?")
-  Rel(doi, solr, "Create", "XML?")
-  Rel(csapi, solr, "Future connection")
-  Rel(doi_site, solr, "Read")
-  Rel(uuid_site, solr, "Read")
-  Rel_U(ext_ingest, solr, "Create", "XML")
-  Rel(ext_ingest, ext_repo, "Harvest", "XML/netCDF-CF/..")
+  Container(solr_ingest, "SOLR ingestor", "Python", "SOLR ingestor for MMD metadata.")
+
+  Container(translator, "MMD2ISO Translator", "Python", "Receives an MMD XML file. Translates from MMD to the Norwegian profile of ISO19115/INSPIRE. Returns an ISO19115 XML file. Can be removed when SOLR becomes the db backend for pycsw.")
 
 }
 
-Rel_R(dataproducer, productionhub, "Set up data production system")
+Rel_D(dataproducer, productionhub, "Set up data production system")
 
+Rel_D(productionhub, dmci, "Validate/Create/Update/Delete", "Rest API")
+Rel_D(productionhub, queue, "Listen", "CloudEvent")
 
-Rel(consumers, csapi, "Harvest/Search/Use", "CSW/SOLR")
-Rel(consumers, doi_site, "Access", "https")
-Rel(consumers, uuid_site, "Access", "https")
+Rel_U(csw_agent, queue, "Subscribe and listen", "CloudEvent w/MMD")
+Rel_U(solr_agent, queue, "Subscribe and listen", "CloudEvent w/MMD")
+Rel_U(backup_agent, queue, "Subscribe and listen", "CloudEvent w/MMD")
+Rel_U(dmci, queue, "Publish", "CloudEvent")
 
-'Rel(productionhub, dist_systems, "Store", "ACDD compliant netCDF-CF files")
-'Rel(dataproducer, web_app, "Check dataset statistics and metadata consistency/status.")
+Rel_D(csw_agent, translator, "Translate", "MMD/ISO19115")
+Rel_D(csw_agent, csapi, "Create/Update/Delete", "ISO19115")
+
+Rel_D(solr_agent, solr_ingest, "Create/Update/Delete", "MMD")
+Rel_D(solr_ingest, solr, "Create", "MMD")
+Rel_U(rebuilder, solr_ingest, "Create", "MMD")
+Rel_U(harvester, solr_ingest, "Create", "MMD")
+Rel_U(harvester, translator, "Translate", "MMD/ISO19115")
+Rel_U(harvester, csapi, "Create/Update/Delete", "ISO19115")
+Rel(harvester, ext_repo, "Harvest", "XML/netCDF-CF/..")
+
+Rel_U(rebuilder, file, "Read", "MMD")
+Rel_D(backup_agent, file, "Write", "MMD")
+
+Rel_D(consumers, csapi, "Find", "CSW")
+Rel_U(rebuilder, translator, "Translate", "MMD/ISO19115")
+Rel_U(rebuilder, csapi, "Create", "ISO19115")
+Rel_D(csapi, postgis, "Get/Create/Update/Delete")
+Rel_D(csapi, solr, "Future connection")
+
+Rel(websites, solr, "Read")
+Rel(consumers, websites, "Find/Access/Use", "https")
 
 SHOW_LEGEND()
 

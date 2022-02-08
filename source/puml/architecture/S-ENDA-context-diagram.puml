@@ -1,7 +1,8 @@
 @startuml S-ENDA-C4-context-diagram
 !include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 
-LAYOUT_TOP_DOWN()
+'LAYOUT_TOP_DOWN()
+LAYOUT_LEFT_RIGHT()
 
 Person(dataproducer, "Dataset Producer")
 Person(consumers, "Data Consumer", "A data consumer can be a human (advanced, intermediate or simple users) or a machine (e.g., a mobile app or a data portal). Simple and intermediate users search, inspect, and access data via an external interface (e.g., a mobile app or data portal). Advanced users acess the search, visualization, and distribution services directly. Open licenses and well documented data following international standards enable Interoperability and Reusability.")
@@ -26,14 +27,18 @@ Person(consumers, "Data Consumer", "A data consumer can be a human (advanced, in
 
 System(dmservice, "Metadata Services", "Defines a REST API to add events to an event queue, which subsequently triggers subscriber actions. The API requires input metadata on a required format, and provides metadata validators (e.g., for MMD). Also contains various storage and search solutions for discovery metadata. The event queue maintains history for allowing temporarily failing subscribers to catch up.")
 System(productionhub, "Production", "Automated system for data production. ECFlow, PPI, SMS, etc.")
+System(doi, "DOI registration service", "A service for DOI registration. Currently a web form exists in drupal, but it is not fully automatic (Lara handles it in collaboration with the data producers). The data producer decides if a DOI is needed, and at which level.")
 System(dist_systems, "Data Distribution Services", "Primarily thredds/OPeNDAP.")
 System(vis_systems, "Data Visualization Services", "WMS, etc.")
 System(monitoring, "Monitoring", "Monitoring of usage, metadata consistency, and status of services and production chains. Uses existing systems (e.g., prometheus/grafana).")
 SystemDb(lustre, "Data storage", "Lustre file system.")
 
-Rel_U(consumers, dist_systems, "Access data")
-Rel_U(consumers, dmservice, "Find data", "CSW/OpenSearch")
-Rel_U(consumers, vis_systems, "Visualize data")
+System_Ext(datacite, "datacite.org", "Data Cite's DOI service. DataCite is a leading global non-profit organisation that provides persistent identifiers (DOIs) for research data and other research outputs. Organizations within the research community join DataCite as members to be able to assign DOIs to all their research outputs. This way, their outputs become discoverable and associated metadata is made available to the community.")
+System_Ext(ext_repo, "External Data Repository", "External data repository (e.g., OPeNDAP, CSW, OAI-PMH) that can be harvested.")
+
+System(websites, "Custom websites and apps", "Custom websites (e.g., drupal) for dataset landing pages, for data search and access, etc..")
+'The UUID landing pages are created dynamically from MMD that is read from SOLR. Prefixes/namespaces define the location of the landing pages, and the combination of a namespace and a UUID provides a Persistent IDentifier (PID). Landing pages need to be on a specific and permanent domain, so the address that we choose to use (also relevant for DOIs) can never be changed. We can, e.g., use no.met.adc, no.met.data, no.met.oda but then we need to create the data.met.no and oda.met.no domains and enable dynamic landing pages there.")
+
 'Rel_U(advanced, dist_systems, "Stream data")
 'Rel_U(advanced, dmservice, "Search", "CSW/OpenSearch")
 'Rel_U(advanced, vis_systems, "Visualize data")
@@ -45,14 +50,28 @@ Rel_U(consumers, vis_systems, "Visualize data")
 
 
 'Rel(providers, dmservice, "Register metadata")
+
+Rel_U(consumers, dist_systems, "Access")
+Rel_U(consumers, dmservice, "Find", "CSW/OpenSearch")
+Rel_U(consumers, vis_systems, "Visualize")
+
 Rel(dataproducer, monitoring, "Check status")
 
 Rel(dataproducer, productionhub, "Set up data production system")
-Rel_L(productionhub, lustre, "Store")
-Rel_L(dist_systems, lustre, "Access")
+Rel(productionhub, lustre, "Store")
+Rel_U(dist_systems, lustre, "Access")
 Rel(productionhub, dmservice, "Validate/create/update/delete", "HTTP POST")
 Rel(productionhub, dmservice, "Listen", "CloudEvent")
-Rel_L(vis_systems, lustre, "Access")
+Rel(productionhub, doi, "Register/Get DOI", "Rest API")
+Rel(doi, datacite, "Register/Get DOI", "XML?")
+Rel_U(vis_systems, lustre, "Access")
+
+Rel(dmservice, ext_repo, "Harvest", "XML/netCDF-CF/..")
+
+Rel_U(websites, dmservice, "Find")
+Rel_U(websites, vis_systems, "Visualize")
+Rel_U(websites, dist_systems, "Access")
+Rel_L(consumers, websites, "Find/Access/Use", "https")
 
 SHOW_LEGEND()
 
