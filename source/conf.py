@@ -48,9 +48,14 @@ extensions = [
     'sphinx.ext.mathjax',
     'sphinx.ext.ifconfig',
     'sphinx.ext.githubpages',
-    'sphinx.ext.graphviz',
     'sphinxcontrib.plantuml',
+    'sphinxcontrib.needs',
 ]
+
+# See https://sphinxcontrib-needs.readthedocs.io/en/latest/installation.html#install-plantuml
+if os.environ.get("READTHEDOCS") == 'True':
+    plantuml = 'java -Djava.awt.headless=true -jar /usr/share/plantuml/plantuml.jar'
+plantuml_output_format = 'png'
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

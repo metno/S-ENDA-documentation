@@ -12,8 +12,6 @@ About the architecture drafts:
 General Contexts
 ----------------
 
-.. note:: This is a draft under development. We highly appreciate input and help in correcting any mistakes.
-
 S-ENDA is part of a larger effort within the national geodata strategy (*"Alt skjer et sted"*), and relates to this strategy through Geonorge, which is developed and operated by the Norwegian Mapping Authority (*"Kartverket"*). GeoNorge, in turn, relates to the European Inspire Geoportal through the Inspire directive. In particular, S-ENDA is responsible for *Action 20* of the Norwegian geodata strategy.  The goal of action 20 is to *establish a distributed, virtual data center for use and management of dynamic geodata*. S-ENDA's vision is that *everyone, from professional users to the general public, should have easy, secure and stable access to dynamic geodata*. 
 
 The vision of S-ENDA and the goal of action 20 are aligned with international guidelines, in particular the `FAIR Guiding Principles for scientific data management and stewardship <https://www.nature.com/articles/sdata201618>`_.
@@ -58,13 +56,6 @@ S-ENDA Discovery Metadata Service - C4 container diagram
 
 .. uml:: puml/architecture/S-ENDA-discovery-metadata-service-container-diagram.puml
 
-.. note::
-
-   * File-level metadata is editable only via ACDD compliant NetCDF-CF files. Higher level datasets (i.e., collections and series) are added via the *CLI Registrar* or the *Web Application*, and stored in their own catalogue (IS THIS NECESSARY?). The file-level metadata can contain parent-child relationships to the higher level datasets (series/collections). The Dynamic Geo-Assets API in this version is essentialy replaced by a set of tools assisting in creation of metadata in ACDD.
-   * api.met.no and similar APIs that serve merged data, point to the source datasets in the *Service Discovery Metadata*
-   * APIs that serve single datasets (e.g., Frost, after it has been decided what is a dataset, collection and series) needs to be better displayed here (at the moment we store netcdf-cf files from Frost but this is not the intention for the long term)
-
-
 Dataset catalog service API - C4 component diagram
 --------------------------------------------------
 
@@ -88,58 +79,3 @@ Distribution Systems - C4 container diagram
 .. See commented code in puml/architecture/S-ENDA-discovery-metadata-service-context-diagram.puml
 
 .. uml:: puml/architecture/S-ENDA-data-distribution-container-diagram.puml
-
-S3/Zarr - C4 component diagram
-------------------------------
-
-.. note:: This is part of a distribution system. The diagram below should be updated to reflect the distribution system container in the context diagram above.
-
-We categorize data consumers in three levels:
-
-* advanced consumers
-* intermediate consumers
-* simple consumers
-
-The system described here is concerned with advanced consumers and data producers.
-
-Functional requirements
-^^^^^^^^^^^^^^^^^^^^^^^
-
-* Data producers should be able to produce a dataset and upload results to the data access service without time-consuming transformations
-* Advanced consumers must be able to download a copy of the entire dataset
-* Advanced consumers must be able to stream and filter parts of the dataset
-* Advanced consumers need access to enough use metadata to be able to locally post-process, reproject, etc., the dataset
-* The data access service must support the FAIR principles, in particular (meta)data interoperability and reusability
-* The transport mechanism used in the data access service needs to be a widely adopted standard solution, and it must be open-source
-* The dataset needs to be on a widely adopted open data format standard
-* The data access service as a whole needs to be easy to use with familiar tools from the meteorological/climate/oceanographic domain, both for upload and download
-* The data access service must work together with an event-driven production system
-* The data acccess service should support the Harmonised Data API from the European Weather Cloud
-* Advanced consumers need to able to give feedback on the data access service and each individual dataset.
-
-
-Quality attributes
-^^^^^^^^^^^^^^^^^^
-
-* The total throughput and storage size for the data access service need to scale with massively increasing dataset sizes
-* The total throughput, storage size and number of objects of the data access service need to scale with massively increasing number of datasets
-* Scaling for increasing size of datasets and increasing number of datasets must not significantly increase latency or decrease throughput for individual requests
-* Response time for first-byte in a response should be low, e.g < 50ms
-* The relationship between response time and size of data requested should be predictable, and not worse than a linear increase in response time with data size
-
-Constraints
-^^^^^^^^^^^
-
-* The data access service has no search mechanism for datasets, and assumes that the datasets can be listed/found/searched through a separate metadata catalog
-
-S3/Zarr - C4 component diagram
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. uml:: puml/architecture/data-access-component-diagram.puml
-
-
-
-..
-  .. [1] https://en.wikipedia.org/wiki/Catalogue_Service_for_the_Web
-  
-  .. [2] https://en.wikipedia.org/wiki/Gossip_protocol
