@@ -18,6 +18,7 @@
 
 
 # -- Project information -----------------------------------------------------
+import os
 import datetime
 
 project = 'S-ENDA documentation'
