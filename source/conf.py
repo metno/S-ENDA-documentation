@@ -49,7 +49,6 @@ extensions = [
     'sphinx.ext.mathjax',
     'sphinx.ext.ifconfig',
     'sphinx.ext.githubpages',
-    'sphinxcontrib.plantuml',
     'sphinxcontrib.needs',
 ]
 
