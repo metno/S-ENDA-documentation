@@ -12,7 +12,7 @@ Context
 * Information made available in the form of dynamic geodata must be verifiable and traceable (back to basic/raw data)
 * Reduced costs for establishment and operation of effective management of dynamic geodata at the partner institutions
 
-Content moved to DMH: https://htmlpreview.github.io/?https://github.com/metno/data-management-handbook/blob/master/html/data-management-handbook.html#human-roles-context
+Content moved to DMH: https://metno.github.io/data-management-handbook/#human-roles
 
 .. _`users-definition`:
 
@@ -20,4 +20,4 @@ Content moved to DMH: https://htmlpreview.github.io/?https://github.com/metno/da
 Users definition
 ----------------
 
-Content moved to DMH: https://htmlpreview.github.io/?https://github.com/metno/data-management-handbook/blob/master/html/data-management-handbook.html#human-roles-context
+Content moved to DMH: https://metno.github.io/data-management-handbook/#user-definitions
