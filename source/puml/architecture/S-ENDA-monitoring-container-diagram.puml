@@ -1,4 +1,4 @@
-@startuml S-ENDA-monitoring-container-diagram
+@startuml
 !include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 
 LAYOUT_TOP_DOWN()
@@ -11,25 +11,25 @@ System(dmservice, "Metadata Services", "Defines a REST API to add events to an e
 System(productionhub, "Production", "Automated system for data production. ECFlow, PPI, SMS, etc.")
 System(dist_systems, "Data Distribution Services", "Primarily thredds/OPeNDAP.")
 System(vis_systems, "Data Visualization Services", "WMS, etc.")
-'System(hosting, "Virtual Machines, K8 Pods", "Servers and applications for further data processing and exposure to consumers.")
 
 System_Boundary(monitoring, "Monitoring", "Monitoring of usage, metadata consistency, and status of services and production chains. Uses existing systems (e.g., prometheus/grafana)."){
 
   Container(checker, "Metadata Checker", "Python", "Regularly checks consistency between metadata, data and data representations/visualizations.")
 
   Container(pagerduty, "PagerDuty", "SaaS-based platform", "Externally hosted service to manage incidents and alerts.")
-  
+
   Container(pushgateway, "Pushgateway", "Server: mostly JavaScript and Go", "Intermediary service which allows to push metrics to Prometheus from jobs which cannot be scraped.")
-  
+
   Container(alertmanager, "Prometheus Alertmanager", "Server: mostly Go", "The Alertmanager handles alerts sent by client applications such as the Prometheus server. It takes care of deduplicating, grouping, and routing them to the correct receiver integration such as email or PagerDuty. It also takes care of silencing and inhibition of alerts.")
 
   Container(web_app, "Web Application", "HTML", "<b>Optional.</b> Provides functionality to register dataset and service metadata, display dataset and service usage statistics, production status, and monitor metadata to display errors and warnings (e.g., about dead links).")
-  
+
   Container(ghc, "Service Status and QoS Checker", "Python/Flask", "Probably GeoHealthCheck. GHC can be used to monitor overall health of OGC services (OWS) like WMS, WFS, WCS, WMTS, SOS, CSW and more, plus some recent OGC APIs like SensorThings API and WFS v3 (OGC Features API). But also standard web REST APIs and ordinary URLs can be monitored.")
 
   Container(prometheus, "Prometheus", "Server: mostly Go", "Collects metrics from configured targets at given intervals, evaluates rule expressions, displays the results, and can trigger alerts when specified conditions are observed.")
   Container(grafana, "Grafana", "mostly Typescript and Go", "Open source visualization and analytics software which allows to query, visualize, alert on and understand metrics.")
-  
+  Container(pingdom, "Pingdom", "SaaS-based platform", "Externally hosted service for website monitoring.")
+
 }
 
 Rel(checker, dmservice, "Read")
@@ -38,23 +38,20 @@ Rel(checker, vis_systems, "Read")
 
 Rel(productionhub,pushgateway," ")
 Rel(pushgateway,prometheus," ")
-Rel(web_app,pagerduty," ")
-'Rel(web_app,prometheus," ")
+Rel(productionhub,prometheus," ")
 Rel(prometheus,alertmanager," ")
 Rel(prometheus,pagerduty," ")
 Rel(prometheus,grafana," ")
-Rel(dist_systems,pagerduty," ")
-Rel(vis_systems,pagerduty," ")
+Rel(alertmanager,pagerduty," ")
 
-'Rel(dist_systems,prometheus," ")
-'Rel(vis_systems,prometheus," ")
-'Rel(vis_systems,pagerduty," ")
+Rel(dist_systems,pingdom," ")
+Rel(vis_systems,pingdom," ")
+Rel(dmservice,pingdom," ")
+Rel(web_app,pingdom," ")
+Rel(pingdom,pagerduty," ")
 
 Rel(dataproducer, web_app, "Check status")
 
-'Rel(ghc, dmservice, " ")
-'Rel(ghc, dist_systems, " ")
-'Rel(ghc, vis_systems, " ")
 
 Rel(dataproducer, productionhub, "Set up data production system")
 'Rel(productionhub, dist_systems, "Store")
@@ -64,5 +61,4 @@ Rel(dataproducer, productionhub, "Set up data production system")
 
 SHOW_LEGEND()
 @enduml
-
 
