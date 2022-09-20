@@ -1,7 +1,8 @@
-@startuml national-and-international-context
-!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Context.puml
+@startuml niva-container-diagram
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 
-LAYOUT_LEFT_RIGHT
+LAYOUT_TOP_DOWN()
+'LAYOUT_LEFT_RIGHT()
 
 Person(consumers, "Data Consumer", "A data consumer from the governance.")
 
@@ -12,7 +13,13 @@ System(adc, "Arctic Data Center", "Central hub for dynamic geodata. The Arctic d
 System(met, "data.met.no", "Data from MET Norway.")
 System(nina, "NINA", "Data from NINA.")
 System(nilu, "NILU", "Data from NILU.")
-System(niva, "NIVA", "Data from NIVA.")
+
+System_Boundary(niva, "NIVA"){
+  Container(dataset, "NIVA Dataset", "NetCDF-CF", "A NetCDF-CF file with global attributes following the ACDD conventions, and its S-ENDA extension (defined in the Data Management Handbook (DMH)). First prototype dataset: Ocean acidification data (CTD measurements/ferry box system/...).")
+  ContainerDb(fileserver, "NIVA storage", "Some file system", "NIVA local storage space.")
+  Container(thredds, "NIVA data distribution", "Thredds", "NIVA thredds server used to share NetCDF-CF data through OPeNDAP++.")
+}
+
 System(mdir, "MDIR", "Data from Miljødirektoratet.")
 
 Rel(consumers, geonorge, "Finds data in")
@@ -21,7 +28,12 @@ Rel(geonorge, adc, "Harvests metadata", "CSW: ISO19115")
 Rel(adc, met, "harvests MMD from", "OGC CSW")
 Rel(adc, nina, "harvests EML(?) from", "?")
 Rel(adc, nilu, "harvests Norwegian INSPIRE profile of ISO19115(?) from", "OAI-PMH")
-Rel(adc, niva, "crawls thredds server at", "OPeNDAP")
 Rel(adc, mdir, "harvests Norwegian INSPIRE profile of ISO19115(?) from", "OGC-CSW")
+
+Rel(adc, thredds, "crawls", "OPeNDAP")
+Rel(thredds, fileserver, "accesses")
+Rel(fileserver, dataset, "stores")
+
+
 
 @enduml
