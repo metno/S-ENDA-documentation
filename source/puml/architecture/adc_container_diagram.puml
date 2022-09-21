@@ -1,13 +1,19 @@
-@startuml national-and-international-context
-!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Context.puml
+@startuml adc-container-diagram
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 
-LAYOUT_LEFT_RIGHT
+LAYOUT_TOP_DOWN()
+'LAYOUT_LEFT_RIGHT()
 
 Person(consumers, "Data Consumer", "A data consumer from the governance.")
 
 System_Ext(geonorge, "GeoNorge", "Norwegian geodata")
 
-System(adc, "Arctic Data Center", "Central hub for dynamic geodata. The Arctic data center is already a national and international data center that can be reused for S-ENDA purposes.")
+System_Boundary(adc, "Arctic Data Center"){
+  ContainerDb(solr, "SOLR", "Metadata store", "Database with harvested metadata.")
+  Container(adcweb, "adc.met.no", "Website", "Website for human-machine search (including map search), data collection (basket service) and visualization.")
+  Container(csw, "Data catalog interface", "OGC CSW", "")
+  Container(oaipmh, "Data catalog interface", "OAI-PMH", "")
+}
 
 System(met, "data.met.no", "Data from MET Norway.")
 System(nina, "NINA", "Data from NINA.")
