@@ -1,4 +1,4 @@
-@startuml met-container-diagram
+@startuml adc-container-diagram
 !include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 
 LAYOUT_TOP_DOWN()
@@ -8,14 +8,14 @@ Person(consumers, "Data Consumer", "A data consumer from the governance.")
 
 System_Ext(geonorge, "GeoNorge", "Norwegian geodata")
 
-System(adc, "Arctic Data Center", "Central hub for dynamic geodata. The Arctic data center is already a national and international data center that can be reused for S-ENDA purposes.")
-
-System_Boundary(met, "data.met.no"){
-  Container(catalog, "Metadata services", "", "OGC CSW access point to metadata catalog.")
-  Container(vis, "Visualization services", "", "E.g., OGC WMS.")
-  Container(access, "Access services", "Thredds", "NetCDF-CF datasets.")
+System_Boundary(adc, "Arctic Data Center"){
+  ContainerDb(solr, "SOLR", "Metadata store", "Database with harvested metadata.")
+  Container(adcweb, "adc.met.no", "Website", "Website for human-machine search (including map search), data collection (basket service) and visualization.")
+  Container(csw, "Data catalog interface", "OGC CSW", "")
+  Container(oaipmh, "Data catalog interface", "OAI-PMH", "")
 }
 
+System(met, "data.met.no", "Data from MET Norway.")
 System(nina, "NINA", "Data from NINA.")
 System(nilu, "NILU", "Data from NILU.")
 System(niva, "NIVA", "Data from NIVA.")
@@ -24,9 +24,9 @@ System(mdir, "MDIR", "Data from Miljødirektoratet.")
 Rel(consumers, geonorge, "Finds data in")
 Rel(consumers, adc, "Finds and accesses data in")
 Rel(geonorge, adc, "Harvests metadata", "CSW: ISO19115")
-Rel(adc, catalog, "harvests MMD from", "OGC CSW")
-Rel(adc, vis, "visualizes data from", "OGC WMS/..")
-Rel(adc, access, "accesses data from", "OPeNDAP")
+Rel(adc, met, "harvests MMD from", "OGC CSW")
+Rel(adc, met, "visualizes data from", "OGC WMS/..")
+Rel(adc, met, "accesses data from", "OPeNDAP")
 Rel(adc, nina, "harvests EML(?) from", "?")
 Rel(adc, nilu, "harvests Norwegian INSPIRE profile of ISO19115(?) from", "OAI-PMH")
 Rel(adc, niva, "crawls thredds server at", "OPeNDAP")
