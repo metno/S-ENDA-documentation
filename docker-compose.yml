@@ -1,0 +1,7 @@
+services:
+  sphinx:
+    build: .
+    volumes:
+      - ./build:/senda/build
+    ports:
+      - 8000:8000
